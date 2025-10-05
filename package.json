@@ -1,0 +1,33 @@
+{
+  "name": "@play-er/website",
+  "version": "1.0.0",
+  "author": {
+    "name": "Steff Beckers",
+    "email": "steff@steffbeckers.com",
+    "url": "https://steffbeckers.com"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/fonts": "^0.11.4",
+    "@nuxt/icon": "^2.0.0",
+    "@nuxt/image": "1.11.0",
+    "@nuxt/ui": "^3.3.2",
+    "@nuxtjs/seo": "3.1.0",
+    "@vueuse/core": "^13.8.0",
+    "@vueuse/nuxt": "^13.8.0",
+    "eslint": "^9.34.0",
+    "nuxt": "^4.0.2",
+    "tailwindcss": "^4.1.12",
+    "valibot": "^1.1.0"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}
