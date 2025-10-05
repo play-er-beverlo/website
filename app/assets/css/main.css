@@ -2,5 +2,60 @@
 @import "@nuxt/ui";
 
 @theme static {
+  --color-blue-50: oklch(97.32% 0.013 251.55);
+  --color-blue-100: oklch(93.82% 0.031 248.15);
+  --color-blue-200: oklch(88.63% 0.06 243.21);
+  --color-blue-300: oklch(82.36% 0.098 240.4);
+  --color-blue-400: oklch(76.09% 0.142 235.99);
+  --color-blue-500: oklch(70.51% 0.149 234.5);
+  --color-blue-600: oklch(58.81% 0.124 234.6);
+  --color-blue-700: oklch(47.79% 0.101 234.51);
+  --color-blue-800: oklch(36.77% 0.077 233.69);
+  --color-blue-900: oklch(24.9% 0.052 233.36);
+  --color-blue-950: oklch(19.7% 0.041 234.06);
+
+  --color-grey-50: oklch(93.18% 0.001 18.73);
+  --color-grey-100: oklch(86.26% 0.003 345.97);
+  --color-grey-200: oklch(72.5% 0.004 337.76);
+  --color-grey-300: oklch(58.71% 0.006 345.63);
+  --color-grey-400: oklch(44.91% 0.004 355.09);
+  --color-grey-500: oklch(31.16% 0.003 345.63);
+  --color-grey-600: oklch(27.53% 0.003 345.65);
+  --color-grey-700: oklch(24.19% 0.004 345.68);
+  --color-grey-800: oklch(20.62% 0.002 325.85);
+  --color-grey-900: oklch(16.5% 0.002 17.5);
+  --color-grey-950: oklch(13.01% 0.002 17.54);
+
   --font-sans: Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#__nuxt {
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+#__nuxt {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  @apply text-4xl font-bold text-primary;
+}
+
+h2 {
+  @apply text-2xl font-semibold text-neutral-500;
+}
+
+a:not(.button) {
+  @apply hover:text-primary;
 }

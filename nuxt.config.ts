@@ -1,4 +1,11 @@
 export default defineNuxtConfig({
+  $development: {
+    vite: {
+      server: {
+        allowedHosts: ["wired-informally-chicken.ngrok-free.app"],
+      },
+    },
+  },
   compatibilityDate: "2025-07-15",
   css: ["~/assets/css/main.css"],
   fonts: {
@@ -12,15 +19,28 @@ export default defineNuxtConfig({
       },
     ],
   },
+  hub: {
+    database: true,
+  },
   modules: [
     "@nuxt/eslint",
     "@nuxt/fonts",
     "@nuxt/icon",
     "@nuxt/image",
     "@nuxt/ui",
+    "@nuxthub/core",
     "@nuxtjs/seo",
     "@vueuse/nuxt",
   ],
+  runtimeConfig: {
+    public: {
+      stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY
+    },
+    calApiKey: "", // NUXT_CAL_API_KEY
+    calWebhookSecret: "", // NUXT_CAL_WEBHOOK_SECRET
+    stripeSecretApiKey: "", // NUXT_STRIPE_SECRET_API_KEY
+    stripeWebhookSecret: "", // NUXT_STRIPE_WEBHOOK_SECRET
+  },
   site: {
     defaultLocale: "nl",
     name: "Play-ER",
