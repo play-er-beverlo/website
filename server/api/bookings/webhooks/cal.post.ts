@@ -46,16 +46,16 @@ export default defineEventHandler(async (event) => {
         calStatus: body.payload.status,
         paid: true,
       })
-      .where(eq(bookings.id, body.payload.bookingId));
+      .where(eq(bookings.calId, body.payload.bookingId));
   } else if (body.triggerEvent === "BOOKING_CANCELLED") {
     await useDrizzle()
       .update(tables.bookings)
       .set({ calStatus: body.payload.status })
-      .where(eq(bookings.id, body.payload.bookingId));
+      .where(eq(bookings.calId, body.payload.bookingId));
   } else if (body.triggerEvent === "BOOKING_REJECTED") {
     await useDrizzle()
       .update(tables.bookings)
       .set({ calStatus: body.payload.status })
-      .where(eq(bookings.id, body.payload.bookingId));
+      .where(eq(bookings.calId, body.payload.bookingId));
   }
 });

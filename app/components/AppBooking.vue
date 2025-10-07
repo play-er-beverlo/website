@@ -173,6 +173,10 @@ const fetchBookingData = async () => {
 
 watch(bookingData, async (value) => {
   // console.log("bookingData", value);
+
+  if (bookingData.value && bookingData.value.calStatus === "REJECTED") {
+    reset();
+  }
 });
 
 const book = async () => {
