@@ -1,6 +1,7 @@
 import * as v from "valibot";
 import { bookings } from "~~/server/database/schema";
 import { eq } from "drizzle-orm";
+import { deleteReservedSlot } from "~~/server/utils/cal";
 
 const paramsSchema = v.object({
   id: v.pipe(
@@ -35,6 +36,10 @@ export default defineEventHandler(async (event) => {
   }
 
   const calData = JSON.parse(booking.calData);
+
+  if (calData.metadata.reservationUid) {
+    await deleteReservedSlot({ uid: calData.metadata.reservationUid });
+  }
 
   return cancelBooking({ uid: calData.uid, cancellationReason: "Geannuleerd via website" });
 });

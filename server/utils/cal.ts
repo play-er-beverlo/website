@@ -57,11 +57,22 @@ export function reserveSlot({
   });
 }
 
+export function deleteReservedSlot({ uid }: { uid: string }) {
+  return $fetch(`${baseUrl}/slots/reservations/${uid}`, {
+    method: "DELETE",
+    headers: {
+      ...headers,
+      "cal-api-version": "2024-09-04",
+    },
+  });
+}
+
 export function createBooking({
   eventTypeId,
   date,
   details,
   duration,
+  reservationUid,
 }: {
   eventTypeId: number;
   date: Date;
@@ -72,6 +83,7 @@ export function createBooking({
     phoneNumber: string;
   };
   duration: number;
+  reservationUid: string;
 }) {
   return $fetch(`${baseUrl}/bookings`, {
     method: "POST",
@@ -91,6 +103,9 @@ export function createBooking({
       },
       eventTypeId,
       lengthInMinutes: duration,
+      metadata: {
+        reservationUid,
+      },
     },
   });
 }

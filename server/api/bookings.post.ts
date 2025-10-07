@@ -58,6 +58,7 @@ export default defineEventHandler(async (event) => {
     date: body.output.date,
     details: body.output.details,
     duration: body.output.duration,
+    reservationUid: (slotReservationData as any).data.reservationUid,
   });
 
   console.log("bookingData", bookingData);
@@ -65,7 +66,7 @@ export default defineEventHandler(async (event) => {
   let booking;
 
   // Wait for booking data through webhook
-  while (!booking || ((bookingData as any).data.paymentId && !booking.stripeClientSecret)) {
+  while (!booking || !booking.stripeClientSecret) {
     booking = await useDrizzle()
       .select()
       .from(tables.bookings)
