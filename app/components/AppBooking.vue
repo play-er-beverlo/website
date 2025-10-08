@@ -361,10 +361,7 @@ onMounted(async () => {
           </p>
         </div>
       </div>
-      <div
-        v-if="selectedGame && date && selectedLocation && selectedSlot"
-        class="flex flex-col gap-4"
-      >
+      <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
         <h2>Hoelang wil je reserveren?</h2>
         <div class="flex flex-wrap gap-4">
           <u-button
