@@ -414,52 +414,89 @@ onMounted(async () => {
           </u-form-field>
         </div>
       </div>
+      <div
+        v-if="
+          selectedGame &&
+          date &&
+          selectedLocation &&
+          selectedDuration &&
+          selectedSlot &&
+          details.firstName &&
+          details.lastName &&
+          details.email &&
+          details.phoneNumber
+        "
+        class="flex flex-col gap-4"
+      >
+        <h2>Bevestiging</h2>
+        <p>
+          <span class="font-semibold">Spel</span>: {{ selectedGame.toUpperCase() }}
+          {{ selectedLocation }}
+        </p>
+        <p>
+          <span class="font-semibold">Datum</span>:
+          {{ selectedSlot.toLocaleDateString("nl-BE") }}
+          {{ selectedSlot.toLocaleTimeString("nl-BE").substring(0, 5)
+          }}<span v-if="selectedSlotEnd">
+            - {{ selectedSlotEnd.toLocaleTimeString("nl-BE").substring(0, 5) }}</span
+          >
+        </p>
+        <div class="flex flex-col">
+          <p>
+            <span class="font-semibold">Naam</span>: {{ details.firstName }} {{ details.lastName }}
+          </p>
+          <p><span class="font-semibold">E-mail</span>: {{ details.email }}</p>
+          <p><span class="font-semibold">Telefoonnummer</span>: {{ details.phoneNumber }}</p>
+        </div>
+        <div class="flex flex-col">
+          <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
+        </div>
+        <u-button class="flex-1" label="Reserveer en betaal" size="xl" @click="book()" />
+      </div>
+    </div>
+    <div v-else class="flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
+        <h2>Bevestiging</h2>
+        <p><span class="font-semibold">Spel</span>: {{ bookingData.calData.eventTitle }}</p>
+        <p>
+          <span class="font-semibold">Datum</span>:
+          {{ new Date(bookingData.calData.startTime).toLocaleDateString("nl-BE") }}
+          {{ new Date(bookingData.calData.startTime).toLocaleTimeString("nl-BE").substring(0, 5)
+          }}<span v-if="bookingData.calData.endTime">
+            -
+            {{
+              new Date(bookingData.calData.endTime).toLocaleTimeString("nl-BE").substring(0, 5)
+            }}</span
+          >
+        </p>
+        <div class="flex flex-col">
+          <p>
+            <span class="font-semibold">Naam</span>:
+            {{ bookingData.calData.attendees[0].firstName }}
+            {{ bookingData.calData.attendees[0].lastName }}
+          </p>
+          <p>
+            <span class="font-semibold">E-mail</span>: {{ bookingData.calData.attendees[0].email }}
+          </p>
+          <p>
+            <span class="font-semibold">Telefoonnummer</span>:
+            {{ bookingData.calData.attendees[0].phoneNumber }}
+          </p>
+        </div>
+        <div class="flex flex-col">
+          <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
+          <p v-if="bookingData.paid"><span class="font-semibold">Betaalstatus</span>: Betaald</p>
+        </div>
+      </div>
     </div>
     <div
-      v-if="
-        selectedGame &&
-        date &&
-        selectedDuration &&
-        selectedSlot &&
-        details.firstName &&
-        details.lastName &&
-        details.email &&
-        details.phoneNumber
-      "
+      v-show="bookingData && !bookingData.paid && stripePaymentElement"
       class="flex flex-col gap-4"
     >
-      <h2>Bevestiging</h2>
-      <p><span class="font-semibold">Spel</span>: {{ selectedGame.toUpperCase() }}</p>
-      <p>
-        <span class="font-semibold">Datum</span>:
-        {{ selectedSlot.toLocaleDateString("nl-BE") }}
-        {{ selectedSlot.toLocaleTimeString("nl-BE").substring(0, 5)
-        }}<span v-if="selectedSlotEnd">
-          - {{ selectedSlotEnd.toLocaleTimeString("nl-BE").substring(0, 5) }}</span
-        >
-      </p>
-      <div class="flex flex-col">
-        <p>
-          <span class="font-semibold">Naam</span>: {{ details.firstName }} {{ details.lastName }}
-        </p>
-        <p><span class="font-semibold">E-mail</span>: {{ details.email }}</p>
-        <p><span class="font-semibold">Telefoonnummer</span>: {{ details.phoneNumber }}</p>
-      </div>
-      <div class="flex flex-col">
-        <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
-        <p v-if="bookingData && bookingData.paid">
-          <span class="font-semibold">Betaalstatus</span>: Betaald
-        </p>
-      </div>
+      <h2>Betaling</h2>
+      <div ref="stripePaymentElementPlaceholder"></div>
+      <u-button class="flex-1" label="Betalen" size="xl" @click="pay()" />
       <u-button
-        v-if="!stripePaymentElement"
-        class="flex-1"
-        label="Reserveer en betaal"
-        size="xl"
-        @click="book()"
-      />
-      <u-button
-        v-if="bookingData"
         class="flex-1"
         label="Annuleren"
         size="xl"
@@ -467,14 +504,6 @@ onMounted(async () => {
         variant="ghost"
         @click="cancel()"
       />
-    </div>
-    <div
-      v-show="stripePaymentElement && bookingData && !bookingData.paid"
-      class="flex flex-col gap-4"
-    >
-      <h2>Betaling</h2>
-      <div ref="stripePaymentElementPlaceholder"></div>
-      <u-button class="flex-1" label="Betalen" size="xl" @click="pay()" />
     </div>
     <u-button
       v-if="bookingData && bookingData.paid"
