@@ -141,8 +141,7 @@ watch(selectedDuration, async (value) => {
 const details = useLocalStorage(
   "booking:details",
   {
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     phoneNumber: "",
   },
@@ -263,7 +262,7 @@ const createStripePaymentElement = () => {
   stripePaymentElement.value = stripeElements.value.create("payment", {
     defaultValues: {
       billingDetails: {
-        name: `${details.value.firstName} ${details.value.lastName}`,
+        name: details.value.name,
         email: details.value.email,
         phone: details.value.phoneNumber,
       },
@@ -381,19 +380,9 @@ onMounted(async () => {
         class="flex flex-col gap-4"
       >
         <h2>Je gegevens</h2>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <u-form-field class="flex-1" label="Voornaam" size="xl" :required="true">
-            <u-input
-              class="w-full"
-              v-model="details.firstName"
-              name="firstName"
-              placeholder="Voornaam"
-            />
-          </u-form-field>
-          <u-form-field class="flex-1" label="Naam" size="xl" :required="true">
-            <u-input class="w-full" v-model="details.lastName" name="name" placeholder="Naam" />
-          </u-form-field>
-        </div>
+        <u-form-field class="flex-1" label="Naam" size="xl" :required="true">
+          <u-input class="w-full" v-model="details.name" name="name" placeholder="Naam" />
+        </u-form-field>
         <div class="flex flex-col sm:flex-row gap-4">
           <u-form-field class="flex-1" label="E-mailadres" size="xl" :required="true">
             <u-input
@@ -421,8 +410,7 @@ onMounted(async () => {
           selectedLocation &&
           selectedDuration &&
           selectedSlot &&
-          details.firstName &&
-          details.lastName &&
+          details.name &&
           details.email &&
           details.phoneNumber
         "
@@ -442,9 +430,7 @@ onMounted(async () => {
           >
         </p>
         <div class="flex flex-col">
-          <p>
-            <span class="font-semibold">Naam</span>: {{ details.firstName }} {{ details.lastName }}
-          </p>
+          <p><span class="font-semibold">Naam</span>: {{ details.name }}</p>
           <p><span class="font-semibold">E-mail</span>: {{ details.email }}</p>
           <p><span class="font-semibold">Telefoonnummer</span>: {{ details.phoneNumber }}</p>
         </div>
@@ -472,8 +458,7 @@ onMounted(async () => {
         <div class="flex flex-col">
           <p>
             <span class="font-semibold">Naam</span>:
-            {{ bookingData.calData.attendees[0].firstName }}
-            {{ bookingData.calData.attendees[0].lastName }}
+            {{ bookingData.calData.attendees[0].name }}
           </p>
           <p>
             <span class="font-semibold">E-mail</span>: {{ bookingData.calData.attendees[0].email }}

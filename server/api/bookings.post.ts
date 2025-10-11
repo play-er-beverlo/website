@@ -13,8 +13,7 @@ const bodySchema = v.object({
   location: v.number(),
   duration: v.number(),
   details: v.object({
-    firstName: v.string(),
-    lastName: v.string(),
+    name: v.string(),
     email: v.pipe(v.string(), v.email()),
     phoneNumber: v.string(),
   }),

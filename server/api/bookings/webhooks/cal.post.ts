@@ -35,6 +35,7 @@ export default defineEventHandler(async (event) => {
       .insert(tables.bookings)
       .values({
         calId: body.payload.bookingId,
+        calEventTypeId: body.payload.eventTypeId,
         calData: JSON.stringify(body.payload),
         calStatus: body.payload.status,
         createdAt: new Date(),

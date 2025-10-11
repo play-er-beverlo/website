@@ -1,12 +1,19 @@
-const baseUrl = "https://api.cal.com/v2";
-
 const runtimeConfig = useRuntimeConfig();
 
-const headers = {
-  Authorization: `Bearer ${runtimeConfig.calApiKey}`,
-  "cal-api-version": new Date().toISOString().substring(0, 10),
-};
+function getAPIKeyBasedOnEventTypeId(eventTypeId: number): string {
+  switch (eventTypeId) {
+    // Steff
+    case 3632050:
+      return runtimeConfig.calApiKeySnooker1;
+    case 3632004:
+      return runtimeConfig.calApiKeySnooker2;
+    // Play-ER
+  }
 
+  return "";
+}
+
+const baseUrl = "https://api.cal.com/v2";
 const timeZone = "Europe/Brussels";
 
 export function getSlots({
@@ -20,7 +27,7 @@ export function getSlots({
 }) {
   return $fetch(`${baseUrl}/slots`, {
     headers: {
-      ...headers,
+      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
       "cal-api-version": "2024-09-04",
     },
     query: {
@@ -42,10 +49,12 @@ export function reserveSlot({
   slotStart: Date;
   slotDuration: number;
 }) {
+  console.log("api key", getAPIKeyBasedOnEventTypeId(eventTypeId));
+
   return $fetch(`${baseUrl}/slots/reservations`, {
     method: "POST",
     headers: {
-      ...headers,
+      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
       "cal-api-version": "2024-09-04",
       "Content-Type": "application/json",
     },
@@ -57,11 +66,11 @@ export function reserveSlot({
   });
 }
 
-export function deleteReservedSlot({ uid }: { uid: string }) {
+export function deleteReservedSlot({ eventTypeId, uid }: { eventTypeId: number; uid: string }) {
   return $fetch(`${baseUrl}/slots/reservations/${uid}`, {
     method: "DELETE",
     headers: {
-      ...headers,
+      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
       "cal-api-version": "2024-09-04",
     },
   });
@@ -77,8 +86,7 @@ export function createBooking({
   eventTypeId: number;
   date: Date;
   details: {
-    firstName: string;
-    lastName: string;
+    name: string;
     email: string;
     phoneNumber: string;
   };
@@ -88,14 +96,14 @@ export function createBooking({
   return $fetch(`${baseUrl}/bookings`, {
     method: "POST",
     headers: {
-      ...headers,
+      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
       "cal-api-version": "2024-08-13",
       "Content-Type": "application/json",
     },
     body: {
       start: date,
       attendee: {
-        name: `${details.firstName} ${details.lastName}`,
+        name: details.name,
         email: details.email,
         phoneNumber: details.phoneNumber,
         language: "nl",
@@ -111,16 +119,18 @@ export function createBooking({
 }
 
 export function cancelBooking({
+  eventTypeId,
   uid,
   cancellationReason,
 }: {
+  eventTypeId: number;
   uid: string;
   cancellationReason: string;
 }) {
   return $fetch(`${baseUrl}/bookings/${uid}/cancel`, {
     method: "POST",
     headers: {
-      ...headers,
+      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
       "cal-api-version": "2024-08-13",
       "Content-Type": "application/json",
     },

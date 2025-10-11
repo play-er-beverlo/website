@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
     .where(eq(bookings.id, params.output.id))
     .get();
 
-  if (!booking) {
+  if (!booking || !booking.calEventTypeId) {
     setResponseStatus(event, 404);
     return;
   }
@@ -38,8 +38,15 @@ export default defineEventHandler(async (event) => {
   const calData = JSON.parse(booking.calData);
 
   if (calData.metadata.reservationUid) {
-    await deleteReservedSlot({ uid: calData.metadata.reservationUid });
+    await deleteReservedSlot({
+      eventTypeId: booking.calEventTypeId,
+      uid: calData.metadata.reservationUid,
+    });
   }
 
-  return cancelBooking({ uid: calData.uid, cancellationReason: "Geannuleerd via website" });
+  return cancelBooking({
+    eventTypeId: calData.eventTypeId,
+    uid: calData.uid,
+    cancellationReason: "Geannuleerd via website",
+  });
 });
