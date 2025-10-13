@@ -36,8 +36,7 @@ export default defineNuxtConfig({
     public: {
       stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY
     },
-    calApiKeySnooker1: "", // NUXT_CAL_API_KEY_SNOOKER_1
-    calApiKeySnooker2: "", // NUXT_CAL_API_KEY_SNOOKER_2
+    calApiKeys: JSON.parse(process.env.NUXT_CAL_API_KEYS ?? "{}"),
     calWebhookSecret: "", // NUXT_CAL_WEBHOOK_SECRET
     stripeSecretApiKey: "", // NUXT_STRIPE_SECRET_API_KEY
     stripeWebhookSecret: "", // NUXT_STRIPE_WEBHOOK_SECRET

@@ -65,14 +65,20 @@ export default defineEventHandler(async (event) => {
   let booking;
 
   // Wait for booking data through webhook
-  while (!booking || !booking.stripeClientSecret) {
+  while (
+    !booking ||
+    ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
+  ) {
     booking = await useDrizzle()
       .select()
       .from(tables.bookings)
       .where(eq(bookings.calId, (bookingData as any).data.id))
       .get();
 
-    if (!booking) {
+    if (
+      !booking ||
+      ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
+    ) {
       await new Promise((resolve) => setTimeout(resolve, 200));
     }
   }

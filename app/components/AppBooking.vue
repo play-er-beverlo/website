@@ -174,12 +174,18 @@ watch(bookingData, async (value) => {
   // console.log("bookingData", value);
 
   if (bookingData.value && bookingData.value.calStatus === "REJECTED") {
-    reset();
+    await reset();
   }
 });
 
 const book = async () => {
-  if (!selectedGame.value || !date.value || !selectedDuration.value || !selectedSlot.value) {
+  if (
+    !selectedGame.value ||
+    !date.value ||
+    !selectedLocation.value ||
+    !selectedSlot.value ||
+    !selectedDuration.value
+  ) {
     return;
   }
 
@@ -211,7 +217,7 @@ const cancel = async () => {
     method: "POST",
   });
 
-  reset();
+  await reset();
 };
 
 let stripe: Stripe | null;
@@ -274,12 +280,14 @@ const createStripePaymentElement = () => {
   }
 };
 
-const reset = () => {
+const reset = async () => {
   stripePaymentElement.value?.clear();
   stripePaymentElement.value?.unmount();
   stripePaymentElement.value = undefined;
   bookingData.value = null;
   selectedSlot.value = null;
+
+  await fetchSlots();
 };
 
 onMounted(async () => {
@@ -468,7 +476,7 @@ onMounted(async () => {
             {{ bookingData.calData.attendees[0].phoneNumber }}
           </p>
         </div>
-        <div class="flex flex-col">
+        <div v-if="bookingData.calData.price > 0" class="flex flex-col">
           <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
           <p v-if="bookingData.paid"><span class="font-semibold">Betaalstatus</span>: Betaald</p>
         </div>
@@ -481,17 +489,18 @@ onMounted(async () => {
       <h2>Betaling</h2>
       <div ref="stripePaymentElementPlaceholder"></div>
       <u-button class="flex-1" label="Betalen" size="xl" @click="pay()" />
-      <u-button
-        class="flex-1"
-        label="Annuleren"
-        size="xl"
-        color="error"
-        variant="ghost"
-        @click="cancel()"
-      />
     </div>
     <u-button
-      v-if="bookingData && bookingData.paid"
+      v-if="bookingData && !bookingData.paid && !bookingData.calData?.disableCancelling"
+      class="flex-1"
+      label="Annuleren"
+      size="xl"
+      color="error"
+      variant="ghost"
+      @click="cancel()"
+    />
+    <u-button
+      v-if="bookingData && (!bookingData.stripeClientSecret || bookingData.paid)"
       class="flex-1"
       label="Maak nieuwe reservatie"
       size="xl"

@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
   }
 
   return cancelBooking({
-    eventTypeId: calData.eventTypeId,
+    eventTypeId: booking.calEventTypeId,
     uid: calData.uid,
     cancellationReason: "Geannuleerd via website",
   });

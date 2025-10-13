@@ -1,18 +1,5 @@
 const runtimeConfig = useRuntimeConfig();
-
-function getAPIKeyBasedOnEventTypeId(eventTypeId: number): string {
-  switch (eventTypeId) {
-    // Steff
-    case 3632050:
-      return runtimeConfig.calApiKeySnooker1;
-    case 3632004:
-      return runtimeConfig.calApiKeySnooker2;
-    // Play-ER
-  }
-
-  return "";
-}
-
+const apiKeys = runtimeConfig.calApiKeys as Record<number, string>;
 const baseUrl = "https://api.cal.com/v2";
 const timeZone = "Europe/Brussels";
 
@@ -27,7 +14,7 @@ export function getSlots({
 }) {
   return $fetch(`${baseUrl}/slots`, {
     headers: {
-      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
+      Authorization: `Bearer ${apiKeys[eventTypeId]}`,
       "cal-api-version": "2024-09-04",
     },
     query: {
@@ -49,12 +36,10 @@ export function reserveSlot({
   slotStart: Date;
   slotDuration: number;
 }) {
-  console.log("api key", getAPIKeyBasedOnEventTypeId(eventTypeId));
-
   return $fetch(`${baseUrl}/slots/reservations`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
+      Authorization: `Bearer ${apiKeys[eventTypeId]}`,
       "cal-api-version": "2024-09-04",
       "Content-Type": "application/json",
     },
@@ -70,7 +55,7 @@ export function deleteReservedSlot({ eventTypeId, uid }: { eventTypeId: number; 
   return $fetch(`${baseUrl}/slots/reservations/${uid}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
+      Authorization: `Bearer ${apiKeys[eventTypeId]}`,
       "cal-api-version": "2024-09-04",
     },
   });
@@ -96,7 +81,7 @@ export function createBooking({
   return $fetch(`${baseUrl}/bookings`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
+      Authorization: `Bearer ${apiKeys[eventTypeId]}`,
       "cal-api-version": "2024-08-13",
       "Content-Type": "application/json",
     },
@@ -130,7 +115,7 @@ export function cancelBooking({
   return $fetch(`${baseUrl}/bookings/${uid}/cancel`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${getAPIKeyBasedOnEventTypeId(eventTypeId)}`,
+      Authorization: `Bearer ${apiKeys[eventTypeId]}`,
       "cal-api-version": "2024-08-13",
       "Content-Type": "application/json",
     },

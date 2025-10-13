@@ -29,7 +29,10 @@ export default defineEventHandler(async (event) => {
 
   console.log("Cal.com webhook body", body);
 
-  if (body.triggerEvent === "BOOKING_PAYMENT_INITIATED") {
+  if (
+    body.triggerEvent === "BOOKING_CREATED" ||
+    body.triggerEvent === "BOOKING_PAYMENT_INITIATED"
+  ) {
     // Save to database
     await useDrizzle()
       .insert(tables.bookings)
