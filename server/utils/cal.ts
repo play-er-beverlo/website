@@ -1,5 +1,6 @@
 const runtimeConfig = useRuntimeConfig();
 const apiKeys = runtimeConfig.calApiKeys as Record<number, string>;
+const bookingGuests = runtimeConfig.calBookingGuests as string[];
 const baseUrl = "https://api.cal.com/v2";
 const timeZone = "Europe/Brussels";
 
@@ -99,6 +100,7 @@ export function createBooking({
       metadata: {
         reservationUid,
       },
+      guests: bookingGuests,
     },
   });
 }
