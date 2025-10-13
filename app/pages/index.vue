@@ -124,7 +124,7 @@ useHead({
         <div class="text-lg text-white text-center px-8 text-shadow-xl">
           Wij zijn <span class="text-primary">elke dag</span> open van
           <span class="text-primary">13:00</span> tot
-          <span class="text-primary">23:00</span>.<br />Van harte welkom!
+          <span class="text-primary">...</span>.<br />Van harte welkom!
         </div>
       </div>
     </div>
