@@ -173,7 +173,10 @@ const fetchBookingData = async () => {
 watch(bookingData, async (value) => {
   // console.log("bookingData", value);
 
-  if (bookingData.value && bookingData.value.calStatus === "REJECTED") {
+  if (
+    bookingData.value &&
+    (bookingData.value.calStatus === "CANCELLED" || bookingData.value.calStatus === "REJECTED")
+  ) {
     await reset();
   }
 });
@@ -201,6 +204,11 @@ const book = async () => {
       },
     });
   } catch (response) {
+    if ((response as any).data.data.error.code === "UnprocessableEntityException") {
+      // TODO: Show toast?
+      selectedSlot.value = null;
+    }
+
     await fetchSlots();
     return;
   }
@@ -257,7 +265,7 @@ const handlePaymentError = (error: StripeError) => {
 };
 
 const createStripePaymentElement = () => {
-  if (!stripe) {
+  if (!stripe || !(bookingData.value as any).stripeClientSecret) {
     return;
   }
 
@@ -490,6 +498,7 @@ onMounted(async () => {
       <div ref="stripePaymentElementPlaceholder"></div>
       <u-button class="flex-1" label="Betalen" size="xl" @click="pay()" />
     </div>
+    <!-- TODO: Confirmation -->
     <u-button
       v-if="bookingData && !bookingData.paid && !bookingData.calData?.disableCancelling"
       class="flex-1"
