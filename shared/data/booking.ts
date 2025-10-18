@@ -16,10 +16,11 @@ export const gameLocationDisplayNames: { [game: string]: string } = {
 
 export const gameLocationEventTypeIdMapping: { [game: string]: { [location: number]: number } } = {
   // Steff
-  snooker: {
-    1: 3632050, // https://app.cal.com/event-types/3632050?tabName=setup
-    2: 3632004, // https://app.cal.com/event-types/3632004?tabName=setup
-  },
+  // snooker: {
+  //   1: 3632050, // https://app.cal.com/event-types/3632050?tabName=setup
+  //   2: 3632004, // https://app.cal.com/event-types/3632004?tabName=setup
+  // },
+  // Play-ER
   // darts: {
   //   1: 3566435, // https://app.cal.com/event-types/3566435?tabName=setup
   //   2: 3566452, // https://app.cal.com/event-types/3566452?tabName=setup
@@ -37,11 +38,11 @@ export const gameLocationEventTypeIdMapping: { [game: string]: { [location: numb
   //   1: 3566664, // https://app.cal.com/event-types/3566664?tabName=setup
   //   2: 3566672, // https://app.cal.com/event-types/3566672?tabName=setup
   // },
-  // snooker: {
-  //   1: 3566219, // https://app.cal.com/event-types/3566219?tabName=setup
-  //   2: 3566271, // https://app.cal.com/event-types/3566271?tabName=setup
-  //   3: 3566279, // https://app.cal.com/event-types/3566279?tabName=setup
-  // },
+  snooker: {
+    1: 3684407, // https://app.cal.com/event-types/3684407?tabName=setup
+    //   2: 3566271, // https://app.cal.com/event-types/3566271?tabName=setup
+    //   3: 3566279, // https://app.cal.com/event-types/3566279?tabName=setup
+  },
 };
 
 export const durations = [60, 90, 120, 150, 180, 240];
