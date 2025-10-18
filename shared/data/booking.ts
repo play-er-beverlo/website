@@ -40,7 +40,7 @@ export const gameLocationEventTypeIdMapping: { [game: string]: { [location: numb
   // },
   snooker: {
     1: 3684407, // https://app.cal.com/event-types/3684407?tabName=setup
-    //   2: 3566271, // https://app.cal.com/event-types/3566271?tabName=setup
+    2: 3684561, // https://app.cal.com/event-types/3684561?tabName=setup
     //   3: 3566279, // https://app.cal.com/event-types/3566279?tabName=setup
   },
 };
