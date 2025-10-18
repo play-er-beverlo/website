@@ -37,17 +37,23 @@ export default defineEventHandler(async (event) => {
     const calId = body.data.object.metadata.bookingId;
 
     let booking;
+    let counter = 0;
 
-    while (!booking) {
+    while (!booking && counter < 50) {
       booking = await useDrizzle()
         .select()
         .from(tables.bookings)
         .where(eq(bookings.calId, Number(calId)))
         .get();
 
-      if (!booking) {
+      if (!booking && counter < 50) {
         await new Promise((resolve) => setTimeout(resolve, 200));
+        counter++;
       }
+    }
+
+    if (!booking) {
+      throw createError({ statusCode: 400, statusMessage: `Booking not found.` });
     }
 
     await useDrizzle()
