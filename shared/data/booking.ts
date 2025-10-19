@@ -31,9 +31,9 @@ export const gameLocationEventTypeIdMapping: { [game: string]: { [location: numb
   //   7: 3566507, // https://app.cal.com/event-types/3566507?tabName=setup
   //   8: 3566509, // https://app.cal.com/event-types/3566509?tabName=setup
   // },
-  // golfbiljart: {
-  //   1: 3566685, // https://app.cal.com/event-types/3566685?tabName=setup
-  // },
+  golfbiljart: {
+    1: 3687777, // https://app.cal.com/event-types/3687777?tabName=setup
+  },
   pool: {
     1: 3687591, // https://app.cal.com/event-types/3687591?tabName=setup
     2: 3687610, // https://app.cal.com/event-types/3687610?tabName=setup

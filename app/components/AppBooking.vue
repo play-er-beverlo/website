@@ -16,8 +16,14 @@ const selectedGame = useLocalStorage("booking:game", null as string | null, {
   initOnMounted: true,
 });
 
-watch(selectedGame, async (value) => {
+watch(selectedGame, async (value, oldValue) => {
   // console.log("selectedGame", value);
+
+  if (value !== oldValue) {
+    if (selectedLocation.value) {
+      selectedLocation.value = 1;
+    }
+  }
 
   await fetchSlots();
 });
