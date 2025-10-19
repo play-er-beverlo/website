@@ -34,10 +34,10 @@ export const gameLocationEventTypeIdMapping: { [game: string]: { [location: numb
   // golfbiljart: {
   //   1: 3566685, // https://app.cal.com/event-types/3566685?tabName=setup
   // },
-  // pool: {
-  //   1: 3566664, // https://app.cal.com/event-types/3566664?tabName=setup
-  //   2: 3566672, // https://app.cal.com/event-types/3566672?tabName=setup
-  // },
+  pool: {
+    1: 3687591, // https://app.cal.com/event-types/3687591?tabName=setup
+    2: 3687610, // https://app.cal.com/event-types/3687610?tabName=setup
+  },
   snooker: {
     1: 3684407, // https://app.cal.com/event-types/3684407?tabName=setup
     2: 3684561, // https://app.cal.com/event-types/3684561?tabName=setup
