@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import { getLocalTimeZone, parseDate, today, type DateValue } from "@internationalized/date";
-import { games, gameLocations, durations, gameLocationDisplayNames } from "#shared/data/booking";
+import {
+  games,
+  gameLocations,
+  durations,
+  gameLocationDisplayNames,
+  gameLocationPostfix,
+} from "#shared/data/booking";
 
 import {
   loadStripe,
@@ -16,8 +22,18 @@ const selectedGame = useLocalStorage("booking:game", null as string | null, {
   initOnMounted: true,
 });
 
-watch(selectedGame, async (value) => {
+watch(selectedGame, async (value, oldValue) => {
   // console.log("selectedGame", value);
+
+  if (value !== oldValue) {
+    if (selectedLocation.value) {
+      if (value) {
+        selectedLocation.value = gameLocations[value]?.[0] ?? 1;
+      } else {
+        selectedLocation.value = 1;
+      }
+    }
+  }
 
   await fetchSlots();
 });
@@ -339,17 +355,14 @@ onMounted(async () => {
           :year-controls="false"
         />
       </div>
-      <div
-        v-if="selectedGame && date && gameLocations[selectedGame] && gameLocations[selectedGame]!.length > 1"
-        class="flex flex-col gap-4"
-      >
+      <div v-if="selectedGame && date && gameLocations[selectedGame]" class="flex flex-col gap-4">
         <h2>Welke {{ gameLocationDisplayNames[selectedGame] }} wil je reserveren?</h2>
         <div class="flex flex-wrap gap-4">
           <u-button
             v-for="location in gameLocations[selectedGame]"
             :key="location"
             class="flex-1"
-            :label="location + ''"
+            :label="location + (gameLocationPostfix[selectedGame]?.[location] ?? '')"
             size="xl"
             :color="location === selectedLocation ? 'primary' : 'neutral'"
             :variant="location === selectedLocation ? 'solid' : 'ghost'"
@@ -432,10 +445,10 @@ onMounted(async () => {
         "
         class="flex flex-col gap-4"
       >
-        <h2>Bevestiging</h2>
+        <h2>Overzicht</h2>
         <p>
           <span class="font-semibold">Spel</span>: {{ selectedGame.toUpperCase() }}
-          {{ selectedLocation }}
+          {{ selectedLocation }}{{ gameLocationPostfix[selectedGame]?.[selectedLocation] }}
         </p>
         <p>
           <span class="font-semibold">Datum</span>:
