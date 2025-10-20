@@ -229,6 +229,7 @@ const book = async () => {
     return;
   }
 
+  scrollToBookingTop();
   createStripePaymentElement();
 };
 
@@ -310,8 +311,14 @@ const reset = async () => {
   stripePaymentElement.value = undefined;
   bookingData.value = null;
   selectedSlot.value = null;
+  scrollToBookingTop();
 
   await fetchSlots();
+};
+
+const scrollToBookingTop = () => {
+  const element = document.getElementById("reserveren");
+  element?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 onMounted(async () => {
@@ -385,7 +392,8 @@ onMounted(async () => {
           />
           <p v-if="slots.length === 0">
             Er is geen tijdslot van {{ (selectedDuration / 60 + "u").replace(".", ",") }} meer
-            beschikbaar voor {{ gameLocationDisplayNames[selectedGame] }} {{ selectedLocation }}.
+            beschikbaar voor {{ gameLocationDisplayNames[selectedGame] }} {{ selectedLocation
+            }}{{ gameLocationPostfix[selectedGame]?.[selectedLocation] ?? "" }}.
           </p>
         </div>
       </div>
