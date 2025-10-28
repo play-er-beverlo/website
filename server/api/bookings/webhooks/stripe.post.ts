@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
   let stripeEvent: Stripe.Event;
 
   try {
-    stripeEvent = stripe.webhooks.constructEvent(bodyBuffer, signature, secret);
+    stripeEvent = await stripe.webhooks.constructEventAsync(bodyBuffer, signature, secret);
   } catch (err: any) {
     throw createError({ statusCode: 400, statusMessage: `Webhook error: ${err.message}` });
   }
