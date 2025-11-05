@@ -266,9 +266,9 @@ const pay = async () => {
     clientSecret: (bookingData.value as any).stripeClientSecret,
     elements: stripeElements.value,
     confirmParams: {
-      return_url: `${location.origin}/#reserveren`,
+      return_url: `${location.origin}/api/bookings/stripe/callback`,
     },
-    redirect: "if_required",
+    redirect: "always",
   });
 
   if (error) {
@@ -480,7 +480,10 @@ onMounted(async () => {
     <div v-else class="flex flex-col gap-8">
       <div class="flex flex-col gap-4">
         <h2>Bevestiging</h2>
-        <p><span class="font-semibold">Spel</span>: {{ bookingData.calData.eventTitle }}</p>
+        <p>
+          <span class="font-semibold">Spel</span>:
+          {{ bookingData.calData.eventTitle.toUpperCase() }}
+        </p>
         <p>
           <span class="font-semibold">Datum</span>:
           {{ new Date(bookingData.calData.startTime).toLocaleDateString("nl-BE") }}
@@ -507,7 +510,10 @@ onMounted(async () => {
         </div>
         <div v-if="bookingData.calData.price > 0" class="flex flex-col">
           <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
-          <p v-if="bookingData.paid"><span class="font-semibold">Betaalstatus</span>: Betaald</p>
+          <p>
+            <span class="font-semibold">Status</span>: <span v-if="bookingData.paid">Betaald</span
+            ><span v-else>Nog niet betaald</span>
+          </p>
         </div>
       </div>
     </div>
@@ -528,6 +534,13 @@ onMounted(async () => {
       color="error"
       variant="ghost"
       @click="cancel()"
+    />
+    <u-alert
+      v-if="bookingData && bookingData.paid"
+      title="Gereserveerd!"
+      description="We wensen je alvast veel plezier bij Play-ER te Beverlo."
+      color="success"
+      variant="subtle"
     />
     <u-button
       v-if="bookingData && (!bookingData.stripeClientSecret || bookingData.paid)"
