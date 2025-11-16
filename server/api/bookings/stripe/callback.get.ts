@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
   // TODO: Make more generic?
   const query = await getValidatedQuery(event, (query) => v.safeParse(querySchema, query));
 
-  console.log("query", query);
-
   if (!query.success) {
     setResponseStatus(event, 400);
 

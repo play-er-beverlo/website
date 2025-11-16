@@ -15,8 +15,10 @@ import {
   type StripeError,
   type StripePaymentElement,
 } from "@stripe/stripe-js";
+import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 
 const runtimeConfig = useRuntimeConfig();
+const toast = useToast();
 
 const selectedGame = useLocalStorage("booking:game", null as string | null, {
   initOnMounted: true,
@@ -197,8 +199,11 @@ watch(bookingData, async (value) => {
   }
 });
 
+const bookingPending = ref(false);
+
 const book = async () => {
   if (
+    bookingPending.value ||
     !selectedGame.value ||
     !date.value ||
     !selectedLocation.value ||
@@ -208,11 +213,13 @@ const book = async () => {
     return;
   }
 
+  bookingPending.value = true;
+
   try {
     bookingData.value = await $fetch("/api/bookings", {
       method: "POST",
       body: {
-        date: selectedSlot.value.toISOString(),
+        date: selectedSlot.value!.toISOString(),
         details: details.value,
         duration: selectedDuration.value,
         game: selectedGame.value,
@@ -220,27 +227,59 @@ const book = async () => {
       },
     });
   } catch (response) {
-    if ((response as any).data.data.error.code === "UnprocessableEntityException") {
-      // TODO: Show toast?
+    const errorToast: Partial<Toast> = {
+      title: "Mislukt!",
+      description:
+        (response as any)?.data?.data?.error?.message ??
+        "Er ging iets mis tijdens het reserveren. Probeer het later even opnieuw.",
+      color: "error",
+    };
+
+    if ((response as any)?.data?.data?.error?.code === "UnprocessableEntityException") {
+      errorToast.description = "Je gekozen tijdstip is niet meer beschikbaar.";
       selectedSlot.value = null;
     }
 
+    toast.add(errorToast);
+
     await fetchSlots();
     return;
+  } finally {
+    bookingPending.value = false;
   }
 
   scrollToBookingTop();
   createStripePaymentElement();
 };
 
+const cancelPending = ref(false);
+
 const cancel = async () => {
-  if (!bookingData.value) {
+  if (cancelPending.value || !bookingData.value) {
     return;
   }
 
-  await $fetch(`/api/bookings/${bookingData.value.id}/cancel`, {
-    method: "POST",
-  });
+  cancelPending.value = true;
+
+  try {
+    await $fetch(`/api/bookings/${bookingData.value.id}/cancel`, {
+      method: "POST",
+    });
+  } catch (response) {
+    const errorToast: Partial<Toast> = {
+      title: "Mislukt!",
+      description:
+        (response as any)?.data?.data?.error?.message ??
+        "Er ging iets mis tijdens annuleren van je reservatie. Probeer het later even opnieuw.",
+      color: "error",
+    };
+
+    toast.add(errorToast);
+
+    return;
+  } finally {
+    cancelPending.value = false;
+  }
 
   await reset();
 };
@@ -250,10 +289,14 @@ const stripePaymentElementPlaceholder = ref<HTMLElement>();
 let stripeElements = ref<StripeElements>();
 let stripePaymentElement = ref<StripePaymentElement>();
 
+const paymentPending = ref(false);
+
 const pay = async () => {
-  if (!stripe || !stripeElements.value) {
+  if (paymentPending.value || !stripe || !stripeElements.value) {
     return;
   }
+
+  paymentPending.value = true;
 
   const { error: submitError } = await stripeElements.value.submit();
 
@@ -274,11 +317,22 @@ const pay = async () => {
   if (error) {
     handlePaymentError(error);
   }
+
+  paymentPending.value = false;
 };
 
 const handlePaymentError = (error: StripeError) => {
-  // TODO: Visualize payment error messages
-  console.error(`${error.code}: ${error.message}`);
+  const errorToast: Partial<Toast> = {
+    title: "Mislukt!",
+    description:
+      error.message ??
+      "Er ging iets mis tijdens het betalen van de reservatie. Probeer het later even opnieuw.",
+    color: "error",
+  };
+
+  toast.add(errorToast);
+
+  paymentPending.value = false;
 };
 
 const createStripePaymentElement = () => {
@@ -378,6 +432,21 @@ onMounted(async () => {
         </div>
       </div>
       <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
+        <h2>Hoelang wil je reserveren?</h2>
+        <div class="flex flex-wrap gap-4">
+          <u-button
+            v-for="duration in durations"
+            :key="duration"
+            class="flex-1"
+            :label="(duration / 60 + 'u').replace('.', ',')"
+            size="xl"
+            :color="duration === selectedDuration ? 'primary' : 'neutral'"
+            :variant="duration === selectedDuration ? 'solid' : 'ghost'"
+            @click="selectedDuration = duration"
+          />
+        </div>
+      </div>
+      <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
         <h2>Om hoe laat wil je spelen?</h2>
         <div class="flex flex-wrap gap-4">
           <u-button
@@ -395,21 +464,6 @@ onMounted(async () => {
             beschikbaar voor {{ gameLocationDisplayNames[selectedGame] }} {{ selectedLocation
             }}{{ gameLocationPostfix[selectedGame]?.[selectedLocation] ?? "" }}.
           </p>
-        </div>
-      </div>
-      <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
-        <h2>Hoelang wil je reserveren?</h2>
-        <div class="flex flex-wrap gap-4">
-          <u-button
-            v-for="duration in durations"
-            :key="duration"
-            class="flex-1"
-            :label="(duration / 60 + 'u').replace('.', ',')"
-            size="xl"
-            :color="duration === selectedDuration ? 'primary' : 'neutral'"
-            :variant="duration === selectedDuration ? 'solid' : 'ghost'"
-            @click="selectedDuration = duration"
-          />
         </div>
       </div>
       <div
@@ -474,7 +528,14 @@ onMounted(async () => {
         <div class="flex flex-col">
           <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
         </div>
-        <u-button class="flex-1" label="Reserveer en betaal" size="xl" @click="book()" />
+        <u-button
+          :disabled="bookingPending"
+          :loading="bookingPending"
+          class="flex-1"
+          label="Reserveer en betaal"
+          size="xl"
+          @click="book()"
+        />
       </div>
     </div>
     <div v-else class="flex flex-col gap-8">
@@ -523,24 +584,32 @@ onMounted(async () => {
     >
       <h2>Betaling</h2>
       <div ref="stripePaymentElementPlaceholder"></div>
-      <u-button class="flex-1" label="Betalen" size="xl" @click="pay()" />
+      <u-button
+        :disabled="paymentPending"
+        :loading="paymentPending"
+        class="flex-1"
+        label="Betalen"
+        size="xl"
+        @click="pay()"
+      />
     </div>
-    <!-- TODO: Confirmation -->
+    <u-alert
+      v-if="bookingData && (bookingData.paid || !bookingData.calData.price)"
+      title="Gereserveerd!"
+      description="We wensen je alvast veel plezier bij Play-ER te Beverlo."
+      color="success"
+      variant="subtle"
+    />
     <u-button
       v-if="bookingData && !bookingData.paid && !bookingData.calData?.disableCancelling"
+      :disabled="cancelPending"
+      :loading="cancelPending"
       class="flex-1"
       label="Annuleren"
       size="xl"
       color="error"
       variant="ghost"
       @click="cancel()"
-    />
-    <u-alert
-      v-if="bookingData && bookingData.paid"
-      title="Gereserveerd!"
-      description="We wensen je alvast veel plezier bij Play-ER te Beverlo."
-      color="success"
-      variant="subtle"
     />
     <u-button
       v-if="bookingData && (!bookingData.stripeClientSecret || bookingData.paid)"
