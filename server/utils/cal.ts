@@ -79,6 +79,10 @@ export function createBooking({
   duration: number;
   // reservationUid: string;
 }) {
+  if (details.phoneNumber.startsWith("0")) {
+    details.phoneNumber = `+32${details.phoneNumber.substring(1)}`;
+  }
+
   return $fetch(`${baseUrl}/bookings`, {
     method: "POST",
     headers: {
