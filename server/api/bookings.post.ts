@@ -43,47 +43,63 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  // const slotReservationData = await reserveSlot({
-  //   eventTypeId,
-  //   slotStart: body.output.date,
-  //   slotDuration: body.output.duration,
-  // });
-
-  // console.log("slotReservationData", slotReservationData);
-
-  const bookingData = await createBooking({
+  const slotReservationData = await reserveSlot({
     eventTypeId,
-    date: body.output.date,
-    details: body.output.details,
-    duration: body.output.duration,
-    // reservationUid: (slotReservationData as any).data.reservationUid,
+    slotStart: body.output.date,
+    slotDuration: body.output.duration,
   });
 
-  console.log("bookingData", bookingData);
+  console.log("slotReservationData", slotReservationData);
 
-  let booking;
+  try {
+    const bookingData = await createBooking({
+      eventTypeId,
+      date: body.output.date,
+      details: body.output.details,
+      duration: body.output.duration,
+      reservationUid: (slotReservationData as any).data.reservationUid,
+    });
 
-  // Wait for booking data through webhook
-  while (
-    !booking ||
-    ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
-  ) {
-    booking = await useDrizzle()
-      .select()
-      .from(tables.bookings)
-      .where(eq(bookings.calId, (bookingData as any).data.id))
-      .get();
+    console.log("bookingData", bookingData);
 
-    if (
+    let booking;
+
+    // Wait for booking data through webhook
+    while (
       !booking ||
       ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
     ) {
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      booking = await useDrizzle()
+        .select()
+        .from(tables.bookings)
+        .where(eq(bookings.calId, (bookingData as any).data.id))
+        .get();
+
+      if (
+        !booking ||
+        ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
+      ) {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+      }
     }
+
+    booking.calData = JSON.parse(booking.calData);
+    booking.stripeData = JSON.parse(booking.stripeData ?? "{}");
+
+    return booking;
+  } catch (error) {
+    if (slotReservationData) {
+      await deleteReservedSlot({
+        eventTypeId,
+        uid: (slotReservationData as any).data.reservationUid,
+      });
+    }
+
+    setResponseStatus(event, 400);
+
+    return {
+      success: false,
+      error: "Error during booking: " + error,
+    };
   }
-
-  booking.calData = JSON.parse(booking.calData);
-  booking.stripeData = JSON.parse(booking.stripeData ?? "{}");
-
-  return booking;
 });
