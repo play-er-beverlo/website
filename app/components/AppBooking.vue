@@ -229,9 +229,7 @@ const book = async () => {
   } catch (response) {
     const errorToast: Partial<Toast> = {
       title: "Mislukt!",
-      description:
-        (response as any)?.data?.data?.error?.message ??
-        "Er ging iets mis tijdens het reserveren. Probeer het later even opnieuw.",
+      description: "Er ging iets mis tijdens het reserveren. Probeer het later even opnieuw.",
       color: "error",
     };
 
@@ -269,7 +267,6 @@ const cancel = async () => {
     const errorToast: Partial<Toast> = {
       title: "Mislukt!",
       description:
-        (response as any)?.data?.data?.error?.message ??
         "Er ging iets mis tijdens annuleren van je reservatie. Probeer het later even opnieuw.",
       color: "error",
     };
@@ -325,7 +322,6 @@ const handlePaymentError = (error: StripeError) => {
   const errorToast: Partial<Toast> = {
     title: "Mislukt!",
     description:
-      error.message ??
       "Er ging iets mis tijdens het betalen van de reservatie. Probeer het later even opnieuw.",
     color: "error",
   };
