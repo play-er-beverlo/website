@@ -37,12 +37,12 @@ export default defineEventHandler(async (event) => {
 
   const calData = JSON.parse(booking.calData);
 
-  // if (calData.metadata.reservationUid) {
-  //   await deleteReservedSlot({
-  //     eventTypeId: booking.calEventTypeId,
-  //     uid: calData.metadata.reservationUid,
-  //   });
-  // }
+  if (calData.metadata.reservationUid) {
+    await deleteReservedSlot({
+      eventTypeId: booking.calEventTypeId,
+      uid: calData.metadata.reservationUid,
+    });
+  }
 
   return cancelBooking({
     eventTypeId: booking.calEventTypeId,

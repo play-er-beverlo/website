@@ -67,8 +67,8 @@ export function createBooking({
   date,
   details,
   duration,
-}: // reservationUid,
-{
+  reservationUid,
+}: {
   eventTypeId: number;
   date: Date;
   details: {
@@ -77,7 +77,7 @@ export function createBooking({
     phoneNumber: string;
   };
   duration: number;
-  // reservationUid: string;
+  reservationUid: string;
 }) {
   if (details.phoneNumber.startsWith("0")) {
     details.phoneNumber = `+32${details.phoneNumber.substring(1)}`;
@@ -101,9 +101,9 @@ export function createBooking({
       },
       eventTypeId,
       lengthInMinutes: duration,
-      // metadata: {
-      //   reservationUid,
-      // },
+      metadata: {
+        reservationUid,
+      },
       guests: bookingGuests,
     },
   });
