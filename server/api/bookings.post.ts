@@ -43,21 +43,20 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const slotReservationData = await reserveSlot({
-    eventTypeId,
-    slotStart: body.output.date,
-    slotDuration: body.output.duration,
-  });
+  // const slotReservationData = await reserveSlot({
+  //   eventTypeId,
+  //   slotStart: body.output.date,
+  //   slotDuration: body.output.duration,
+  // });
 
-  console.log("slotReservationData", slotReservationData);
+  // console.log("slotReservationData", slotReservationData);
 
-  // TODO: Include slot reservation id in booking data
   const bookingData = await createBooking({
     eventTypeId,
     date: body.output.date,
     details: body.output.details,
     duration: body.output.duration,
-    reservationUid: (slotReservationData as any).data.reservationUid,
+    // reservationUid: (slotReservationData as any).data.reservationUid,
   });
 
   console.log("bookingData", bookingData);

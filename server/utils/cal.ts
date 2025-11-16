@@ -67,8 +67,8 @@ export function createBooking({
   date,
   details,
   duration,
-  reservationUid,
-}: {
+}: // reservationUid,
+{
   eventTypeId: number;
   date: Date;
   details: {
@@ -77,7 +77,7 @@ export function createBooking({
     phoneNumber: string;
   };
   duration: number;
-  reservationUid: string;
+  // reservationUid: string;
 }) {
   return $fetch(`${baseUrl}/bookings`, {
     method: "POST",
@@ -97,9 +97,9 @@ export function createBooking({
       },
       eventTypeId,
       lengthInMinutes: duration,
-      metadata: {
-        reservationUid,
-      },
+      // metadata: {
+      //   reservationUid,
+      // },
       guests: bookingGuests,
     },
   });
