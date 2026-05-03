@@ -39,6 +39,9 @@ export default defineNuxtConfig({
       nodeCompat: true,
     },
   },
+  ogImage: {
+    zeroRuntime: true,
+  },
   runtimeConfig: {
     public: {
       stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY
@@ -53,6 +56,9 @@ export default defineNuxtConfig({
     defaultLocale: "nl",
     name: "Play-ER",
     url: "https://www.play-er.be",
+  },
+  sitemap: {
+    zeroRuntime: true,
   },
   ui: {
     colorMode: false,
