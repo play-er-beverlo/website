@@ -122,9 +122,10 @@ useHead({
       <div class="flex flex-col items-center justify-center gap-8">
         <img class="ps-10" src="~/assets/images/Play-ER_Dark.svg" alt="Play-ER logo" width="660" />
         <div class="text-lg text-white text-center px-8 text-shadow-xl">
-          Wij zijn <span class="text-primary">elke dag</span> open van
-          <span class="text-primary">13:00</span> tot
-          <span class="text-primary">...</span>.<br />Van harte welkom!
+          <h3 class="font-medium">OPENINGSUREN</h3>
+          <div>maandag - donderdag vanaf <span class="text-primary">17:00</span></div>
+          <div>vrijdag - zondag vanaf <span class="text-primary">13:00</span></div>
+          <div class="mt-4">Van harte welkom!</div>
         </div>
       </div>
     </div>
