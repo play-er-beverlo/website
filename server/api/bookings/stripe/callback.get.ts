@@ -1,5 +1,7 @@
 import * as v from "valibot";
-import { bookings } from "~~/server/database/schema";
+import { bookings } from "hub:db:schema";
+import { db } from "hub:db";
+import { eq } from "drizzle-orm";
 
 const querySchema = v.object({
   payment_intent: v.string(),
@@ -25,9 +27,9 @@ export default defineEventHandler(async (event) => {
     let counter = 0;
 
     while (!booking?.paid && counter < 50) {
-      booking = await useDrizzle()
+      booking = await db
         .select()
-        .from(tables.bookings)
+        .from(bookings)
         .where(eq(bookings.stripeClientSecret, query.output.payment_intent_client_secret))
         .get();
 
