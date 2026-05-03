@@ -1,5 +1,7 @@
 import crypto from "node:crypto";
-import { bookings } from "~~/server/database/schema";
+import { bookings } from "hub:db:schema";
+import { db } from "hub:db";
+import { eq } from "drizzle-orm";
 import { timingSafeEqualHex } from "#shared/helpers";
 
 const runtimeConfig = useRuntimeConfig();
@@ -34,31 +36,29 @@ export default defineEventHandler(async (event) => {
     body.triggerEvent === "BOOKING_PAYMENT_INITIATED"
   ) {
     // Save to database
-    await useDrizzle()
-      .insert(tables.bookings)
-      .values({
-        calId: body.payload.bookingId,
-        calEventTypeId: body.payload.eventTypeId,
-        calData: JSON.stringify(body.payload),
-        calStatus: body.payload.status,
-        createdAt: new Date(),
-      });
+    await db.insert(bookings).values({
+      calId: body.payload.bookingId,
+      calEventTypeId: body.payload.eventTypeId,
+      calData: JSON.stringify(body.payload),
+      calStatus: body.payload.status,
+      createdAt: new Date(),
+    });
   } else if (body.triggerEvent === "BOOKING_PAID") {
-    await useDrizzle()
-      .update(tables.bookings)
+    await db
+      .update(bookings)
       .set({
         calStatus: body.payload.status,
         paid: true,
       })
       .where(eq(bookings.calId, body.payload.bookingId));
   } else if (body.triggerEvent === "BOOKING_CANCELLED") {
-    await useDrizzle()
-      .update(tables.bookings)
+    await db
+      .update(bookings)
       .set({ calStatus: body.payload.status })
       .where(eq(bookings.calId, body.payload.bookingId));
   } else if (body.triggerEvent === "BOOKING_REJECTED") {
-    await useDrizzle()
-      .update(tables.bookings)
+    await db
+      .update(bookings)
       .set({ calStatus: body.payload.status })
       .where(eq(bookings.calId, body.payload.bookingId));
   }

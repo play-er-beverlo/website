@@ -1,5 +1,6 @@
 import * as v from "valibot";
-import { bookings } from "~~/server/database/schema";
+import { bookings } from "hub:db:schema";
+import { db } from "hub:db";
 import { eq } from "drizzle-orm";
 import { deleteReservedSlot } from "~~/server/utils/cal";
 
@@ -24,11 +25,7 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const booking = await useDrizzle()
-    .select()
-    .from(tables.bookings)
-    .where(eq(bookings.id, params.output.id))
-    .get();
+  const booking = await db.select().from(bookings).where(eq(bookings.id, params.output.id)).get();
 
   if (!booking || !booking.calEventTypeId) {
     setResponseStatus(event, 404);

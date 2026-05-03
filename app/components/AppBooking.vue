@@ -379,7 +379,9 @@ onMounted(async () => {
   if (bookingData.value) {
     await fetchBookingData();
 
-    createStripePaymentElement();
+    if (!bookingData.value.paid) {
+      createStripePaymentElement();
+    }
   }
 });
 </script>

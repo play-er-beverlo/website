@@ -1,4 +1,5 @@
-import { bookings } from "~~/server/database/schema";
+import { bookings } from "hub:db:schema";
+import { db } from "hub:db";
 import { eq } from "drizzle-orm";
 import Stripe from "stripe";
 
@@ -40,9 +41,9 @@ export default defineEventHandler(async (event) => {
     let counter = 0;
 
     while (!booking && counter < 50) {
-      booking = await useDrizzle()
+      booking = await db
         .select()
-        .from(tables.bookings)
+        .from(bookings)
         .where(eq(bookings.calId, Number(calId)))
         .get();
 
@@ -56,8 +57,8 @@ export default defineEventHandler(async (event) => {
       throw createError({ statusCode: 400, statusMessage: `Booking not found.` });
     }
 
-    await useDrizzle()
-      .update(tables.bookings)
+    await db
+      .update(bookings)
       .set({
         stripeClientSecret: body.data.object.client_secret,
         stripeData: JSON.stringify(body.data.object),

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: "2026-05-03",
   css: ["~/assets/css/main.css"],
   fonts: {
     defaults: {
@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     ],
   },
   hub: {
-    database: true,
+    db: "sqlite",
   },
   modules: [
     "@nuxt/eslint",
@@ -32,6 +32,13 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "@vueuse/nuxt",
   ],
+  nitro: {
+    preset: "cloudflare_module",
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
+  },
   runtimeConfig: {
     public: {
       stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY

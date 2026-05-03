@@ -1,7 +1,9 @@
 import * as v from "valibot";
 import { createBooking, reserveSlot } from "../utils/cal";
-import { bookings } from "../database/schema";
+import { bookings } from "hub:db:schema";
+import { db } from "hub:db";
 import { gameLocationEventTypeIdMapping } from "#shared/data/booking";
+import { eq } from "drizzle-orm";
 
 const bodySchema = v.object({
   game: v.string(),
@@ -69,9 +71,9 @@ export default defineEventHandler(async (event) => {
       !booking ||
       ((bookingData as any).data.status === "pending" && !booking.stripeClientSecret)
     ) {
-      booking = await useDrizzle()
+      booking = await db
         .select()
-        .from(tables.bookings)
+        .from(bookings)
         .where(eq(bookings.calId, (bookingData as any).data.id))
         .get();
 

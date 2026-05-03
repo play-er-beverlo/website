@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "website",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2026-05-03",
+  "assets": {
+    "directory": "./.output/public/",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "bf4458e6-77e6-45a0-a3e6-c16e299eab13"
+    }
+  ],
+  "vars": {
+    "NUXT_CAL_BOOKING_GUESTS": "[\"horeca.player.be@gmail.com\"]",
+    "NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY": "pk_live_51SDW8TPdNa5NInxcuGK05eRplXxt4fi5m5dLki97h3N29dUDjrNDOe4U2s1I0nywCsXs9owNl3sWEQ3l7LSzhqfJ00QsofFrWZ"
+  },
+  "env": {
+    "preview": {
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_id": "8ee65dcd-1a8b-44b2-ad62-ed43839c779a"
+        }
+      ],
+      "vars": {
+        "NUXT_CAL_BOOKING_GUESTS": "[\"horeca.player.be@gmail.com\"]",
+        "NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY": "pk_live_51SDW8TPdNa5NInxcuGK05eRplXxt4fi5m5dLki97h3N29dUDjrNDOe4U2s1I0nywCsXs9owNl3sWEQ3l7LSzhqfJ00QsofFrWZ"
+      }
+    }
+  }
+}
