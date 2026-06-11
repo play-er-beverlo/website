@@ -140,7 +140,8 @@ expected low concurrency; the unique index is the hard backstop for same-day dup
 - `GET availability` → per play day: `{ playDayId, registered, capacity, remaining, full }`
   plus `editionUniqueReached: boolean`.
 - `POST registrations` → valibot validation (name, email, playDayId, qr base64) → capacity
-  checks → insert → send Brevo email → return success (incl. the registration id).
+  checks → insert → send Brevo email → **on email success** return success (incl. the
+  registration id); **on email failure** delete the just-inserted row and return an error.
 - `GET registrations/[id]/qr.png` → serves the stored QR PNG (used by the email `<img>`).
 
 ## 7. Brevo confirmation email
@@ -158,9 +159,14 @@ New util `server/utils/brevo.ts` → `sendTransactionalEmail(...)` calling
   (inline `<img>` + attachment), and a note that paying before the play day confirms the spot.
 - **Attachment:** `betaling-qr.png` (base64).
 
-If the email send fails, the registration is still saved; the error is logged and the user
-still sees a success confirmation with the payment details on-page (so a Brevo outage does
-not lose a registration). _(To confirm during planning: acceptable, vs. surfacing a warning.)_
+**The registration and the confirmation email must both succeed — the email is essential.**
+Flow: insert the registration row first (this claims the spot and enforces the unique index),
+then send the Brevo email. If the email send fails, **delete the just-inserted row** so no
+registration remains in the database, log the error, and return an error (HTTP 502) with a
+clear Dutch message asking the user to try again later (a Brevo outage is hopefully
+temporary, so they can register later). Insert-first + delete-on-failure is used (rather than
+send-first) so capacity/uniqueness is reserved atomically during the send and the user is
+never emailed for a registration that then fails to persist.
 
 ## 8. Config / secrets
 
