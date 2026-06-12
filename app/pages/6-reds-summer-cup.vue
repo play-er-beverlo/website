@@ -141,15 +141,18 @@ useSeoMeta({
         </p>
       </div>
 
-      <div class="flex flex-col gap-4">
-        <h2>Rangschikking</h2>
-        <u-alert
-          title="Binnenkort"
-          description="De rangschikking van de deelnemers wordt later toegevoegd."
-          color="neutral"
-          variant="subtle"
-        />
-      </div>
+    </div>
+  </section>
+
+  <section id="rangschikking" class="w-full shadow-lg">
+    <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
+      <h1>RANGSCHIKKING</h1>
+      <u-alert
+        title="Binnenkort"
+        description="De rangschikking van de deelnemers wordt later toegevoegd."
+        color="neutral"
+        variant="subtle"
+      />
     </div>
   </section>
 
@@ -172,5 +175,9 @@ section#hero {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+section#rangschikking {
+  @apply bg-neutral-500 text-white;
 }
 </style>
