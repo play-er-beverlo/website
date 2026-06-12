@@ -190,7 +190,7 @@ const resetForm = async () => {
             :disabled="!canSelect(day)"
             @click="selectedPlayDayId = day.id"
           >
-            <span>{{ day.label }} — {{ PLAY_TIME }}u</span>
+            <span>{{ day.label }} — {{ PLAY_TIME }}</span>
             <span v-if="day.past">Voorbij</span>
             <span v-else-if="day.full">Volzet</span>
             <span v-else>nog {{ day.remaining }}/{{ day.capacity }}</span>
@@ -216,7 +216,7 @@ const resetForm = async () => {
 
       <div v-if="selectedPlayDayId && name.trim() && email.trim()" class="flex flex-col gap-4">
         <h2>Overzicht & betaling</h2>
-        <p><span class="font-semibold">Speeldag</span>: {{ selectedDay?.label }} — {{ PLAY_TIME }}u</p>
+        <p><span class="font-semibold">Speeldag</span>: {{ selectedDay?.label }} — {{ PLAY_TIME }}</p>
         <p><span class="font-semibold">Naam</span>: {{ name }}</p>
         <p><span class="font-semibold">E-mail</span>: {{ email }}</p>
         <p><span class="font-semibold">Inschrijvingsgeld</span>: &euro; {{ REGISTRATION_FEE }}</p>

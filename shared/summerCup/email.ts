@@ -40,7 +40,7 @@ export function buildConfirmationEmail(params: {
                 <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 16px;">
                   <tr><td style="padding:4px 0;"><strong>Naam:</strong></td><td style="padding:4px 0;">${name}</td></tr>
                   <tr><td style="padding:4px 0;"><strong>Speeldag:</strong></td><td style="padding:4px 0;">${playDayLabel}</td></tr>
-                  <tr><td style="padding:4px 0;"><strong>Aanvang:</strong></td><td style="padding:4px 0;">${PLAY_TIME}u</td></tr>
+                  <tr><td style="padding:4px 0;"><strong>Aanvang:</strong></td><td style="padding:4px 0;">${PLAY_TIME}</td></tr>
                   <tr><td style="padding:4px 0;"><strong>Inschrijvingsgeld:</strong></td><td style="padding:4px 0;">&euro; ${REGISTRATION_FEE}</td></tr>
                 </table>
                 <h2 style="font-size:16px;margin:24px 0 8px;">Betaling</h2>

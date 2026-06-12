@@ -3,7 +3,7 @@ export const MIN_PER_PLAY_DAY = 4;
 export const MAX_PER_PLAY_DAY = 8;
 export const MAX_UNIQUE_PLAYERS = 16;
 export const REGISTRATION_FEE = 15;
-export const PLAY_TIME = "18:30";
+export const PLAY_TIME = "18u30";
 
 export const payment = {
   iban: "BE30 0637 6639 4611",

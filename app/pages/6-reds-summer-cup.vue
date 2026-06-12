@@ -27,7 +27,7 @@ useSeoMeta({
           enkel georganiseerd voor leden van Play-ER.
         </p>
         <p>
-          Er wordt gespeeld om de twee weken, telkens op woensdag en vrijdag vanaf {{ PLAY_TIME }}u.
+          Er wordt gespeeld om de twee weken, telkens op woensdag en vrijdag vanaf {{ PLAY_TIME }}.
           De eerste speeldag vindt plaats op woensdag 17 juni 2026.
         </p>
       </div>
@@ -52,7 +52,7 @@ useSeoMeta({
             </tbody>
           </table>
         </div>
-        <p class="text-sm opacity-80">Alle speeldagen starten om {{ PLAY_TIME }}u.</p>
+        <p class="text-sm opacity-80">Alle speeldagen starten om {{ PLAY_TIME }}.</p>
       </div>
 
       <div class="flex flex-col gap-4">
