@@ -69,7 +69,7 @@ const showMoreInfo = ref(false);
           <h2>Inschrijvingen &amp; plaatsen</h2>
           <ul class="list-disc ps-6 flex flex-col gap-2">
             <li>Per editie zijn er twee afzonderlijke speeldagen: woensdag en vrijdag.</li>
-            <li>Spelers mogen deelnemen aan één speeldag per editie OF aan beide indien er nog plaatsen beschikbaar zijn (enkel je beste resultaat telt en spelers die nog niet speelden, krijgen voorrang).</li>
+            <li>Spelers mogen deelnemen aan één speeldag per toernooi OF aan beide indien er nog plaatsen beschikbaar zijn (enkel je beste resultaat telt en spelers die nog niet speelden, krijgen voorrang).</li>
             <li>Minimum {{ MIN_PER_PLAY_DAY }} en maximum {{ MAX_PER_PLAY_DAY }} deelnemers per speeldag.</li>
             <li>Maximum {{ MAX_UNIQUE_PLAYERS }} unieke deelnemers voor de editie 2026.</li>
           </ul>
