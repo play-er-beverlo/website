@@ -36,8 +36,10 @@ const selectedDay = computed(() =>
   availability.value?.playDays.find((d) => d.id === selectedPlayDayId.value)
 );
 
-const canSelect = (day: AvailabilityDay) =>
-  !day.full && !day.past && !(availability.value?.editionUniqueReached ?? false);
+// A play day is selectable as long as it is not full or past. The 16-unique-players
+// edition cap is enforced server-side: new players are rejected, but players who are
+// already registered can still add another day that still has space.
+const canSelect = (day: AvailabilityDay) => !day.full && !day.past;
 
 const qrDataUrl = ref<string | null>(null);
 
@@ -66,9 +68,13 @@ const communication = computed(() => {
 });
 
 const submitting = ref(false);
-const confirmation = ref<null | { name: string; playDayLabel: string; communication: string; id: number }>(
-  null
-);
+const confirmation = ref<null | {
+  name: string;
+  email: string;
+  playDayLabel: string;
+  communication: string;
+  id: number;
+}>(null);
 
 const canSubmit = computed(
   () => !!selectedPlayDayId.value && !!name.value.trim() && !!email.value.trim() && !!qrDataUrl.value
@@ -94,6 +100,7 @@ const register = async () => {
     confirmation.value = {
       id: res.id,
       name: res.name,
+      email: res.email,
       playDayLabel: res.playDayLabel,
       communication: res.communication,
     };
@@ -128,7 +135,7 @@ const resetForm = async () => {
     <div v-if="confirmation" class="flex flex-col gap-4">
       <u-alert
         title="Ingeschreven!"
-        :description="`Je inschrijving voor ${confirmation.playDayLabel} is geregistreerd. We hebben een bevestigingsmail gestuurd naar ${email}.`"
+        :description="`Je inschrijving voor ${confirmation.playDayLabel} is geregistreerd. We hebben een bevestigingsmail gestuurd naar ${confirmation.email}.`"
         color="success"
         variant="subtle"
       />
@@ -164,8 +171,8 @@ const resetForm = async () => {
     <div v-else class="flex flex-col gap-8">
       <u-alert
         v-if="availability?.editionUniqueReached"
-        title="Volzet"
-        description="Het maximum aantal unieke deelnemers (16) voor editie 2026 is bereikt. Inschrijven is niet meer mogelijk."
+        title="Maximum deelnemers bereikt"
+        description="Het maximum aantal unieke deelnemers (16) voor editie 2026 is bereikt. Nieuwe deelnemers kunnen niet meer inschrijven. Ben je al ingeschreven? Dan kan je nog een extra speeldag bijboeken zolang er plaats is."
         color="warning"
         variant="subtle"
       />
