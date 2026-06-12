@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { playDays, finaleDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { finaleDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
 
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",

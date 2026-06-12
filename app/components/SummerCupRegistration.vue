@@ -2,7 +2,7 @@
 import QRCode from "qrcode";
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 import { REGISTRATION_FEE, payment, PLAY_TIME, getPlayDay } from "#shared/data/summerCup";
-import { buildEpcQrPayload } from "#shared/summerCup/epc";
+import { buildCommunication, buildEpcQrPayload } from "#shared/summerCup/epc";
 
 interface AvailabilityDay {
   id: string;
@@ -62,7 +62,7 @@ watchEffect(async () => {
 const communication = computed(() => {
   const day = selectedPlayDayId.value ? getPlayDay(selectedPlayDayId.value) : null;
   if (!day || !name.value.trim()) return "";
-  return `6RSC ${name.value.trim()} - ${day.shortLabel}`;
+  return buildCommunication(name.value, day.shortLabel);
 });
 
 const submitting = ref(false);
