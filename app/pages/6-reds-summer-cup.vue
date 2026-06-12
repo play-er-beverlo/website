@@ -164,17 +164,13 @@ useSeoMeta({
 <style scoped>
 @reference "./../assets/css/main.css";
 
-section#hero,
-section#uitleg,
-section#inschrijven {
-  @apply bg-neutral-500 text-white;
-}
-
 section#hero {
+  @apply bg-neutral-500;
   background: radial-gradient(circle, rgba(102, 102, 102, 1) 0%, rgba(50, 48, 49, 1) 75%);
-}
-
-section#inschrijven {
-  background-color: #323031;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.9) 100%),
+    url("~/assets/images/home_banner.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>
