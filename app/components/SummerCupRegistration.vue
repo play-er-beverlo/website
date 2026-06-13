@@ -203,13 +203,13 @@ const resetForm = async () => {
         <u-form-field class="flex-1" label="Naam" size="xl" :required="true">
           <u-input class="w-full" v-model="name" name="name" placeholder="Voor- en achternaam" />
         </u-form-field>
-        <u-form-field class="flex-1" label="E-mailadres" size="xl" :required="true">
+        <u-form-field class="flex-1" label="E-mail" size="xl" :required="true">
           <u-input
             class="w-full"
             v-model="email"
             name="email"
             type="email"
-            placeholder="E-mailadres"
+            placeholder="E-mail"
           />
         </u-form-field>
       </div>
@@ -217,8 +217,10 @@ const resetForm = async () => {
       <div v-if="selectedPlayDayId && name.trim() && email.trim()" class="flex flex-col gap-4">
         <h2>Overzicht & betaling</h2>
         <p><span class="font-semibold">Speeldag</span>: {{ selectedDay?.label }} — {{ PLAY_TIME }}</p>
-        <p><span class="font-semibold">Naam</span>: {{ name }}</p>
-        <p><span class="font-semibold">E-mail</span>: {{ email }}</p>
+        <div class="flex flex-col gap-1">
+          <p><span class="font-semibold">Naam</span>: {{ name }}</p>
+          <p><span class="font-semibold">E-mail</span>: {{ email }}</p>
+        </div>
         <p><span class="font-semibold">Inschrijvingsgeld</span>: &euro; {{ REGISTRATION_FEE }}</p>
         <div class="flex flex-col gap-1">
           <p><span class="font-semibold">Begunstigde</span>: {{ payment.beneficiary }}</p>
