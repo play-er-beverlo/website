@@ -7,6 +7,7 @@ describe("buildConfirmationEmail", () => {
     playDayLabel: "Toernooi 1 — woensdag 17 juni 2026",
     communication: "6RSC Jan Janssens - wo 17 juni 2026",
     qrImageUrl: "https://www.play-er.be/api/6-reds-summer-cup/registrations/1/qr.png",
+    logoUrl: "https://www.play-er.be/web-app-manifest-512x512.png",
   });
 
   it("puts the play day in the subject", () => {
@@ -21,5 +22,12 @@ describe("buildConfirmationEmail", () => {
     expect(email.htmlContent).toContain(
       "https://www.play-er.be/api/6-reds-summer-cup/registrations/1/qr.png"
     );
+  });
+
+  it("includes the Play-ER logo in the body", () => {
+    expect(email.htmlContent).toContain(
+      "https://www.play-er.be/web-app-manifest-512x512.png"
+    );
+    expect(email.htmlContent).toContain('alt="Play-ER"');
   });
 });
