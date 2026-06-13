@@ -2,7 +2,7 @@
 import QRCode from "qrcode";
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 import { REGISTRATION_FEE, payment, PLAY_TIME, getPlayDay } from "#shared/data/summerCup";
-import { buildCommunication, buildEpcQrPayload } from "#shared/summerCup/epc";
+import { buildEpcQrPayload } from "#shared/summerCup/epc";
 
 interface AvailabilityDay {
   id: string;
@@ -59,12 +59,6 @@ watchEffect(async () => {
   } else {
     qrDataUrl.value = null;
   }
-});
-
-const communication = computed(() => {
-  const day = selectedPlayDayId.value ? getPlayDay(selectedPlayDayId.value) : null;
-  if (!day || !name.value.trim()) return "";
-  return buildCommunication(name.value, day.shortLabel);
 });
 
 const submitting = ref(false);
@@ -215,30 +209,15 @@ const resetForm = async () => {
       </div>
 
       <div v-if="selectedPlayDayId && name.trim() && email.trim()" class="flex flex-col gap-4">
-        <h2>Overzicht & betaling</h2>
+        <h2>Overzicht</h2>
         <p><span class="font-semibold">Speeldag</span>: {{ selectedDay?.label }} — {{ PLAY_TIME }}</p>
         <div class="flex flex-col gap-1">
           <p><span class="font-semibold">Naam</span>: {{ name }}</p>
           <p><span class="font-semibold">E-mail</span>: {{ email }}</p>
         </div>
         <p><span class="font-semibold">Inschrijvingsgeld</span>: &euro; {{ REGISTRATION_FEE }}</p>
-        <div class="flex flex-col gap-1">
-          <p><span class="font-semibold">Begunstigde</span>: {{ payment.beneficiary }}</p>
-          <p><span class="font-semibold">IBAN</span>: {{ payment.iban }}</p>
-          <p><span class="font-semibold">BIC</span>: {{ payment.bic }}</p>
-          <p><span class="font-semibold">Mededeling</span>: {{ communication }}</p>
-        </div>
-        <img
-          v-if="qrDataUrl"
-          :src="qrDataUrl"
-          alt="Betaal-QR-code"
-          width="220"
-          height="220"
-          class="bg-white p-2 rounded"
-        />
         <p class="text-sm opacity-80">
-          Betaling gebeurt vóór de speeldag en bevestigt je inschrijving. Je ontvangt deze
-          gegevens ook per e-mail.
+          Na het inschrijven tonen we de betaalgegevens met QR-code en sturen we ze ook per e-mail.
         </p>
         <u-button
           :disabled="!canSubmit || submitting"
