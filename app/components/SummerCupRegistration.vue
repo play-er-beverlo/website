@@ -144,6 +144,7 @@ const resetForm = async () => {
         <p><span class="font-semibold">BIC</span>: {{ payment.bic }}</p>
         <p><span class="font-semibold">Mededeling</span>: {{ confirmation.communication }}</p>
       </div>
+      <p>Of scan deze QR-code met je bankapp:</p>
       <img
         :src="`/api/6-reds-summer-cup/registrations/${confirmation.id}/qr.png`"
         alt="Betaal-QR-code"
