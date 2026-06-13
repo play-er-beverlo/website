@@ -29,8 +29,10 @@ const { data: availability, refresh } = await useFetch<AvailabilityResponse>(
 );
 
 const selectedPlayDayId = ref<string | null>(null);
-const name = ref("");
-const email = ref("");
+// Remember the participant's details across registrations and page reloads, so a
+// new inschrijving is pre-filled. initOnMounted avoids an SSR hydration mismatch.
+const name = useLocalStorage("summerCup:name", "", { initOnMounted: true });
+const email = useLocalStorage("summerCup:email", "", { initOnMounted: true });
 
 const selectedDay = computed(() =>
   availability.value?.playDays.find((d) => d.id === selectedPlayDayId.value)
@@ -117,8 +119,7 @@ const register = async () => {
 const resetForm = async () => {
   confirmation.value = null;
   selectedPlayDayId.value = null;
-  name.value = "";
-  email.value = "";
+  // Keep name/email so the participant's details stay pre-filled for a new inschrijving.
   await refresh();
 };
 </script>
