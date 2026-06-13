@@ -134,6 +134,9 @@ const resetForm = async () => {
         color="success"
         variant="subtle"
       />
+      <p class="text-sm opacity-80">
+        Geen e-mail ontvangen? Controleer zeker even je spamfolder.
+      </p>
       <h2>Betaling</h2>
       <p>
         Schrijf <span class="font-semibold">&euro; {{ REGISTRATION_FEE }}</span> over vóór de
