@@ -29,12 +29,8 @@ export function buildConfirmationEmail(params: {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:24px 0;">
       <tr>
         <td align="center">
+          <img src="${logoUrl}" alt="Play-ER" width="260" height="81" style="display:block;margin:0 auto 20px;border:0;max-width:100%;height:auto;" />
           <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;max-width:600px;width:100%;">
-            <tr>
-              <td align="center" style="padding:20px 24px 12px;background:#ffffff;">
-                <img src="${logoUrl}" alt="Play-ER" width="72" height="72" style="display:block;border:0;" />
-              </td>
-            </tr>
             <tr>
               <td align="center" style="background:#323031;padding:16px 24px;color:#ffffff;">
                 <h1 style="margin:0;font-size:20px;">6 Reds SummER Cup 2026</h1>

@@ -95,7 +95,7 @@ export default defineEventHandler(async (event) => {
 
   const origin = getRequestURL(event).origin;
   const qrImageUrl = `${origin}/api/6-reds-summer-cup/registrations/${inserted.id}/qr.png`;
-  const logoUrl = `${origin}/web-app-manifest-512x512.png`;
+  const logoUrl = `${origin}/images/play-er.png`;
   const mail = buildConfirmationEmail({
     name: body.output.name,
     playDayLabel: playDay.label,
