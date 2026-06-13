@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     },
     calApiKeys: JSON.parse(process.env.NUXT_CAL_API_KEYS ?? "{}"),
     calBookingGuests: JSON.parse(process.env.NUXT_CAL_BOOKING_GUESTS ?? "[]"),
+    brevoApiKey: "", // NUXT_BREVO_API_KEY
     calWebhookSecret: "", // NUXT_CAL_WEBHOOK_SECRET
     stripeSecretApiKey: "", // NUXT_STRIPE_SECRET_API_KEY
     stripeWebhookSecret: "", // NUXT_STRIPE_WEBHOOK_SECRET
