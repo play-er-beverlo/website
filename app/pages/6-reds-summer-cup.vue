@@ -25,7 +25,7 @@ const showMoreInfo = ref(false);
         <h1>HET TOERNOOI</h1>
         <p>
           De 6 Reds SummER Cup 2026 is een recreatieve zomercompetitie in 6 Reds snookerformaat,
-          georganiseerd over meerdere tornooiedities gedurende de zomer van 2026. Het toernooi is
+          georganiseerd over meerdere toernooiedities gedurende de zomer van 2026. Het toernooi is
           enkel georganiseerd voor leden van Play-ER.
         </p>
         <p>
@@ -68,7 +68,7 @@ const showMoreInfo = ref(false);
         <div class="flex flex-col gap-4">
           <h2>Inschrijvingen &amp; plaatsen</h2>
           <ul class="list-disc ps-6 flex flex-col gap-2">
-            <li>Per editie zijn er twee afzonderlijke speeldagen: woensdag en vrijdag.</li>
+            <li>Per toernooi zijn er twee afzonderlijke speeldagen: woensdag en vrijdag.</li>
             <li>Spelers mogen deelnemen aan één speeldag per toernooi OF aan beide indien er nog plaatsen beschikbaar zijn (enkel je beste resultaat telt en spelers die nog niet speelden, krijgen voorrang).</li>
             <li>Minimum {{ MIN_PER_PLAY_DAY }} en maximum {{ MAX_PER_PLAY_DAY }} deelnemers per speeldag.</li>
             <li>Maximum {{ MAX_UNIQUE_PLAYERS }} unieke deelnemers voor de editie 2026.</li>
