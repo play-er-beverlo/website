@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveMatch, buildResultsGrid, computeDayStandings } from "../shared/summerCup/standings";
+import { resolveMatch, buildResultsGrid, computeDayStandings, computeSummerRanking } from "../shared/summerCup/standings";
 import { playDayResults } from "../shared/data/summerCupResults";
 
 const day17 = playDayResults.find((d) => d.playDayId === "2026-06-17")!
@@ -78,5 +78,21 @@ describe("computeDayStandings (2026-06-17)", () => {
     expect(
       standings.filter((s) => s.bonusPoints === 1).map((s) => s.position)
     ).toEqual([1, 2]);
+  });
+});
+
+describe("computeSummerRanking", () => {
+  it("aggregates a single play day", () => {
+    const ranking = computeSummerRanking(playDayResults);
+    expect(ranking[0]).toMatchObject({ position: 1, totalPoints: 8, playDaysPlayed: 1 });
+    expect(ranking[0].player.name).toBe("Andy Vleugels");
+    expect(ranking.at(-1)).toMatchObject({ totalPoints: 3 });
+  });
+
+  it("keeps the head-to-head tie order (Eddy over Ronnie)", () => {
+    const ranking = computeSummerRanking(playDayResults);
+    const eddy = ranking.findIndex((r) => r.player.name === "Eddy Ritzen");
+    const ronnie = ranking.findIndex((r) => r.player.name === "Ronnie De Reydt");
+    expect(eddy).toBeLessThan(ronnie);
   });
 });

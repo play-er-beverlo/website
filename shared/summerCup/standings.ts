@@ -128,6 +128,40 @@ function orderPlayers(day: PlayDayResults, tallies: Tally[]): Tally[] {
   return result;
 }
 
+export interface SummerRow {
+  player: DayPlayer;
+  playDaysPlayed: number;
+  totalPoints: number;
+  position: number; // 1-based
+}
+
+export function computeSummerRanking(days: PlayDayResults[]): SummerRow[] {
+  const rows = new Map<string, { player: DayPlayer; playDaysPlayed: number; totalPoints: number }>();
+
+  for (const day of days) {
+    for (const standing of computeDayStandings(day)) {
+      const existing = rows.get(standing.player.id);
+      // TODO(organiser): "enkel je beste resultaat telt per toernooi" - when a
+      // player appears on both days of one tournament, only the best result should
+      // count. No such data exists yet; a straight sum is correct for now.
+      if (existing) {
+        existing.playDaysPlayed += 1;
+        existing.totalPoints += standing.totalPoints;
+      } else {
+        rows.set(standing.player.id, {
+          player: standing.player,
+          playDaysPlayed: 1,
+          totalPoints: standing.totalPoints,
+        });
+      }
+    }
+  }
+
+  return [...rows.values()]
+    .sort((x, y) => y.totalPoints - x.totalPoints)
+    .map((row, i) => ({ ...row, position: i + 1 }));
+}
+
 export function computeDayStandings(day: PlayDayResults): DayStanding[] {
   const tallies = new Map<string, Tally>();
   for (const player of day.players) {
