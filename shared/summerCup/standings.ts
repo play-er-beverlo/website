@@ -152,6 +152,9 @@ export function computeDayStandings(day: PlayDayResults): DayStanding[] {
   return orderPlayers(day, [...tallies.values()]).map((tally, i) => {
     const position = i + 1;
     const participationPoints = 2;
+    // Points are strictly by final position; genuinely tied players are separated
+    // beforehand by head-to-head / the manual `tiebreak` (and in practice by the
+    // organiser's black-ball game), so equal-rank point-splitting isn't modelled.
     const rankingPoints = n - i; // 1st = n, last = 1
     const bonusPoints = position <= 2 ? 1 : 0;
     return {
