@@ -6,37 +6,39 @@ const day17 = playDayResults.find((d) => d.playDayId === "2026-06-17")!;
 const day19 = playDayResults.find((d) => d.playDayId === "2026-06-19")!;
 
 describe("resolveMatch", () => {
-  it("derives the frame winner from point scores", () => {
-    expect(resolveMatch({ a: "x", b: "y", frames: [{ a: 45, b: 57 }] })).toEqual({
+  it("returns the winner of a decisive frames-won result", () => {
+    expect(resolveMatch({ a: "x", b: "y", framesA: 2, framesB: 0 })).toEqual({
+      framesA: 2,
+      framesB: 0,
+      winnerId: "x",
+    });
+  });
+
+  it("treats a 1-1 as a draw with no winner", () => {
+    expect(resolveMatch({ a: "x", b: "y", framesA: 1, framesB: 1 })).toEqual({
+      framesA: 1,
+      framesB: 1,
+      winnerId: null,
+    });
+  });
+
+  it("handles a single-frame 0-1 result", () => {
+    expect(resolveMatch({ a: "x", b: "y", framesA: 0, framesB: 1 })).toEqual({
       framesA: 0,
       framesB: 1,
       winnerId: "y",
     });
   });
-
-  it("counts frames won across multiple frames and leaves a 1-1 undecided", () => {
-    expect(
-      resolveMatch({ a: "x", b: "y", frames: [{ a: 60, b: 40 }, { a: 30, b: 70 }] })
-    ).toEqual({ framesA: 1, framesB: 1, winnerId: null });
-  });
-
-  it("treats a winner-only match as a single decisive frame", () => {
-    expect(resolveMatch({ a: "x", b: "y", winner: "a" })).toEqual({
-      framesA: 1,
-      framesB: 0,
-      winnerId: "x",
-    });
-  });
 });
 
 describe("buildResultsGrid (2026-06-17)", () => {
-  it("reproduces the screenshot matrix (cell = frames row won vs col)", () => {
+  it("reproduces the 2-frame matrix (cell = frames row won vs col)", () => {
     expect(buildResultsGrid(day17)).toEqual([
-      [null, 0, 1, 1, 1],
-      [1, null, 1, 0, 1],
+      [null, 0, 2, 2, 2],
+      [2, null, 2, 0, 2],
       [0, 0, null, 1, 0],
-      [0, 1, 0, null, 0],
-      [0, 0, 1, 1, null],
+      [0, 2, 1, null, 0],
+      [0, 0, 2, 2, null],
     ]);
   });
 });
@@ -50,16 +52,20 @@ describe("computeDayStandings (2026-06-17)", () => {
       "Andy Vleugels",
       "Marco Vitali",
       "Danny Moors",
-      "Eddy Ritzen",
       "Ronnie De Reydt",
+      "Eddy Ritzen",
     ]);
   });
 
-  it("counts frames and matches won", () => {
-    expect(byName("Andy Vleugels").framesWon).toBe(3);
+  it("counts frames and matches won, with a 1-1 draw winning neither a match", () => {
+    expect(byName("Andy Vleugels").framesWon).toBe(6);
     expect(byName("Andy Vleugels").matchesWon).toBe(3);
-    expect(byName("Danny Moors").framesWon).toBe(2);
-    expect(byName("Ronnie De Reydt").matchesWon).toBe(1);
+    expect(byName("Marco Vitali").framesWon).toBe(6);
+    expect(byName("Danny Moors").framesWon).toBe(4);
+    expect(byName("Ronnie De Reydt").framesWon).toBe(3);
+    // Eddy drew Ronnie 1-1 and lost the rest: 1 frame, 0 matches won.
+    expect(byName("Eddy Ritzen").framesWon).toBe(1);
+    expect(byName("Eddy Ritzen").matchesWon).toBe(0);
   });
 
   it("awards participation, ranking and bonus points", () => {
@@ -71,8 +77,8 @@ describe("computeDayStandings (2026-06-17)", () => {
 
     expect(byName("Marco Vitali").totalPoints).toBe(7);
     expect(byName("Danny Moors").totalPoints).toBe(5);
-    expect(byName("Eddy Ritzen").totalPoints).toBe(4);
-    expect(byName("Ronnie De Reydt").totalPoints).toBe(3);
+    expect(byName("Ronnie De Reydt").totalPoints).toBe(4);
+    expect(byName("Eddy Ritzen").totalPoints).toBe(3);
   });
 
   it("gives the bonus point only to the top 2 positions", () => {
@@ -125,9 +131,9 @@ describe("computeSummerRanking (best result per tournament)", () => {
       [5, "Marco Vitali", 7],
       [6, "Koen Maes", 7],
       [7, "Wim Claes", 6],
-      [8, "Eddy Ritzen", 4],
+      [8, "Ronnie De Reydt", 4],
       [9, "Luc Vermeulen", 4],
-      [10, "Ronnie De Reydt", 3],
+      [10, "Eddy Ritzen", 3],
       [11, "Geert Willems", 3],
     ]);
   });

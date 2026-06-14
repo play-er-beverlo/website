@@ -3,17 +3,13 @@ export interface DayPlayer {
   name: string;
 }
 
-/** One frame's point totals; whoever has more points wins the frame. */
-export interface Frame {
-  a: number; // points for match.a, e.g. 45
-  b: number; // points for match.b, e.g. 57
-}
-
 export interface Match {
-  a: string;          // DayPlayer.id (row in the grid)
-  b: string;          // DayPlayer.id (col in the grid)
-  frames?: Frame[];   // real per-frame point scores (1 or 2 frames per field size)
-  winner?: "a" | "b"; // fallback when only the outcome is known
+  a: string; // DayPlayer.id (row in the grid)
+  b: string; // DayPlayer.id (col in the grid)
+  // Frames won by each player. 4-5 players -> total 2 (2-0 / 1-1 / 0-2);
+  // 6-8 players -> total 1 (1-0 / 0-1). A 1-1 is a draw (no match win).
+  framesA: number;
+  framesB: number;
 }
 
 export interface PlayDayResults {
@@ -45,20 +41,18 @@ export const playDayResults: PlayDayResults[] = [
       { id: ronnie, name: "Ronnie De Reydt" },
       { id: danny, name: "Danny Moors" },
     ],
-    // Only match outcomes are known for this play day (win/loss), so each match
-    // is stored as a winner. Replace with `frames: [{ a, b }, ...]` once real
-    // frame point scores (e.g. 45-57) are recorded.
+    // 5 players -> 2 frames per match, recorded as frames won (2-0 / 1-1 / 0-2).
     matches: [
-      { a: marco, b: andy, winner: "b" },
-      { a: marco, b: eddy, winner: "a" },
-      { a: marco, b: ronnie, winner: "a" },
-      { a: marco, b: danny, winner: "a" },
-      { a: andy, b: eddy, winner: "a" },
-      { a: andy, b: ronnie, winner: "b" },
-      { a: andy, b: danny, winner: "a" },
-      { a: eddy, b: ronnie, winner: "a" },
-      { a: eddy, b: danny, winner: "b" },
-      { a: ronnie, b: danny, winner: "b" },
+      { a: marco, b: andy, framesA: 0, framesB: 2 },
+      { a: marco, b: eddy, framesA: 2, framesB: 0 },
+      { a: marco, b: ronnie, framesA: 2, framesB: 0 },
+      { a: marco, b: danny, framesA: 2, framesB: 0 },
+      { a: andy, b: eddy, framesA: 2, framesB: 0 },
+      { a: andy, b: ronnie, framesA: 0, framesB: 2 },
+      { a: andy, b: danny, framesA: 2, framesB: 0 },
+      { a: eddy, b: ronnie, framesA: 1, framesB: 1 },
+      { a: eddy, b: danny, framesA: 0, framesB: 2 },
+      { a: ronnie, b: danny, framesA: 0, framesB: 2 },
     ],
   },
   {
@@ -73,38 +67,38 @@ export const playDayResults: PlayDayResults[] = [
       { id: koen, name: "Koen Maes" },
       { id: wim, name: "Wim Claes" },
     ],
-    // 8 players -> 1 frame per match; outcomes only, entered as winners. Marco and
+    // 8 players -> 1 frame per match, recorded as frames won (1-0 / 0-1). Marco and
     // Danny also played on 2026-06-17, so only their best day of tournament 1 counts
     // in the Summer Ranking.
     matches: [
-      { a: tom, b: marco, winner: "a" },
-      { a: tom, b: geert, winner: "a" },
-      { a: tom, b: bart, winner: "a" },
-      { a: tom, b: danny, winner: "b" },
-      { a: tom, b: luc, winner: "a" },
-      { a: tom, b: koen, winner: "a" },
-      { a: tom, b: wim, winner: "a" },
-      { a: marco, b: geert, winner: "a" },
-      { a: marco, b: bart, winner: "b" },
-      { a: marco, b: danny, winner: "b" },
-      { a: marco, b: luc, winner: "a" },
-      { a: marco, b: koen, winner: "b" },
-      { a: marco, b: wim, winner: "b" },
-      { a: geert, b: bart, winner: "b" },
-      { a: geert, b: danny, winner: "b" },
-      { a: geert, b: luc, winner: "b" },
-      { a: geert, b: koen, winner: "b" },
-      { a: geert, b: wim, winner: "b" },
-      { a: bart, b: danny, winner: "b" },
-      { a: bart, b: luc, winner: "a" },
-      { a: bart, b: koen, winner: "a" },
-      { a: bart, b: wim, winner: "a" },
-      { a: danny, b: luc, winner: "a" },
-      { a: danny, b: koen, winner: "a" },
-      { a: danny, b: wim, winner: "a" },
-      { a: luc, b: koen, winner: "b" },
-      { a: luc, b: wim, winner: "b" },
-      { a: koen, b: wim, winner: "a" },
+      { a: tom, b: marco, framesA: 1, framesB: 0 },
+      { a: tom, b: geert, framesA: 1, framesB: 0 },
+      { a: tom, b: bart, framesA: 1, framesB: 0 },
+      { a: tom, b: danny, framesA: 0, framesB: 1 },
+      { a: tom, b: luc, framesA: 1, framesB: 0 },
+      { a: tom, b: koen, framesA: 1, framesB: 0 },
+      { a: tom, b: wim, framesA: 1, framesB: 0 },
+      { a: marco, b: geert, framesA: 1, framesB: 0 },
+      { a: marco, b: bart, framesA: 0, framesB: 1 },
+      { a: marco, b: danny, framesA: 0, framesB: 1 },
+      { a: marco, b: luc, framesA: 1, framesB: 0 },
+      { a: marco, b: koen, framesA: 0, framesB: 1 },
+      { a: marco, b: wim, framesA: 0, framesB: 1 },
+      { a: geert, b: bart, framesA: 0, framesB: 1 },
+      { a: geert, b: danny, framesA: 0, framesB: 1 },
+      { a: geert, b: luc, framesA: 0, framesB: 1 },
+      { a: geert, b: koen, framesA: 0, framesB: 1 },
+      { a: geert, b: wim, framesA: 0, framesB: 1 },
+      { a: bart, b: danny, framesA: 0, framesB: 1 },
+      { a: bart, b: luc, framesA: 1, framesB: 0 },
+      { a: bart, b: koen, framesA: 1, framesB: 0 },
+      { a: bart, b: wim, framesA: 1, framesB: 0 },
+      { a: danny, b: luc, framesA: 1, framesB: 0 },
+      { a: danny, b: koen, framesA: 1, framesB: 0 },
+      { a: danny, b: wim, framesA: 1, framesB: 0 },
+      { a: luc, b: koen, framesA: 0, framesB: 1 },
+      { a: luc, b: wim, framesA: 0, framesB: 1 },
+      { a: koen, b: wim, framesA: 1, framesB: 0 },
     ],
   },
 ];
