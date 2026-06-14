@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { finaleDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { finaleDay, getPlayDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { playDayResults } from "#shared/data/summerCupResults";
+import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",
@@ -8,6 +10,19 @@ useSeoMeta({
 });
 
 const showMoreInfo = ref(false);
+
+const summerRanking = computeSummerRanking(playDayResults);
+
+// Play days that have results, newest first.
+const resultBlocks = [...playDayResults]
+  .sort((a, b) => (a.playDayId < b.playDayId ? 1 : -1))
+  .map((day) => ({
+    id: day.playDayId,
+    label: getPlayDay(day.playDayId)?.label ?? day.playDayId,
+    players: day.players,
+    grid: buildResultsGrid(day),
+    standings: computeDayStandings(day),
+  }));
 </script>
 
 <!-- eslint-disable vue/no-multiple-template-root -->
@@ -157,12 +172,36 @@ const showMoreInfo = ref(false);
   <section id="rangschikking" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
       <h1>RANGSCHIKKING</h1>
-      <u-alert
-        title="Binnenkort"
-        description="De rangschikking van de deelnemers wordt later toegevoegd."
-        color="neutral"
-        variant="subtle"
-      />
+
+      <div class="flex flex-col gap-4">
+        <h2>Summer Ranking</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/30">
+                <th class="py-2 pr-4">#</th>
+                <th class="py-2 pr-4">Speler</th>
+                <th class="py-2 pr-4 text-center">Speeldagen</th>
+                <th class="py-2 text-center">Punten</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
+                <td class="py-2 pr-4">{{ row.position }}</td>
+                <td class="py-2 pr-4">{{ row.player.name }}</td>
+                <td class="py-2 pr-4 text-center">{{ row.playDaysPlayed }}</td>
+                <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
+        <h2>{{ block.label }}</h2>
+        <summer-cup-results-grid :players="block.players" :grid="block.grid" />
+        <summer-cup-standings :standings="block.standings" />
+      </div>
     </div>
   </section>
 
