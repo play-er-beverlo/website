@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveMatch } from "./standings";
+import { resolveMatch } from "../shared/summerCup/standings";
 
 describe("resolveMatch", () => {
   it("derives the frame winner from point scores", () => {
