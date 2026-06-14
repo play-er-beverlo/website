@@ -17,7 +17,7 @@ defineProps<{
           <!-- <th class="py-2 pr-4 text-center">Wedstrijden</th> -->
           <th class="py-2 pr-4 text-center">Punten:</th>
           <th class="py-2 pr-4 text-center">Deelname</th>
-          <th class="py-2 pr-4 text-center">Ranking</th>
+          <th class="py-2 pr-4 text-center">Rankingpunten</th>
           <th class="py-2 pr-4 text-center">Bonus</th>
           <th class="py-2 text-center">Totaal</th>
         </tr>
