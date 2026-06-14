@@ -41,7 +41,7 @@ const scores = computed(() =>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, i) in grid" :key="players[i].id">
+          <tr v-for="(row, i) in grid" :key="i">
             <th class="border border-white/25 px-2 py-1 font-semibold">{{ i + 1 }}</th>
             <td
               v-for="(cell, j) in row"

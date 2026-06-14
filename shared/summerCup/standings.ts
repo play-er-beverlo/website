@@ -44,8 +44,11 @@ export function buildResultsGrid(day: PlayDayResults): (number | null)[][] {
     const j = index.get(match.b);
     if (i === undefined || j === undefined) continue;
     const outcome = resolveMatch(match);
-    grid[i][j] = outcome.framesA;
-    grid[j][i] = outcome.framesB;
+    const rowA = grid[i];
+    const rowB = grid[j];
+    if (!rowA || !rowB) continue;
+    rowA[j] = outcome.framesA;
+    rowB[i] = outcome.framesB;
   }
 
   return grid;
@@ -113,12 +116,12 @@ function orderPlayers(day: PlayDayResults, tallies: Tally[]): Tally[] {
   const result: Tally[] = [];
   let i = 0;
   while (i < byPrimary.length) {
+    const head = byPrimary[i];
     let j = i + 1;
-    while (
-      j < byPrimary.length &&
-      byPrimary[j].framesWon === byPrimary[i].framesWon &&
-      byPrimary[j].matchesWon === byPrimary[i].matchesWon
-    ) {
+    while (j < byPrimary.length) {
+      const next = byPrimary[j];
+      if (!head || !next) break;
+      if (next.framesWon !== head.framesWon || next.matchesWon !== head.matchesWon) break;
       j++;
     }
     const group = byPrimary.slice(i, j);
