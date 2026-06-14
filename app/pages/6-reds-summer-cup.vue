@@ -189,7 +189,7 @@ const resultBlocks = [...playDayResults]
               <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
                 <td class="py-2 pr-4">{{ row.position }}</td>
                 <td class="py-2 pr-4">{{ row.player.name }}</td>
-                <td class="py-2 pr-4 text-center">{{ row.playDaysPlayed }}</td>
+                <td class="py-2 pr-4 text-center">{{ row.playDaysCounted }}</td>
                 <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
               </tr>
             </tbody>

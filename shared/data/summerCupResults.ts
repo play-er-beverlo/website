@@ -28,6 +28,12 @@ const andy = "andy-vleugels";
 const eddy = "eddy-ritzen";
 const ronnie = "ronnie-de-reydt";
 const danny = "danny-moors";
+const tom = "tom-janssens";
+const bart = "bart-peeters";
+const koen = "koen-maes";
+const wim = "wim-claes";
+const luc = "luc-vermeulen";
+const geert = "geert-willems";
 
 export const playDayResults: PlayDayResults[] = [
   {
@@ -53,6 +59,52 @@ export const playDayResults: PlayDayResults[] = [
       { a: eddy, b: ronnie, winner: "a" },
       { a: eddy, b: danny, winner: "b" },
       { a: ronnie, b: danny, winner: "b" },
+    ],
+  },
+  {
+    playDayId: "2026-06-19",
+    players: [
+      { id: tom, name: "Tom Janssens" },
+      { id: marco, name: "Marco Vitali" },
+      { id: geert, name: "Geert Willems" },
+      { id: bart, name: "Bart Peeters" },
+      { id: danny, name: "Danny Moors" },
+      { id: luc, name: "Luc Vermeulen" },
+      { id: koen, name: "Koen Maes" },
+      { id: wim, name: "Wim Claes" },
+    ],
+    // 8 players -> 1 frame per match; outcomes only, entered as winners. Marco and
+    // Danny also played on 2026-06-17, so only their best day of tournament 1 counts
+    // in the Summer Ranking.
+    matches: [
+      { a: tom, b: marco, winner: "a" },
+      { a: tom, b: geert, winner: "a" },
+      { a: tom, b: bart, winner: "a" },
+      { a: tom, b: danny, winner: "b" },
+      { a: tom, b: luc, winner: "a" },
+      { a: tom, b: koen, winner: "a" },
+      { a: tom, b: wim, winner: "a" },
+      { a: marco, b: geert, winner: "a" },
+      { a: marco, b: bart, winner: "b" },
+      { a: marco, b: danny, winner: "b" },
+      { a: marco, b: luc, winner: "a" },
+      { a: marco, b: koen, winner: "b" },
+      { a: marco, b: wim, winner: "b" },
+      { a: geert, b: bart, winner: "b" },
+      { a: geert, b: danny, winner: "b" },
+      { a: geert, b: luc, winner: "b" },
+      { a: geert, b: koen, winner: "b" },
+      { a: geert, b: wim, winner: "b" },
+      { a: bart, b: danny, winner: "b" },
+      { a: bart, b: luc, winner: "a" },
+      { a: bart, b: koen, winner: "a" },
+      { a: bart, b: wim, winner: "a" },
+      { a: danny, b: luc, winner: "a" },
+      { a: danny, b: koen, winner: "a" },
+      { a: danny, b: wim, winner: "a" },
+      { a: luc, b: koen, winner: "b" },
+      { a: luc, b: wim, winner: "b" },
+      { a: koen, b: wim, winner: "a" },
     ],
   },
 ];

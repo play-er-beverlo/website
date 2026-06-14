@@ -1,4 +1,5 @@
 import type { DayPlayer, Match, PlayDayResults } from "../data/summerCupResults";
+import { getPlayDay } from "../data/summerCup";
 
 export interface MatchOutcome {
   framesA: number;
@@ -172,30 +173,42 @@ export function computeDayStandings(day: PlayDayResults): DayStanding[] {
 
 export interface SummerRow {
   player: DayPlayer;
-  playDaysPlayed: number;
+  /** Counted days = the best day per tournament the player scored in. */
+  playDaysCounted: number;
   totalPoints: number;
   position: number; // 1-based
 }
 
 export function computeSummerRanking(days: PlayDayResults[]): SummerRow[] {
-  const rows = new Map<string, { player: DayPlayer; playDaysPlayed: number; totalPoints: number }>();
+  // "enkel je beste resultaat telt per toernooi": within one tournament only a
+  // player's best day counts. Track the highest-points standing per (player,
+  // tournament); process days chronologically so a points tie keeps the earlier day.
+  const ordered = [...days].sort((a, b) => (a.playDayId < b.playDayId ? -1 : 1));
 
-  for (const day of days) {
+  const best = new Map<string, { player: DayPlayer; points: number }>();
+  for (const day of ordered) {
+    const tournament = getPlayDay(day.playDayId)?.tournament ?? day.playDayId;
     for (const standing of computeDayStandings(day)) {
-      const existing = rows.get(standing.player.id);
-      // TODO(organiser): "enkel je beste resultaat telt per toernooi" - when a
-      // player appears on both days of one tournament, only the best result should
-      // count. No such data exists yet; a straight sum is correct for now.
-      if (existing) {
-        existing.playDaysPlayed += 1;
-        existing.totalPoints += standing.totalPoints;
-      } else {
-        rows.set(standing.player.id, {
-          player: standing.player,
-          playDaysPlayed: 1,
-          totalPoints: standing.totalPoints,
-        });
+      const key = `${standing.player.id}::${tournament}`;
+      const existing = best.get(key);
+      if (!existing || standing.totalPoints > existing.points) {
+        best.set(key, { player: standing.player, points: standing.totalPoints });
       }
+    }
+  }
+
+  const rows = new Map<string, { player: DayPlayer; playDaysCounted: number; totalPoints: number }>();
+  for (const entry of best.values()) {
+    const row = rows.get(entry.player.id);
+    if (row) {
+      row.playDaysCounted += 1;
+      row.totalPoints += entry.points;
+    } else {
+      rows.set(entry.player.id, {
+        player: entry.player,
+        playDaysCounted: 1,
+        totalPoints: entry.points,
+      });
     }
   }
 

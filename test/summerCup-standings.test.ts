@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { resolveMatch, buildResultsGrid, computeDayStandings, computeSummerRanking } from "../shared/summerCup/standings";
 import { playDayResults } from "../shared/data/summerCupResults";
 
-const day17 = playDayResults.find((d) => d.playDayId === "2026-06-17")!
+const day17 = playDayResults.find((d) => d.playDayId === "2026-06-17")!;
+const day19 = playDayResults.find((d) => d.playDayId === "2026-06-19")!;
 
 describe("resolveMatch", () => {
   it("derives the frame winner from point scores", () => {
@@ -81,18 +82,53 @@ describe("computeDayStandings (2026-06-17)", () => {
   });
 });
 
-describe("computeSummerRanking", () => {
-  it("aggregates a single play day", () => {
-    const ranking = computeSummerRanking(playDayResults);
-    expect(ranking[0]).toMatchObject({ position: 1, totalPoints: 8, playDaysPlayed: 1 });
-    expect(ranking[0].player.name).toBe("Andy Vleugels");
-    expect(ranking.at(-1)).toMatchObject({ totalPoints: 3 });
+describe("computeDayStandings (2026-06-19, 8 players)", () => {
+  it("orders 8 players by wins with 1-frame matches and correct points", () => {
+    const standings = computeDayStandings(day19);
+    expect(standings.map((s) => [s.position, s.player.name, s.framesWon, s.totalPoints])).toEqual([
+      [1, "Danny Moors", 7, 11],
+      [2, "Tom Janssens", 6, 10],
+      [3, "Bart Peeters", 5, 8],
+      [4, "Koen Maes", 4, 7],
+      [5, "Wim Claes", 3, 6],
+      [6, "Marco Vitali", 2, 5],
+      [7, "Luc Vermeulen", 1, 4],
+      [8, "Geert Willems", 0, 3],
+    ]);
+  });
+});
+
+describe("computeSummerRanking (best result per tournament)", () => {
+  const ranking = computeSummerRanking(playDayResults);
+  const row = (name: string) => ranking.find((r) => r.player.name === name)!;
+
+  it("keeps only a two-day player's best day of the tournament", () => {
+    // Marco: Wed 7 vs Fri 5 -> Wed kept. Danny: Wed 5 vs Fri 11 -> Fri kept.
+    expect(row("Marco Vitali").totalPoints).toBe(7);
+    expect(row("Danny Moors").totalPoints).toBe(11);
+    expect(row("Marco Vitali").playDaysCounted).toBe(1);
+    expect(row("Danny Moors").playDaysCounted).toBe(1);
   });
 
-  it("keeps the head-to-head tie order (Eddy over Ronnie)", () => {
-    const ranking = computeSummerRanking(playDayResults);
-    const eddy = ranking.findIndex((r) => r.player.name === "Eddy Ritzen");
-    const ronnie = ranking.findIndex((r) => r.player.name === "Ronnie De Reydt");
-    expect(eddy).toBeLessThan(ronnie);
+  it("ranks single-day players on their only result", () => {
+    expect(row("Andy Vleugels").totalPoints).toBe(8);
+    expect(row("Tom Janssens").totalPoints).toBe(10);
+    expect(row("Geert Willems").totalPoints).toBe(3);
+  });
+
+  it("produces the full ordered ranking", () => {
+    expect(ranking.map((r) => [r.position, r.player.name, r.totalPoints])).toEqual([
+      [1, "Danny Moors", 11],
+      [2, "Tom Janssens", 10],
+      [3, "Andy Vleugels", 8],
+      [4, "Bart Peeters", 8],
+      [5, "Marco Vitali", 7],
+      [6, "Koen Maes", 7],
+      [7, "Wim Claes", 6],
+      [8, "Eddy Ritzen", 4],
+      [9, "Luc Vermeulen", 4],
+      [10, "Ronnie De Reydt", 3],
+      [11, "Geert Willems", 3],
+    ]);
   });
 });
