@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { resolveMatch } from "../shared/summerCup/standings";
+import { resolveMatch, buildResultsGrid } from "../shared/summerCup/standings";
+import { playDayResults } from "../shared/data/summerCupResults";
+
+const day17 = playDayResults.find((d) => d.playDayId === "2026-06-17")!
 
 describe("resolveMatch", () => {
   it("derives the frame winner from point scores", () => {
@@ -22,5 +25,17 @@ describe("resolveMatch", () => {
       framesB: 0,
       winnerId: "x",
     });
+  });
+});
+
+describe("buildResultsGrid (2026-06-17)", () => {
+  it("reproduces the screenshot matrix (cell = frames row won vs col)", () => {
+    expect(buildResultsGrid(day17)).toEqual([
+      [null, 0, 1, 1, 1],
+      [1, null, 1, 0, 1],
+      [0, 0, null, 1, 0],
+      [0, 1, 0, null, 0],
+      [0, 0, 1, 1, null],
+    ]);
   });
 });
