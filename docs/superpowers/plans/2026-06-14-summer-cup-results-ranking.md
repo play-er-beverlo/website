@@ -14,7 +14,9 @@
 
 - **Create** `shared/data/summerCupResults.ts` — data shapes (`DayPlayer`, `Frame`, `Match`, `PlayDayResults`) and the `playDayResults` array (2026-06-17 data). Mirrors the existing `shared/data/summerCup.ts` data-only pattern.
 - **Create** `shared/summerCup/standings.ts` — pure derivation: `resolveMatch`, `buildResultsGrid`, `computeDayStandings`, `computeSummerRanking`, plus the derived types `MatchOutcome`, `DayStanding`, `SummerRow`. Mirrors the existing `shared/summerCup/capacity.ts` logic pattern.
-- **Create** `shared/summerCup/standings.test.ts` — Vitest coverage (first project test).
+- **Create** `test/summerCup-standings.test.ts` — Vitest coverage, following the existing `test/summerCup-*.test.ts` convention (the repo already has `vitest.config.ts` with `include: ["test/**/*.test.ts"]` and tests in `test/`). Tests import the modules via relative paths, e.g. `../shared/summerCup/standings` and `../shared/data/summerCupResults`.
+
+> **Execution note:** The task bodies below were drafted assuming a co-located `shared/summerCup/standings.test.ts`. During execution this was corrected to `test/summerCup-standings.test.ts` to match the established codebase convention; in the test code blocks, read `from "./standings"` as `from "../shared/summerCup/standings"` and `from "../data/summerCupResults"` as `from "../shared/data/summerCupResults"`, and run `pnpm test test/summerCup-standings.test.ts`.
 - **Create** `app/components/SummerCupResultsGrid.vue` — cross-table grid for one play day (presentational; props only).
 - **Create** `app/components/SummerCupStandings.vue` — day standings table (presentational; props only).
 - **Modify** `app/pages/6-reds-summer-cup.vue` — replace the "Binnenkort" `u-alert` in `#rangschikking` with the Summer Ranking table + a per-play-day block (grid + standings); add the imports and the computed data in `<script setup>`.
