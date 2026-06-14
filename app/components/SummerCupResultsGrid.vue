@@ -37,7 +37,7 @@ const scores = computed(() =>
             >
               {{ j + 1 }}
             </th>
-            <th class="border border-white/25 px-3 py-1 font-semibold">Score</th>
+            <th class="border border-white/25 px-3 py-1 font-semibold">Totaal</th>
           </tr>
         </thead>
         <tbody>
