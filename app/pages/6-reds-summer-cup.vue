@@ -169,12 +169,12 @@ const resultBlocks = [...playDayResults]
     </div>
   </section>
 
-  <section id="rangschikking" class="w-full shadow-lg">
+  <section id="resultaten" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
-      <h1>RANGSCHIKKING</h1>
+      <h1>RESULTATEN</h1>
 
       <div class="flex flex-col gap-4">
-        <h2>Summer Ranking</h2>
+        <h2>SummER Ranking</h2>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse">
             <thead>
@@ -226,13 +226,13 @@ section#hero {
   background-repeat: no-repeat;
 }
 
-section#rangschikking {
+section#resultaten {
   @apply bg-neutral-500 text-white;
 }
 
 /* The global h2 colour (text-neutral-500) matches this section's background,
    so make subtitles readable on the dark background. */
-section#rangschikking h2 {
+section#resultaten h2 {
   @apply text-white;
 }
 </style>

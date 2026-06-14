@@ -14,7 +14,8 @@ defineProps<{
           <th class="py-2 pr-4">#</th>
           <th class="py-2 pr-4">Speler</th>
           <th class="py-2 pr-4 text-center">Frames</th>
-          <th class="py-2 pr-4 text-center">Wedstrijden</th>
+          <!-- <th class="py-2 pr-4 text-center">Wedstrijden</th> -->
+          <th class="py-2 pr-4 text-center">Punten:</th>
           <th class="py-2 pr-4 text-center">Deelname</th>
           <th class="py-2 pr-4 text-center">Ranking</th>
           <th class="py-2 pr-4 text-center">Bonus</th>
@@ -26,7 +27,8 @@ defineProps<{
           <td class="py-2 pr-4">{{ s.position }}</td>
           <td class="py-2 pr-4">{{ s.player.name }}</td>
           <td class="py-2 pr-4 text-center">{{ s.framesWon }}</td>
-          <td class="py-2 pr-4 text-center">{{ s.matchesWon }}</td>
+          <!-- <td class="py-2 pr-4 text-center">{{ s.matchesWon }}</td> -->
+          <td class="py-2 pr-4 text-center"></td> 
           <td class="py-2 pr-4 text-center">{{ s.participationPoints }}</td>
           <td class="py-2 pr-4 text-center">{{ s.rankingPoints }}</td>
           <td class="py-2 pr-4 text-center">{{ s.bonusPoints }}</td>
