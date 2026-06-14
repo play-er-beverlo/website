@@ -229,4 +229,10 @@ section#hero {
 section#rangschikking {
   @apply bg-neutral-500 text-white;
 }
+
+/* The global h2 colour (text-neutral-500) matches this section's background,
+   so make subtitles readable on the dark background. */
+section#rangschikking h2 {
+  @apply text-white;
+}
 </style>
