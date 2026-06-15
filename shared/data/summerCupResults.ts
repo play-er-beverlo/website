@@ -12,11 +12,17 @@ export interface Match {
   framesB: number;
 }
 
+export interface Break {
+  player: string; // DayPlayer.id
+  value: number;  // points in the break (recorded for 30+)
+}
+
 export interface PlayDayResults {
   playDayId: string;     // links to playDays[].id in shared/data/summerCup.ts
   players: DayPlayer[];  // table order = grid row/col order (1..n)
   matches: Match[];      // one entry per round-robin pairing
   tiebreak?: string[];   // optional manual order (player ids) for unresolved ties
+  breaks?: Break[];      // 30+ breaks made on this play day (hand-entered)
 }
 
 const marco = "marco-vitali";
@@ -53,6 +59,12 @@ export const playDayResults: PlayDayResults[] = [
       { a: eddy, b: ronnie, framesA: 1, framesB: 1 },
       { a: eddy, b: danny, framesA: 0, framesB: 2 },
       { a: ronnie, b: danny, framesA: 0, framesB: 2 },
+    ],
+    breaks: [
+      { player: marco, value: 52 },
+      { player: andy, value: 47 },
+      { player: marco, value: 38 },
+      { player: eddy, value: 33 },
     ],
   },
   {
@@ -99,6 +111,11 @@ export const playDayResults: PlayDayResults[] = [
       { a: luc, b: koen, framesA: 0, framesB: 1 },
       { a: luc, b: wim, framesA: 0, framesB: 1 },
       { a: koen, b: wim, framesA: 1, framesB: 0 },
+    ],
+    breaks: [
+      { player: tom, value: 61 },
+      { player: danny, value: 41 },
+      { player: marco, value: 35 },
     ],
   },
 ];
