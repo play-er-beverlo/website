@@ -75,12 +75,21 @@ const resultBlocks = [...playDayResults]
         <p class="text-sm opacity-80">Alle speeldagen starten om {{ PLAY_TIME }}.</p>
       </div>
 
-      <u-button
-        :label="showMoreInfo ? 'Minder informatie' : 'Meer informatie'"
-        :trailing-icon="showMoreInfo ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
-        size="xl"
-        @click="showMoreInfo = !showMoreInfo"
-      />
+      <div class="flex gap-4 w-full">
+        <u-button
+          class="flex-1"
+          label="Inschrijven"
+          size="xl"
+          href="#inschrijven"
+        />
+        <u-button
+          class="flex-1"
+          :label="showMoreInfo ? 'Minder informatie' : 'Meer informatie'"
+          :trailing-icon="showMoreInfo ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
+          size="xl"
+          @click="showMoreInfo = !showMoreInfo"
+        />
+      </div>
 
       <div v-show="showMoreInfo" class="flex flex-col gap-12">
         <div class="flex flex-col gap-4">
