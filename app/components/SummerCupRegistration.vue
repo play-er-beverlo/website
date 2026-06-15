@@ -192,7 +192,7 @@ const resetForm = async () => {
             <span>{{ day.label }} — {{ PLAY_TIME }}</span>
             <span v-if="day.past">Voorbij</span>
             <span v-else-if="day.full">Volzet</span>
-            <span v-else>nog {{ day.remaining }}/{{ day.capacity }}</span>
+            <span v-else>nog {{ day.remaining }}/{{ day.capacity }} plaatsen vrij</span>
           </u-button>
         </div>
       </div>
