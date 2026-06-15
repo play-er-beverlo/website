@@ -185,48 +185,52 @@ const resultBlocks = [...playDayResults]
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
       <h1>RESULTATEN</h1>
 
-      <div class="flex flex-col gap-4 mb-8">
-        <h2>SummER Ranking</h2>
-        <div class="grid gap-8 md:grid-cols-2">
-          <div class="flex flex-col gap-3">
-            <h3 class="text-lg font-semibold">Punten</h3>
-            <div class="overflow-x-auto">
-              <table class="w-full text-left border-collapse">
-                <thead>
-                  <tr class="border-b border-white/30">
-                    <th class="py-2 pr-4">#</th>
-                    <th class="py-2 pr-4">Speler</th>
-                    <th class="py-2 pr-4 text-center">Speeldagen</th>
-                    <th class="py-2 text-center">Punten</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
-                    <td class="py-2 pr-4">{{ row.position }}</td>
-                    <td class="py-2 pr-4">{{ row.player.name }}</td>
-                    <td class="py-2 pr-4 text-center">{{ row.playDaysCounted }}</td>
-                    <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
-                  </tr>
-                </tbody>
-              </table>
+      <p v-if="resultBlocks.length === 0" class="opacity-80">De resultaten verschijnen hier na de eerste speeldag.</p>
+
+      <template v-else>
+        <div class="flex flex-col gap-4 mb-8">
+          <h2>SummER Ranking</h2>
+          <div class="grid gap-8 md:grid-cols-2">
+            <div class="flex flex-col gap-3">
+              <h3 class="text-lg font-semibold">Punten</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-white/30">
+                      <th class="py-2 pr-4">#</th>
+                      <th class="py-2 pr-4">Speler</th>
+                      <th class="py-2 pr-4 text-center">Speeldagen</th>
+                      <th class="py-2 text-center">Punten</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
+                      <td class="py-2 pr-4">{{ row.position }}</td>
+                      <td class="py-2 pr-4">{{ row.player.name }}</td>
+                      <td class="py-2 pr-4 text-center">{{ row.playDaysCounted }}</td>
+                      <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h3 class="text-lg font-semibold">Breaks (30+)</h3>
+              <summer-cup-breaks-ranking v-if="breaksRanking.length" :breaks="breaksRanking" />
+              <p v-else class="opacity-80">Nog geen breaks van 30+ genoteerd.</p>
             </div>
           </div>
-          <div class="flex flex-col gap-3">
-            <h3 class="text-lg font-semibold">Breaks (30+)</h3>
-            <summer-cup-breaks-ranking v-if="breaksRanking.length" :breaks="breaksRanking" />
-            <p v-else class="opacity-80">Nog geen breaks van 30+ genoteerd.</p>
+        </div>
+
+        <div class="flex flex-col gap-16">
+          <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
+            <h2>{{ block.label }}</h2>
+            <summer-cup-results-grid :players="block.players" :grid="block.grid" />
+            <summer-cup-standings :standings="block.standings" />
+            <summer-cup-breaks v-if="block.breaks.length" :breaks="block.breaks" />
           </div>
         </div>
-      </div>
-
-      <div class="flex flex-col gap-16">
-        <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
-          <h2>{{ block.label }}</h2>
-          <summer-cup-results-grid :players="block.players" :grid="block.grid" />
-          <summer-cup-standings :standings="block.standings" />
-          <summer-cup-breaks v-if="block.breaks.length" :breaks="block.breaks" />
-        </div>
-      </div>
+      </template>
     </div>
   </section>
 
