@@ -107,13 +107,13 @@ function printSheet() {
         <table class="border-collapse text-center">
           <thead>
             <tr>
-              <th class="h-10 w-10 border border-black px-2 font-semibold">#</th>
+              <th class="h-10 border border-black px-2 font-semibold">#</th>
               <th class="h-10 w-[45mm] border border-black px-3 text-left font-semibold">Breaks (30+)</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="i in count" :key="i">
-              <th class="h-10 w-10 border border-black px-2 text-center font-semibold">{{ i }}</th>
+              <th class="h-10 border border-black px-2 text-center font-semibold">{{ i }}</th>
               <td class="h-10 w-[45mm] border border-black px-3"/>
             </tr>
           </tbody>
