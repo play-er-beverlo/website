@@ -39,7 +39,7 @@ function printSheet() {
     <!-- The printable sheet -->
     <div class="sheet mx-auto max-w-[277mm] bg-white p-10 shadow-lg print:max-w-none print:p-0 print:shadow-none">
       <header class="mb-6 flex flex-col gap-3 border-b-2 border-black pb-3">
-        <img src="~/assets/images/Play-ER.svg" alt="Play-ER logo" class="h-12 w-auto self-start" />
+        <img src="/images/6-reds-summer-cup-logo.svg" alt="Play-ER 6 Reds SummER Cup logo" class="h-12 w-auto self-start" />
         <slot name="header" />
       </header>
 

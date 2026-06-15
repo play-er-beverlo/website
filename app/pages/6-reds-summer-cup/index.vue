@@ -31,9 +31,13 @@ const resultBlocks = [...playDayResults]
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <section id="hero" class="w-full shadow-lg">
-    <div class="mx-auto max-w-6xl px-8 h-[220px] md:h-[320px] flex flex-col items-center justify-center gap-4 text-center text-white">
-      <h1 class="text-shadow-lg">6 REDS SUMMER CUP 2026</h1>
-      <p class="text-lg">Recreatieve zomercompetitie 6 Reds snooker · juni – augustus 2026</p>
+    <div class="mx-auto max-w-6xl px-8 h-[220px] md:h-[320px] flex flex-col items-center justify-center text-center text-white">
+      <h1 class="sr-only">6 Reds SummER Cup 2026</h1>
+      <img
+        src="/images/6-reds-summer-cup-logo-dark.svg"
+        alt=""
+        class="w-full max-w-xl h-auto drop-shadow-lg"
+      />
     </div>
   </section>
 
