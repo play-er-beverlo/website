@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { finaleDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { finaleDay, getPlayDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { playDayResults } from "#shared/data/summerCupResults";
+import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
+import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
 
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",
@@ -8,6 +11,21 @@ useSeoMeta({
 });
 
 const showMoreInfo = ref(false);
+
+const summerRanking = computeSummerRanking(playDayResults);
+const breaksRanking = computeBreaksRanking(playDayResults);
+
+// Play days that have results, newest first.
+const resultBlocks = [...playDayResults]
+  .sort((a, b) => (a.playDayId < b.playDayId ? 1 : -1))
+  .map((day) => ({
+    id: day.playDayId,
+    label: getPlayDay(day.playDayId)?.label ?? day.playDayId,
+    players: day.players,
+    grid: buildResultsGrid(day),
+    standings: computeDayStandings(day),
+    breaks: computeDayBreaks(day),
+  }));
 </script>
 
 <!-- eslint-disable vue/no-multiple-template-root -->
@@ -57,12 +75,21 @@ const showMoreInfo = ref(false);
         <p class="text-sm opacity-80">Alle speeldagen starten om {{ PLAY_TIME }}.</p>
       </div>
 
-      <u-button
-        :label="showMoreInfo ? 'Minder informatie' : 'Meer informatie'"
-        :trailing-icon="showMoreInfo ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
-        size="xl"
-        @click="showMoreInfo = !showMoreInfo"
-      />
+      <div class="flex gap-4 w-full">
+        <u-button
+          class="flex-1"
+          label="Inschrijven"
+          size="xl"
+          href="#inschrijven"
+        />
+        <u-button
+          class="flex-1"
+          :label="showMoreInfo ? 'Minder informatie' : 'Meer informatie'"
+          :trailing-icon="showMoreInfo ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
+          size="xl"
+          @click="showMoreInfo = !showMoreInfo"
+        />
+      </div>
 
       <div v-show="showMoreInfo" class="flex flex-col gap-12">
         <div class="flex flex-col gap-4">
@@ -154,15 +181,56 @@ const showMoreInfo = ref(false);
     </div>
   </section>
 
-  <section id="rangschikking" class="w-full shadow-lg">
+  <section id="resultaten" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
-      <h1>RANGSCHIKKING</h1>
-      <u-alert
-        title="Binnenkort"
-        description="De rangschikking van de deelnemers wordt later toegevoegd."
-        color="neutral"
-        variant="subtle"
-      />
+      <h1>RESULTATEN</h1>
+
+      <p v-if="resultBlocks.length === 0" class="opacity-80">De resultaten verschijnen hier na de eerste speeldag.</p>
+
+      <template v-else>
+        <div class="flex flex-col gap-4 mb-8">
+          <h2>SummER Ranking</h2>
+          <div class="grid gap-8 md:grid-cols-2">
+            <div class="flex flex-col gap-3">
+              <h3 class="text-lg font-semibold">Punten</h3>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-white/30">
+                      <th class="py-2 pr-4">#</th>
+                      <th class="py-2 pr-4">Speler</th>
+                      <th class="py-2 pr-4 text-center">Speeldagen</th>
+                      <th class="py-2 text-center">Punten</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
+                      <td class="py-2 pr-4">{{ row.position }}</td>
+                      <td class="py-2 pr-4">{{ row.player.name }}</td>
+                      <td class="py-2 pr-4 text-center">{{ row.playDaysCounted }}</td>
+                      <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h3 class="text-lg font-semibold">Breaks (30+)</h3>
+              <summer-cup-breaks-ranking v-if="breaksRanking.length" :breaks="breaksRanking" />
+              <p v-else class="opacity-80">Nog geen breaks van 30+ genoteerd.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-16">
+          <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
+            <h2>{{ block.label }}</h2>
+            <summer-cup-results-grid :players="block.players" :grid="block.grid" />
+            <summer-cup-standings :standings="block.standings" />
+            <summer-cup-breaks v-if="block.breaks.length" :breaks="block.breaks" />
+          </div>
+        </div>
+      </template>
     </div>
   </section>
 
@@ -175,7 +243,7 @@ const showMoreInfo = ref(false);
 </template>
 
 <style scoped>
-@reference "./../assets/css/main.css";
+@reference "./../../assets/css/main.css";
 
 section#hero {
   @apply bg-neutral-500;
@@ -187,7 +255,13 @@ section#hero {
   background-repeat: no-repeat;
 }
 
-section#rangschikking {
+section#resultaten {
   @apply bg-neutral-500 text-white;
+}
+
+/* The global h2 colour (text-neutral-500) matches this section's background,
+   so make subtitles readable on the dark background. */
+section#resultaten h2 {
+  @apply text-white;
 }
 </style>

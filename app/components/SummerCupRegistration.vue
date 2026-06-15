@@ -134,6 +134,9 @@ const resetForm = async () => {
         color="success"
         variant="subtle"
       />
+      <p class="text-sm opacity-80">
+        Geen e-mail ontvangen? Controleer zeker even je spamfolder.
+      </p>
       <h2>Betaling</h2>
       <p>
         Schrijf <span class="font-semibold">&euro; {{ REGISTRATION_FEE }}</span> over vóór de
@@ -189,7 +192,7 @@ const resetForm = async () => {
             <span>{{ day.label }} — {{ PLAY_TIME }}</span>
             <span v-if="day.past">Voorbij</span>
             <span v-else-if="day.full">Volzet</span>
-            <span v-else>nog {{ day.remaining }}/{{ day.capacity }}</span>
+            <span v-else>nog {{ day.remaining }}/{{ day.capacity }} plaatsen vrij</span>
           </u-button>
         </div>
       </div>
