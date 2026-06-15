@@ -70,9 +70,7 @@ function printSheet() {
           </tbody>
         </table>
 
-        <!-- Blank round-robin results matrix. The breaks (30+) column runs to the
-             right of the matrix; the row number identifies the player (see legend),
-             so the name does not need repeating. -->
+        <!-- Blank round-robin results matrix -->
         <table class="border-collapse text-center">
           <caption class="caption-bottom pt-2 text-sm font-medium text-neutral-700">
             Telkens {{ framesPerMatch }} {{ framesPerMatch === 1 ? "frame" : "frames" }}
@@ -88,7 +86,6 @@ function printSheet() {
                 {{ j }}
               </th>
               <th class="h-10 border border-black px-3 font-semibold">Totaal</th>
-              <th class="h-10 w-[60mm] border border-black px-3 font-semibold">Breaks (30+)</th>
             </tr>
           </thead>
           <tbody>
@@ -101,7 +98,23 @@ function printSheet() {
                 :class="i === j ? 'diagonal' : ''"
               />
               <td class="h-10 w-16 border border-black"/>
-              <td class="h-10 w-[60mm] border border-black"/>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Hand-fillable breaks (30+) beside the matrix; the first column is the
+             player number, matching the legend, so the name is not repeated. -->
+        <table class="border-collapse text-center">
+          <thead>
+            <tr>
+              <th class="h-10 w-10 border border-black px-2 font-semibold">#</th>
+              <th class="h-10 w-[45mm] border border-black px-3 text-left font-semibold">Breaks (30+)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="i in count" :key="i">
+              <th class="h-10 w-10 border border-black px-2 text-center font-semibold">{{ i }}</th>
+              <td class="h-10 w-[45mm] border border-black px-3"/>
             </tr>
           </tbody>
         </table>

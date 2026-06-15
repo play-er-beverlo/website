@@ -23,9 +23,9 @@ This feature lets the organiser:
   30+ breaks, ordered so the player with the highest break is on top.
 - **Tournament overview:** all breaks listed per player (not just the highest),
   ordered by each player's highest break.
-- **Wedstrijdblad:** a wide blank "Breaks (30+)" column appended to the right of
-  the results matrix. The matrix row number identifies the player (via the
-  legend), so the name is not repeated.
+- **Wedstrijdblad:** a separate "Breaks (30+)" table beside the matrix, with the
+  player number (`#`) as the first column instead of the name. The number maps
+  to the legend, so the name is not repeated.
 - **Breaks scope:** every 30+ break counts toward the tournament overview,
   independent of the best-day-per-tournament rule used for points. A break is an
   individual achievement, so a break made on a play day that is *discarded* for
@@ -116,21 +116,24 @@ different days are merged into one row.
 - **Empty state:** when no player has a 30+ break tournament-wide, the breaks
   side shows "Nog geen breaks van 30+ genoteerd." instead of an empty table.
 
-### 5. Wedstrijdblad breaks column
+### 5. Wedstrijdblad breaks table
 
-In `app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue`, append a wide blank
-"Breaks (30+)" column to the right of the results matrix:
+In `app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue`, add a separate
+"Breaks (30+)" table as a third item in the legend + matrix flex row, so it sits
+beside the matrix:
 
-- An extra `<th>Breaks (30+)</th>` header after the `Totaal` column, and a wide
-  blank `<td>` per matrix row for hand entry.
-- The matrix rows are already numbered `1..n` and line up horizontally with the
-  legend rows (both use `h-10`), so the row number identifies the player and the
-  name is not repeated.
-- No extra data binding — the existing matrix already iterates `count` rows.
-- `border border-black` matches the existing sheet styling; the column borders
-  print via the existing `.sheet { print-color-adjust: exact }` rule.
-- Shares the page's empty state: when there are no registrations the matrix (and
-  thus the breaks column) is not shown (the page shows "Nog geen inschrijvingen.").
+- A bordered table whose head row is `#` (player number) and `Breaks (30+)`. Body
+  rows are numbered `1..n` (`v-for="i in count"`), each with a wide blank cell
+  (`w-[45mm]`) for hand entry.
+- The first column is the player number, not the name — it maps to the legend
+  numbering, so the name is not repeated.
+- `h-10` rows keep it aligned with the legend and matrix rows; `border
+  border-black` matches the existing sheet styling and prints via the existing
+  `.sheet { print-color-adjust: exact }` rule.
+- On a full 8-player sheet the three tables are close to the landscape-A4 width;
+  `flex-wrap` lets the breaks table wrap below the matrix if it does not fit.
+- Shares the page's empty state: when there are no registrations the table is not
+  shown (the page shows "Nog geen inschrijvingen.").
 
 ## Testing
 
