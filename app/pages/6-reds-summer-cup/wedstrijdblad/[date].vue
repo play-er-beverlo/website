@@ -50,7 +50,7 @@ function printSheet() {
 
       <p v-if="count === 0" class="text-lg">Nog geen inschrijvingen.</p>
 
-      <div v-else class="flex flex-wrap items-start gap-12">
+      <div v-else class="flex flex-wrap items-start gap-6">
         <!-- Player legend with a handicap start-score column.
              Cells are h-10 to match the matrix rows so the lines line up. -->
         <table class="border-collapse">
@@ -103,18 +103,19 @@ function printSheet() {
         </table>
 
         <!-- Hand-fillable breaks (30+) beside the matrix; the first column is the
-             player number, matching the legend, so the name is not repeated. -->
-        <table class="border-collapse text-center">
+             player number, matching the legend, so the name is not repeated. The
+             table grows to fill the row, with a 4 cm (40mm) minimum width. -->
+        <table class="grow min-w-[40mm] border-collapse text-center">
           <thead>
             <tr>
               <th class="h-10 border border-black px-2 font-semibold">#</th>
-              <th class="h-10 w-[45mm] border border-black px-3 text-left font-semibold">Breaks (30+)</th>
+              <th class="h-10 w-full border border-black px-3 text-left font-semibold">Breaks (30+)</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="i in count" :key="i">
               <th class="h-10 border border-black px-2 text-center font-semibold">{{ i }}</th>
-              <td class="h-10 w-[45mm] border border-black px-3"/>
+              <td class="h-10 w-full border border-black px-3"/>
             </tr>
           </tbody>
         </table>

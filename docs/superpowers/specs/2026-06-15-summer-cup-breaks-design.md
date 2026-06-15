@@ -123,15 +123,20 @@ In `app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue`, add a separate
 beside the matrix:
 
 - A bordered table whose head row is `#` (player number) and `Breaks (30+)`. Body
-  rows are numbered `1..n` (`v-for="i in count"`), each with a wide blank cell
-  (`w-[45mm]`) for hand entry.
+  rows are numbered `1..n` (`v-for="i in count"`), each with a blank cell for hand
+  entry.
 - The first column is the player number, not the name — it maps to the legend
-  numbering, so the name is not repeated.
+  numbering, so the name is not repeated. The `#` column has no fixed width
+  (`px-2`), matching the legend's `#` column.
+- The table is `grow min-w-[40mm]` so it flexes to fill the leftover row width
+  with a 4 cm minimum; the breaks cells are `w-full` so that column absorbs the
+  width while `#` stays content-sized.
+- The flex row gap is `gap-6` (half the legend/matrix default) so all three
+  tables fit beside each other on landscape A4; `flex-wrap` still lets the breaks
+  table drop below if a sheet is too wide.
 - `h-10` rows keep it aligned with the legend and matrix rows; `border
   border-black` matches the existing sheet styling and prints via the existing
   `.sheet { print-color-adjust: exact }` rule.
-- On a full 8-player sheet the three tables are close to the landscape-A4 width;
-  `flex-wrap` lets the breaks table wrap below the matrix if it does not fit.
 - Shares the page's empty state: when there are no registrations the table is not
   shown (the page shows "Nog geen inschrijvingen.").
 
