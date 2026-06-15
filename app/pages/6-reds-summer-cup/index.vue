@@ -214,7 +214,7 @@ const resultBlocks = [...playDayResults]
 </template>
 
 <style scoped>
-@reference "./../assets/css/main.css";
+@reference "./../../assets/css/main.css";
 
 section#hero {
   @apply bg-neutral-500;
