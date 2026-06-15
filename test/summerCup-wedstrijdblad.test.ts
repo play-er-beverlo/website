@@ -3,6 +3,7 @@ import { playDays } from "../shared/data/summerCup";
 import {
   playDayFromDateParam,
   dateParamFromPlayDayId,
+  framesPerMatch,
 } from "../shared/summerCup/wedstrijdblad";
 
 describe("playDayFromDateParam", () => {
@@ -36,5 +37,18 @@ describe("dateParamFromPlayDayId", () => {
       const param = dateParamFromPlayDayId(day.id);
       expect(playDayFromDateParam(param)?.id).toBe(day.id);
     }
+  });
+});
+
+describe("framesPerMatch", () => {
+  it("returns 2 frames for 4-5 players", () => {
+    expect(framesPerMatch(4)).toBe(2);
+    expect(framesPerMatch(5)).toBe(2);
+  });
+
+  it("returns 1 frame for 6-8 players", () => {
+    expect(framesPerMatch(6)).toBe(1);
+    expect(framesPerMatch(7)).toBe(1);
+    expect(framesPerMatch(8)).toBe(1);
   });
 });

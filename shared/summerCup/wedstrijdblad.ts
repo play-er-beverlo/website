@@ -17,3 +17,8 @@ export function dateParamFromPlayDayId(id: string): string {
   const [year, month, day] = id.split("-");
   return `${day}-${month}-${year}`;
 }
+
+/** 4–5 players play 2 frames per match, 6–8 play 1. */
+export function framesPerMatch(count: number): number {
+  return count <= 5 ? 2 : 1;
+}
