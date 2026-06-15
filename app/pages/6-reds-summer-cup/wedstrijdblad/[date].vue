@@ -54,11 +54,14 @@ function printSheet() {
         <!-- Player legend with a handicap start-score column.
              Cells are h-10 to match the matrix rows so the lines line up. -->
         <table class="border-collapse">
+          <caption class="caption-bottom pt-2 text-sm font-medium text-neutral-700">
+            Startscore — Ere &amp; 1ste: 0, 2de &amp; 3de: 5, 4de &amp; 5de: 10
+          </caption>
           <thead>
             <tr>
               <th class="h-10 border border-black px-2 font-semibold">#</th>
               <th class="h-10 border border-black px-4 text-left font-semibold">Speler</th>
-              <th class="h-10 border border-black px-3 font-semibold">Handicap</th>
+              <th class="h-10 border border-black px-3 font-semibold">Startscore</th>
             </tr>
           </thead>
           <tbody>
