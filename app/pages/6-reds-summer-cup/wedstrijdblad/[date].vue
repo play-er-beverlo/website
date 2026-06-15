@@ -55,7 +55,7 @@ function printSheet() {
              Cells are h-10 to match the matrix rows so the lines line up. -->
         <table class="border-collapse">
           <caption class="caption-bottom pt-2 text-sm font-medium text-neutral-700">
-            Startscore — Ere &amp; 1ste: 0, 2de &amp; 3de: 5, 4de &amp; 5de: 10
+            Ere &amp; 1ste: 0, 2de &amp; 3de: 5, 4de &amp; 5de: 10
           </caption>
           <thead>
             <tr>
