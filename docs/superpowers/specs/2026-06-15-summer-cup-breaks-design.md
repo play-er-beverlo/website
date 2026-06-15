@@ -23,8 +23,9 @@ This feature lets the organiser:
   30+ breaks, ordered so the player with the highest break is on top.
 - **Tournament overview:** all breaks listed per player (not just the highest),
   ordered by each player's highest break.
-- **Wedstrijdblad:** per-player rows — a table listing each registered player
-  with a wide blank box to write their breaks.
+- **Wedstrijdblad:** a wide blank "Breaks (30+)" column appended to the right of
+  the results matrix. The matrix row number identifies the player (via the
+  legend), so the name is not repeated.
 - **Breaks scope:** every 30+ break counts toward the tournament overview,
   independent of the best-day-per-tournament rule used for points. A break is an
   individual achievement, so a break made on a play day that is *discarded* for
@@ -115,19 +116,21 @@ different days are merged into one row.
 - **Empty state:** when no player has a 30+ break tournament-wide, the breaks
   side shows "Nog geen breaks van 30+ genoteerd." instead of an empty table.
 
-### 5. Wedstrijdblad break table
+### 5. Wedstrijdblad breaks column
 
-In `app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue`, add a "Breaks (30+)"
-section below the existing legend + matrix row:
+In `app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue`, append a wide blank
+"Breaks (30+)" column to the right of the results matrix:
 
-- A bordered table with one row per registered player: `#` (matching the legend
-  numbering), `Speler` (name), and a wide blank `Breaks` cell for hand entry.
-- Reuses the already-fetched `players` list; no extra data binding.
-- `h-10` rows and `border border-black` to match the existing sheet styling;
-  `print-color-adjust: exact` so borders print reliably (consistent with the
-  current matrix/diagonal handling).
-- Shares the page's empty state: when there are no registrations the section is
-  not shown (the page already shows "Nog geen inschrijvingen.").
+- An extra `<th>Breaks (30+)</th>` header after the `Totaal` column, and a wide
+  blank `<td>` per matrix row for hand entry.
+- The matrix rows are already numbered `1..n` and line up horizontally with the
+  legend rows (both use `h-10`), so the row number identifies the player and the
+  name is not repeated.
+- No extra data binding — the existing matrix already iterates `count` rows.
+- `border border-black` matches the existing sheet styling; the column borders
+  print via the existing `.sheet { print-color-adjust: exact }` rule.
+- Shares the page's empty state: when there are no registrations the matrix (and
+  thus the breaks column) is not shown (the page shows "Nog geen inschrijvingen.").
 
 ## Testing
 
