@@ -185,7 +185,7 @@ const resultBlocks = [...playDayResults]
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
       <h1>RESULTATEN</h1>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 mb-8">
         <h2>SummER Ranking</h2>
         <div class="grid gap-8 md:grid-cols-2">
           <div class="flex flex-col gap-3">
@@ -219,11 +219,13 @@ const resultBlocks = [...playDayResults]
         </div>
       </div>
 
-      <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
-        <h2>{{ block.label }}</h2>
-        <summer-cup-results-grid :players="block.players" :grid="block.grid" />
-        <summer-cup-standings :standings="block.standings" />
-        <summer-cup-breaks v-if="block.breaks.length" :breaks="block.breaks" />
+      <div class="flex flex-col gap-16">
+        <div v-for="block in resultBlocks" :key="block.id" class="flex flex-col gap-6">
+          <h2>{{ block.label }}</h2>
+          <summer-cup-results-grid :players="block.players" :grid="block.grid" />
+          <summer-cup-standings :standings="block.standings" />
+          <summer-cup-breaks v-if="block.breaks.length" :breaks="block.breaks" />
+        </div>
       </div>
     </div>
   </section>

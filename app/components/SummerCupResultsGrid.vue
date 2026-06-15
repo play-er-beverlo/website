@@ -29,7 +29,7 @@ const scores = computed(() =>
       <table class="border-collapse text-center">
         <thead>
           <tr>
-            <th class="w-10"></th>
+            <th class="w-10 border border-white/25 py-1 font-semibold">#</th>
             <th
               v-for="(player, j) in players"
               :key="player.id"
