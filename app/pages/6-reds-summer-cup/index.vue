@@ -7,7 +7,7 @@ import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",
   description:
-    "Recreatieve zomercompetitie in 6 Reds snookerformaat bij Play-ER in Beverlo. Bekijk het reglement en schrijf je in voor een speeldag.",
+    "Recreatieve zomercompetitie in 6 Reds snookerformat bij Play-ER in Beverlo. Bekijk het reglement en schrijf je in voor een speeldag.",
 });
 
 const showMoreInfo = ref(false);
@@ -46,7 +46,7 @@ const resultBlocks = [...playDayResults]
       <div class="flex flex-col gap-4">
         <h1>HET TOERNOOI</h1>
         <p>
-          De 6 Reds SummER Cup 2026 is een recreatieve zomercompetitie in 6 Reds snookerformaat,
+          De 6 Reds SummER Cup 2026 is een recreatieve zomercompetitie in 6 Reds snookerformat,
           georganiseerd over meerdere toernooiedities gedurende de zomer van 2026. Het toernooi is
           enkel georganiseerd voor leden van Play-ER.
         </p>
