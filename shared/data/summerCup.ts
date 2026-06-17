@@ -4,6 +4,8 @@ export const MAX_PER_PLAY_DAY = 8;
 export const MAX_UNIQUE_PLAYERS = 16;
 export const REGISTRATION_FEE = 15;
 export const PLAY_TIME = "18u30";
+/** Only a player's best this-many results count toward the points ranking. */
+export const BEST_RESULTS_COUNTED = 3;
 
 export const payment = {
   iban: "BE30 0637 6639 4611",

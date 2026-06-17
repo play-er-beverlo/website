@@ -104,37 +104,39 @@ describe("computeDayStandings (2026-06-19, 8 players)", () => {
   });
 });
 
-describe("computeSummerRanking (best result per tournament)", () => {
+describe("computeSummerRanking (best 3 results, participation every day)", () => {
   const ranking = computeSummerRanking(playDayResults);
   const row = (name: string) => ranking.find((r) => r.player.name === name)!;
 
-  it("keeps only a two-day player's best day of the tournament", () => {
-    // Marco: Wed 7 vs Fri 5 -> Wed kept. Danny: Wed 5 vs Fri 11 -> Fri kept.
-    expect(row("Marco Vitali").totalPoints).toBe(7);
-    expect(row("Danny Moors").totalPoints).toBe(11);
-    expect(row("Marco Vitali").playDaysCounted).toBe(1);
-    expect(row("Danny Moors").playDaysCounted).toBe(1);
+  it("awards participation for every day played, including both days of a tournament", () => {
+    // Marco played both days of tournament 1 plus T2, T3, T4 = 5 days.
+    expect(row("Marco Vitali").playDaysPlayed).toBe(5);
+    // Danny played both T1 days plus T2 Fri and T4 Wed = 4 days.
+    expect(row("Danny Moors").playDaysPlayed).toBe(4);
+    expect(row("Tom Janssens").playDaysPlayed).toBe(4);
+    expect(row("Andy Vleugels").playDaysPlayed).toBe(3);
   });
 
-  it("ranks single-day players on their only result", () => {
-    expect(row("Andy Vleugels").totalPoints).toBe(8);
-    expect(row("Tom Janssens").totalPoints).toBe(10);
-    expect(row("Geert Willems").totalPoints).toBe(3);
+  it("counts only the best 3 tournament results toward the points total", () => {
+    // Marco: 5 days -> 10 participation. Per-tournament best competitive points
+    // [T1 5, T2 6, T3 6, T4 5]; best 3 = 6+6+5 = 17 (the weakest is dropped).
+    expect(row("Marco Vitali").totalPoints).toBe(27);
+    // Danny: 8 participation + best-3 competitive (9+7+5) = 29.
+    expect(row("Danny Moors").totalPoints).toBe(29);
+    expect(row("Tom Janssens").totalPoints).toBe(31);
+    expect(row("Andy Vleugels").totalPoints).toBe(23);
   });
 
-  it("produces the full ordered ranking", () => {
-    expect(ranking.map((r) => [r.position, r.player.name, r.totalPoints])).toEqual([
-      [1, "Danny Moors", 11],
-      [2, "Tom Janssens", 10],
-      [3, "Andy Vleugels", 8],
-      [4, "Bart Peeters", 8],
-      [5, "Marco Vitali", 7],
-      [6, "Koen Maes", 7],
-      [7, "Wim Claes", 6],
-      [8, "Ronnie De Reydt", 4],
-      [9, "Luc Vermeulen", 4],
-      [10, "Eddy Ritzen", 3],
-      [11, "Geert Willems", 3],
+  it("ranks the leaders by total points", () => {
+    expect(ranking.slice(0, 4).map((r) => [r.position, r.player.name, r.totalPoints])).toEqual([
+      [1, "Tom Janssens", 31],
+      [2, "Danny Moors", 29],
+      [3, "Marco Vitali", 27],
+      [4, "Andy Vleugels", 23],
     ]);
+  });
+
+  it("includes every player who scored", () => {
+    expect(ranking).toHaveLength(16);
   });
 });
