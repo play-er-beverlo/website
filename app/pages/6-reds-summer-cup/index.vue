@@ -221,6 +221,7 @@ const resultBlocks = [...playDayResults]
                   </tbody>
                 </table>
               </div>
+              <p class="text-sm opacity-80">Enkel je {{ BEST_RESULTS_COUNTED }} beste toernooiresultaten tellen mee in de ranking.</p>
             </div>
             <div class="flex flex-col gap-3">
               <h3 class="text-lg font-semibold">Breaks (30+)</h3>
