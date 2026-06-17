@@ -1,5 +1,5 @@
 import type { DayPlayer, Match, PlayDayResults } from "../data/summerCupResults";
-import { getPlayDay } from "../data/summerCup";
+import { getPlayDay, BEST_RESULTS_COUNTED } from "../data/summerCup";
 
 export interface MatchOutcome {
   framesA: number;
@@ -159,46 +159,65 @@ export function computeDayStandings(day: PlayDayResults): DayStanding[] {
 
 export interface SummerRow {
   player: DayPlayer;
-  /** Counted days = the best day per tournament the player scored in. */
-  playDaysCounted: number;
+  /** Total play days the player participated in (drives the participation points). */
+  playDaysPlayed: number;
   totalPoints: number;
   position: number; // 1-based
 }
 
+interface SummerTally {
+  player: DayPlayer;
+  playDaysPlayed: number;
+  participationPoints: number;
+  /** Best competitive (ranking + bonus) points per tournament; only the best counts. */
+  bestPerTournament: Map<number | string, number>;
+}
+
 export function computeSummerRanking(days: PlayDayResults[]): SummerRow[] {
-  // "enkel je beste resultaat telt per toernooi": within one tournament only a
-  // player's best day counts. Track the highest-points standing per (player,
-  // tournament); process days chronologically so a points tie keeps the earlier day.
+  // Participation points count for every day played (8 days -> 16). Competitive
+  // points (ranking + bonus) only count a player's best day per tournament
+  // ("enkel je beste resultaat telt per toernooi"), and then only their best
+  // BEST_RESULTS_COUNTED tournaments. Process days chronologically so a
+  // competitive tie within a tournament keeps the earlier day.
   const ordered = [...days].sort((a, b) => (a.playDayId < b.playDayId ? -1 : 1));
 
-  const best = new Map<string, { player: DayPlayer; points: number }>();
+  const tallies = new Map<string, SummerTally>();
   for (const day of ordered) {
     const tournament = getPlayDay(day.playDayId)?.tournament ?? day.playDayId;
     for (const standing of computeDayStandings(day)) {
-      const key = `${standing.player.id}::${tournament}`;
-      const existing = best.get(key);
-      if (!existing || standing.totalPoints > existing.points) {
-        best.set(key, { player: standing.player, points: standing.totalPoints });
+      const competitive = standing.rankingPoints + standing.bonusPoints;
+      let tally = tallies.get(standing.player.id);
+      if (!tally) {
+        tally = {
+          player: standing.player,
+          playDaysPlayed: 0,
+          participationPoints: 0,
+          bestPerTournament: new Map(),
+        };
+        tallies.set(standing.player.id, tally);
+      }
+      tally.playDaysPlayed += 1;
+      tally.participationPoints += standing.participationPoints;
+      const best = tally.bestPerTournament.get(tournament);
+      if (best === undefined || competitive > best) {
+        tally.bestPerTournament.set(tournament, competitive);
       }
     }
   }
 
-  const rows = new Map<string, { player: DayPlayer; playDaysCounted: number; totalPoints: number }>();
-  for (const entry of best.values()) {
-    const row = rows.get(entry.player.id);
-    if (row) {
-      row.playDaysCounted += 1;
-      row.totalPoints += entry.points;
-    } else {
-      rows.set(entry.player.id, {
-        player: entry.player,
-        playDaysCounted: 1,
-        totalPoints: entry.points,
-      });
-    }
-  }
+  const rows = [...tallies.values()].map((tally) => {
+    const bestResults = [...tally.bestPerTournament.values()]
+      .sort((a, b) => b - a)
+      .slice(0, BEST_RESULTS_COUNTED)
+      .reduce((sum, points) => sum + points, 0);
+    return {
+      player: tally.player,
+      playDaysPlayed: tally.playDaysPlayed,
+      totalPoints: tally.participationPoints + bestResults,
+    };
+  });
 
-  return [...rows.values()]
+  return rows
     .sort((x, y) => y.totalPoints - x.totalPoints)
     .map((row, i) => ({ ...row, position: i + 1 }));
 }

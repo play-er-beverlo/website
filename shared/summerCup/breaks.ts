@@ -52,7 +52,8 @@ export function computeDayBreaks(day: PlayDayResults): PlayerBreaks[] {
 }
 
 /** Breaks (30+) aggregated across all play days — every break counts,
- *  independent of the best-day-per-tournament points rule. */
+ *  independent of the points rules (best day per tournament, best 3 results),
+ *  so breaks from results that don't count toward a player's points still show. */
 export function computeBreaksRanking(days: PlayDayResults[]): PlayerBreaks[] {
   const playerById = new Map<string, DayPlayer>();
   const all: Break[] = [];

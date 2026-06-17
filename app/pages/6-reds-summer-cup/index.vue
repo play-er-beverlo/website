@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { finaleDay, getPlayDay, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME } from "#shared/data/summerCup";
+import { finaleDay, getPlayDay, playDays, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME, BEST_RESULTS_COUNTED } from "#shared/data/summerCup";
 import { playDayResults } from "#shared/data/summerCupResults";
 import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
@@ -11,6 +11,8 @@ useSeoMeta({
 });
 
 const showMoreInfo = ref(false);
+
+const playDayCount = playDays.length;
 
 const summerRanking = computeSummerRanking(playDayResults);
 const breaksRanking = computeBreaksRanking(playDayResults);
@@ -100,7 +102,7 @@ const resultBlocks = [...playDayResults]
           <h2>Inschrijvingen &amp; plaatsen</h2>
           <ul class="list-disc ps-6 flex flex-col gap-2">
             <li>Per toernooi zijn er twee afzonderlijke speeldagen: woensdag en vrijdag.</li>
-            <li>Spelers mogen deelnemen aan één speeldag per toernooi OF aan beide indien er nog plaatsen beschikbaar zijn (enkel je beste resultaat telt en spelers die nog niet speelden, krijgen voorrang).</li>
+            <li>Spelers mogen deelnemen aan één speeldag per toernooi OF aan beide indien er nog plaatsen beschikbaar zijn (per toernooi telt enkel je beste resultaat voor de rankingpunten, maar je ontvangt deelnamepunten voor elke speeldag; spelers die nog niet speelden, krijgen voorrang).</li>
             <li>Minimum {{ MIN_PER_PLAY_DAY }} en maximum {{ MAX_PER_PLAY_DAY }} deelnemers per speeldag.</li>
             <li>Maximum {{ MAX_UNIQUE_PLAYERS }} unieke deelnemers voor de editie 2026.</li>
           </ul>
@@ -132,6 +134,8 @@ const resultBlocks = [...playDayResults]
             <li>Daarnaast ontvangt iedere speler rankingpunten op basis van zijn eindpositie.</li>
             <li>Het aantal punten voor de winnaar is gelijk aan het aantal deelnemers, telkens één punt minder voor de volgende plaats.</li>
             <li>De top 2 van iedere speeldag ontvangt telkens 1 extra bonuspunt.</li>
+            <li>De deelnamepunten tellen voor élke speeldag die je speelt: speel je alle {{ playDayCount }} speeldagen mee, dan verzamel je {{ playDayCount * 2 }} deelnamepunten.</li>
+            <li>Voor de ranking- en bonuspunten telt per toernooi enkel je beste speeldag, en tellen voor het puntenklassement enkel je {{ BEST_RESULTS_COUNTED }} beste toernooiresultaten mee.</li>
           </ul>
           <p class="font-semibold">Voorbeeld bij 7 deelnemers</p>
           <p class="text-sm opacity-90">
@@ -211,7 +215,7 @@ const resultBlocks = [...playDayResults]
                     <tr v-for="row in summerRanking" :key="row.player.id" class="border-b border-white/15">
                       <td class="py-2 pr-4">{{ row.position }}</td>
                       <td class="py-2 pr-4">{{ row.player.name }}</td>
-                      <td class="py-2 pr-4 text-center">{{ row.playDaysCounted }}</td>
+                      <td class="py-2 pr-4 text-center">{{ row.playDaysPlayed }}</td>
                       <td class="py-2 text-center font-bold">{{ row.totalPoints }}</td>
                     </tr>
                   </tbody>
