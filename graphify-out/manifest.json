@@ -110,9 +110,9 @@
     "semantic_hash": "270e1a6899c2dd53599f0c9783aa6c05"
   },
   "server/api/6-reds-summer-cup/registrations.post.ts": {
-    "mtime": 1781351461.7252913,
-    "ast_hash": "9833116d2ee154deaa6fb40f9138a9d4",
-    "semantic_hash": "9833116d2ee154deaa6fb40f9138a9d4"
+    "mtime": 1781813141.8108878,
+    "ast_hash": "f2bf74d3f51956df8abfefbc6bd44c89",
+    "semantic_hash": ""
   },
   "server/api/6-reds-summer-cup/registrations/[id]/qr.png.get.ts": {
     "mtime": 1781351461.7262914,
@@ -185,14 +185,14 @@
     "semantic_hash": "f5f9e73c6d16e3a972a04aa08202ad1b"
   },
   "server/db/migrations/sqlite/meta/_journal.json": {
-    "mtime": 1781351461.7272902,
-    "ast_hash": "9e584d1378e096671f6d5b0c23e51357",
-    "semantic_hash": "9e584d1378e096671f6d5b0c23e51357"
+    "mtime": 1781812833.4964883,
+    "ast_hash": "d1b8a3ae8c17852b013e6fd33641bd44",
+    "semantic_hash": ""
   },
   "server/db/schema.ts": {
-    "mtime": 1781351461.7272902,
-    "ast_hash": "409438102ff682971df7b08aa35844e8",
-    "semantic_hash": "409438102ff682971df7b08aa35844e8"
+    "mtime": 1781812755.9945354,
+    "ast_hash": "c762822394b3065feece92dfa202602a",
+    "semantic_hash": ""
   },
   "server/tsconfig.json": {
     "mtime": 1759668097.4807067,
@@ -235,14 +235,14 @@
     "semantic_hash": "d59a8ef74b0d234c6d67ef222aef985e"
   },
   "shared/summerCup/capacity.ts": {
-    "mtime": 1781351461.7282927,
-    "ast_hash": "5774694f48706d6ff171c339aa9a6c99",
-    "semantic_hash": "5774694f48706d6ff171c339aa9a6c99"
+    "mtime": 1781798824.1160433,
+    "ast_hash": "98d4ffd6054390d6d9a446588f67dbad",
+    "semantic_hash": ""
   },
   "shared/summerCup/email.ts": {
-    "mtime": 1781351461.7282927,
-    "ast_hash": "c734decebbc2fb4852d4da6d56c8e4b2",
-    "semantic_hash": "c734decebbc2fb4852d4da6d56c8e4b2"
+    "mtime": 1781799069.8487296,
+    "ast_hash": "92f272b932ddef274d14827347f7b783",
+    "semantic_hash": ""
   },
   "shared/summerCup/epc.ts": {
     "mtime": 1781351461.7282927,
@@ -275,9 +275,9 @@
     "semantic_hash": "b4515637fd672e5ac986b9b3a53f8bb9"
   },
   "test/summerCup-capacity.test.ts": {
-    "mtime": 1781351461.7292914,
-    "ast_hash": "dcb2dda0e3dc4a818294e6b5474026e4",
-    "semantic_hash": "dcb2dda0e3dc4a818294e6b5474026e4"
+    "mtime": 1781798804.0541463,
+    "ast_hash": "87ea017baee36118b9172a371fff2dbd",
+    "semantic_hash": ""
   },
   "test/summerCup-data.test.ts": {
     "mtime": 1781351461.7292914,
@@ -285,9 +285,9 @@
     "semantic_hash": "e3e369cb8475d9e3b2e822d58490db7b"
   },
   "test/summerCup-email.test.ts": {
-    "mtime": 1781351461.7302897,
-    "ast_hash": "283e20591d6a7f1b2d735650a764effc",
-    "semantic_hash": "283e20591d6a7f1b2d735650a764effc"
+    "mtime": 1781799033.399582,
+    "ast_hash": "c62e2ae883d5744f643d85ac7f48aafb",
+    "semantic_hash": ""
   },
   "test/summerCup-epc.test.ts": {
     "mtime": 1781351461.7302897,
@@ -318,5 +318,360 @@
     "mtime": 1781527549.1957662,
     "ast_hash": "fd0431a23178c21a27082f75917b130d",
     "semantic_hash": "fd0431a23178c21a27082f75917b130d"
+  },
+  ".claude/settings.json": {
+    "mtime": 1781796678.1988914,
+    "ast_hash": "7bf81dca0376bde3a32244b82bc7cbc0",
+    "semantic_hash": ""
+  },
+  "server/db/migrations/sqlite/meta/0003_snapshot.json": {
+    "mtime": 1781812833.4943633,
+    "ast_hash": "20ec92fb759789e2db33328a290d81cf",
+    "semantic_hash": ""
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1781796678.1946604,
+    "ast_hash": "817fe671013b35ae0bc9301dfe449a87",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/SKILL.md": {
+    "mtime": 1781796678.1911457,
+    "ast_hash": "fa829f5e9eb1b4168afa1fd208949fe3",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/add-watch.md": {
+    "mtime": 1781791337.045265,
+    "ast_hash": "0df0589623217ca38a12bdcabfb42f4c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/exports.md": {
+    "mtime": 1781791337.0465937,
+    "ast_hash": "c04ddf8f1f5ef5e262ebec491a523c74",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1781791337.0479894,
+    "ast_hash": "24808b03abfeaf5f6435bb69c0125b2c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1781791337.0815341,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/hooks.md": {
+    "mtime": 1781791337.0833416,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/query.md": {
+    "mtime": 1781791337.0875032,
+    "ast_hash": "7d1ff295a0e0aa1cc9a14e52c3a19202",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/transcribe.md": {
+    "mtime": 1781791337.089515,
+    "ast_hash": "70f6aa30d6211f3a2c7e9fc45479f50c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/graphify/references/update.md": {
+    "mtime": 1781791337.092559,
+    "ast_hash": "0662e1a77b21d670132cd5855954bfff",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/SKILL.md": {
+    "mtime": 1781345616.0989861,
+    "ast_hash": "c5b01bc6b3c11993de876b1da7b4cfa9",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/components.md": {
+    "mtime": 1781345616.100473,
+    "ast_hash": "17498711fd7e547860c07cf814e2238e",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/guidelines/component-selection.md": {
+    "mtime": 1781345616.100473,
+    "ast_hash": "db44e0e1b547d024fb95eb5b8506e6b4",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/guidelines/conventions.md": {
+    "mtime": 1781345616.1014802,
+    "ast_hash": "54ffb89c1286cc8d5480888c99df975a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/guidelines/design-system.md": {
+    "mtime": 1781345616.1014802,
+    "ast_hash": "18aae99c1ae6a1ea4bf670753cc6f287",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/guidelines/forms.md": {
+    "mtime": 1781345616.1014802,
+    "ast_hash": "cecc20c98da618742e7c79ccbf561ca8",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/layouts/chat.md": {
+    "mtime": 1781345616.102486,
+    "ast_hash": "e5f582fa9acf1946f76446725434e022",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/layouts/dashboard.md": {
+    "mtime": 1781345616.102486,
+    "ast_hash": "f6f4d3658a0f9995fcfd2174614f5ed0",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/layouts/docs.md": {
+    "mtime": 1781345616.1034808,
+    "ast_hash": "6b259696a3b631983daaff2bfb114f1a",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/layouts/editor.md": {
+    "mtime": 1781345616.1034808,
+    "ast_hash": "8d8ac2ecdfa7b6e8d5cc313b8f9d7981",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/layouts/landing.md": {
+    "mtime": 1781345616.1034808,
+    "ast_hash": "60b2988e97a9e15062fd8fa4df4b4a21",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/recipes/auth.md": {
+    "mtime": 1781345616.1047049,
+    "ast_hash": "de8c0da4d1b855a8050a260897af7089",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/recipes/data-tables.md": {
+    "mtime": 1781345616.1047049,
+    "ast_hash": "5d0367e8d20eddd1d17cb8636aadeb29",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/recipes/navigation.md": {
+    "mtime": 1781345616.1047049,
+    "ast_hash": "5268b23cd2890359b4ee1c66e8741cee",
+    "semantic_hash": ""
+  },
+  ".claude/skills/nuxt-ui/references/recipes/overlays.md": {
+    "mtime": 1781345616.1047049,
+    "ast_hash": "3f7d7ac2c0743996d68e0fce10706c21",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1781796713.4614363,
+    "ast_hash": "9eeb73605e4b1bbcf95266e6894bdf8b",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1777818714.6115942,
+    "ast_hash": "3191696c360575f42dc5248d6dac4406",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md": {
+    "mtime": 1781594125.9004197,
+    "ast_hash": "6e74b7351bae8c6199a19bff77c10a27",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md": {
+    "mtime": 1781526456.9912808,
+    "ast_hash": "b8fe2b267522b93c868c4216c6d8a834",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md": {
+    "mtime": 1781526456.9922793,
+    "ast_hash": "9d98adecc8577c2cb28dd83f27015f0f",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md": {
+    "mtime": 1781798227.2170672,
+    "ast_hash": "01246f7dd38d0f2f2f688f6bc62b552c",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md": {
+    "mtime": 1781345616.1078072,
+    "ast_hash": "83206a7d087d115b09c91cf843601fb3",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md": {
+    "mtime": 1781526456.9932816,
+    "ast_hash": "174635128502d5f7e34db1a49cb7f88e",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md": {
+    "mtime": 1781526456.9942763,
+    "ast_hash": "4524b6d7b6cc429de6edf2d8e55d57ac",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md": {
+    "mtime": 1781526456.9952774,
+    "ast_hash": "2643c6968fc5765b258660cc22df808f",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md": {
+    "mtime": 1781526456.9952774,
+    "ast_hash": "d1ed54ff3b6b90bde7bd6eb4e5c74e57",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md": {
+    "mtime": 1781526456.9968514,
+    "ast_hash": "c703f5b51512f4c3b70b686e3034b48c",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md": {
+    "mtime": 1781530704.0226965,
+    "ast_hash": "2cc0b5768322b514b6eb74b1a65778fb",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md": {
+    "mtime": 1781680973.1437294,
+    "ast_hash": "27aa5cc7b2c867badd10eb0ef0968a00",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md": {
+    "mtime": 1781797656.124059,
+    "ast_hash": "c5adfc031118f44afbe1833e3ca241ed",
+    "semantic_hash": ""
+  },
+  "pnpm-workspace.yaml": {
+    "mtime": 1777818714.6192155,
+    "ast_hash": "7fa4860e9337b72a5c5078985ac731ad",
+    "semantic_hash": ""
+  },
+  "app/assets/images/P.svg": {
+    "mtime": 1759668097.4672446,
+    "ast_hash": "a7d0e18467721aa2da29cd4444a288a0",
+    "semantic_hash": ""
+  },
+  "app/assets/images/P_Dark.svg": {
+    "mtime": 1759668097.4672446,
+    "ast_hash": "632465fcd56a2818c50ee11493c32762",
+    "semantic_hash": ""
+  },
+  "app/assets/images/Play-ER.svg": {
+    "mtime": 1759668097.4672446,
+    "ast_hash": "e06d73246597e121a9945dc42426ffa1",
+    "semantic_hash": ""
+  },
+  "app/assets/images/Play-ER_Dark.svg": {
+    "mtime": 1759668097.4672446,
+    "ast_hash": "77f894ff463b0fd7ab4f0cd90215ace3",
+    "semantic_hash": ""
+  },
+  "app/assets/images/facebook.svg": {
+    "mtime": 1759668097.4672446,
+    "ast_hash": "119124988d8d371752a2b4e78b41ae87",
+    "semantic_hash": ""
+  },
+  "app/assets/images/google_maps.png": {
+    "mtime": 1759668097.4698136,
+    "ast_hash": "ccbb97c42b3a3465a2d6266617f4bd0b",
+    "semantic_hash": ""
+  },
+  "app/assets/images/home_banner.jpg": {
+    "mtime": 1777818714.6136875,
+    "ast_hash": "5c7e1eb91daeaea21ca35ca9824cb2b1",
+    "semantic_hash": ""
+  },
+  "app/assets/images/instagram.svg": {
+    "mtime": 1759668097.4698136,
+    "ast_hash": "d10ee3a84d6df4b278270f17577a2d4a",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1759668097.4718015,
+    "ast_hash": "22b71fae88dfe7a85b0de55a46964589",
+    "semantic_hash": ""
+  },
+  "public/favicon-96x96.png": {
+    "mtime": 1759668097.4718015,
+    "ast_hash": "4b22bdf84198fe440c49ab3adb5c28a8",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1759668097.4738133,
+    "ast_hash": "53fe81a3208b4174f038003d35bd4e0b",
+    "semantic_hash": ""
+  },
+  "public/images/6-reds-summer-cup-logo-dark.svg": {
+    "mtime": 1781558797.5995622,
+    "ast_hash": "42300ddb1ebd686efdce80bd20e47156",
+    "semantic_hash": ""
+  },
+  "public/images/6-reds-summer-cup-logo.svg": {
+    "mtime": 1781558797.6005692,
+    "ast_hash": "a9cf57f3cf2d37665baf3cb196603a81",
+    "semantic_hash": ""
+  },
+  "public/images/games/bingo.png": {
+    "mtime": 1759668097.4744422,
+    "ast_hash": "ab63024cc1e78b385b3c6c3e16a51c59",
+    "semantic_hash": ""
+  },
+  "public/images/games/darts.png": {
+    "mtime": 1759668097.475465,
+    "ast_hash": "53714c7676c86e081a715c33c48f8ab7",
+    "semantic_hash": ""
+  },
+  "public/images/games/golfbiljart.jpg": {
+    "mtime": 1759668097.475465,
+    "ast_hash": "06019a14bc5e94893a2fcf3c87e718c0",
+    "semantic_hash": ""
+  },
+  "public/images/games/golfbiljart.png": {
+    "mtime": 1759668097.4764519,
+    "ast_hash": "ea991a35b9686650c20a095f85d2641c",
+    "semantic_hash": ""
+  },
+  "public/images/games/pool.png": {
+    "mtime": 1759668097.4764519,
+    "ast_hash": "fe5016089c43223def5ef7f2b5a4f71c",
+    "semantic_hash": ""
+  },
+  "public/images/games/snooker.png": {
+    "mtime": 1759668097.4774516,
+    "ast_hash": "92091681625e0a9e4cbef743655ba4ba",
+    "semantic_hash": ""
+  },
+  "public/images/games/tafelvoetbal.jpg": {
+    "mtime": 1759668097.4774516,
+    "ast_hash": "807fb9be307cd8604a8711d77db720a3",
+    "semantic_hash": ""
+  },
+  "public/images/games/tafelvoetbal.png": {
+    "mtime": 1759668097.4787066,
+    "ast_hash": "b1f36e426942488bc89c0b2712db9df0",
+    "semantic_hash": ""
+  },
+  "public/images/play-er-dark.png": {
+    "mtime": 1781351461.7232914,
+    "ast_hash": "21eec30e61bd0da2a2fc1505a9672374",
+    "semantic_hash": ""
+  },
+  "public/images/play-er-dark.svg": {
+    "mtime": 1781558797.6005692,
+    "ast_hash": "77f894ff463b0fd7ab4f0cd90215ace3",
+    "semantic_hash": ""
+  },
+  "public/images/play-er-store-front.jpg": {
+    "mtime": 1759668097.4787066,
+    "ast_hash": "f8e02f729e60b37349e46db8c4cae4c2",
+    "semantic_hash": ""
+  },
+  "public/images/play-er.png": {
+    "mtime": 1781351461.724293,
+    "ast_hash": "00c05c2ee669ae0c02145813684220cc",
+    "semantic_hash": ""
+  },
+  "public/images/play-er.svg": {
+    "mtime": 1781558797.6015687,
+    "ast_hash": "e06d73246597e121a9945dc42426ffa1",
+    "semantic_hash": ""
+  },
+  "public/web-app-manifest-192x192.png": {
+    "mtime": 1759668097.479715,
+    "ast_hash": "6d9c92b6256e29868c47f94469fa5f8d",
+    "semantic_hash": ""
+  },
+  "public/web-app-manifest-512x512.png": {
+    "mtime": 1759668097.479715,
+    "ast_hash": "e380194d2015f3fafc724d142b0705b3",
+    "semantic_hash": ""
   }
 }

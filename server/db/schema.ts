@@ -22,11 +22,13 @@ export const summerCupRegistrations = sqliteTable(
     communication: text("communication").notNull(),
     qrCodeBase64: text("qrCodeBase64").notNull(),
     createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+    cancelToken: text("cancelToken").notNull(),
   },
   (table) => [
     uniqueIndex("summer_cup_registrations_playDayId_email_unique").on(
       table.playDayId,
       table.email
     ),
+    uniqueIndex("summer_cup_registrations_cancelToken_unique").on(table.cancelToken),
   ]
 );

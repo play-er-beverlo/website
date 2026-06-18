@@ -72,6 +72,8 @@ export default defineEventHandler(async (event) => {
 
   const communication = buildCommunication(body.output.name, playDay.shortLabel);
 
+  const cancelToken = crypto.randomUUID();
+
   // Insert first to claim the spot (and let the unique index guard against races).
   let inserted: { id: number };
   try {
@@ -83,6 +85,7 @@ export default defineEventHandler(async (event) => {
         email: body.output.email,
         communication,
         qrCodeBase64: body.output.qrCodeBase64,
+        cancelToken,
         createdAt: new Date(),
       })
       .returning({ id: summerCupRegistrations.id })
@@ -96,12 +99,14 @@ export default defineEventHandler(async (event) => {
   const origin = getRequestURL(event).origin;
   const qrImageUrl = `${origin}/api/6-reds-summer-cup/registrations/${inserted.id}/qr.png`;
   const logoUrl = `${origin}/images/play-er.png`;
+  const cancelUrl = `${origin}/6-reds-summer-cup/uitschrijven/${cancelToken}`;
   const mail = buildConfirmationEmail({
     name: body.output.name,
     playDayLabel: playDay.label,
     communication,
     qrImageUrl,
     logoUrl,
+    cancelUrl,
   });
 
   try {

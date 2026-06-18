@@ -21,6 +21,11 @@ function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
 }
 
+/** True when the play day's ISO date is before today's (date-level, like registration). */
+export function isPlayDayPast(playDayId: string, now: Date): boolean {
+  return playDayId < now.toISOString().slice(0, 10);
+}
+
 export function checkRegistrationAllowed(params: {
   playDayId: string;
   email: string;
@@ -30,9 +35,7 @@ export function checkRegistrationAllowed(params: {
   const playDay = getPlayDay(params.playDayId);
   if (!playDay) return { ok: false, reason: "unknown_play_day" };
 
-  // ISO dates sort lexically; play day ids are "YYYY-MM-DD".
-  const todayKey = params.now.toISOString().slice(0, 10);
-  if (playDay.id < todayKey) return { ok: false, reason: "past" };
+  if (isPlayDayPast(playDay.id, params.now)) return { ok: false, reason: "past" };
 
   const email = normalizeEmail(params.email);
   const existing = params.existing.map((r) => ({

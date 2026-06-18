@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   checkRegistrationAllowed,
+  isPlayDayPast,
   type ExistingRegistration,
 } from "../shared/summerCup/capacity";
 
@@ -83,5 +84,19 @@ describe("checkRegistrationAllowed", () => {
       now: NOW,
     });
     expect(r).toEqual({ ok: true });
+  });
+});
+
+describe("isPlayDayPast", () => {
+  it("is true when the play day is before today", () => {
+    expect(isPlayDayPast("2026-06-17", new Date("2026-06-18T10:00:00Z"))).toBe(true);
+  });
+
+  it("is false on the play day itself", () => {
+    expect(isPlayDayPast("2026-06-18", new Date("2026-06-18T10:00:00Z"))).toBe(false);
+  });
+
+  it("is false when the play day is in the future", () => {
+    expect(isPlayDayPast("2026-07-01", new Date("2026-06-18T10:00:00Z"))).toBe(false);
   });
 });
