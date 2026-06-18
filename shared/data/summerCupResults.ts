@@ -25,11 +25,16 @@ export interface PlayDayResults {
   breaks?: Break[];      // 30+ breaks made on this play day (hand-entered)
 }
 
-// Test data roster (up to MAX_UNIQUE_PLAYERS = 16 unique players for the 2026 edition).
-// const marco = "marco-vitali";
-// const andy = "andy-vleugels";
-// const eddy = "eddy-ritzen";
-// const ronnie = "ronnie-de-reydt";
-// const danny = "danny-moors";
+// Results data (up to MAX_UNIQUE_PLAYERS = 16 unique players for the 2026 edition).
+const andy = "andy-vleugels";
+const danny = "danny-moors";
+const eddy = "eddy-ritzen";
+const jp = "jean-pierre-van-camp"
+const koen = "koen-caerts";
+const marc = "marc-de-l-arbre";
+const marco = "marco-vitali";
+const roman = "roman-szpyt";
+const ronnie = "ronnie-de-reydt";
+const steff = "steff-beckers";
 
 export const playDayResults: PlayDayResults[] = [];
