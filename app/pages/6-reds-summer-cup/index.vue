@@ -174,6 +174,7 @@ const resultBlocks = [...playDayResults]
             <li>Van alle deelnemers wordt sportief en respectvol gedrag verwacht. Onsportief gedrag kan leiden tot waarschuwing, puntenaftrek of uitsluiting.</li>
             <li>Een frame is afgelopen vanaf dat je méér dan 3 snookers nodig hebt nadat de laatste rode bal is gepot. Dit om de avond vlot te laten verlopen en nachtwerk te vermijden.</li>
             <li>Er wordt gewerkt met een aangepast handicapsysteem: spelers uit eerste afdeling en hoger starten op 0 punten, spelers uit 2e en 3e afdeling op 5 punten, spelers uit 4e en 5e afdeling op 10 punten. Voor spelers met een reservestatuut wordt vooraf in eer en geweten bepaald wat de startscore is.</li>
+            <li>Er kan gespeeld worden vanaf 18u. Indien het toernooi vroeg is afgerond, kan er tot 22u gratis verder gespeeld worden. Vanaf 22u kan er verder gespeeld worden aan het normale tarief.</li>
           </ul>
         </div>
 
