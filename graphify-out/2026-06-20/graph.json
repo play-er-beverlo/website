@@ -54,16 +54,6 @@
       "norm_label": "appfooter.vue"
     },
     {
-      "label": "AppHeader.vue",
-      "file_type": "code",
-      "source_file": "app/components/AppHeader.vue",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_appheader",
-      "community": 80,
-      "norm_label": "appheader.vue"
-    },
-    {
       "label": "SummerCupBreaks.vue",
       "file_type": "code",
       "source_file": "app/components/SummerCupBreaks.vue",
@@ -9839,9 +9829,9 @@
       "source_file": "shared/summerCup/capacity.ts",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_capacity",
-      "target": "summercup_capacity_isplaydaypast"
+      "target": "summercup_capacity_isplaydaypast",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9903,9 +9893,9 @@
       "source_file": "shared/summerCup/capacity.ts",
       "source_location": "L38",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_capacity_checkregistrationallowed",
-      "target": "summercup_capacity_isplaydaypast"
+      "target": "summercup_capacity_isplaydaypast",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9914,9 +9904,9 @@
       "source_file": "test/summerCup-capacity.test.ts",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "test_summercup_capacity_test",
-      "target": "summercup_capacity_isplaydaypast"
+      "target": "summercup_capacity_isplaydaypast",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9935,9 +9925,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email",
-      "target": "summercup_email_buildcancellationemail"
+      "target": "summercup_email_buildcancellationemail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9965,9 +9955,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email",
-      "target": "summercup_email_renderemailshell"
+      "target": "summercup_email_renderemailshell",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9987,9 +9977,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email_buildcancellationemail",
-      "target": "summercup_email_escapehtml"
+      "target": "summercup_email_escapehtml",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10009,9 +9999,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email_renderemailshell",
-      "target": "summercup_email_escapehtml"
+      "target": "summercup_email_escapehtml",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10020,9 +10010,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L98",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email_buildcancellationemail",
-      "target": "summercup_email_renderemailshell"
+      "target": "summercup_email_renderemailshell",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -10031,9 +10021,9 @@
       "source_file": "shared/summerCup/email.ts",
       "source_location": "L79",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "summercup_email_buildconfirmationemail",
-      "target": "summercup_email_renderemailshell"
+      "target": "summercup_email_renderemailshell",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -10053,9 +10043,9 @@
       "source_file": "test/summerCup-email.test.ts",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "test_summercup_email_test",
-      "target": "summercup_email_buildcancellationemail"
+      "target": "summercup_email_buildcancellationemail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10773,9 +10763,9 @@
       "source_file": ".claude/CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude_claude",
-      "target": "claude_claude_graphify"
+      "target": "claude_claude_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10783,9 +10773,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill",
-      "target": "graphify_skill_graphify"
+      "target": "graphify_skill_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10793,9 +10783,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L621",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_for_graphify_add_and_watch"
+      "target": "graphify_skill_for_graphify_add_and_watch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10803,9 +10793,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L609",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_for_graphify_query"
+      "target": "graphify_skill_for_graphify_query",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10813,9 +10803,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L627",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_for_the_commit_hook_and_native_claude_md_integration"
+      "target": "graphify_skill_for_the_commit_hook_and_native_claude_md_integration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10823,9 +10813,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L603",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_for_update_and_cluster_only"
+      "target": "graphify_skill_for_update_and_cluster_only",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10833,9 +10823,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L646",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_honesty_rules"
+      "target": "graphify_skill_honesty_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10843,9 +10833,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L585",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_interpreter_guard_for_subcommands"
+      "target": "graphify_skill_interpreter_guard_for_subcommands",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10853,9 +10843,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L633",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_troubleshooting"
+      "target": "graphify_skill_troubleshooting",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10863,9 +10853,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_usage"
+      "target": "graphify_skill_usage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10873,9 +10863,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L45",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_what_graphify_is_for"
+      "target": "graphify_skill_what_graphify_is_for",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10883,9 +10873,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L49",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_graphify",
-      "target": "graphify_skill_what_you_must_do_when_invoked"
+      "target": "graphify_skill_what_you_must_do_when_invoked",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10893,9 +10883,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_0_github_repos_and_multi_path_merge_only_if_a_url_or_several_paths"
+      "target": "graphify_skill_step_0_github_repos_and_multi_path_merge_only_if_a_url_or_several_paths",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10903,9 +10893,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L65",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_1_ensure_graphify_is_installed"
+      "target": "graphify_skill_step_1_ensure_graphify_is_installed",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10913,9 +10903,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L166",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_2_5_video_and_audio_only_if_video_files_detected"
+      "target": "graphify_skill_step_2_5_video_and_audio_only_if_video_files_detected",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10923,9 +10913,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L129",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_2_detect_files"
+      "target": "graphify_skill_step_2_detect_files",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10933,9 +10923,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L170",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_3_extract_entities_and_relationships"
+      "target": "graphify_skill_step_3_extract_entities_and_relationships",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10943,9 +10933,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L392",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_4_build_graph_cluster_analyze_generate_outputs"
+      "target": "graphify_skill_step_4_build_graph_cluster_analyze_generate_outputs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10953,9 +10943,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L444",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_5_label_communities"
+      "target": "graphify_skill_step_5_label_communities",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10963,9 +10953,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L484",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_6_generate_obsidian_vault_opt_in_html"
+      "target": "graphify_skill_step_6_generate_obsidian_vault_opt_in_html",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10973,9 +10963,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L510",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_step_9_save_manifest_update_cost_tracker_clean_up_and_report"
+      "target": "graphify_skill_step_9_save_manifest_update_cost_tracker_clean_up_and_report",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10983,9 +10973,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L504",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_what_you_must_do_when_invoked",
-      "target": "graphify_skill_steps_6b_8_wiki_neo4j_falkordb_svg_graphml_mcp_benchmark_only_on_their_flags"
+      "target": "graphify_skill_steps_6b_8_wiki_neo4j_falkordb_svg_graphml_mcp_benchmark_only_on_their_flags",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10993,9 +10983,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L187",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_step_3_extract_entities_and_relationships",
-      "target": "graphify_skill_part_a_structural_extraction_for_code_files"
+      "target": "graphify_skill_part_a_structural_extraction_for_code_files",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11003,9 +10993,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L213",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_step_3_extract_entities_and_relationships",
-      "target": "graphify_skill_part_b_semantic_extraction_parallel_subagents"
+      "target": "graphify_skill_part_b_semantic_extraction_parallel_subagents",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11013,9 +11003,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L358",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_step_3_extract_entities_and_relationships",
-      "target": "graphify_skill_part_c_merge_ast_semantic_into_final_extraction"
+      "target": "graphify_skill_part_c_merge_ast_semantic_into_final_extraction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11023,9 +11013,9 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L635",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "graphify_skill_troubleshooting",
-      "target": "graphify_skill_powershell_5_1_vertical_scrolling_stops_working"
+      "target": "graphify_skill_powershell_5_1_vertical_scrolling_stops_working",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11033,9 +11023,9 @@
       "source_file": ".claude/skills/graphify/references/add-watch.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_add_watch",
-      "target": "references_add_watch_graphify_reference_add_a_url_and_watch_a_folder"
+      "target": "references_add_watch_graphify_reference_add_a_url_and_watch_a_folder",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11043,9 +11033,9 @@
       "source_file": ".claude/skills/graphify/references/add-watch.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_add_watch_graphify_reference_add_a_url_and_watch_a_folder",
-      "target": "references_add_watch_for_graphify_add"
+      "target": "references_add_watch_for_graphify_add",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11053,9 +11043,9 @@
       "source_file": ".claude/skills/graphify/references/add-watch.md",
       "source_location": "L39",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_add_watch_graphify_reference_add_a_url_and_watch_a_folder",
-      "target": "references_add_watch_for_watch"
+      "target": "references_add_watch_for_watch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11063,9 +11053,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports",
-      "target": "references_exports_graphify_reference_extra_exports_and_benchmark"
+      "target": "references_exports_graphify_reference_extra_exports_and_benchmark",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11073,9 +11063,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_6b_wiki_only_if_wiki_flag"
+      "target": "references_exports_step_6b_wiki_only_if_wiki_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11083,9 +11073,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_7_neo4j_export_only_if_neo4j_or_neo4j_push_flag"
+      "target": "references_exports_step_7_neo4j_export_only_if_neo4j_or_neo4j_push_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11093,9 +11083,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L31",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_7a_falkordb_export_only_if_falkordb_or_falkordb_push_flag"
+      "target": "references_exports_step_7a_falkordb_export_only_if_falkordb_or_falkordb_push_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11103,9 +11093,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_7b_svg_export_only_if_svg_flag"
+      "target": "references_exports_step_7b_svg_export_only_if_svg_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11113,9 +11103,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_7c_graphml_export_only_if_graphml_flag"
+      "target": "references_exports_step_7c_graphml_export_only_if_graphml_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11123,9 +11113,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L59",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_7d_mcp_server_only_if_mcp_flag"
+      "target": "references_exports_step_7d_mcp_server_only_if_mcp_flag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11133,9 +11123,9 @@
       "source_file": ".claude/skills/graphify/references/exports.md",
       "source_location": "L79",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_exports_graphify_reference_extra_exports_and_benchmark",
-      "target": "references_exports_step_8_token_reduction_benchmark_only_if_total_words_5000"
+      "target": "references_exports_step_8_token_reduction_benchmark_only_if_total_words_5000",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11143,9 +11133,9 @@
       "source_file": ".claude/skills/graphify/references/extraction-spec.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_extraction_spec",
-      "target": "references_extraction_spec_graphify_reference_extraction_subagent_prompt"
+      "target": "references_extraction_spec_graphify_reference_extraction_subagent_prompt",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11153,9 +11143,9 @@
       "source_file": ".claude/skills/graphify/references/github-and-merge.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_github_and_merge",
-      "target": "references_github_and_merge_graphify_reference_github_clone_and_cross_repo_merge"
+      "target": "references_github_and_merge_graphify_reference_github_clone_and_cross_repo_merge",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11163,9 +11153,9 @@
       "source_file": ".claude/skills/graphify/references/github-and-merge.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_github_and_merge_graphify_reference_github_clone_and_cross_repo_merge",
-      "target": "references_github_and_merge_step_0_clone_github_repo_s_only_if_a_github_url_was_given"
+      "target": "references_github_and_merge_step_0_clone_github_repo_s_only_if_a_github_url_was_given",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11173,9 +11163,9 @@
       "source_file": ".claude/skills/graphify/references/hooks.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_hooks",
-      "target": "references_hooks_graphify_reference_commit_hook_and_native_claude_md_integration"
+      "target": "references_hooks_graphify_reference_commit_hook_and_native_claude_md_integration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11183,9 +11173,9 @@
       "source_file": ".claude/skills/graphify/references/hooks.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_hooks_graphify_reference_commit_hook_and_native_claude_md_integration",
-      "target": "references_hooks_for_git_commit_hook"
+      "target": "references_hooks_for_git_commit_hook",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11193,9 +11183,9 @@
       "source_file": ".claude/skills/graphify/references/hooks.md",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_hooks_graphify_reference_commit_hook_and_native_claude_md_integration",
-      "target": "references_hooks_for_native_claude_md_integration"
+      "target": "references_hooks_for_native_claude_md_integration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11203,9 +11193,9 @@
       "source_file": ".claude/skills/graphify/references/query.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_query",
-      "target": "references_query_graphify_reference_query_path_explain"
+      "target": "references_query_graphify_reference_query_path_explain",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11213,9 +11203,9 @@
       "source_file": ".claude/skills/graphify/references/query.md",
       "source_location": "L246",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_query_graphify_reference_query_path_explain",
-      "target": "references_query_for_graphify_explain"
+      "target": "references_query_for_graphify_explain",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11223,9 +11213,9 @@
       "source_file": ".claude/skills/graphify/references/query.md",
       "source_location": "L178",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_query_graphify_reference_query_path_explain",
-      "target": "references_query_for_graphify_path"
+      "target": "references_query_for_graphify_path",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11233,9 +11223,9 @@
       "source_file": ".claude/skills/graphify/references/query.md",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_query_graphify_reference_query_path_explain",
-      "target": "references_query_step_0_constrained_query_expansion_required_before_traversal"
+      "target": "references_query_step_0_constrained_query_expansion_required_before_traversal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11243,9 +11233,9 @@
       "source_file": ".claude/skills/graphify/references/query.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_query_graphify_reference_query_path_explain",
-      "target": "references_query_step_1_traversal"
+      "target": "references_query_step_1_traversal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11253,9 +11243,9 @@
       "source_file": ".claude/skills/graphify/references/transcribe.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_transcribe",
-      "target": "references_transcribe_graphify_reference_transcribe_video_and_audio"
+      "target": "references_transcribe_graphify_reference_transcribe_video_and_audio",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11263,9 +11253,9 @@
       "source_file": ".claude/skills/graphify/references/transcribe.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_transcribe_graphify_reference_transcribe_video_and_audio",
-      "target": "references_transcribe_step_2_5_transcribe_video_audio_files_only_if_video_files_detected"
+      "target": "references_transcribe_step_2_5_transcribe_video_audio_files_only_if_video_files_detected",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11273,9 +11263,9 @@
       "source_file": ".claude/skills/graphify/references/update.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_update",
-      "target": "references_update_graphify_reference_incremental_update_and_cluster_only"
+      "target": "references_update_graphify_reference_incremental_update_and_cluster_only",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11283,9 +11273,9 @@
       "source_file": ".claude/skills/graphify/references/update.md",
       "source_location": "L175",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_update_graphify_reference_incremental_update_and_cluster_only",
-      "target": "references_update_for_cluster_only"
+      "target": "references_update_for_cluster_only",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11293,9 +11283,9 @@
       "source_file": ".claude/skills/graphify/references/update.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_update_graphify_reference_incremental_update_and_cluster_only",
-      "target": "references_update_for_update_incremental_re_extraction"
+      "target": "references_update_for_update_incremental_re_extraction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11303,9 +11293,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill",
-      "target": "nuxt_ui_skill_nuxt_ui"
+      "target": "nuxt_ui_skill_nuxt_ui",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11313,9 +11303,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_nuxt_ui",
-      "target": "nuxt_ui_skill_core_rules_always_apply"
+      "target": "nuxt_ui_skill_core_rules_always_apply",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11323,9 +11313,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_nuxt_ui",
-      "target": "nuxt_ui_skill_how_to_use_this_skill"
+      "target": "nuxt_ui_skill_how_to_use_this_skill",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11333,9 +11323,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L90",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_nuxt_ui",
-      "target": "nuxt_ui_skill_installation"
+      "target": "nuxt_ui_skill_installation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11343,9 +11333,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_nuxt_ui",
-      "target": "nuxt_ui_skill_mcp_server"
+      "target": "nuxt_ui_skill_mcp_server",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11353,9 +11343,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L48",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_how_to_use_this_skill",
-      "target": "nuxt_ui_skill_reference_files"
+      "target": "nuxt_ui_skill_reference_files",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11363,9 +11353,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L72",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_how_to_use_this_skill",
-      "target": "nuxt_ui_skill_routing_table"
+      "target": "nuxt_ui_skill_routing_table",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11373,9 +11363,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L92",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_installation",
-      "target": "nuxt_ui_skill_nuxt"
+      "target": "nuxt_ui_skill_nuxt",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11383,9 +11373,9 @@
       "source_file": ".claude/skills/nuxt-ui/SKILL.md",
       "source_location": "L121",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "nuxt_ui_skill_installation",
-      "target": "nuxt_ui_skill_vue_vite"
+      "target": "nuxt_ui_skill_vue_vite",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11393,9 +11383,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components",
-      "target": "references_components_components"
+      "target": "references_components_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11403,9 +11393,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L139",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_blog_changelog"
+      "target": "references_components_blog_changelog",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11413,9 +11403,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L211",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_chat_ai"
+      "target": "references_components_chat_ai",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11423,9 +11413,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L235",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_color_mode"
+      "target": "references_components_color_mode",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11433,9 +11423,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L201",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_content_nuxt_content"
+      "target": "references_components_content_nuxt_content",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11443,9 +11433,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_dashboard"
+      "target": "references_components_dashboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11453,9 +11443,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L97",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_data"
+      "target": "references_components_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11463,9 +11453,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L224",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_editor"
+      "target": "references_components_editor",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11473,9 +11463,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_element"
+      "target": "references_components_element",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11483,9 +11473,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_form"
+      "target": "references_components_form",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11493,9 +11483,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_layout"
+      "target": "references_components_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11503,9 +11493,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L84",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_navigation"
+      "target": "references_components_navigation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11513,9 +11503,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L72",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_overlay"
+      "target": "references_components_overlay",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11523,9 +11513,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L119",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_page_marketing"
+      "target": "references_components_page_marketing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11533,9 +11523,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L148",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_pricing"
+      "target": "references_components_pricing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11543,9 +11533,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L156",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_prose_base_typography"
+      "target": "references_components_prose_base_typography",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11553,9 +11543,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/components.md",
       "source_location": "L175",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "references_components_components",
-      "target": "references_components_prose_feature_components"
+      "target": "references_components_prose_feature_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11563,9 +11553,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection",
-      "target": "guidelines_component_selection_component_selection"
+      "target": "guidelines_component_selection_component_selection",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11573,9 +11563,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_feedback"
+      "target": "guidelines_component_selection_feedback",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11583,9 +11573,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_inputs"
+      "target": "guidelines_component_selection_inputs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11593,9 +11583,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_layout_containers"
+      "target": "guidelines_component_selection_layout_containers",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11603,9 +11593,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L86",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_markdown"
+      "target": "guidelines_component_selection_markdown",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11613,9 +11603,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_navigation"
+      "target": "guidelines_component_selection_navigation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11623,9 +11613,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_component_selection",
-      "target": "guidelines_component_selection_overlays"
+      "target": "guidelines_component_selection_overlays",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11633,9 +11623,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_overlays",
-      "target": "guidelines_component_selection_rules"
+      "target": "guidelines_component_selection_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11643,9 +11633,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_navigation",
-      "target": "guidelines_component_selection_rules_34"
+      "target": "guidelines_component_selection_rules_34",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11653,9 +11643,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L62",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_inputs",
-      "target": "guidelines_component_selection_rules_62"
+      "target": "guidelines_component_selection_rules_62",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11663,9 +11653,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L80",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_feedback",
-      "target": "guidelines_component_selection_rules_80"
+      "target": "guidelines_component_selection_rules_80",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11673,9 +11663,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L99",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_markdown",
-      "target": "guidelines_component_selection_rules_99"
+      "target": "guidelines_component_selection_rules_99",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11683,9 +11673,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/component-selection.md",
       "source_location": "L118",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_component_selection_layout_containers",
-      "target": "guidelines_component_selection_rules_118"
+      "target": "guidelines_component_selection_rules_118",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11693,9 +11683,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions",
-      "target": "guidelines_conventions_conventions"
+      "target": "guidelines_conventions_conventions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11703,9 +11693,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_auto_registered_modules"
+      "target": "guidelines_conventions_auto_registered_modules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11713,9 +11703,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L323",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_color_mode"
+      "target": "guidelines_conventions_color_mode",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11723,9 +11713,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L177",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_composables"
+      "target": "guidelines_conventions_composables",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11733,9 +11723,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_content_module_integration"
+      "target": "guidelines_conventions_content_module_integration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11743,9 +11733,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L80",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_icons"
+      "target": "guidelines_conventions_icons",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11753,9 +11743,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_ide_setup"
+      "target": "guidelines_conventions_ide_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11763,9 +11753,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L148",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_items_arrays"
+      "target": "guidelines_conventions_items_arrays",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11773,9 +11763,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L354",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_official_templates"
+      "target": "guidelines_conventions_official_templates",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11783,9 +11773,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L370",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_responsive_patterns"
+      "target": "guidelines_conventions_responsive_patterns",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11793,9 +11783,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L132",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_slot_patterns"
+      "target": "guidelines_conventions_slot_patterns",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11803,9 +11793,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_conventions",
-      "target": "guidelines_conventions_uapp_wrapper"
+      "target": "guidelines_conventions_uapp_wrapper",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11813,9 +11803,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L111",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_icons",
-      "target": "guidelines_conventions_default_icon_overrides"
+      "target": "guidelines_conventions_default_icon_overrides",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11823,9 +11813,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L208",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_composables",
-      "target": "guidelines_conventions_defineshortcuts"
+      "target": "guidelines_conventions_defineshortcuts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11833,9 +11823,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L223",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_composables",
-      "target": "guidelines_conventions_extractshortcuts"
+      "target": "guidelines_conventions_extractshortcuts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11843,9 +11833,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L236",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_composables",
-      "target": "guidelines_conventions_internationalization_i18n"
+      "target": "guidelines_conventions_internationalization_i18n",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11853,9 +11843,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L197",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_composables",
-      "target": "guidelines_conventions_useoverlay"
+      "target": "guidelines_conventions_useoverlay",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11863,9 +11853,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L179",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_composables",
-      "target": "guidelines_conventions_usetoast"
+      "target": "guidelines_conventions_usetoast",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11873,9 +11863,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L269",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_internationalization_i18n",
-      "target": "guidelines_conventions_custom_locale_from_scratch"
+      "target": "guidelines_conventions_custom_locale_from_scratch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11883,9 +11873,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L284",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_internationalization_i18n",
-      "target": "guidelines_conventions_dynamic_locale_with_nuxtjs_i18n"
+      "target": "guidelines_conventions_dynamic_locale_with_nuxtjs_i18n",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11893,9 +11883,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L254",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_internationalization_i18n",
-      "target": "guidelines_conventions_extend_a_built_in_locale"
+      "target": "guidelines_conventions_extend_a_built_in_locale",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11903,9 +11893,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/conventions.md",
       "source_location": "L240",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_conventions_internationalization_i18n",
-      "target": "guidelines_conventions_static_locale"
+      "target": "guidelines_conventions_static_locale",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11913,9 +11903,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system",
-      "target": "guidelines_design_system_design_system"
+      "target": "guidelines_design_system_design_system",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11923,9 +11913,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L315",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_css_theme_customization"
+      "target": "guidelines_design_system_css_theme_customization",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11933,9 +11923,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L338",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_css_variables"
+      "target": "guidelines_design_system_css_variables",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11943,9 +11933,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L148",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_customizing_components"
+      "target": "guidelines_design_system_customizing_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11953,9 +11943,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_semantic_colors"
+      "target": "guidelines_design_system_semantic_colors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11963,9 +11953,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_semantic_utility_classes"
+      "target": "guidelines_design_system_semantic_utility_classes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11973,9 +11963,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L129",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_design_system",
-      "target": "guidelines_design_system_variants"
+      "target": "guidelines_design_system_variants",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11983,9 +11973,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_colors",
-      "target": "guidelines_design_system_adding_custom_brand_colors"
+      "target": "guidelines_design_system_adding_custom_brand_colors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11993,9 +11983,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_colors",
-      "target": "guidelines_design_system_choosing_colors_for_components"
+      "target": "guidelines_design_system_choosing_colors_for_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12003,9 +11993,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_colors",
-      "target": "guidelines_design_system_configuring_colors"
+      "target": "guidelines_design_system_configuring_colors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12013,9 +12003,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L89",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_colors",
-      "target": "guidelines_design_system_extending_with_new_semantic_color_names"
+      "target": "guidelines_design_system_extending_with_new_semantic_color_names",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12023,9 +12013,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L116",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_utility_classes",
-      "target": "guidelines_design_system_backgrounds"
+      "target": "guidelines_design_system_backgrounds",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12033,9 +12023,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L123",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_utility_classes",
-      "target": "guidelines_design_system_borders"
+      "target": "guidelines_design_system_borders",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12043,9 +12033,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L108",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_semantic_utility_classes",
-      "target": "guidelines_design_system_text"
+      "target": "guidelines_design_system_text",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12053,9 +12043,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L142",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_variants",
-      "target": "guidelines_design_system_rules"
+      "target": "guidelines_design_system_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12063,9 +12053,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L164",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_class_prop"
+      "target": "guidelines_design_system_class_prop",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12073,9 +12063,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L172",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_finding_slot_names"
+      "target": "guidelines_design_system_finding_slot_names",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12083,9 +12073,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L180",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_global_config"
+      "target": "guidelines_design_system_global_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12093,9 +12083,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L240",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_global_defaultvariants"
+      "target": "guidelines_design_system_global_defaultvariants",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12103,9 +12093,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L208",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_replace_instead_of_merge"
+      "target": "guidelines_design_system_replace_instead_of_merge",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12113,9 +12103,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L229",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_theme_component"
+      "target": "guidelines_design_system_theme_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12123,9 +12113,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L273",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_theme_prefix"
+      "target": "guidelines_design_system_theme_prefix",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12133,9 +12123,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L258",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_theme_transitions"
+      "target": "guidelines_design_system_theme_transitions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12143,9 +12133,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L294",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_tree_shaking_with_experimental_componentdetection"
+      "target": "guidelines_design_system_tree_shaking_with_experimental_componentdetection",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12153,9 +12143,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L150",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_customizing_components",
-      "target": "guidelines_design_system_ui_prop"
+      "target": "guidelines_design_system_ui_prop",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12163,9 +12153,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L330",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_css_theme_customization",
-      "target": "guidelines_design_system_breakpoints"
+      "target": "guidelines_design_system_breakpoints",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12173,9 +12163,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L319",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_css_theme_customization",
-      "target": "guidelines_design_system_fonts"
+      "target": "guidelines_design_system_fonts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12183,9 +12173,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L365",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_css_variables",
-      "target": "guidelines_design_system_black_white_as_primary"
+      "target": "guidelines_design_system_black_white_as_primary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12193,9 +12183,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/design-system.md",
       "source_location": "L350",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_design_system_css_variables",
-      "target": "guidelines_design_system_color_shade_overrides"
+      "target": "guidelines_design_system_color_shade_overrides",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12203,9 +12193,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms",
-      "target": "guidelines_forms_forms"
+      "target": "guidelines_forms_forms",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12213,9 +12203,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_basic_pattern"
+      "target": "guidelines_forms_basic_pattern",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12223,9 +12213,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L103",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_common_field_patterns"
+      "target": "guidelines_forms_common_field_patterns",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12233,9 +12223,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L59",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_field_layout_patterns"
+      "target": "guidelines_forms_field_layout_patterns",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12243,9 +12233,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L212",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_form_in_a_modal"
+      "target": "guidelines_forms_form_in_a_modal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12253,9 +12243,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_key_rules"
+      "target": "guidelines_forms_key_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12263,9 +12253,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L177",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_programmatic_validation"
+      "target": "guidelines_forms_programmatic_validation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12273,9 +12263,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L48",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_forms",
-      "target": "guidelines_forms_uformfield_props"
+      "target": "guidelines_forms_uformfield_props",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12283,9 +12273,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_field_layout_patterns",
-      "target": "guidelines_forms_grid_layout"
+      "target": "guidelines_forms_grid_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12293,9 +12283,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L74",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_field_layout_patterns",
-      "target": "guidelines_forms_inline_fields_with_ufieldgroup"
+      "target": "guidelines_forms_inline_fields_with_ufieldgroup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12303,9 +12293,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_field_layout_patterns",
-      "target": "guidelines_forms_vertical_stack_default"
+      "target": "guidelines_forms_vertical_stack_default",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12313,9 +12303,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L113",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_checkbox"
+      "target": "guidelines_forms_checkbox",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12323,9 +12313,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L164",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_date"
+      "target": "guidelines_forms_date",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12333,9 +12323,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L151",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_file_upload"
+      "target": "guidelines_forms_file_upload",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12343,9 +12333,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L121",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_radio_group"
+      "target": "guidelines_forms_radio_group",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12353,9 +12343,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L105",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_select"
+      "target": "guidelines_forms_select",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12363,9 +12353,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L135",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_switch"
+      "target": "guidelines_forms_switch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12373,9 +12363,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/guidelines/forms.md",
       "source_location": "L143",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "guidelines_forms_common_field_patterns",
-      "target": "guidelines_forms_textarea"
+      "target": "guidelines_forms_textarea",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12383,9 +12373,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat",
-      "target": "layouts_chat_chat_layout"
+      "target": "layouts_chat_chat_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12393,9 +12383,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L201",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_chat_in_a_modal"
+      "target": "layouts_chat_chat_in_a_modal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12403,9 +12393,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L94",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_component_tree"
+      "target": "layouts_chat_component_tree",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12413,9 +12403,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L237",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_conversation_sidebar"
+      "target": "layouts_chat_conversation_sidebar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12423,9 +12413,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L106",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_full_page_chat"
+      "target": "layouts_chat_full_page_chat",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12433,9 +12423,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L191",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_key_components"
+      "target": "layouts_chat_key_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12443,9 +12433,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_setup"
+      "target": "layouts_chat_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12453,9 +12443,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_when_to_use"
+      "target": "layouts_chat_when_to_use",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12463,9 +12453,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L219",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_chat_layout",
-      "target": "layouts_chat_with_model_selector"
+      "target": "layouts_chat_with_model_selector",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12473,9 +12463,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_setup",
-      "target": "layouts_chat_dark_mode_for_syntax_highlighting"
+      "target": "layouts_chat_dark_mode_for_syntax_highlighting",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12483,9 +12473,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_setup",
-      "target": "layouts_chat_install_dependencies"
+      "target": "layouts_chat_install_dependencies",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12493,9 +12483,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_setup",
-      "target": "layouts_chat_register_comark_module"
+      "target": "layouts_chat_register_comark_module",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12503,9 +12493,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/chat.md",
       "source_location": "L58",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_chat_setup",
-      "target": "layouts_chat_server_endpoint"
+      "target": "layouts_chat_server_endpoint",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12513,9 +12503,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard",
-      "target": "layouts_dashboard_dashboard_layout"
+      "target": "layouts_dashboard_dashboard_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12523,9 +12513,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_component_tree"
+      "target": "layouts_dashboard_component_tree",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12533,9 +12523,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L118",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_key_components"
+      "target": "layouts_dashboard_key_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12543,9 +12533,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_layout"
+      "target": "layouts_dashboard_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12553,9 +12543,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L155",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_multi_panel_list_detail"
+      "target": "layouts_dashboard_multi_panel_list_detail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12563,9 +12553,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L85",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_page"
+      "target": "layouts_dashboard_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12573,9 +12563,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L219",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_right_sidebar"
+      "target": "layouts_dashboard_right_sidebar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12583,9 +12573,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_when_to_use"
+      "target": "layouts_dashboard_when_to_use",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12593,9 +12583,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L201",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_with_search"
+      "target": "layouts_dashboard_with_search",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12603,9 +12593,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L183",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_dashboard_layout",
-      "target": "layouts_dashboard_with_toolbar"
+      "target": "layouts_dashboard_with_toolbar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12613,9 +12603,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L112",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_page",
-      "target": "layouts_dashboard_common_mistakes"
+      "target": "layouts_dashboard_common_mistakes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12623,9 +12613,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L120",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_key_components",
-      "target": "layouts_dashboard_dashboardgroup"
+      "target": "layouts_dashboard_dashboardgroup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12633,9 +12623,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L146",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_key_components",
-      "target": "layouts_dashboard_dashboardnavbar_dashboardtoolbar"
+      "target": "layouts_dashboard_dashboardnavbar_dashboardtoolbar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12643,9 +12633,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L142",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_key_components",
-      "target": "layouts_dashboard_dashboardpanel"
+      "target": "layouts_dashboard_dashboardpanel",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12653,9 +12643,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L129",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_key_components",
-      "target": "layouts_dashboard_dashboardsidebar"
+      "target": "layouts_dashboard_dashboardsidebar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12663,9 +12653,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L151",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_dashboard_key_components",
-      "target": "layouts_dashboard_unavigationmenu_in_sidebar"
+      "target": "layouts_dashboard_unavigationmenu_in_sidebar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12673,9 +12663,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs",
-      "target": "layouts_docs_docs_layout"
+      "target": "layouts_docs_docs_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12683,9 +12673,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_app_shell"
+      "target": "layouts_docs_app_shell",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12693,9 +12683,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_component_tree"
+      "target": "layouts_docs_component_tree",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12703,9 +12693,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L144",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_key_components"
+      "target": "layouts_docs_key_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12713,9 +12703,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L76",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_layout"
+      "target": "layouts_docs_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12723,9 +12713,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L98",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_page"
+      "target": "layouts_docs_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12733,9 +12723,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_docs_layout",
-      "target": "layouts_docs_when_to_use"
+      "target": "layouts_docs_when_to_use",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12743,9 +12733,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L138",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_page",
-      "target": "layouts_docs_common_mistakes"
+      "target": "layouts_docs_common_mistakes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12753,9 +12743,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/docs.md",
       "source_location": "L134",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_docs_page",
-      "target": "layouts_docs_how_nesting_works"
+      "target": "layouts_docs_how_nesting_works",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12763,9 +12753,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor",
-      "target": "layouts_editor_editor_layout"
+      "target": "layouts_editor_editor_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12773,9 +12763,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_basic_editor"
+      "target": "layouts_editor_basic_editor",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12783,9 +12773,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_component_tree"
+      "target": "layouts_editor_component_tree",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12793,9 +12783,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L83",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_content_types"
+      "target": "layouts_editor_content_types",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12803,9 +12793,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_key_components"
+      "target": "layouts_editor_key_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12813,9 +12803,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_toolbar_modes"
+      "target": "layouts_editor_toolbar_modes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12823,9 +12813,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_when_to_use"
+      "target": "layouts_editor_when_to_use",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12833,9 +12823,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/editor.md",
       "source_location": "L96",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_editor_editor_layout",
-      "target": "layouts_editor_with_document_sidebar"
+      "target": "layouts_editor_with_document_sidebar",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12843,9 +12833,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing",
-      "target": "layouts_landing_landing_page_layout"
+      "target": "layouts_landing_landing_page_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12853,9 +12843,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_landing_page_layout",
-      "target": "layouts_landing_app_shell"
+      "target": "layouts_landing_app_shell",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12863,9 +12853,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L120",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_landing_page_layout",
-      "target": "layouts_landing_key_components"
+      "target": "layouts_landing_key_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12873,9 +12863,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L71",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_landing_page_layout",
-      "target": "layouts_landing_landing_page"
+      "target": "layouts_landing_landing_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12883,9 +12873,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L131",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_landing_page_layout",
-      "target": "layouts_landing_variations"
+      "target": "layouts_landing_variations",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12893,9 +12883,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_landing_page_layout",
-      "target": "layouts_landing_when_to_use"
+      "target": "layouts_landing_when_to_use",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12903,9 +12893,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_app_shell",
-      "target": "layouts_landing_common_mistakes"
+      "target": "layouts_landing_common_mistakes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12913,9 +12903,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L133",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_variations",
-      "target": "layouts_landing_alternating_feature_sections"
+      "target": "layouts_landing_alternating_feature_sections",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12923,9 +12913,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L145",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_variations",
-      "target": "layouts_landing_blog_listing"
+      "target": "layouts_landing_blog_listing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12933,9 +12923,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/layouts/landing.md",
       "source_location": "L166",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "layouts_landing_variations",
-      "target": "layouts_landing_changelog"
+      "target": "layouts_landing_changelog",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12943,9 +12933,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth",
-      "target": "recipes_auth_auth_forms"
+      "target": "recipes_auth_auth_forms",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12953,9 +12943,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L97",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth_auth_forms",
-      "target": "recipes_auth_custom_auth_layout"
+      "target": "recipes_auth_custom_auth_layout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12963,9 +12953,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L155",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth_auth_forms",
-      "target": "recipes_auth_tips"
+      "target": "recipes_auth_tips",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12973,9 +12963,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth_auth_forms",
-      "target": "recipes_auth_uauthform_recommended"
+      "target": "recipes_auth_uauthform_recommended",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12983,9 +12973,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L76",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth_uauthform_recommended",
-      "target": "recipes_auth_uauthform_key_props"
+      "target": "recipes_auth_uauthform_key_props",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -12993,9 +12983,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/auth.md",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_auth_uauthform_recommended",
-      "target": "recipes_auth_uauthform_key_slots"
+      "target": "recipes_auth_uauthform_key_slots",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13003,9 +12993,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables",
-      "target": "recipes_data_tables_data_tables"
+      "target": "recipes_data_tables_data_tables",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13013,9 +13003,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_basic_table"
+      "target": "recipes_data_tables_basic_table",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13023,9 +13013,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L217",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_tips"
+      "target": "recipes_data_tables_tips",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13033,9 +13023,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L181",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_with_async_data_nuxt"
+      "target": "recipes_data_tables_with_async_data_nuxt",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13043,9 +13033,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L145",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_with_pagination"
+      "target": "recipes_data_tables_with_pagination",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13053,9 +13043,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L101",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_with_row_selection"
+      "target": "recipes_data_tables_with_row_selection",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13063,9 +13053,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/data-tables.md",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_data_tables_data_tables",
-      "target": "recipes_data_tables_with_search_and_filters_dashboard"
+      "target": "recipes_data_tables_with_search_and_filters_dashboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13073,9 +13063,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_navigation",
-      "target": "recipes_navigation_navigation"
+      "target": "recipes_navigation_navigation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13083,9 +13073,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_navigation_navigation",
-      "target": "recipes_navigation_breadcrumbs"
+      "target": "recipes_navigation_breadcrumbs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13093,9 +13083,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_navigation_navigation",
-      "target": "recipes_navigation_header_with_mobile_menu"
+      "target": "recipes_navigation_header_with_mobile_menu",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13103,9 +13093,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_navigation_navigation",
-      "target": "recipes_navigation_sidebar_navigation_dashboard"
+      "target": "recipes_navigation_sidebar_navigation_dashboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13113,9 +13103,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L57",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_navigation_navigation",
-      "target": "recipes_navigation_tab_navigation_within_a_page"
+      "target": "recipes_navigation_tab_navigation_within_a_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13123,9 +13113,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays",
-      "target": "recipes_overlays_overlays"
+      "target": "recipes_overlays_overlays",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13133,9 +13123,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L117",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays_overlays",
-      "target": "recipes_overlays_command_palette"
+      "target": "recipes_overlays_command_palette",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13143,9 +13133,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays_overlays",
-      "target": "recipes_overlays_confirmation_dialog"
+      "target": "recipes_overlays_confirmation_dialog",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13153,9 +13143,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L151",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays_overlays",
-      "target": "recipes_overlays_drawer_bottom_sheet"
+      "target": "recipes_overlays_drawer_bottom_sheet",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13163,9 +13153,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L72",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays_overlays",
-      "target": "recipes_overlays_form_in_a_slideover"
+      "target": "recipes_overlays_form_in_a_slideover",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13173,9 +13163,9 @@
       "source_file": ".claude/skills/nuxt-ui/references/recipes/overlays.md",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "recipes_overlays_overlays",
-      "target": "recipes_overlays_programmatic_confirmation_useoverlay"
+      "target": "recipes_overlays_programmatic_confirmation_useoverlay",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13183,9 +13173,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_graphify"
+      "target": "claude_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13193,9 +13183,9 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "readme",
-      "target": "readme_play_er"
+      "target": "readme_play_er",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13203,9 +13193,9 @@
       "source_file": "README.md",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "readme_play_er",
-      "target": "readme_development_server"
+      "target": "readme_development_server",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13213,9 +13203,9 @@
       "source_file": "README.md",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "readme_play_er",
-      "target": "readme_production"
+      "target": "readme_production",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13223,9 +13213,9 @@
       "source_file": "README.md",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "readme_play_er",
-      "target": "readme_setup"
+      "target": "readme_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13233,9 +13223,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup",
-      "target": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan"
+      "target": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13243,9 +13233,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_conventions_for_this_plan"
+      "target": "plans_2026_06_11_6_reds_summer_cup_conventions_for_this_plan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13253,9 +13243,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_file_structure"
+      "target": "plans_2026_06_11_6_reds_summer_cup_file_structure",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13263,9 +13253,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L1629",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_self_review_notes_author"
+      "target": "plans_2026_06_11_6_reds_summer_cup_self_review_notes_author",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13273,9 +13263,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L919",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_10_registration_endpoint_registrations_post_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_10_registration_endpoint_registrations_post_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13283,9 +13273,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L1096",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_11_registration_component_summercupregistration_vue"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_11_registration_component_summercupregistration_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13293,9 +13283,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L1373",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_12_tournament_page_6_reds_summer_cup_vue"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_12_tournament_page_6_reds_summer_cup_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13303,9 +13293,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L1585",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_13_end_to_end_verification_with_a_real_brevo_key"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_13_end_to_end_verification_with_a_real_brevo_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13313,9 +13303,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L54",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_1_test_runner_vitest_setup"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_1_test_runner_vitest_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13323,9 +13313,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L113",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_2_tournament_data_shared_data_summercup_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_2_tournament_data_shared_data_summercup_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13333,9 +13323,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L229",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_3_epc_qr_payload_builders_shared_summercup_epc_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_3_epc_qr_payload_builders_shared_summercup_epc_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13343,9 +13333,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L332",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_4_capacity_rules_shared_summercup_capacity_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_4_capacity_rules_shared_summercup_capacity_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13353,9 +13343,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L511",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_5_confirmation_email_builder_shared_summercup_email_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_5_confirmation_email_builder_shared_summercup_email_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13363,9 +13353,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L641",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_6_database_table_migration"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_6_database_table_migration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13373,9 +13363,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L716",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_7_brevo_email_util_server_utils_brevo_ts_runtime_config"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_7_brevo_email_util_server_utils_brevo_ts_runtime_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13383,9 +13373,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L804",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_8_availability_endpoint_availability_get_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_8_availability_endpoint_availability_get_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13393,9 +13383,9 @@
       "source_file": "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
       "source_location": "L869",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_11_6_reds_summer_cup_6_reds_summer_cup_2026_implementation_plan",
-      "target": "plans_2026_06_11_6_reds_summer_cup_task_9_qr_serving_endpoint_registrations_id_qr_png_get_ts"
+      "target": "plans_2026_06_11_6_reds_summer_cup_task_9_qr_serving_endpoint_registrations_id_qr_png_get_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13403,9 +13393,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13413,9 +13403,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_file_structure"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_file_structure",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13423,9 +13413,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L841",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_self_review"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_self_review",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13433,9 +13423,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L28",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_1_results_data_model_2026_06_17_data"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_1_results_data_model_2026_06_17_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13443,9 +13433,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L112",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_2_resolvematch_frame_counts_and_match_winner"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_2_resolvematch_frame_counts_and_match_winner",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13453,9 +13443,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L208",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_3_buildresultsgrid_derived_cross_table_matrix"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_3_buildresultsgrid_derived_cross_table_matrix",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13463,9 +13453,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L289",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_4_computedaystandings_ordering_points"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_4_computedaystandings_ordering_points",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13473,9 +13463,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L484",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_5_computesummerranking_overall_aggregation"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_5_computesummerranking_overall_aggregation",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13483,9 +13473,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L573",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_6_summercupresultsgrid_vue_cross_table_component"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_6_summercupresultsgrid_vue_cross_table_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13493,9 +13483,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L654",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_7_summercupstandings_vue_day_standings_component"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_7_summercupstandings_vue_day_standings_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13503,9 +13493,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L713",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_8_wire_results_ranking_into_the_page"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_8_wire_results_ranking_into_the_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13513,9 +13503,9 @@
       "source_file": "docs/superpowers/plans/2026-06-14-summer-cup-results-ranking.md",
       "source_location": "L816",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_14_summer_cup_results_ranking_summer_cup_results_ranking_implementation_plan",
-      "target": "plans_2026_06_14_summer_cup_results_ranking_task_9_full_verification"
+      "target": "plans_2026_06_14_summer_cup_results_ranking_task_9_full_verification",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13523,9 +13513,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks",
-      "target": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan"
+      "target": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13533,9 +13523,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_file_structure"
+      "target": "plans_2026_06_15_summer_cup_breaks_file_structure",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13543,9 +13533,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L664",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_self_review"
+      "target": "plans_2026_06_15_summer_cup_breaks_self_review",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13553,9 +13543,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_1_data_model_sample_break_data"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_1_data_model_sample_break_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13563,9 +13553,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L107",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_2_pure_break_logic_tdd"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_2_pure_break_logic_tdd",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13573,9 +13563,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L306",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_3_per_day_breaks_component"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_3_per_day_breaks_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13583,9 +13573,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L351",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_4_tournament_breaks_ranking_component"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_4_tournament_breaks_ranking_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13593,9 +13583,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L405",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_5_wire_breaks_into_the_results_page"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_5_wire_breaks_into_the_results_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13603,9 +13593,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L562",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_6_breaks_table_on_the_wedstrijdblad"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_6_breaks_table_on_the_wedstrijdblad",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13613,9 +13603,9 @@
       "source_file": "docs/superpowers/plans/2026-06-15-summer-cup-breaks.md",
       "source_location": "L650",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_15_summer_cup_breaks_summer_cup_breaks_30_implementation_plan",
-      "target": "plans_2026_06_15_summer_cup_breaks_task_7_final_verification"
+      "target": "plans_2026_06_15_summer_cup_breaks_task_7_final_verification",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13623,9 +13613,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13633,9 +13623,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_file_structure"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_file_structure",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13643,9 +13633,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L787",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_self_review_notes"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_self_review_notes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13653,9 +13643,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L32",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_1_isplaydaypast_deadline_helper"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_1_isplaydaypast_deadline_helper",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13663,9 +13653,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L106",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_2_email_shared_shell_cancel_link_cancellation_email"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_2_email_shared_shell_cancel_link_cancellation_email",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13673,9 +13663,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L304",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_3_schema_column_migration"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_3_schema_column_migration",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13683,9 +13673,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L394",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_4_registration_endpoint_generate_token_cancel_url"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_4_registration_endpoint_generate_token_cancel_url",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13693,9 +13683,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L454",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_5_cancel_get_endpoint_summary"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_5_cancel_get_endpoint_summary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13703,9 +13693,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L515",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_6_cancel_post_endpoint_delete_email"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_6_cancel_post_endpoint_delete_email",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13713,9 +13703,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L606",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_7_uitschrijven_page"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_7_uitschrijven_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13723,9 +13713,9 @@
       "source_file": "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md",
       "source_location": "L757",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plans_2026_06_18_summer_cup_uitschrijflink_summer_cup_uitschrijflink_implementation_plan",
-      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_8_full_verification_graph_update"
+      "target": "plans_2026_06_18_summer_cup_uitschrijflink_task_8_full_verification_graph_update",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13733,9 +13723,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13743,9 +13733,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_1_page_routing"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_1_page_routing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13753,9 +13743,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L48",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_2_content_explanation_rules"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_2_content_explanation_rules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13763,9 +13753,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_3_registration_form_flow"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_3_registration_form_flow",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13773,9 +13763,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L86",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_4_epc_sepa_qr_code"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_4_epc_sepa_qr_code",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13783,9 +13773,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L112",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_5_data_model_capacity"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_5_data_model_capacity",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13793,9 +13783,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L138",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_6_api_endpoints_server_api_6_reds_summer_cup"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_6_api_endpoints_server_api_6_reds_summer_cup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13803,9 +13793,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L147",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_7_brevo_confirmation_email"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_7_brevo_confirmation_email",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13813,9 +13803,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L171",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_8_config_secrets"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_8_config_secrets",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13823,9 +13813,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L199",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_9_out_of_scope_v1"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_9_out_of_scope_v1",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13833,9 +13823,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_context_existing_codebase"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_context_existing_codebase",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13843,9 +13833,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_goal"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13853,9 +13843,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L207",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_6_reds_summer_cup_2026_registration_page",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_testing"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_testing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13863,9 +13853,9 @@
       "source_file": "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md",
       "source_location": "L184",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_11_6_reds_summer_cup_design_8_config_secrets",
-      "target": "specs_2026_06_11_6_reds_summer_cup_design_play_days_registrable_8_total"
+      "target": "specs_2026_06_11_6_reds_summer_cup_design_play_days_registrable_8_total",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13873,9 +13863,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13883,9 +13873,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_data_new_2026_06_19_entry_in_shared_data_summercupresults_ts"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_data_new_2026_06_19_entry_in_shared_data_summercupresults_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13893,9 +13883,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_goal"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13903,9 +13893,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L77",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_logic_computesummerranking_in_shared_summercup_standings_ts"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_logic_computesummerranking_in_shared_summercup_standings_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13913,9 +13903,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L138",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_out_of_scope_unchanged"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_out_of_scope_unchanged",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13923,9 +13913,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_rules_applied"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_rules_applied",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13933,9 +13923,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L128",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_testing_test_summercup_standings_test_ts"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_testing_test_summercup_standings_test_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13943,9 +13933,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L121",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_6_reds_summer_cup_19_06_play_day_best_result_per_tournament",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_ui_app_pages_6_reds_summer_cup_vue"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_ui_app_pages_6_reds_summer_cup_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13953,9 +13943,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L62",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_data_new_2026_06_19_entry_in_shared_data_summercupresults_ts",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_expected_2026_06_19_day_standings_test_fixture"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_expected_2026_06_19_day_standings_test_fixture",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13963,9 +13953,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-best-result-per-tournament-design.md",
       "source_location": "L102",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_logic_computesummerranking_in_shared_summercup_standings_ts",
-      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_expected_summer_ranking_test_fixture"
+      "target": "specs_2026_06_14_summer_cup_best_result_per_tournament_design_expected_summer_ranking_test_fixture",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13973,9 +13963,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13983,9 +13973,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L50",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_data_changes"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_data_changes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13993,9 +13983,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_data_model_shared_data_summercupresults_ts"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_data_model_shared_data_summercupresults_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14003,9 +13993,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_goal"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14013,9 +14003,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L113",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_out_of_scope"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_out_of_scope",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14023,9 +14013,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_resolvematch_shared_summercup_standings_ts"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_resolvematch_shared_summercup_standings_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14033,9 +14023,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L93",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_resulting_summer_ranking"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_resulting_summer_ranking",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14043,9 +14033,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L102",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_6_reds_summer_cup_frames_won_match_results",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_tests_test_summercup_standings_test_ts"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_tests_test_summercup_standings_test_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14053,9 +14043,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L58",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_data_changes",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_17_06_5_players_2_frames_redone_as_a_2_frame_example"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_17_06_5_players_2_frames_redone_as_a_2_frame_example",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14063,9 +14053,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-frames-won-results-design.md",
       "source_location": "L52",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_frames_won_results_design_data_changes",
-      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_19_06_8_players_1_frame_migrate_representation_only"
+      "target": "specs_2026_06_14_summer_cup_frames_won_results_design_19_06_8_players_1_frame_migrate_representation_only",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14073,9 +14063,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14083,9 +14073,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L98",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_computation_same_module_pure_unit_tested"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_computation_same_module_pure_unit_tested",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14093,9 +14083,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_data_model_shared_summercup_results_ts"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_data_model_shared_summercup_results_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14103,9 +14093,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_documented_rules_source_of_truth_already_on_the_page"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_documented_rules_source_of_truth_already_on_the_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14113,9 +14103,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_goal"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14123,9 +14113,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L186",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_out_of_scope_yagni"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_out_of_scope_yagni",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14133,9 +14123,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L173",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_testing"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_testing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14143,9 +14133,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L147",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_6_reds_summer_cup_results_ranking",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_ui_rangschikking_section"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_ui_rangschikking_section",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14153,9 +14143,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_data_model_shared_summercup_results_ts",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_2026_06_17_data"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_2026_06_17_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14163,9 +14153,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L68",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_data_model_shared_summercup_results_ts",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_representing_a_match"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_representing_a_match",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14173,9 +14163,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L134",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_computation_same_module_pure_unit_tested",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_expected_2026_06_17_standings_test_fixtures"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_expected_2026_06_17_standings_test_fixtures",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14183,9 +14173,9 @@
       "source_file": "docs/superpowers/specs/2026-06-14-summer-cup-results-ranking-design.md",
       "source_location": "L160",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_14_summer_cup_results_ranking_design_ui_rangschikking_section",
-      "target": "specs_2026_06_14_summer_cup_results_ranking_design_components"
+      "target": "specs_2026_06_14_summer_cup_results_ranking_design_components",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14193,9 +14183,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14203,9 +14193,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_architecture"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_architecture",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14213,9 +14203,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_decisions_from_brainstorming"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_decisions_from_brainstorming",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14223,9 +14213,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_goal"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14233,9 +14223,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L161",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_out_of_scope"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_out_of_scope",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14243,9 +14233,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L143",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_6_reds_summer_cup_breaks_30_recording_display",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_testing"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_testing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14253,9 +14243,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_1_data_model"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_1_data_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14263,9 +14253,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_2_pure_logic_shared_summercup_breaks_ts"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_2_pure_logic_shared_summercup_breaks_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14273,9 +14263,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L96",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_3_per_day_breaks_display_app_components_summercupbreaks_vue"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_3_per_day_breaks_display_app_components_summercupbreaks_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14283,9 +14273,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L107",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_4_tournament_breaks_ranking_app_components_summercupbreaksranking_vue"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_4_tournament_breaks_ranking_app_components_summercupbreaksranking_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14293,9 +14283,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-breaks-design.md",
       "source_location": "L119",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_breaks_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_breaks_design_5_wedstrijdblad_breaks_table"
+      "target": "specs_2026_06_15_summer_cup_breaks_design_5_wedstrijdblad_breaks_table",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14303,9 +14293,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14313,9 +14303,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14323,9 +14313,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_goal"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14333,9 +14323,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L111",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_out_of_scope"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_out_of_scope",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14343,9 +14333,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_sheet_content"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_sheet_content",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14353,9 +14343,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L105",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_testing"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_testing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14363,9 +14353,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_6_reds_summer_cup_wedstrijdblad_printable_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_visibility"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_visibility",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14373,9 +14363,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L42",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_1_routing"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_1_routing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14383,9 +14373,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L57",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_2_date_play_day_mapping_pure_in_shared"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_2_date_play_day_mapping_pure_in_shared",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14393,9 +14383,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L68",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_3_data_endpoint"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_3_data_endpoint",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14403,9 +14393,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L80",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_4_page"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_4_page",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14413,9 +14403,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-design.md",
       "source_location": "L94",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_design_architecture",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_5_print_css"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_design_5_print_css",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14423,9 +14413,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14433,9 +14423,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_aanpak"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_aanpak",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14443,9 +14433,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_achtergrond_huidige_situatie"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_achtergrond_huidige_situatie",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14453,9 +14443,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L42",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14463,9 +14453,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L144",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_buiten_scope"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_buiten_scope",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14473,9 +14463,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_goal"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14483,9 +14473,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L136",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_6_reds_summer_cup_leeg_wedstrijdblad_printable_blank_match_sheet",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_testing"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_testing",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14493,9 +14483,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_1_gedeelde_component"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_1_gedeelde_component",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14503,9 +14493,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_2_gedeelde_helper"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_2_gedeelde_helper",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14513,9 +14503,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L96",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_3_pagina_ingevuld_blad_refactor"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_3_pagina_ingevuld_blad_refactor",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14523,9 +14513,9 @@
       "source_file": "docs/superpowers/specs/2026-06-15-summer-cup-wedstrijdblad-leeg-design.md",
       "source_location": "L108",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_architectuur",
-      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_4_pagina_leeg_blad_nieuw"
+      "target": "specs_2026_06_15_summer_cup_wedstrijdblad_leeg_design_4_pagina_leeg_blad_nieuw",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14533,9 +14523,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14543,9 +14533,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L69",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_breaks"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_breaks",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14553,9 +14543,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_interface_ui"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_interface_ui",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14563,9 +14553,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_problem"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_problem",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14573,9 +14563,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L61",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_regulation_text_index_vue"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_regulation_text_index_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14583,9 +14573,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_scoring_rule_computesummerranking"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_scoring_rule_computesummerranking",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14593,9 +14583,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L76",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_summer_cup_best_3_results_points_cap",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_testing_tdd"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_testing_tdd",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14603,9 +14593,9 @@
       "source_file": "docs/superpowers/specs/2026-06-17-summer-cup-best-3-results-design.md",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_17_summer_cup_best_3_results_design_scoring_rule_computesummerranking",
-      "target": "specs_2026_06_17_summer_cup_best_3_results_design_worked_totals_current_test_data"
+      "target": "specs_2026_06_17_summer_cup_best_3_results_design_worked_totals_current_test_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14613,9 +14603,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14623,9 +14613,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L97",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_cancel_api_endpoints"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_cancel_api_endpoints",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14633,9 +14623,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_data_model"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_data_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14643,9 +14633,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L52",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_deadline_until_the_play_day_starts"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_deadline_until_the_play_day_starts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14653,9 +14643,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_delete_strategy_hard_delete"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_delete_strategy_hard_delete",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14663,9 +14653,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_email_shared_summercup_email_ts"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_email_shared_summercup_email_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14673,9 +14663,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L129",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_error_handling_summary"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_error_handling_summary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14683,9 +14673,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L115",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_page_app_pages_6_reds_summer_cup_uitschrijven_token_vue"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_page_app_pages_6_reds_summer_cup_uitschrijven_token_vue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14693,9 +14683,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_problem"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_problem",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14703,9 +14693,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L85",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_registration_flow_server_api_registrations_post_ts"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_registration_flow_server_api_registrations_post_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14713,9 +14703,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_security_why_not_the_registration_id"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_security_why_not_the_registration_id",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14723,9 +14713,9 @@
       "source_file": "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md",
       "source_location": "L138",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "specs_2026_06_18_summer_cup_uitschrijflink_design_summer_cup_uitschrijflink_in_de_bevestigingsmail",
-      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_testing_tdd_shared_unit_tests_the_repo_pattern"
+      "target": "specs_2026_06_18_summer_cup_uitschrijflink_design_testing_tdd_shared_unit_tests_the_repo_pattern",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -16619,5 +16609,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "108e3a6a2a95acd4c68dd78a8cada7b6b5c49ca9"
+  "built_at_commit": "809c79b88409070c8cd0db0d111a3f72e632f453"
 }

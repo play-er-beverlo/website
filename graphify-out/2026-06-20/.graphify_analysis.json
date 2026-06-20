@@ -1,0 +1,559 @@
+{
+  "communities": {
+    "0": [
+      "app_component_summercup_registration",
+      "app_component_summercup_results_grid",
+      "app_component_summercup_standings",
+      "app_page_summer_cup",
+      "component_summercupregistration",
+      "concept_brevo",
+      "concept_cloudflare_d1",
+      "concept_epc_qr",
+      "concept_nuxt4",
+      "concept_valibot",
+      "concept_vitest",
+      "games_darts_png",
+      "nuxt_config",
+      "plan_summer_cup_registration",
+      "plan_summer_cup_results",
+      "play_er_store_front",
+      "readme_project",
+      "server_api_availability",
+      "server_api_qr_get",
+      "server_api_qr_png",
+      "server_api_registrations_post",
+      "server_db_schema",
+      "server_utils_brevo",
+      "shared_data_summercup",
+      "shared_data_summercupresults",
+      "shared_summercup_capacity",
+      "shared_summercup_email",
+      "shared_summercup_epc",
+      "shared_summercup_standings",
+      "summer_cup_design",
+      "summer_cup_logo_dark_svg",
+      "summer_cup_logo_svg",
+      "test_sanity",
+      "test_summercup_capacity",
+      "test_summercup_data",
+      "test_summercup_email",
+      "test_summercup_epc",
+      "test_summercup_standings",
+      "vitest_config"
+    ],
+    "1": [
+      "6_reds_summer_cup_availability_get",
+      "6_reds_summer_cup_registrations_post",
+      "6_reds_summer_cup_registrations_post_bodyschema",
+      "6_reds_summer_cup_registrations_post_denymessages",
+      "6_reds_summer_cup_registrations_post_ispngbase64",
+      "data_summercup",
+      "data_summercup_finaleday",
+      "data_summercup_getplayday",
+      "data_summercup_payment",
+      "data_summercup_playday",
+      "data_summercup_playdays",
+      "db_schema",
+      "db_schema_summercupregistrations",
+      "id_players_get",
+      "id_qr_png_get",
+      "summercup_capacity",
+      "summercup_capacity_capacityresult",
+      "summercup_capacity_checkregistrationallowed",
+      "summercup_capacity_existingregistration",
+      "summercup_capacity_normalizeemail",
+      "summercup_capacity_registrationdenyreason",
+      "summercup_email",
+      "summercup_email_buildconfirmationemail",
+      "summercup_email_escapehtml",
+      "summercup_epc",
+      "summercup_epc_buildcommunication",
+      "summercup_epc_buildepcqrpayload",
+      "summercup_wedstrijdblad",
+      "summercup_wedstrijdblad_dateparamfromplaydayid",
+      "summercup_wedstrijdblad_framespermatch",
+      "summercup_wedstrijdblad_playdayfromdateparam",
+      "test_summercup_capacity_test",
+      "test_summercup_capacity_test_make",
+      "test_summercup_capacity_test_now",
+      "test_summercup_data_test",
+      "test_summercup_email_test",
+      "test_summercup_epc_test",
+      "test_summercup_wedstrijdblad_test"
+    ],
+    "2": [
+      "api_bookings_post",
+      "api_bookings_post_bodyschema",
+      "bookings_id_get",
+      "bookings_id_get_paramsschema",
+      "bookings_slots_get",
+      "bookings_slots_get_queryschema",
+      "data_booking",
+      "data_booking_durations",
+      "data_booking_gamelocationdisplaynames",
+      "data_booking_gamelocationeventtypeidmapping",
+      "data_booking_gamelocationpostfix",
+      "data_booking_gamelocations",
+      "data_booking_games",
+      "db_schema_bookings",
+      "id_cancel_post",
+      "id_cancel_post_paramsschema",
+      "shared_helpers",
+      "shared_helpers_timingsafeequalhex",
+      "stripe_callback_get",
+      "stripe_callback_get_queryschema",
+      "utils_cal",
+      "utils_cal_apikeys",
+      "utils_cal_bookingguests",
+      "utils_cal_cancelbooking",
+      "utils_cal_createbooking",
+      "utils_cal_deletereservedslot",
+      "utils_cal_getslots",
+      "utils_cal_reserveslot",
+      "utils_cal_runtimeconfig",
+      "webhooks_cal_post",
+      "webhooks_cal_post_runtimeconfig",
+      "webhooks_stripe_post",
+      "webhooks_stripe_post_runtimeconfig",
+      "webhooks_stripe_post_stripe"
+    ],
+    "3": [
+      "data_summercupresults",
+      "data_summercupresults_break",
+      "data_summercupresults_dayplayer",
+      "data_summercupresults_match",
+      "data_summercupresults_playdayresults",
+      "summercup_breaks",
+      "summercup_breaks_buildrows",
+      "summercup_breaks_comparebreaklists",
+      "summercup_breaks_computebreaksranking",
+      "summercup_breaks_computedaybreaks",
+      "summercup_breaks_playerbreaks",
+      "summercup_standings",
+      "summercup_standings_breaktie",
+      "summercup_standings_buildresultsgrid",
+      "summercup_standings_computedaystandings",
+      "summercup_standings_computesummerranking",
+      "summercup_standings_daystanding",
+      "summercup_standings_headtoheadframes",
+      "summercup_standings_matchoutcome",
+      "summercup_standings_orderplayers",
+      "summercup_standings_resolvematch",
+      "summercup_standings_summerrow",
+      "summercup_standings_summertally",
+      "summercup_standings_tally",
+      "test_summercup_breaks_test",
+      "test_summercup_breaks_test_anna",
+      "test_summercup_breaks_test_bob",
+      "test_summercup_breaks_test_cas",
+      "test_summercup_breaks_test_day",
+      "test_summercup_standings_test",
+      "test_summercup_standings_test_playdayresults"
+    ],
+    "4": [
+      "component_summercupbreaks",
+      "component_summercupbreaksranking",
+      "component_summercupresultsgrid",
+      "component_summercupstandings",
+      "component_summercupwedstrijdbladsheet",
+      "concept_best3rule",
+      "concept_break_interface",
+      "concept_daystanding",
+      "concept_playdayresults",
+      "concept_playerbreaks",
+      "concept_summerrow",
+      "page_summercup_index",
+      "page_wedstrijdblad_date",
+      "page_wedstrijdblad_leeg",
+      "server_api_players",
+      "shared_summerbreaks_ts",
+      "shared_summercup_ts",
+      "shared_summercupresults_ts",
+      "shared_summerstandings_ts",
+      "shared_summerwedstrijdblad_ts",
+      "summer_cup_best3_design",
+      "summer_cup_best_result_design",
+      "summer_cup_breaks_design",
+      "summer_cup_breaks_plan",
+      "summer_cup_frames_design",
+      "summer_cup_results_ranking_design",
+      "summer_cup_wedstrijdblad_design",
+      "summer_cup_wedstrijdblad_leeg_design",
+      "test_summercup_breaks",
+      "test_summercup_wedstrijdblad"
+    ],
+    "5": [
+      "package_devdependencies",
+      "package_devdependencies_drizzle_kit",
+      "package_devdependencies_types_qrcode",
+      "package_devdependencies_vitest",
+      "package_devdependencies_wrangler",
+      "wrangler",
+      "wrangler_assets",
+      "wrangler_assets_binding",
+      "wrangler_assets_directory",
+      "wrangler_compatibility_date",
+      "wrangler_d1_databases",
+      "wrangler_env",
+      "wrangler_env_preview",
+      "wrangler_main",
+      "wrangler_name",
+      "wrangler_observability",
+      "wrangler_observability_enabled",
+      "wrangler_preview_d1_databases",
+      "wrangler_preview_vars",
+      "wrangler_routes",
+      "wrangler_schema",
+      "wrangler_vars",
+      "wrangler_vars_nuxt_cal_booking_guests",
+      "wrangler_vars_nuxt_public_stripe_publishable_api_key"
+    ],
+    "6": [
+      "package_dependencies",
+      "package_dependencies_date_fns",
+      "package_dependencies_drizzle_orm",
+      "package_dependencies_eslint",
+      "package_dependencies_internationalized_date",
+      "package_dependencies_libsql_client",
+      "package_dependencies_nuxt",
+      "package_dependencies_nuxt_eslint",
+      "package_dependencies_nuxt_fonts",
+      "package_dependencies_nuxt_icon",
+      "package_dependencies_nuxt_image",
+      "package_dependencies_nuxt_ui",
+      "package_dependencies_nuxthub_core",
+      "package_dependencies_nuxtjs_seo",
+      "package_dependencies_qrcode",
+      "package_dependencies_stripe",
+      "package_dependencies_stripe_stripe_js",
+      "package_dependencies_tailwindcss",
+      "package_dependencies_unhead_vue",
+      "package_dependencies_valibot",
+      "package_dependencies_vueuse_core",
+      "package_dependencies_vueuse_nuxt"
+    ],
+    "7": [
+      "concept_nuxtui4",
+      "concept_tailwind4",
+      "skill_auth",
+      "skill_chat",
+      "skill_component_selection",
+      "skill_components",
+      "skill_conventions",
+      "skill_dashboard",
+      "skill_data_tables",
+      "skill_design_system",
+      "skill_docs",
+      "skill_editor",
+      "skill_forms",
+      "skill_landing",
+      "skill_navigation",
+      "skill_nuxt_ui",
+      "skill_overlays"
+    ],
+    "8": [
+      "package",
+      "package_author",
+      "package_author_email",
+      "package_author_name",
+      "package_author_url",
+      "package_name",
+      "package_packagemanager",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_generate",
+      "package_scripts_postinstall",
+      "package_scripts_preview",
+      "package_scripts_test",
+      "package_type",
+      "package_version"
+    ],
+    "9": [
+      "concept_golf_billiards",
+      "concept_pool",
+      "concept_snooker",
+      "golfbiljart_image",
+      "pool_image",
+      "snooker_image"
+    ],
+    "10": [
+      "apple_touch_icon",
+      "favicon_96",
+      "favicon_svg",
+      "web_manifest_192",
+      "web_manifest_512"
+    ],
+    "11": [
+      "logo_p_dark_svg",
+      "logo_p_svg",
+      "logo_player_dark_svg",
+      "logo_player_svg"
+    ],
+    "12": [
+      "utils_brevo",
+      "utils_brevo_brevoattachment",
+      "utils_brevo_brevocontact",
+      "utils_brevo_sendtransactionalemail"
+    ],
+    "13": [
+      "wedstrijdblad_leeg",
+      "wedstrijdblad_leeg_count",
+      "wedstrijdblad_leeg_date",
+      "wedstrijdblad_leeg_tournament"
+    ],
+    "14": [
+      "concept_play_er_venue",
+      "image_google_maps",
+      "image_home_banner"
+    ],
+    "15": [
+      "concept_tafelvoetbal",
+      "tafelvoetbal_jpg_image",
+      "tafelvoetbal_png_image"
+    ],
+    "16": [
+      "tsconfig",
+      "tsconfig_files",
+      "tsconfig_references"
+    ],
+    "17": [
+      "components_appbooking",
+      "components_appbooking_if"
+    ],
+    "18": [
+      "play_er_dark_png",
+      "play_er_dark_svg"
+    ],
+    "19": [
+      "play_er_png",
+      "play_er_svg"
+    ],
+    "20": [
+      "server_tsconfig",
+      "server_tsconfig_extends"
+    ],
+    "21": [
+      "wedstrijdblad_date",
+      "wedstrijdblad_date_names"
+    ],
+    "22": [
+      "6_reds_summer_cup_index"
+    ],
+    "23": [
+      "app_app"
+    ],
+    "24": [
+      "app_app_config"
+    ],
+    "25": [
+      "app_error"
+    ],
+    "26": [
+      "components_appfooter"
+    ],
+    "27": [
+      "components_summercupbreaks"
+    ],
+    "28": [
+      "components_summercupbreaksranking"
+    ],
+    "29": [
+      "components_summercupregistration"
+    ],
+    "30": [
+      "components_summercupresultsgrid"
+    ],
+    "31": [
+      "components_summercupstandings"
+    ],
+    "32": [
+      "components_summercupwedstrijdbladsheet"
+    ],
+    "33": [
+      "eslint_config"
+    ],
+    "34": [
+      "games_bingo_png"
+    ],
+    "35": [
+      "games_golfbiljart_jpg"
+    ],
+    "36": [
+      "icon_facebook_svg"
+    ],
+    "37": [
+      "icon_instagram_svg"
+    ],
+    "38": [
+      "layouts_default"
+    ],
+    "39": [
+      "pages_index"
+    ],
+    "40": [
+      "pnpm_workspace"
+    ],
+    "41": [
+      "test_sanity_test"
+    ]
+  },
+  "cohesion": {
+    "0": 0.10526315789473684,
+    "1": 0.10384068278805121,
+    "2": 0.0748663101604278,
+    "3": 0.12903225806451613,
+    "4": 0.17701149425287357,
+    "5": 0.09057971014492754,
+    "6": 0.09090909090909091,
+    "7": 0.11764705882352941,
+    "8": 0.11764705882352941,
+    "9": 0.4,
+    "10": 0.4,
+    "11": 0.5,
+    "12": 0.5,
+    "13": 0.5,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 0.6666666666666666,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0
+  },
+  "gods": [
+    {
+      "id": "plan_summer_cup_registration",
+      "label": "6 Reds SummER Cup 2026 Registration Implementation Plan",
+      "degree": 27
+    },
+    {
+      "id": "skill_nuxt_ui",
+      "label": "Nuxt UI Skill",
+      "degree": 16
+    },
+    {
+      "id": "summer_cup_design",
+      "label": "6 Reds SummER Cup Registration Page Design",
+      "degree": 12
+    },
+    {
+      "id": "page_summercup_index",
+      "label": "app/pages/6-reds-summer-cup/index.vue",
+      "degree": 12
+    },
+    {
+      "id": "plan_summer_cup_results",
+      "label": "Summer Cup Results and Ranking Implementation Plan",
+      "degree": 11
+    },
+    {
+      "id": "data_summercup_getplayday",
+      "label": "getPlayDay()",
+      "degree": 10
+    },
+    {
+      "id": "summer_cup_breaks_design",
+      "label": "SummER Cup Breaks Recording and Display Design",
+      "degree": 10
+    },
+    {
+      "id": "shared_summercupresults_ts",
+      "label": "shared/data/summerCupResults.ts",
+      "degree": 9
+    },
+    {
+      "id": "shared_summercup_ts",
+      "label": "shared/data/summerCup.ts",
+      "degree": 9
+    },
+    {
+      "id": "data_summercupresults_dayplayer",
+      "label": "DayPlayer",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Darts Game Image PNG",
+      "target": "6 Reds SummER Cup Registration Page Design",
+      "source_files": [
+        "public/images/games/darts.png",
+        "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Darts Game Image PNG` unexpectedly reaches hub `6 Reds SummER Cup Registration Page Design`"
+    },
+    {
+      "source": "Play-ER Store Front Photo",
+      "target": "6 Reds SummER Cup Registration Page Design",
+      "source_files": [
+        "public/images/play-er-store-front.jpg",
+        "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Play-ER Store Front Photo` unexpectedly reaches hub `6 Reds SummER Cup Registration Page Design`"
+    },
+    {
+      "source": "6 Reds SummER Cup Logo Dark SVG",
+      "target": "6 Reds SummER Cup Registration Page Design",
+      "source_files": [
+        "public/images/6-reds-summer-cup-logo-dark.svg",
+        "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `6 Reds SummER Cup Logo Dark SVG` unexpectedly reaches hub `6 Reds SummER Cup Registration Page Design`"
+    },
+    {
+      "source": "6 Reds SummER Cup Logo SVG",
+      "target": "6 Reds SummER Cup Registration Page Design",
+      "source_files": [
+        "public/images/6-reds-summer-cup-logo.svg",
+        "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `6 Reds SummER Cup Logo SVG` unexpectedly reaches hub `6 Reds SummER Cup Registration Page Design`"
+    },
+    {
+      "source": "6 Reds SummER Cup 2026 Registration Implementation Plan",
+      "target": "server/api/6-reds-summer-cup/registrations/[id]/qr.png.get.ts",
+      "source_files": [
+        "docs/superpowers/plans/2026-06-11-6-reds-summer-cup.md",
+        "server/api/6-reds-summer-cup/registrations/[id]/qr.png.get.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc \u2194 code); connects across different repos/directories; peripheral node `server/api/6-reds-summer-cup/registrations/[id]/qr.png.get.ts` unexpectedly reaches hub `6 Reds SummER Cup 2026 Registration Implementation Plan`"
+    }
+  ],
+  "tokens": {
+    "input": 219256,
+    "output": 25549
+  }
+}

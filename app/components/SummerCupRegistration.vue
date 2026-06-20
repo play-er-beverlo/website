@@ -173,6 +173,14 @@ const resetForm = async () => {
     <!-- Form -->
     <div v-else class="flex flex-col gap-8">
       <u-alert
+        title="Enkel voor leden van Play-ER"
+        description="De 6 Reds SummER Cup 2026 is voorbehouden voor leden van Play-ER. Schrijf je enkel in als je lid bent."
+        color="primary"
+        variant="subtle"
+        icon="i-lucide-lock"
+      />
+
+      <u-alert
         v-if="availability?.editionUniqueReached"
         title="Maximum deelnemers bereikt"
         description="Het maximum aantal unieke deelnemers (16) voor editie 2026 is bereikt. Nieuwe deelnemers kunnen niet meer inschrijven. Ben je al ingeschreven? Dan kan je nog een extra speeldag bijboeken zolang er plaats is."

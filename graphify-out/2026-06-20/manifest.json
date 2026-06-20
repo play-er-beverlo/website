@@ -35,8 +35,8 @@
     "semantic_hash": "d4c974bbe577337ddb07e25281199e9c"
   },
   "app/components/SummerCupRegistration.vue": {
-    "mtime": 1781969174.904577,
-    "ast_hash": "c87e7db6fbb8d35a193d878426743861",
+    "mtime": 1781962504.9182596,
+    "ast_hash": "0665ab40329cceff128ff455f244e639",
     "semantic_hash": ""
   },
   "app/components/SummerCupResultsGrid.vue": {
@@ -65,9 +65,9 @@
     "semantic_hash": "7c9d6443a954c0a8c889eec5a68e2ff0"
   },
   "app/pages/6-reds-summer-cup/index.vue": {
-    "mtime": 1781971026.4187899,
-    "ast_hash": "33d3e095dcf1ac95ab04fcaa2885f07c",
-    "semantic_hash": ""
+    "mtime": 1781763235.8308244,
+    "ast_hash": "04df449089d8880b93088fa75c4ca370",
+    "semantic_hash": "04df449089d8880b93088fa75c4ca370"
   },
   "app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue": {
     "mtime": 1781530704.020449,
@@ -80,9 +80,9 @@
     "semantic_hash": "4202e1680e44e5a13c77e58c34ccb333"
   },
   "app/pages/index.vue": {
-    "mtime": 1781970651.1197822,
-    "ast_hash": "53b05a176a0a8d09f0fbabbd6ec78a1d",
-    "semantic_hash": ""
+    "mtime": 1777818714.615777,
+    "ast_hash": "9f6aafeb7def7121c120119fee1da25a",
+    "semantic_hash": "9f6aafeb7def7121c120119fee1da25a"
   },
   "eslint.config.mjs": {
     "mtime": 1759668097.4698136,
@@ -672,11 +672,6 @@
   "public/web-app-manifest-512x512.png": {
     "mtime": 1759668097.479715,
     "ast_hash": "e380194d2015f3fafc724d142b0705b3",
-    "semantic_hash": ""
-  },
-  "app/components/AppHeader.vue": {
-    "mtime": 1781969088.513881,
-    "ast_hash": "ce4f2dcfe10d0c8762561b93bd99acdb",
     "semantic_hash": ""
   }
 }

@@ -1,16 +1,16 @@
-# Graph Report - play-er-website  (2026-06-20)
+# Graph Report - play-er-website  (2026-06-18)
 
 ## Corpus Check
-- 107 files · ~136,900 words
+- 106 files · ~136,305 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 752 nodes · 853 edges · 81 communities (65 shown, 16 thin omitted)
+- 751 nodes · 853 edges · 80 communities (64 shown, 16 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 31 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `108e3a6a`
+- Built from commit: `809c79b8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -107,7 +107,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (81 total, 16 thin omitted)
+## Communities (80 total, 16 thin omitted)
 
 ### Community 0 - "Summer Cup Registration System"
 Cohesion: 0.06

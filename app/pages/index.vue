@@ -20,102 +20,7 @@ useHead({
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <section id="home" class="w-full shadow-lg">
-    <!-- TODO: Static header -->
-    <!-- <header class="w-full fixed z-10"> -->
-    <header class="w-full">
-      <div class="mx-auto max-w-6xl px-6 flex justify-between h-20">
-        <a href="#" class="flex pe-8">
-          <img src="~/assets/images/P_Dark.svg" alt="Play-ER icon" width="56" />
-        </a>
-        <nav class="hidden md:flex text-white items-center gap-6">
-          <!-- TODO: Static header -->
-          <!-- TODO: This route.hash is not working initially -->
-          <!-- <a href="#" class="p-4" :class="route.hash === '' ? 'active' : ''">HOME</a>
-        <a href="#reserveren" class="p-4" :class="route.hash === '#reserveren' ? 'active' : ''"
-          >RESERVEREN</a
-        >
-        <a href="#contact" class="p-4" :class="route.hash === '#contact' ? 'active' : ''"
-          >CONTACT</a
-        >
-        <a href="#games" class="p-4" :class="route.hash === '#games' ? 'active' : ''">GAMES</a> -->
-          <!-- <a href="#" class="p-4">HOME</a> -->
-          <a href="#reserveren" class="p-4">RESERVEREN</a>
-          <a href="#contact" class="p-4">CONTACT</a>
-          <a href="#games" class="p-4">GAMES</a>
-          <!-- TODO: Add clubs -->
-          <!-- <a href="#clubs" class="p-4" :class="route.hash === '#clubs' ? 'active' : ''">CLUBS</a> -->
-        </nav>
-        <div class="social-media flex items-center gap-6">
-          <!-- TODO: Better FB url? -->
-          <a
-            href="https://www.facebook.com/profile.php?id=61578975490198"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_37_45)">
-                <path
-                  class="colored"
-                  d="M32 16C32 7.16352 24.8365 0 16 0C7.16352 0 0 7.16352 0 16C0 23.5034 5.16608 29.7997 12.135 31.529V20.8896H8.83584V16H12.135V13.8931C12.135 8.44736 14.5997 5.9232 19.9462 5.9232C20.96 5.9232 22.7091 6.12224 23.4246 6.32064V10.7526C23.047 10.713 22.391 10.6931 21.5763 10.6931C18.953 10.6931 17.9392 11.687 17.9392 14.2707V16H23.1654L22.2675 20.8896H17.9392V31.8829C25.8618 30.9261 32.0006 24.1805 32.0006 16H32Z"
-                  fill="white"
-                />
-                <path
-                  d="M22.2666 20.8896L23.1646 16H17.9383V14.2707C17.9383 11.687 18.9521 10.6931 21.5754 10.6931C22.3902 10.6931 23.0462 10.7129 23.4238 10.7526V6.32063C22.7082 6.12159 20.9591 5.92319 19.9454 5.92319C14.5988 5.92319 12.1342 8.44735 12.1342 13.8931V16H8.83496V20.8896H12.1342V31.5289C13.3719 31.8361 14.6666 32 15.9991 32C16.6551 32 17.3022 31.9597 17.9377 31.8829V20.8896H22.266H22.2666Z"
-                  fill="none"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_37_45">
-                  <rect width="32" height="32" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </a>
-          <a
-            href="https://www.instagram.com/player_beverlo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_37_46)">
-                <path
-                  class="colored"
-                  d="M16 2.88125C20.275 2.88125 20.7813 2.9 22.4625 2.975C24.025 3.04375 24.8688 3.30625 25.4313 3.525C26.175 3.8125 26.7125 4.1625 27.2688 4.71875C27.8313 5.28125 28.175 5.8125 28.4625 6.55625C28.6813 7.11875 28.9438 7.96875 29.0125 9.525C29.0875 11.2125 29.1063 11.7188 29.1063 15.9875C29.1063 20.2625 29.0875 20.7688 29.0125 22.45C28.9438 24.0125 28.6813 24.8563 28.4625 25.4188C28.175 26.1625 27.825 26.7 27.2688 27.2563C26.7063 27.8188 26.175 28.1625 25.4313 28.45C24.8688 28.6688 24.0188 28.9313 22.4625 29C20.775 29.075 20.2688 29.0938 16 29.0938C11.725 29.0938 11.2188 29.075 9.5375 29C7.975 28.9313 7.13125 28.6688 6.56875 28.45C5.825 28.1625 5.2875 27.8125 4.73125 27.2563C4.16875 26.6938 3.825 26.1625 3.5375 25.4188C3.31875 24.8563 3.05625 24.0063 2.9875 22.45C2.9125 20.7625 2.89375 20.2563 2.89375 15.9875C2.89375 11.7125 2.9125 11.2063 2.9875 9.525C3.05625 7.9625 3.31875 7.11875 3.5375 6.55625C3.825 5.8125 4.175 5.275 4.73125 4.71875C5.29375 4.15625 5.825 3.8125 6.56875 3.525C7.13125 3.30625 7.98125 3.04375 9.5375 2.975C11.2188 2.9 11.725 2.88125 16 2.88125ZM16 0C11.6563 0 11.1125 0.01875 9.40625 0.09375C7.70625 0.16875 6.5375 0.44375 5.525 0.8375C4.46875 1.25 3.575 1.79375 2.6875 2.6875C1.79375 3.575 1.25 4.46875 0.8375 5.51875C0.44375 6.5375 0.16875 7.7 0.09375 9.4C0.01875 11.1125 0 11.6562 0 16C0 20.3438 0.01875 20.8875 0.09375 22.5938C0.16875 24.2938 0.44375 25.4625 0.8375 26.475C1.25 27.5313 1.79375 28.425 2.6875 29.3125C3.575 30.2 4.46875 30.75 5.51875 31.1562C6.5375 31.55 7.7 31.825 9.4 31.9C11.1063 31.975 11.65 31.9937 15.9938 31.9937C20.3375 31.9937 20.8813 31.975 22.5875 31.9C24.2875 31.825 25.4563 31.55 26.4688 31.1562C27.5188 30.75 28.4125 30.2 29.3 29.3125C30.1875 28.425 30.7375 27.5313 31.1438 26.4813C31.5375 25.4625 31.8125 24.3 31.8875 22.6C31.9625 20.8938 31.9813 20.35 31.9813 16.0063C31.9813 11.6625 31.9625 11.1188 31.8875 9.4125C31.8125 7.7125 31.5375 6.54375 31.1438 5.53125C30.75 4.46875 30.2063 3.575 29.3125 2.6875C28.425 1.8 27.5313 1.25 26.4813 0.84375C25.4625 0.45 24.3 0.175 22.6 0.1C20.8875 0.01875 20.3438 0 16 0Z"
-                  fill="white"
-                />
-                <path
-                  class="colored"
-                  d="M16 7.78125C11.4625 7.78125 7.78125 11.4625 7.78125 16C7.78125 20.5375 11.4625 24.2188 16 24.2188C20.5375 24.2188 24.2188 20.5375 24.2188 16C24.2188 11.4625 20.5375 7.78125 16 7.78125ZM16 21.3312C13.0563 21.3312 10.6687 18.9438 10.6687 16C10.6687 13.0563 13.0563 10.6687 16 10.6687C18.9438 10.6687 21.3312 13.0563 21.3312 16C21.3312 18.9438 18.9438 21.3312 16 21.3312Z"
-                  fill="white"
-                />
-                <path
-                  class="colored"
-                  d="M26.4625 7.45626C26.4625 8.51876 25.6 9.37501 24.5438 9.37501C23.4813 9.37501 22.625 8.51251 22.625 7.45626C22.625 6.39376 23.4875 5.53751 24.5438 5.53751C25.6 5.53751 26.4625 6.40001 26.4625 7.45626Z"
-                  fill="white"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_37_46">
-                  <rect width="32" height="32" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </header>
+    <app-header />
     <!-- TODO: Static header -->
     <!-- <div class="mx-auto max-w-6xl px-6 py-20 flex justify-center h-[656px]"> -->
     <div class="mx-auto max-w-6xl px-8 pb-20 flex justify-center h-[400px] md:h-[656px]">
@@ -134,6 +39,45 @@ useHead({
     <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
       <h1>RESERVEREN</h1>
       <app-booking />
+    </div>
+  </section>
+  <section id="events" class="w-full shadow-lg">
+    <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
+      <h1>EVENTS</h1>
+      <div class="grid grid-cols-1 gap-8">
+        <nuxt-link
+          to="/6-reds-summer-cup"
+          class="event-card group flex flex-col md:flex-row gap-8 border-4 border-gray-700 p-8 text-white"
+        >
+          <div class="flex items-center justify-center md:basis-2/5">
+            <img
+              src="/images/6-reds-summer-cup-logo-dark.svg"
+              alt="6 Reds SummER Cup 2026 logo"
+              class="w-full max-w-xs h-auto drop-shadow-lg"
+            />
+          </div>
+          <div class="flex flex-1 flex-col gap-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <h2>6 Reds SummER Cup 2026</h2>
+              <span
+                class="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary"
+              >
+                <u-icon name="i-lucide-lock" /> Enkel voor leden
+              </span>
+            </div>
+            <p class="text-white">
+              Een recreatieve zomercompetitie in 6 Reds snookerformat bij Play-ER. Vier toernooien
+              van woensdag 17 juni t.e.m. vrijdag 31 juli, met finaledag op vrijdag 14 augustus 2026.
+            </p>
+            <span
+              class="mt-auto inline-flex w-fit items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-white transition group-hover:bg-blue-600"
+            >
+              Meer info &amp; inschrijven
+              <u-icon name="i-lucide-arrow-right" class="transition group-hover:translate-x-0.5" />
+            </span>
+          </div>
+        </nuxt-link>
+      </div>
     </div>
   </section>
   <section id="contact" class="w-full shadow-lg">
@@ -250,25 +194,6 @@ useHead({
 <style scoped>
 @reference "./../assets/css/main.css";
 
-header {
-  .social-media {
-    svg:hover path.colored {
-      @apply fill-primary;
-    }
-  }
-}
-
-nav {
-  a {
-    @apply text-xl font-medium;
-
-    &.active,
-    &:hover {
-      @apply text-primary;
-    }
-  }
-}
-
 section#home {
   @apply bg-neutral-500;
   background: radial-gradient(circle, rgba(102, 102, 102, 1) 0%, rgba(50, 48, 49, 1) 75%);
@@ -290,5 +215,30 @@ section#contact {
 section#image-slider {
   @apply bg-neutral-500;
   height: 450px;
+}
+
+/* Dark section, matching the summer cup "resultaten" section. */
+section#events {
+  @apply bg-neutral-500 text-white;
+}
+
+/* Mini summer-cup hero: the dark-background logo needs a dark card. */
+.event-card {
+  @apply bg-neutral-500 no-underline transition;
+  background: radial-gradient(circle, rgba(102, 102, 102, 1) 0%, rgba(50, 48, 49, 1) 75%);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.9) 100%),
+    url("~/assets/images/home_banner.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.event-card:hover {
+  @apply border-primary;
+}
+
+/* The global h2 colour matches this card's dark background, so force white. */
+.event-card h2 {
+  @apply text-white;
 }
 </style>
