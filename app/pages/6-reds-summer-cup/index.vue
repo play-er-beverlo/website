@@ -33,12 +33,15 @@ const resultBlocks = [...playDayResults]
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <section id="hero" class="w-full shadow-lg">
-    <div class="mx-auto max-w-6xl px-8 h-[220px] md:h-[320px] flex flex-col items-center justify-center text-center text-white">
+    <app-header base="/" />
+    <div
+      class="mx-auto max-w-6xl px-8 pb-20 pt-4 min-h-[300px] md:min-h-[400px] flex flex-col items-center justify-center gap-5 text-center text-white"
+    >
       <h1 class="sr-only">6 Reds SummER Cup 2026</h1>
       <img
         src="/images/6-reds-summer-cup-logo-dark.svg"
         alt=""
-        class="w-full max-w-xl h-auto drop-shadow-lg"
+        class="w-full max-w-md h-auto drop-shadow-lg"
       />
     </div>
   </section>
@@ -49,8 +52,8 @@ const resultBlocks = [...playDayResults]
         <h1>HET TOERNOOI</h1>
         <p>
           De 6 Reds SummER Cup 2026 is een recreatieve zomercompetitie in 6 Reds snookerformat,
-          georganiseerd over meerdere toernooiedities gedurende de zomer van 2026. Het toernooi is
-          enkel georganiseerd voor leden van Play-ER.
+          georganiseerd over meerdere toernooiedities gedurende de zomer van 2026. <span class="font-semibold">De eerste editie is
+          enkel georganiseerd voor leden van Play-ER.</span>
         </p>
         <p>
           Er wordt gespeeld om de twee weken, telkens op woensdag en vrijdag vanaf {{ PLAY_TIME }}.
