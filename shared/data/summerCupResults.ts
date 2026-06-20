@@ -89,4 +89,30 @@ export const playDayResults: PlayDayResults[] = [
       { player: andy, value: 32 },
     ],
   },
+  // ── Toernooi 1 — vrijdag 19 juni 2026 ────────────────────────────────────────
+  {
+    playDayId: "2026-06-19",
+    players: [
+      { id: nico, name: "Nico Hoffmann" },
+      { id: kurt, name: "Kurt Beliën" },
+      { id: danny, name: "Danny Moors" },
+      { id: andy, name: "Andy Vleugels" },
+      { id: thomas, name: "Thomas Belmans" },
+    ],
+    // 5 players -> 2 frames per match, recorded as frames won (2-0 / 1-1 / 0-2).
+    // Andy and Nico finish level on frames (5); Andy beat Nico 2-0 head-to-head,
+    // so he takes 2nd (matching the organiser's corrected order on the card).
+    matches: [
+      { a: nico, b: kurt, framesA: 2, framesB: 0 },
+      { a: nico, b: danny, framesA: 2, framesB: 0 },
+      { a: nico, b: andy, framesA: 0, framesB: 2 },
+      { a: nico, b: thomas, framesA: 1, framesB: 1 },
+      { a: kurt, b: danny, framesA: 0, framesB: 2 },
+      { a: kurt, b: andy, framesA: 0, framesB: 2 },
+      { a: kurt, b: thomas, framesA: 1, framesB: 1 },
+      { a: danny, b: andy, framesA: 1, framesB: 1 },
+      { a: danny, b: thomas, framesA: 0, framesB: 2 },
+      { a: andy, b: thomas, framesA: 0, framesB: 2 },
+    ],
+  },
 ];

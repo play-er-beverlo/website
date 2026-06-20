@@ -110,7 +110,7 @@
     "semantic_hash": "270e1a6899c2dd53599f0c9783aa6c05"
   },
   "server/api/6-reds-summer-cup/registrations.post.ts": {
-    "mtime": 1781813141.8108878,
+    "mtime": 1781815469.6861985,
     "ast_hash": "f2bf74d3f51956df8abfefbc6bd44c89",
     "semantic_hash": ""
   },
@@ -185,12 +185,12 @@
     "semantic_hash": "f5f9e73c6d16e3a972a04aa08202ad1b"
   },
   "server/db/migrations/sqlite/meta/_journal.json": {
-    "mtime": 1781812833.4964883,
-    "ast_hash": "d1b8a3ae8c17852b013e6fd33641bd44",
+    "mtime": 1781815469.6911988,
+    "ast_hash": "76fdb6e061f4f68fadda1812998b0441",
     "semantic_hash": ""
   },
   "server/db/schema.ts": {
-    "mtime": 1781812755.9945354,
+    "mtime": 1781815469.6922004,
     "ast_hash": "c762822394b3065feece92dfa202602a",
     "semantic_hash": ""
   },
@@ -220,9 +220,9 @@
     "semantic_hash": "a7b6a9d3b838b988bb9ca31183736b6d"
   },
   "shared/data/summerCupResults.ts": {
-    "mtime": 1781762646.9998183,
-    "ast_hash": "9d754345e256998ae4e5d98198e7c864",
-    "semantic_hash": "9d754345e256998ae4e5d98198e7c864"
+    "mtime": 1781950157.501496,
+    "ast_hash": "ae2c7b2ade5a1858a635fcf80d88854f",
+    "semantic_hash": ""
   },
   "shared/helpers.ts": {
     "mtime": 1777818714.625496,
@@ -235,13 +235,13 @@
     "semantic_hash": "d59a8ef74b0d234c6d67ef222aef985e"
   },
   "shared/summerCup/capacity.ts": {
-    "mtime": 1781798824.1160433,
+    "mtime": 1781815469.6931994,
     "ast_hash": "98d4ffd6054390d6d9a446588f67dbad",
     "semantic_hash": ""
   },
   "shared/summerCup/email.ts": {
-    "mtime": 1781799069.8487296,
-    "ast_hash": "92f272b932ddef274d14827347f7b783",
+    "mtime": 1781815469.6941993,
+    "ast_hash": "f7bf274b41872b4b93d089919ed374d0",
     "semantic_hash": ""
   },
   "shared/summerCup/epc.ts": {
@@ -275,7 +275,7 @@
     "semantic_hash": "b4515637fd672e5ac986b9b3a53f8bb9"
   },
   "test/summerCup-capacity.test.ts": {
-    "mtime": 1781798804.0541463,
+    "mtime": 1781815469.6961994,
     "ast_hash": "87ea017baee36118b9172a371fff2dbd",
     "semantic_hash": ""
   },
@@ -285,8 +285,8 @@
     "semantic_hash": "e3e369cb8475d9e3b2e822d58490db7b"
   },
   "test/summerCup-email.test.ts": {
-    "mtime": 1781799033.399582,
-    "ast_hash": "c62e2ae883d5744f643d85ac7f48aafb",
+    "mtime": 1781815469.697199,
+    "ast_hash": "ba65336034d0da810a69aa61a37dd2bf",
     "semantic_hash": ""
   },
   "test/summerCup-epc.test.ts": {
@@ -325,8 +325,8 @@
     "semantic_hash": ""
   },
   "server/db/migrations/sqlite/meta/0003_snapshot.json": {
-    "mtime": 1781812833.4943633,
-    "ast_hash": "20ec92fb759789e2db33328a290d81cf",
+    "mtime": 1781815469.6891987,
+    "ast_hash": "3141bd41bc73261f8c7bfb970b90d598",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-06-18-summer-cup-uitschrijflink.md": {
-    "mtime": 1781798227.2170672,
-    "ast_hash": "01246f7dd38d0f2f2f688f6bc62b552c",
+    "mtime": 1781815469.6170049,
+    "ast_hash": "fbd32d32abe8f7ec4fb304a8cd8ab434",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-06-11-6-reds-summer-cup-design.md": {
@@ -525,8 +525,8 @@
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-06-18-summer-cup-uitschrijflink-design.md": {
-    "mtime": 1781797656.124059,
-    "ast_hash": "c5adfc031118f44afbe1833e3ca241ed",
+    "mtime": 1781815469.6185174,
+    "ast_hash": "2bc6e287dca45c5394cc97d63e4c86c0",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
