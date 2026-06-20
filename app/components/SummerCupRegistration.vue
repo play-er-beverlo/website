@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import QRCode from "qrcode";
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 import { REGISTRATION_FEE, payment, PLAY_TIME, getPlayDay } from "#shared/data/summerCup";
 import { buildEpcQrPayload } from "#shared/summerCup/epc";
@@ -47,12 +46,17 @@ const qrDataUrl = ref<string | null>(null);
 
 watchEffect(async () => {
   const day = selectedPlayDayId.value ? getPlayDay(selectedPlayDayId.value) : null;
-  if (day && name.value.trim()) {
+  // qrcode is imported lazily and client-only. Its Node build pulls in pngjs, which
+  // runs util.inherits(PNG, Stream) at module-eval time and crashes the Cloudflare
+  // Worker SSR runtime (superCtor.prototype undefined). The QR is only ever generated
+  // in the browser, so it must never enter the server bundle.
+  if (import.meta.client && day && name.value.trim()) {
     const payload = buildEpcQrPayload({
       name: name.value,
       shortLabel: day.shortLabel,
       amount: REGISTRATION_FEE,
     });
+    const { default: QRCode } = await import("qrcode");
     qrDataUrl.value = await QRCode.toDataURL(payload, {
       errorCorrectionLevel: "M",
       margin: 1,

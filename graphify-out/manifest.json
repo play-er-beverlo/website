@@ -35,9 +35,9 @@
     "semantic_hash": "d4c974bbe577337ddb07e25281199e9c"
   },
   "app/components/SummerCupRegistration.vue": {
-    "mtime": 1781526456.98579,
-    "ast_hash": "bf3395ad9d4d698fcdb26da7b2e081d1",
-    "semantic_hash": "bf3395ad9d4d698fcdb26da7b2e081d1"
+    "mtime": 1781962504.9182596,
+    "ast_hash": "0665ab40329cceff128ff455f244e639",
+    "semantic_hash": ""
   },
   "app/components/SummerCupResultsGrid.vue": {
     "mtime": 1781526456.9867902,
