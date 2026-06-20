@@ -26,16 +26,19 @@ export interface PlayDayResults {
 }
 
 // Results data (up to MAX_UNIQUE_PLAYERS = 16 unique players for the 2026 edition).
-const andy = "andy-vleugels";
-const danny = "danny-moors";
-const eddy = "eddy-ritzen";
-const jp = "jean-pierre-van-camp"
-const koen = "koen-caerts";
-const marc = "marc-de-l-arbre";
-const marco = "marco-vitali";
-const roman = "roman-szpyt";
-const ronnie = "ronnie-de-reydt";
-const steff = "steff-beckers";
+const andy = "andy-vleugels"; // Andy Vleugels
+const danny = "danny-moors"; // Danny Moors
+const eddy = "eddy-ritzen"; // Eddy Ritzen
+const jp = "jean-pierre-van-camp" // Jean-Pierre Van Camp
+const koen = "koen-caerts"; // Koen Caerts
+const kurt = "kurt-belien"; // Kurt Beliën
+const marc = "marc-de-l-arbre"; // Marc De l'Arbre
+const marco = "marco-vitali"; // Marco Vitali
+const nico = "nico-hoffmann" // Nico Hoffmann
+const roman = "roman-szpyt"; // Roman Szpyt
+const ronnie = "ronnie-de-reydt"; // Ronnie De Reydt
+const steff = "steff-beckers"; // Steff Beckers
+const thomas = "thomas-belmans"; // Thomas Belmans
 
 export const playDayResults: PlayDayResults[] = [
   // ── Toernooi 1 — woensdag 17 juni 2026 ───────────────────────────────────────
