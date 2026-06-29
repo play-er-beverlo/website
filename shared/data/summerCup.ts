@@ -28,8 +28,8 @@ export interface PlayDay {
 export const playDays: PlayDay[] = [
   { id: "2026-06-17", tournament: 1, weekday: "woensdag", label: "Toernooi 1 — woensdag 17 juni 2026", shortLabel: "wo 17 juni 2026" },
   { id: "2026-06-19", tournament: 1, weekday: "vrijdag", label: "Toernooi 1 — vrijdag 19 juni 2026", shortLabel: "vr 19 juni 2026" },
-  { id: "2026-07-08", tournament: 2, weekday: "woensdag", label: "Toernooi 2 — woensdag 8 juli 2026", shortLabel: "wo 8 juli 2026" },
   { id: "2026-07-03", tournament: 2, weekday: "vrijdag", label: "Toernooi 2 — vrijdag 3 juli 2026", shortLabel: "vr 3 juli 2026" },
+  { id: "2026-07-08", tournament: 2, weekday: "woensdag", label: "Toernooi 2 — woensdag 8 juli 2026", shortLabel: "wo 8 juli 2026" },
   { id: "2026-07-15", tournament: 3, weekday: "woensdag", label: "Toernooi 3 — woensdag 15 juli 2026", shortLabel: "wo 15 juli 2026" },
   { id: "2026-07-17", tournament: 3, weekday: "vrijdag", label: "Toernooi 3 — vrijdag 17 juli 2026", shortLabel: "vr 17 juli 2026" },
   { id: "2026-07-29", tournament: 4, weekday: "woensdag", label: "Toernooi 4 — woensdag 29 juli 2026", shortLabel: "wo 29 juli 2026" },
