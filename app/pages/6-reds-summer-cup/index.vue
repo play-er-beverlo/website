@@ -74,7 +74,7 @@ const resultBlocks = [...playDayResults]
             </thead>
             <tbody>
               <tr class="border-b border-gray-700"><td class="py-2 pr-4">Toernooi 1</td><td class="py-2 pr-4">woe 17 juni 2026</td><td class="py-2">vrij 19 juni 2026</td></tr>
-              <tr class="border-b border-gray-700"><td class="py-2 pr-4">Toernooi 2</td><td class="py-2 pr-4">woe 1 juli 2026</td><td class="py-2">vrij 3 juli 2026</td></tr>
+              <tr class="border-b border-gray-700"><td class="py-2 pr-4">Toernooi 2</td><td class="py-2 pr-4 font-semibold text-amber-400">woe 8 juli 2026 *</td><td class="py-2">vrij 3 juli 2026</td></tr>
               <tr class="border-b border-gray-700"><td class="py-2 pr-4">Toernooi 3</td><td class="py-2 pr-4">woe 15 juli 2026</td><td class="py-2">vrij 17 juli 2026</td></tr>
               <tr class="border-b border-gray-700"><td class="py-2 pr-4">Toernooi 4</td><td class="py-2 pr-4">woe 29 juli 2026</td><td class="py-2">vrij 31 juli 2026</td></tr>
               <tr><td class="py-2 pr-4 font-semibold">Finaledag</td><td class="py-2 pr-4">—</td><td class="py-2 font-semibold">vrij 14 augustus 2026</td></tr>
@@ -82,6 +82,7 @@ const resultBlocks = [...playDayResults]
           </table>
         </div>
         <p class="text-sm opacity-80">Alle speeldagen starten om {{ PLAY_TIME }}.</p>
+        <p class="text-sm font-semibold text-amber-400">* Speeldag toernooi 2 is verplaatst naar 8 juli, wegens de WK-match van de Belgen op 1 juli.</p>
       </div>
 
       <div class="flex gap-4 w-full">
