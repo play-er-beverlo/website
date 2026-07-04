@@ -29,7 +29,9 @@ export interface PlayDayResults {
 const andy = "andy-vleugels"; // Andy Vleugels
 const danny = "danny-moors"; // Danny Moors
 const eddy = "eddy-ritzen"; // Eddy Ritzen
+const ibe = "ibe-sijben"; // Ibe Sijben
 const jp = "jean-pierre-van-camp" // Jean-Pierre Van Camp
+const klaas = "klaas-piekarczyk"; // Klaas Piekarczyk
 const koen = "koen-caerts"; // Koen Caerts
 const kurt = "kurt-belien"; // Kurt Beliën
 const marc = "marc-de-l-arbre"; // Marc De l'Arbre
@@ -114,5 +116,54 @@ export const playDayResults: PlayDayResults[] = [
       { a: danny, b: thomas, framesA: 0, framesB: 2 },
       { a: andy, b: thomas, framesA: 0, framesB: 2 },
     ],
+  },
+  // ── Toernooi 2 — vrijdag 3 juli 2026 ─────────────────────────────────────────
+  {
+    playDayId: "2026-07-03",
+    players: [
+      { id: andy, name: "Andy Vleugels" },
+      { id: danny, name: "Danny Moors" },
+      { id: eddy, name: "Eddy Ritzen" },
+      { id: ibe, name: "Ibe Sijben" },
+      { id: klaas, name: "Klaas Piekarczyk" },
+      { id: roman, name: "Roman Szpyt" },
+      { id: steff, name: "Steff Beckers" },
+      { id: nico, name: "Nico Hoffmann" },
+    ],
+    // 8 players -> 1 frame per match, recorded as frames won (1-0 / 0-1). Danny and
+    // Eddy top on 6 wins; a 4-way tie on 3 (Andy, Ibe, Roman, Steff) was settled by
+    // a play-off. Head-to-head already lifts Andy/Ibe above Steff/Roman; `tiebreak`
+    // forces Steff above Roman (their direct head-to-head) to match the card's order.
+    matches: [
+      { a: andy, b: danny, framesA: 0, framesB: 1 },
+      { a: andy, b: eddy, framesA: 0, framesB: 1 },
+      { a: andy, b: ibe, framesA: 1, framesB: 0 },
+      { a: andy, b: klaas, framesA: 1, framesB: 0 },
+      { a: andy, b: roman, framesA: 0, framesB: 1 },
+      { a: andy, b: steff, framesA: 1, framesB: 0 },
+      { a: andy, b: nico, framesA: 0, framesB: 1 },
+      { a: danny, b: eddy, framesA: 1, framesB: 0 },
+      { a: danny, b: ibe, framesA: 1, framesB: 0 },
+      { a: danny, b: klaas, framesA: 1, framesB: 0 },
+      { a: danny, b: roman, framesA: 1, framesB: 0 },
+      { a: danny, b: steff, framesA: 0, framesB: 1 },
+      { a: danny, b: nico, framesA: 1, framesB: 0 },
+      { a: eddy, b: ibe, framesA: 1, framesB: 0 },
+      { a: eddy, b: klaas, framesA: 1, framesB: 0 },
+      { a: eddy, b: roman, framesA: 1, framesB: 0 },
+      { a: eddy, b: steff, framesA: 1, framesB: 0 },
+      { a: eddy, b: nico, framesA: 1, framesB: 0 },
+      { a: ibe, b: klaas, framesA: 0, framesB: 1 },
+      { a: ibe, b: roman, framesA: 1, framesB: 0 },
+      { a: ibe, b: steff, framesA: 1, framesB: 0 },
+      { a: ibe, b: nico, framesA: 1, framesB: 0 },
+      { a: klaas, b: roman, framesA: 0, framesB: 1 },
+      { a: klaas, b: steff, framesA: 0, framesB: 1 },
+      { a: klaas, b: nico, framesA: 1, framesB: 0 },
+      { a: roman, b: steff, framesA: 0, framesB: 1 },
+      { a: roman, b: nico, framesA: 1, framesB: 0 },
+      { a: steff, b: nico, framesA: 0, framesB: 1 },
+    ],
+    tiebreak: [danny, eddy, andy, ibe, steff, roman, klaas, nico],
   },
 ];
