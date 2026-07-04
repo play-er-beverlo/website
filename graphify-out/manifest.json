@@ -65,8 +65,8 @@
     "semantic_hash": "7c9d6443a954c0a8c889eec5a68e2ff0"
   },
   "app/pages/6-reds-summer-cup/index.vue": {
-    "mtime": 1782740237.6730921,
-    "ast_hash": "d26f51c772afabf6d130c2aa87453076",
+    "mtime": 1782741065.6829655,
+    "ast_hash": "0d04a7488acbfaba7c06210c8d0b4454",
     "semantic_hash": ""
   },
   "app/pages/6-reds-summer-cup/wedstrijdblad/[date].vue": {
@@ -215,13 +215,13 @@
     "semantic_hash": "3a09919b4431b481e84e32ca88c22bcb"
   },
   "shared/data/summerCup.ts": {
-    "mtime": 1782740223.1161141,
-    "ast_hash": "9c033e308172dee79d26fc3127ed8577",
+    "mtime": 1782741639.8899329,
+    "ast_hash": "e7505b21f6cf982414fe238207602ce6",
     "semantic_hash": ""
   },
   "shared/data/summerCupResults.ts": {
-    "mtime": 1781950157.501496,
-    "ast_hash": "ae2c7b2ade5a1858a635fcf80d88854f",
+    "mtime": 1783154361.5845823,
+    "ast_hash": "14d528b65c413aba94fb68aca63ba35c",
     "semantic_hash": ""
   },
   "shared/helpers.ts": {
