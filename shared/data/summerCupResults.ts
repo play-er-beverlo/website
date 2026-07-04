@@ -164,6 +164,6 @@ export const playDayResults: PlayDayResults[] = [
       { a: roman, b: nico, framesA: 1, framesB: 0 },
       { a: steff, b: nico, framesA: 0, framesB: 1 },
     ],
-    tiebreak: [danny, eddy, andy, ibe, steff, roman, klaas, nico],
+    tiebreak: [andy, ibe, steff, roman],
   },
 ];
