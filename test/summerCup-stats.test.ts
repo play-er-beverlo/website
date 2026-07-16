@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computePlayerStats, computeSeasonFacts } from "../shared/summerCup/stats";
+import { computePlayerStats, computeSeasonFacts, computeHeadToHead } from "../shared/summerCup/stats";
 import type { PlayDayResults } from "../shared/data/summerCupResults";
 
 const anna = { id: "anna", name: "Anna" };
@@ -96,5 +96,30 @@ describe("computeSeasonFacts", () => {
     const facts = computeSeasonFacts([day1]);
     expect(facts.highestBreak).toBeNull();
     expect(facts.breaksCount).toBe(0);
+  });
+});
+
+describe("computeHeadToHead", () => {
+  it("aggregeert onderlinge frames over alle speeldagen", () => {
+    const h2h = computeHeadToHead([day1, day2]);
+    expect(h2h.players.map((p) => p.id)).toEqual(["anna", "bob", "cas", "dre"]);
+    const i = h2h.players.findIndex((p) => p.id === "anna");
+    const j = h2h.players.findIndex((p) => p.id === "bob");
+    // anna vs bob: day1 1-0, day2 1-1 -> 2-1 over 2 matchen.
+    expect(h2h.grid[i]![j]).toEqual({ framesFor: 2, framesAgainst: 1, matches: 2 });
+    expect(h2h.grid[j]![i]).toEqual({ framesFor: 1, framesAgainst: 2, matches: 2 });
+  });
+
+  it("markeert nooit-gespeelde paren met matches 0 en de diagonaal met null", () => {
+    const h2h = computeHeadToHead([day1, day2]);
+    const c = h2h.players.findIndex((p) => p.id === "cas");
+    const d = h2h.players.findIndex((p) => p.id === "dre");
+    expect(h2h.grid[c]![d]).toEqual({ framesFor: 0, framesAgainst: 0, matches: 0 });
+    expect(h2h.grid[c]![c]).toBeNull();
+  });
+
+  it("sorteert speeldagen chronologisch voor de spelersvolgorde", () => {
+    const h2h = computeHeadToHead([day2, day1]); // bewust omgekeerd aangeleverd
+    expect(h2h.players.map((p) => p.id)).toEqual(["anna", "bob", "cas", "dre"]);
   });
 });

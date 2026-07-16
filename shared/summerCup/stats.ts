@@ -168,3 +168,57 @@ export function computeSeasonFacts(days: PlayDayResults[]): SeasonFacts {
     drawCount,
   };
 }
+
+export interface HeadToHeadCell {
+  framesFor: number;
+  framesAgainst: number;
+  /** Matches played between the pair; 0 means they never met. */
+  matches: number;
+}
+
+export interface HeadToHead {
+  /** Players in order of first appearance, play days chronological. */
+  players: DayPlayer[];
+  /** grid[i][j] = record of player i vs player j; null on the diagonal. */
+  grid: (HeadToHeadCell | null)[][];
+}
+
+export function computeHeadToHead(days: PlayDayResults[]): HeadToHead {
+  const ordered = [...days].sort((a, b) => (a.playDayId < b.playDayId ? -1 : 1));
+
+  const players: DayPlayer[] = [];
+  const index = new Map<string, number>();
+  for (const day of ordered) {
+    for (const player of day.players) {
+      if (index.has(player.id)) continue;
+      index.set(player.id, players.length);
+      players.push(player);
+    }
+  }
+
+  const grid: (HeadToHeadCell | null)[][] = players.map((_, i) =>
+    players.map((_, j) =>
+      i === j ? null : { framesFor: 0, framesAgainst: 0, matches: 0 }
+    )
+  );
+
+  for (const day of ordered) {
+    for (const match of day.matches) {
+      const i = index.get(match.a);
+      const j = index.get(match.b);
+      if (i === undefined || j === undefined) continue;
+      const cellA = grid[i]?.[j];
+      const cellB = grid[j]?.[i];
+      if (!cellA || !cellB) continue;
+      const outcome = resolveMatch(match);
+      cellA.framesFor += outcome.framesA;
+      cellA.framesAgainst += outcome.framesB;
+      cellA.matches++;
+      cellB.framesFor += outcome.framesB;
+      cellB.framesAgainst += outcome.framesA;
+      cellB.matches++;
+    }
+  }
+
+  return { players, grid };
+}
