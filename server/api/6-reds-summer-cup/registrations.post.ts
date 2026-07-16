@@ -22,7 +22,6 @@ const denyMessages: Record<RegistrationDenyReason, string> = {
   past: "Deze speeldag is al voorbij.",
   duplicate: "Je bent al ingeschreven voor deze speeldag.",
   full: "Deze speeldag is volzet.",
-  edition_full: "Het maximum aantal unieke deelnemers (16) voor editie 2026 is bereikt.",
 };
 
 /** Validates that the string is base64 of a PNG (checks the PNG signature). */

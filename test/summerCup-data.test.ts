@@ -4,7 +4,6 @@ import {
   finaleDay,
   getPlayDay,
   MAX_PER_PLAY_DAY,
-  MAX_UNIQUE_PLAYERS,
   REGISTRATION_FEE,
   payment,
 } from "../shared/data/summerCup";
@@ -26,7 +25,6 @@ describe("summerCup data", () => {
 
   it("exposes the agreed constants and payment data", () => {
     expect(MAX_PER_PLAY_DAY).toBe(8);
-    expect(MAX_UNIQUE_PLAYERS).toBe(16);
     expect(REGISTRATION_FEE).toBe(15);
     expect(payment.ibanCompact).toBe("BE30063766394611");
     expect(payment.bic).toBe("GKCCBEBB");

@@ -1,11 +1,10 @@
-import { getPlayDay, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS } from "../data/summerCup";
+import { getPlayDay, MAX_PER_PLAY_DAY } from "../data/summerCup";
 
 export type RegistrationDenyReason =
   | "unknown_play_day"
   | "past"
   | "duplicate"
-  | "full"
-  | "edition_full";
+  | "full";
 
 export interface ExistingRegistration {
   playDayId: string;
@@ -49,11 +48,6 @@ export function checkRegistrationAllowed(params: {
 
   const dayCount = existing.filter((r) => r.playDayId === params.playDayId).length;
   if (dayCount >= MAX_PER_PLAY_DAY) return { ok: false, reason: "full" };
-
-  const uniqueEmails = new Set(existing.map((r) => r.email));
-  if (!uniqueEmails.has(email) && uniqueEmails.size >= MAX_UNIQUE_PLAYERS) {
-    return { ok: false, reason: "edition_full" };
-  }
 
   return { ok: true };
 }

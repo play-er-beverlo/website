@@ -1,7 +1,6 @@
 export const EDITION_YEAR = 2026;
 export const MIN_PER_PLAY_DAY = 4;
 export const MAX_PER_PLAY_DAY = 8;
-export const MAX_UNIQUE_PLAYERS = 16;
 export const REGISTRATION_FEE = 15;
 export const PLAY_TIME = "18u30";
 /** Only a player's best this-many results count toward the points ranking. */
