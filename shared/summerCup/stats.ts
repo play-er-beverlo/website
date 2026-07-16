@@ -1,5 +1,5 @@
 import type { DayPlayer, PlayDayResults } from "../data/summerCupResults";
-import { computeDayStandings, resolveMatch } from "./standings";
+import { computeDayStandings, computeSummerRanking, resolveMatch } from "./standings";
 
 export interface PlayerStats {
   player: DayPlayer;
@@ -221,4 +221,43 @@ export function computeHeadToHead(days: PlayDayResults[]): HeadToHead {
   }
 
   return { players, grid };
+}
+
+export interface RankingEvolutionSeries {
+  player: DayPlayer;
+  /** Position after each play day (aligned with RankingEvolution.dayIds); null before first participation. */
+  positions: (number | null)[];
+}
+
+export interface RankingEvolution {
+  /** Play day ids, chronological. */
+  dayIds: string[];
+  /** One series per player, sorted by final position. */
+  series: RankingEvolutionSeries[];
+}
+
+export function computeRankingEvolution(days: PlayDayResults[]): RankingEvolution {
+  const ordered = [...days].sort((a, b) => (a.playDayId < b.playDayId ? -1 : 1));
+  const dayIds = ordered.map((day) => day.playDayId);
+
+  const seriesById = new Map<string, RankingEvolutionSeries>();
+  ordered.forEach((_, k) => {
+    const ranking = computeSummerRanking(ordered.slice(0, k + 1));
+    for (const row of ranking) {
+      let series = seriesById.get(row.player.id);
+      if (!series) {
+        // Player enters the ranking now; pad the days before with null.
+        series = { player: row.player, positions: Array<number | null>(k).fill(null) };
+        seriesById.set(row.player.id, series);
+      }
+      series.positions.push(row.position);
+    }
+  });
+
+  const last = dayIds.length - 1;
+  const series = [...seriesById.values()].sort(
+    (x, y) => (x.positions[last] ?? Infinity) - (y.positions[last] ?? Infinity)
+  );
+
+  return { dayIds, series };
 }

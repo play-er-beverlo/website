@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computePlayerStats, computeSeasonFacts, computeHeadToHead } from "../shared/summerCup/stats";
+import { computePlayerStats, computeSeasonFacts, computeHeadToHead, computeRankingEvolution } from "../shared/summerCup/stats";
 import type { PlayDayResults } from "../shared/data/summerCupResults";
 
 const anna = { id: "anna", name: "Anna" };
@@ -121,5 +121,28 @@ describe("computeHeadToHead", () => {
   it("sorteert speeldagen chronologisch voor de spelersvolgorde", () => {
     const h2h = computeHeadToHead([day2, day1]); // bewust omgekeerd aangeleverd
     expect(h2h.players.map((p) => p.id)).toEqual(["anna", "bob", "cas", "dre"]);
+  });
+});
+
+describe("computeRankingEvolution", () => {
+  it("geeft per speler de rankingpositie na elke speeldag, null vóór eerste deelname", () => {
+    const evolution = computeRankingEvolution([day2, day1]); // bewust omgekeerd
+    expect(evolution.dayIds).toEqual(["2026-06-17", "2026-06-19"]);
+    const d = evolution.series.find((s) => s.player.id === "dre")!;
+    expect(d.positions).toHaveLength(2);
+    expect(d.positions[0]).toBeNull(); // speelde day1 niet
+    expect(typeof d.positions[1]).toBe("number");
+    const a = evolution.series.find((s) => s.player.id === "anna")!;
+    expect(a.positions[0]).toBe(1); // won day1
+  });
+
+  it("sorteert series op laatste positie", () => {
+    const evolution = computeRankingEvolution([day1, day2]);
+    const lastPositions = evolution.series.map((s) => s.positions.at(-1));
+    expect(lastPositions).toEqual([...lastPositions].sort((a, b) => (a ?? 99) - (b ?? 99)));
+  });
+
+  it("geeft lege structuren zonder speeldagen", () => {
+    expect(computeRankingEvolution([])).toEqual({ dayIds: [], series: [] });
   });
 });
