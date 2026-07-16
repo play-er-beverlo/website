@@ -3,6 +3,7 @@ import { finaleDay, getPlayDay, playDays, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, RE
 import { playDayResults } from "#shared/data/summerCupResults";
 import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
+import { computePlayerStats, computeSeasonFacts, computeHeadToHead, computeRankingEvolution } from "#shared/summerCup/stats";
 
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",
@@ -16,6 +17,10 @@ const playDayCount = playDays.length;
 
 const summerRanking = computeSummerRanking(playDayResults);
 const breaksRanking = computeBreaksRanking(playDayResults);
+const playerStats = computePlayerStats(playDayResults);
+const seasonFacts = computeSeasonFacts(playDayResults);
+const headToHead = computeHeadToHead(playDayResults);
+const rankingEvolution = computeRankingEvolution(playDayResults);
 
 // Play days that have results, newest first.
 const resultBlocks = [...playDayResults]
@@ -232,6 +237,30 @@ const resultBlocks = [...playDayResults]
               <summer-cup-breaks-ranking v-if="breaksRanking.length" :breaks="breaksRanking" />
               <p v-else class="opacity-80">Nog geen breaks van 30+ genoteerd.</p>
             </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-8 mb-8">
+          <h2>Statistieken</h2>
+
+          <summer-cup-season-facts :facts="seasonFacts" />
+
+          <div class="flex flex-col gap-3">
+            <h3 class="text-lg font-semibold">Spelersstatistieken</h3>
+            <summer-cup-player-stats :stats="playerStats" />
+            <p class="text-sm opacity-80">G/T = gewonnen/totaal gespeelde frames · W-V-G = gewonnen-verloren-gelijk.</p>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h3 class="text-lg font-semibold">Head-to-head</h3>
+            <p class="text-sm opacity-80">Onderling gewonnen frames over alle speeldagen (rij tegen kolom).</p>
+            <summer-cup-head-to-head :players="headToHead.players" :grid="headToHead.grid" />
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h3 class="text-lg font-semibold">Ranking-evolutie</h3>
+            <p class="text-sm opacity-80">Positie in de SummER Ranking na elke speeldag.</p>
+            <summer-cup-ranking-evolution :evolution="rankingEvolution" />
           </div>
         </div>
 
