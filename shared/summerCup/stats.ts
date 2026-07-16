@@ -118,3 +118,53 @@ export function computePlayerStats(days: PlayDayResults[]): PlayerStats[] {
     return x.player.name.localeCompare(y.player.name);
   });
 }
+
+export interface SeasonFacts {
+  totalFrames: number;
+  totalMatches: number;
+  uniquePlayers: number;
+  highestBreak: { player: DayPlayer; value: number } | null;
+  /** Number of recorded 30+ breaks. */
+  breaksCount: number;
+  /** Number of 1-1 drawn matches. */
+  drawCount: number;
+}
+
+export function computeSeasonFacts(days: PlayDayResults[]): SeasonFacts {
+  let totalFrames = 0;
+  let totalMatches = 0;
+  let drawCount = 0;
+  let breaksCount = 0;
+  let highestBreak: { player: DayPlayer; value: number } | null = null;
+  const playerIds = new Set<string>();
+
+  for (const day of days) {
+    const playerById = new Map(day.players.map((p) => [p.id, p]));
+    for (const player of day.players) playerIds.add(player.id);
+
+    for (const match of day.matches) {
+      const outcome = resolveMatch(match);
+      totalMatches++;
+      totalFrames += outcome.framesA + outcome.framesB;
+      if (outcome.winnerId === null) drawCount++;
+    }
+
+    for (const b of day.breaks ?? []) {
+      const player = playerById.get(b.player);
+      if (!player) continue;
+      breaksCount++;
+      if (!highestBreak || b.value > highestBreak.value) {
+        highestBreak = { player, value: b.value };
+      }
+    }
+  }
+
+  return {
+    totalFrames,
+    totalMatches,
+    uniquePlayers: playerIds.size,
+    highestBreak,
+    breaksCount,
+    drawCount,
+  };
+}

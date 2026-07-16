@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computePlayerStats } from "../shared/summerCup/stats";
+import { computePlayerStats, computeSeasonFacts } from "../shared/summerCup/stats";
 import type { PlayDayResults } from "../shared/data/summerCupResults";
 
 const anna = { id: "anna", name: "Anna" };
@@ -71,5 +71,30 @@ describe("computePlayerStats", () => {
 
   it("geeft een lege lijst zonder speeldagen", () => {
     expect(computePlayerStats([])).toEqual([]);
+  });
+});
+
+describe("computeSeasonFacts", () => {
+  it("telt frames, matchen, unieke spelers, breaks en gelijke spelen", () => {
+    const day1WithBreaks: PlayDayResults = {
+      ...day1,
+      breaks: [
+        { player: "anna", value: 32 },
+        { player: "bob", value: 45 },
+      ],
+    };
+    const facts = computeSeasonFacts([day1WithBreaks, day2]);
+    expect(facts.totalMatches).toBe(6);
+    expect(facts.totalFrames).toBe(3 + 6); // day1: 3 frames, day2: 6 frames
+    expect(facts.uniquePlayers).toBe(4); // anna, bob, cas, dre
+    expect(facts.breaksCount).toBe(2);
+    expect(facts.highestBreak).toEqual({ player: bob, value: 45 });
+    expect(facts.drawCount).toBe(1); // anna-bob 1-1 op day2
+  });
+
+  it("geeft null als hoogste break zonder breaks", () => {
+    const facts = computeSeasonFacts([day1]);
+    expect(facts.highestBreak).toBeNull();
+    expect(facts.breaksCount).toBe(0);
   });
 });
