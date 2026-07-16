@@ -166,4 +166,52 @@ export const playDayResults: PlayDayResults[] = [
     ],
     tiebreak: [andy, ibe, steff, roman],
   },
+  // ── Toernooi 3 — woensdag 15 juli 2026 ───────────────────────────────────────
+  {
+    playDayId: "2026-07-15",
+    players: [
+      { id: eddy, name: "Eddy Ritzen" },
+      { id: roman, name: "Roman Szpyt" },
+      { id: steff, name: "Steff Beckers" },
+      { id: marco, name: "Marco Vitali" },
+      { id: andy, name: "Andy Vleugels" },
+      { id: jp, name: "Jean-Pierre Van Camp" },
+      { id: klaas, name: "Klaas Piekarczyk" },
+      { id: ibe, name: "Ibe Sijben" },
+    ],
+    // 8 players -> 1 frame per match, recorded as frames won (1-0 / 0-1). Steff tops
+    // on 6 wins. Marco and Eddy tie on 5; Marco won their head-to-head, so he takes
+    // 2nd. Klaas, Andy and Roman tie on 3; head-to-head separates them cleanly
+    // (Klaas 2 > Andy 1 > Roman 0), matching the card's 4-5-6 order.
+    matches: [
+      { a: eddy, b: roman, framesA: 1, framesB: 0 },
+      { a: eddy, b: steff, framesA: 0, framesB: 1 },
+      { a: eddy, b: marco, framesA: 0, framesB: 1 },
+      { a: eddy, b: andy, framesA: 1, framesB: 0 },
+      { a: eddy, b: jp, framesA: 1, framesB: 0 },
+      { a: eddy, b: klaas, framesA: 1, framesB: 0 },
+      { a: eddy, b: ibe, framesA: 1, framesB: 0 },
+      { a: roman, b: steff, framesA: 0, framesB: 1 },
+      { a: roman, b: marco, framesA: 1, framesB: 0 },
+      { a: roman, b: andy, framesA: 0, framesB: 1 },
+      { a: roman, b: jp, framesA: 1, framesB: 0 },
+      { a: roman, b: klaas, framesA: 0, framesB: 1 },
+      { a: roman, b: ibe, framesA: 1, framesB: 0 },
+      { a: steff, b: marco, framesA: 1, framesB: 0 },
+      { a: steff, b: andy, framesA: 1, framesB: 0 },
+      { a: steff, b: jp, framesA: 0, framesB: 1 },
+      { a: steff, b: klaas, framesA: 1, framesB: 0 },
+      { a: steff, b: ibe, framesA: 1, framesB: 0 },
+      { a: marco, b: andy, framesA: 1, framesB: 0 },
+      { a: marco, b: jp, framesA: 1, framesB: 0 },
+      { a: marco, b: klaas, framesA: 1, framesB: 0 },
+      { a: marco, b: ibe, framesA: 1, framesB: 0 },
+      { a: andy, b: jp, framesA: 1, framesB: 0 },
+      { a: andy, b: klaas, framesA: 0, framesB: 1 },
+      { a: andy, b: ibe, framesA: 1, framesB: 0 },
+      { a: jp, b: klaas, framesA: 1, framesB: 0 },
+      { a: jp, b: ibe, framesA: 0, framesB: 1 },
+      { a: klaas, b: ibe, framesA: 1, framesB: 0 },
+    ],
+  },
 ];
