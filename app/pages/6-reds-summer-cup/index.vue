@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { finaleDay, getPlayDay, playDays, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS, REGISTRATION_FEE, PLAY_TIME, BEST_RESULTS_COUNTED } from "#shared/data/summerCup";
+import { finaleDay, getPlayDay, playDays, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, REGISTRATION_FEE, PLAY_TIME, BEST_RESULTS_COUNTED } from "#shared/data/summerCup";
 import { playDayResults } from "#shared/data/summerCupResults";
 import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
@@ -108,7 +108,6 @@ const resultBlocks = [...playDayResults]
             <li>Per toernooi zijn er twee afzonderlijke speeldagen: woensdag en vrijdag.</li>
             <li>Spelers mogen deelnemen aan één speeldag per toernooi OF aan beide indien er nog plaatsen beschikbaar zijn (per toernooi telt enkel je beste resultaat voor de rankingpunten, maar je ontvangt deelnamepunten voor elke speeldag; spelers die nog niet speelden, krijgen voorrang).</li>
             <li>Minimum {{ MIN_PER_PLAY_DAY }} en maximum {{ MAX_PER_PLAY_DAY }} deelnemers per speeldag.</li>
-            <li>Maximum {{ MAX_UNIQUE_PLAYERS }} unieke deelnemers voor de editie 2026.</li>
           </ul>
         </div>
 

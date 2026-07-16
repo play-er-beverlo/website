@@ -16,9 +16,6 @@ interface AvailabilityDay {
 }
 interface AvailabilityResponse {
   playDays: AvailabilityDay[];
-  uniquePlayers: number;
-  maxUniquePlayers: number;
-  editionUniqueReached: boolean;
 }
 
 const toast = useToast();
@@ -37,9 +34,8 @@ const selectedDay = computed(() =>
   availability.value?.playDays.find((d) => d.id === selectedPlayDayId.value)
 );
 
-// A play day is selectable as long as it is not full or past. The 16-unique-players
-// edition cap is enforced server-side: new players are rejected, but players who are
-// already registered can still add another day that still has space.
+// A play day is selectable as long as it is not full or past. Capacity is capped per
+// play day (MAX_PER_PLAY_DAY); there is no edition-wide unique-participant limit.
 const canSelect = (day: AvailabilityDay) => !day.full && !day.past;
 
 const qrDataUrl = ref<string | null>(null);
@@ -178,14 +174,6 @@ const resetForm = async () => {
         color="primary"
         variant="subtle"
         icon="i-lucide-lock"
-      />
-
-      <u-alert
-        v-if="availability?.editionUniqueReached"
-        title="Maximum deelnemers bereikt"
-        description="Het maximum aantal unieke deelnemers (16) voor editie 2026 is bereikt. Nieuwe deelnemers kunnen niet meer inschrijven. Ben je al ingeschreven? Dan kan je nog een extra speeldag bijboeken zolang er plaats is."
-        color="warning"
-        variant="subtle"
       />
 
       <div class="flex flex-col gap-4">

@@ -25,7 +25,7 @@ export interface PlayDayResults {
   breaks?: Break[];      // 30+ breaks made on this play day (hand-entered)
 }
 
-// Results data (up to MAX_UNIQUE_PLAYERS = 16 unique players for the 2026 edition).
+// Results data for the 2026 edition (up to MAX_PER_PLAY_DAY = 8 players per play day).
 const andy = "andy-vleugels"; // Andy Vleugels
 const danny = "danny-moors"; // Danny Moors
 const eddy = "eddy-ritzen"; // Eddy Ritzen

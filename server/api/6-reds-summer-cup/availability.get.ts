@@ -1,6 +1,6 @@
 import { summerCupRegistrations } from "hub:db:schema";
 import { db } from "hub:db";
-import { playDays, MAX_PER_PLAY_DAY, MAX_UNIQUE_PLAYERS } from "#shared/data/summerCup";
+import { playDays, MAX_PER_PLAY_DAY } from "#shared/data/summerCup";
 
 export default defineEventHandler(async () => {
   const rows = await db
@@ -12,7 +12,6 @@ export default defineEventHandler(async () => {
     .all();
 
   const todayKey = new Date().toISOString().slice(0, 10);
-  const uniqueEmails = new Set(rows.map((r) => r.email.trim().toLowerCase()));
 
   const days = playDays.map((d) => {
     const registered = rows.filter((r) => r.playDayId === d.id).length;
@@ -31,8 +30,5 @@ export default defineEventHandler(async () => {
 
   return {
     playDays: days,
-    uniquePlayers: uniqueEmails.size,
-    maxUniquePlayers: MAX_UNIQUE_PLAYERS,
-    editionUniqueReached: uniqueEmails.size >= MAX_UNIQUE_PLAYERS,
   };
 });

@@ -65,21 +65,22 @@ describe("checkRegistrationAllowed", () => {
     expect(r).toEqual({ ok: false, reason: "full" });
   });
 
-  it("rejects a new unique player when the edition already has 16 unique players", () => {
+  it("allows a new player even when many unique players already registered elsewhere", () => {
+    // No edition-wide unique cap: only the per-play-day limit applies.
     const r = checkRegistrationAllowed({
       playDayId: "2026-06-19",
       email: "seventeenth@example.com",
-      existing: make(16, "2026-06-17", "u"), // 16 unique emails on a different day
+      existing: make(16, "2026-06-17", "u"), // 16 unique emails on a different, full day
       now: NOW,
     });
-    expect(r).toEqual({ ok: false, reason: "edition_full" });
+    expect(r).toEqual({ ok: true });
   });
 
-  it("still allows an already-registered player to add another day at the 16-unique cap", () => {
-    const existing = make(16, "2026-06-17", "u"); // u0..u15 unique
+  it("allows an already-registered player to add another day", () => {
+    const existing = make(8, "2026-06-17", "u"); // u0..u7 on the Wednesday day
     const r = checkRegistrationAllowed({
       playDayId: "2026-06-19",
-      email: "u3@example.com", // already counted unique
+      email: "u3@example.com", // plays the Friday day too
       existing,
       now: NOW,
     });
