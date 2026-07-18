@@ -214,4 +214,53 @@ export const playDayResults: PlayDayResults[] = [
       { a: klaas, b: ibe, framesA: 1, framesB: 0 },
     ],
   },
+  // ── Toernooi 3 — vrijdag 17 juli 2026 ────────────────────────────────────────
+  {
+    playDayId: "2026-07-17",
+    players: [
+      { id: koen, name: "Koen Caerts" },
+      { id: kurt, name: "Kurt Beliën" },
+      { id: eddy, name: "Eddy Ritzen" },
+      { id: nico, name: "Nico Hoffmann" },
+      { id: jp, name: "Jean-Pierre Van Camp" },
+      { id: klaas, name: "Klaas Piekarczyk" },
+      { id: ibe, name: "Ibe Sijben" },
+      { id: danny, name: "Danny Moors" },
+    ],
+    // 8 players -> 1 frame per match, recorded as frames won (1-0 / 0-1). Danny wins
+    // all 7 frames. Koen and Klaas tie on 3; Klaas won their head-to-head, so he
+    // takes 4th. Kurt, Nico and Ibe tie on 2 with a circular head-to-head (Kurt beat
+    // Ibe, Nico beat Kurt, Ibe beat Nico); `tiebreak` fixes the card's 6-7-8 order.
+    matches: [
+      { a: koen, b: kurt, framesA: 1, framesB: 0 },
+      { a: koen, b: eddy, framesA: 1, framesB: 0 },
+      { a: koen, b: nico, framesA: 0, framesB: 1 },
+      { a: koen, b: jp, framesA: 0, framesB: 1 },
+      { a: koen, b: klaas, framesA: 0, framesB: 1 },
+      { a: koen, b: ibe, framesA: 1, framesB: 0 },
+      { a: koen, b: danny, framesA: 0, framesB: 1 },
+      { a: kurt, b: eddy, framesA: 0, framesB: 1 },
+      { a: kurt, b: nico, framesA: 0, framesB: 1 },
+      { a: kurt, b: jp, framesA: 0, framesB: 1 },
+      { a: kurt, b: klaas, framesA: 1, framesB: 0 },
+      { a: kurt, b: ibe, framesA: 1, framesB: 0 },
+      { a: kurt, b: danny, framesA: 0, framesB: 1 },
+      { a: eddy, b: nico, framesA: 1, framesB: 0 },
+      { a: eddy, b: jp, framesA: 1, framesB: 0 },
+      { a: eddy, b: klaas, framesA: 1, framesB: 0 },
+      { a: eddy, b: ibe, framesA: 1, framesB: 0 },
+      { a: eddy, b: danny, framesA: 0, framesB: 1 },
+      { a: nico, b: jp, framesA: 0, framesB: 1 },
+      { a: nico, b: klaas, framesA: 0, framesB: 1 },
+      { a: nico, b: ibe, framesA: 0, framesB: 1 },
+      { a: nico, b: danny, framesA: 0, framesB: 1 },
+      { a: jp, b: klaas, framesA: 1, framesB: 0 },
+      { a: jp, b: ibe, framesA: 0, framesB: 1 },
+      { a: jp, b: danny, framesA: 0, framesB: 1 },
+      { a: klaas, b: ibe, framesA: 1, framesB: 0 },
+      { a: klaas, b: danny, framesA: 0, framesB: 1 },
+      { a: ibe, b: danny, framesA: 0, framesB: 1 },
+    ],
+    tiebreak: [kurt, nico, ibe],
+  },
 ];
