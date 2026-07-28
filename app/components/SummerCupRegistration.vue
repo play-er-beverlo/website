@@ -27,8 +27,14 @@ const defaultOpenDayId = computed(
   () => availability.value?.playDays.find(isSelectable)?.id ?? null
 );
 
-const selectPlayDay = (id: string) => {
+const detailsSection = useTemplateRef<HTMLElement>("detailsSection");
+
+// With eight play days in the list the form sits well below the fold on mobile, so
+// point the visitor at the next step instead of leaving them to hunt for it.
+const selectPlayDay = async (id: string) => {
   selectedPlayDayId.value = id;
+  await nextTick();
+  detailsSection.value?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 const qrDataUrl = ref<string | null>(null);
@@ -183,7 +189,7 @@ const resetForm = async () => {
         </div>
       </div>
 
-      <div v-if="selectedPlayDayId" class="flex flex-col gap-4">
+      <div v-if="selectedPlayDayId" ref="detailsSection" class="flex flex-col gap-4">
         <h2>Je gegevens</h2>
         <u-form-field class="flex-1" label="Naam" size="xl" :required="true">
           <u-input class="w-full" v-model="name" name="name" placeholder="Voor- en achternaam" />
