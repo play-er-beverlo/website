@@ -76,9 +76,11 @@ export function playerNamesByPlayDay(
 }
 
 /**
- * Whether a visitor can still register for a play day. Structurally typed so this
- * module stays import-free; the availability response satisfies it. Both the play-day
- * row and the surrounding list read the rule from here instead of restating it.
+ * Whether a visitor can still register for a play day. Structurally typed on just the
+ * two fields it needs so this function doesn't have to import from availability.ts —
+ * that module already imports from here, and doing it both ways would be circular.
+ * The availability response satisfies this shape, and both the play-day row and the
+ * surrounding list read the rule from here instead of restating it.
  */
 export function isSelectable(day: { full: boolean; past: boolean }): boolean {
   return !day.full && !day.past;

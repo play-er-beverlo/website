@@ -116,10 +116,14 @@ const register = async () => {
 };
 
 const resetForm = async () => {
+  // Refresh must resolve before we clear `confirmation`: clearing it swaps in the
+  // v-else form subtree on the next flush, and each SummerCupPlayDay seeds its local
+  // `open` ref from `defaultOpen` only once, at setup. Awaiting first means that seed
+  // reflects fresh availability instead of the data from before this registration.
+  await refresh();
   confirmation.value = null;
   selectedPlayDayId.value = null;
   // Keep name/email so the participant's details stay pre-filled for a new inschrijving.
-  await refresh();
 };
 </script>
 

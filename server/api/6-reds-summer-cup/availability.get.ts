@@ -19,6 +19,7 @@ export default defineEventHandler(async (): Promise<AvailabilityResponse> => {
   const days = playDays.map((d) => {
     const players = namesByDay.get(d.id) ?? [];
     const registered = players.length;
+    const past = d.id < todayKey;
     return {
       id: d.id,
       label: d.label,
@@ -28,8 +29,10 @@ export default defineEventHandler(async (): Promise<AvailabilityResponse> => {
       capacity: MAX_PER_PLAY_DAY,
       remaining: Math.max(0, MAX_PER_PLAY_DAY - registered),
       full: registered >= MAX_PER_PLAY_DAY,
-      past: d.id < todayKey,
-      players,
+      past,
+      // Past rows aren't expandable in the UI, so don't ship names nobody sees —
+      // keep the payload limited to what's actually displayed.
+      players: past ? [] : players,
     };
   });
 

@@ -19,8 +19,9 @@ const canSelect = computed(() => isSelectable(props.day));
 // Tracked locally (instead of reading `open` off UCollapsible's default-slot scope) to
 // dodge a @vue/compiler-sfc crash: `v-slot="{ open }"` on a component that also has a
 // named #content slot fails codegen ("Cannot read properties of undefined (reading
-// 'type')") in this project's Vue 3.5.33 / Vite 7.3.2. v-model:open sidesteps it while
-// keeping the same open/closed behavior.
+// 'type')") in this project's Vue 3.5.33 / Vite 7.3.2. The crash is specific to that
+// shorthand form — `<template #default="{ open }">` compiles fine and would also work.
+// v-model:open sidesteps it while keeping the same open/closed behavior.
 const open = ref(props.defaultOpen);
 </script>
 
@@ -47,7 +48,7 @@ const open = ref(props.defaultOpen);
         <p v-if="!day.players.length" class="opacity-80">
           Nog niemand ingeschreven — wees de eerste
         </p>
-        <ul v-else class="flex flex-col gap-1">
+        <ul v-else class="flex flex-col gap-1" aria-label="Ingeschreven spelers">
           <!-- Index as key: two players may share a name (uniqueness is playDayId + email). -->
           <li v-for="(name, i) in day.players" :key="i">{{ name }}</li>
         </ul>

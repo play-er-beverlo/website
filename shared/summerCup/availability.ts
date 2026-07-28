@@ -9,7 +9,11 @@ export interface AvailabilityDay {
   remaining: number;
   full: boolean;
   past: boolean;
-  /** Everyone registered for this day, alphabetically. Empty when nobody signed up. */
+  /**
+   * Everyone registered for this day, alphabetically. Empty when nobody signed up,
+   * and also empty for past days regardless of registrations — the endpoint strips
+   * names once a day is past, since those rows are never expanded in the UI.
+   */
   players: string[];
 }
 
