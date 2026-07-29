@@ -2,21 +2,8 @@
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 import { REGISTRATION_FEE, payment, PLAY_TIME, getPlayDay } from "#shared/data/summerCup";
 import { buildEpcQrPayload } from "#shared/summerCup/epc";
-
-interface AvailabilityDay {
-  id: string;
-  label: string;
-  shortLabel: string;
-  tournament: number;
-  registered: number;
-  capacity: number;
-  remaining: number;
-  full: boolean;
-  past: boolean;
-}
-interface AvailabilityResponse {
-  playDays: AvailabilityDay[];
-}
+import { isSelectable } from "#shared/summerCup/capacity";
+import type { AvailabilityResponse } from "#shared/summerCup/availability";
 
 const toast = useToast();
 
@@ -34,9 +21,21 @@ const selectedDay = computed(() =>
   availability.value?.playDays.find((d) => d.id === selectedPlayDayId.value)
 );
 
-// A play day is selectable as long as it is not full or past. Capacity is capped per
-// play day (MAX_PER_PLAY_DAY); there is no edition-wide unique-participant limit.
-const canSelect = (day: AvailabilityDay) => !day.full && !day.past;
+// Open the first still-selectable day so the "Kies deze speeldag" button is visible
+// without a click — registering is the main reason people are on this section.
+const defaultOpenDayId = computed(
+  () => availability.value?.playDays.find(isSelectable)?.id ?? null
+);
+
+const detailsSection = useTemplateRef<HTMLElement>("detailsSection");
+
+// With eight play days in the list the form sits well below the fold on mobile, so
+// point the visitor at the next step instead of leaving them to hunt for it.
+const selectPlayDay = async (id: string) => {
+  selectedPlayDayId.value = id;
+  await nextTick();
+  detailsSection.value?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
 const qrDataUrl = ref<string | null>(null);
 
@@ -117,10 +116,14 @@ const register = async () => {
 };
 
 const resetForm = async () => {
+  // Refresh must resolve before we clear `confirmation`: clearing it swaps in the
+  // v-else form subtree on the next flush, and each SummerCupPlayDay seeds its local
+  // `open` ref from `defaultOpen` only once, at setup. Awaiting first means that seed
+  // reflects fresh availability instead of the data from before this registration.
+  await refresh();
   confirmation.value = null;
   selectedPlayDayId.value = null;
   // Keep name/email so the participant's details stay pre-filled for a new inschrijving.
-  await refresh();
 };
 </script>
 
@@ -179,25 +182,18 @@ const resetForm = async () => {
       <div class="flex flex-col gap-4">
         <h2>Kies je speeldag</h2>
         <div class="flex flex-col gap-3">
-          <u-button
+          <summer-cup-play-day
             v-for="day in availability?.playDays"
             :key="day.id"
-            class="justify-between"
-            size="xl"
-            :color="day.id === selectedPlayDayId ? 'primary' : 'neutral'"
-            :variant="day.id === selectedPlayDayId ? 'solid' : 'outline'"
-            :disabled="!canSelect(day)"
-            @click="selectedPlayDayId = day.id"
-          >
-            <span>{{ day.label }} — {{ PLAY_TIME }}</span>
-            <span v-if="day.past">Voorbij</span>
-            <span v-else-if="day.full">Volzet</span>
-            <span v-else>nog {{ day.remaining }}/{{ day.capacity }} plaatsen vrij</span>
-          </u-button>
+            :day="day"
+            :selected="day.id === selectedPlayDayId"
+            :default-open="day.id === defaultOpenDayId"
+            @select="selectPlayDay(day.id)"
+          />
         </div>
       </div>
 
-      <div v-if="selectedPlayDayId" class="flex flex-col gap-4">
+      <div v-if="selectedPlayDayId" ref="detailsSection" class="flex flex-col gap-4">
         <h2>Je gegevens</h2>
         <u-form-field class="flex-1" label="Naam" size="xl" :required="true">
           <u-input class="w-full" v-model="name" name="name" placeholder="Voor- en achternaam" />

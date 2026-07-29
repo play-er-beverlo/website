@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   checkRegistrationAllowed,
   isPlayDayPast,
+  isSelectable,
+  playerNamesByPlayDay,
   type ExistingRegistration,
 } from "../shared/summerCup/capacity";
 
@@ -99,5 +101,57 @@ describe("isPlayDayPast", () => {
 
   it("is false when the play day is in the future", () => {
     expect(isPlayDayPast("2026-07-01", new Date("2026-06-18T10:00:00Z"))).toBe(false);
+  });
+});
+
+describe("playerNamesByPlayDay", () => {
+  it("groups names per play day", () => {
+    const map = playerNamesByPlayDay([
+      { playDayId: "2026-06-17", name: "Jan" },
+      { playDayId: "2026-06-19", name: "Piet" },
+      { playDayId: "2026-06-17", name: "Ann" },
+    ]);
+    expect(map.get("2026-06-17")).toEqual(["Ann", "Jan"]);
+    expect(map.get("2026-06-19")).toEqual(["Piet"]);
+  });
+
+  it("sorts alphabetically using Dutch collation", () => {
+    const map = playerNamesByPlayDay([
+      { playDayId: "2026-06-17", name: "Zoë" },
+      { playDayId: "2026-06-17", name: "Émile" },
+      { playDayId: "2026-06-17", name: "ann" },
+    ]);
+    expect(map.get("2026-06-17")).toEqual(["ann", "Émile", "Zoë"]);
+  });
+
+  it("keeps both entries when two players share a name", () => {
+    const map = playerNamesByPlayDay([
+      { playDayId: "2026-06-17", name: "Jan Peeters" },
+      { playDayId: "2026-06-17", name: "Jan Peeters" },
+    ]);
+    expect(map.get("2026-06-17")).toEqual(["Jan Peeters", "Jan Peeters"]);
+  });
+
+  it("omits play days without registrations", () => {
+    const map = playerNamesByPlayDay([{ playDayId: "2026-06-17", name: "Jan" }]);
+    expect(map.has("2026-06-19")).toBe(false);
+  });
+
+  it("returns an empty map for empty input", () => {
+    expect(playerNamesByPlayDay([]).size).toBe(0);
+  });
+});
+
+describe("isSelectable", () => {
+  it("is true for a day with space that has not been played yet", () => {
+    expect(isSelectable({ full: false, past: false })).toBe(true);
+  });
+
+  it("is false for a full day", () => {
+    expect(isSelectable({ full: true, past: false })).toBe(false);
+  });
+
+  it("is false for a past day", () => {
+    expect(isSelectable({ full: false, past: true })).toBe(false);
   });
 });

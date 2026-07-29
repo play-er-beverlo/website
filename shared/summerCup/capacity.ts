@@ -51,3 +51,36 @@ export function checkRegistrationAllowed(params: {
 
   return { ok: true };
 }
+
+/**
+ * Groups registration names per play day, each list sorted alphabetically with Dutch
+ * collation — the same ordering the wedstrijdblad endpoint already uses. Play days
+ * without registrations are absent from the map; callers fall back to an empty array.
+ */
+export function playerNamesByPlayDay(
+  rows: { playDayId: string; name: string }[]
+): Map<string, string[]> {
+  const byDay = new Map<string, string[]>();
+
+  for (const row of rows) {
+    const names = byDay.get(row.playDayId);
+    if (names) names.push(row.name);
+    else byDay.set(row.playDayId, [row.name]);
+  }
+
+  for (const names of byDay.values()) {
+    names.sort((a, b) => a.localeCompare(b, "nl"));
+  }
+
+  return byDay;
+}
+
+/**
+ * Whether a visitor can still register for a play day. Structurally typed on just the
+ * two fields it needs, so neither this module nor availability.ts has to import the
+ * other — the availability response satisfies the shape on its own. Both the play-day
+ * row and the surrounding list read the rule from here instead of restating it.
+ */
+export function isSelectable(day: { full: boolean; past: boolean }): boolean {
+  return !day.full && !day.past;
+}
