@@ -151,6 +151,14 @@ const resultBlocks = [...playDayResults]
             5e plaats: 3 punten · 6e plaats: 2 punten · 7e plaats: 1 punt. Bovenstaande punten komen
             bovenop de 2 deelnamepunten.
           </p>
+          <p class="font-semibold">Ex aequo in de SummER Ranking</p>
+          <p>
+            Staan spelers gelijk in punten, dan wordt van boven naar beneden afgegaan:
+          </p>
+          <ol class="list-decimal ps-6 flex flex-col gap-2">
+            <li>Onderling resultaat: het aantal frames dat de spelers over alle speeldagen samen van elkaar wonnen.</li>
+            <li>Werd er geen onderling duel gespeeld, of blijft het onderling gelijk, dan telt het hoogste winstpercentage: het aantal gewonnen frames op het totaal aantal gespeelde frames over alle speeldagen.</li>
+          </ol>
         </div>
 
         <div class="flex flex-col gap-4">

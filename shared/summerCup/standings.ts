@@ -162,8 +162,17 @@ export interface SummerRow {
   /** Total play days the player participated in (drives the participation points). */
   playDaysPlayed: number;
   totalPoints: number;
+  /** Frames won across every play day (tie-break input). */
+  framesWon: number;
+  /** Frames played across every play day (tie-break input). */
+  framesPlayed: number;
+  /** framesWon / framesPlayed, 0 when no frames played. Second tie-break. */
+  frameWinPct: number;
   position: number; // 1-based
 }
+
+/** A ranking row before its final position is assigned. */
+type SummerRowBase = Omit<SummerRow, "position">;
 
 interface SummerTally {
   player: DayPlayer;
@@ -171,6 +180,92 @@ interface SummerTally {
   participationPoints: number;
   /** Best competitive (ranking + bonus) points per tournament; only the best counts. */
   bestPerTournament: Map<number | string, number>;
+}
+
+interface FrameTotals {
+  won: number;
+  played: number;
+}
+
+/** Frames won and played per player across every day (drives the win percentage). */
+function seasonFrameTotals(days: PlayDayResults[]): Map<string, FrameTotals> {
+  const totals = new Map<string, FrameTotals>();
+  const add = (id: string, won: number, played: number) => {
+    const entry = totals.get(id) ?? { won: 0, played: 0 };
+    entry.won += won;
+    entry.played += played;
+    totals.set(id, entry);
+  };
+
+  for (const day of days) {
+    for (const match of day.matches) {
+      const outcome = resolveMatch(match);
+      const played = outcome.framesA + outcome.framesB;
+      add(match.a, outcome.framesA, played);
+      add(match.b, outcome.framesB, played);
+    }
+  }
+  return totals;
+}
+
+/**
+ * Frames won by each of `ids` in the matches they played among themselves, over
+ * every play day. A pair that never met stays level on 0, which reads as "no head
+ * to head" and lets the next tie-break decide.
+ */
+function seasonHeadToHeadFrames(days: PlayDayResults[], ids: Set<string>): Map<string, number> {
+  const frames = new Map<string, number>();
+  ids.forEach((id) => frames.set(id, 0));
+  for (const day of days) {
+    for (const match of day.matches) {
+      if (!ids.has(match.a) || !ids.has(match.b)) continue;
+      const outcome = resolveMatch(match);
+      frames.set(match.a, (frames.get(match.a) ?? 0) + outcome.framesA);
+      frames.set(match.b, (frames.get(match.b) ?? 0) + outcome.framesB);
+    }
+  }
+  return frames;
+}
+
+/**
+ * Order players tied on ranking points: first their head-to-head over the whole
+ * season, then the highest frame win percentage. Name order is the last resort so
+ * the ranking stays deterministic instead of leaning on tally insertion order.
+ */
+function breakRankingTie(days: PlayDayResults[], group: SummerRowBase[]): SummerRowBase[] {
+  const h2h = seasonHeadToHeadFrames(days, new Set(group.map((row) => row.player.id)));
+
+  return [...group].sort((x, y) => {
+    const fx = h2h.get(x.player.id) ?? 0;
+    const fy = h2h.get(y.player.id) ?? 0;
+    if (fy !== fx) return fy - fx; // more head-to-head frames first
+
+    if (y.frameWinPct !== x.frameWinPct) return y.frameWinPct - x.frameWinPct;
+
+    return x.player.name.localeCompare(y.player.name);
+  });
+}
+
+/** Group rows tied on points and resolve each group's internal order. */
+function orderSummerRows(days: PlayDayResults[], rows: SummerRowBase[]): SummerRowBase[] {
+  const byPoints = [...rows].sort((x, y) => y.totalPoints - x.totalPoints);
+
+  const result: SummerRowBase[] = [];
+  let i = 0;
+  while (i < byPoints.length) {
+    const head = byPoints[i];
+    let j = i + 1;
+    while (j < byPoints.length) {
+      const next = byPoints[j];
+      if (!head || !next) break;
+      if (next.totalPoints !== head.totalPoints) break;
+      j++;
+    }
+    const group = byPoints.slice(i, j);
+    result.push(...(group.length > 1 ? breakRankingTie(days, group) : group));
+    i = j;
+  }
+  return result;
 }
 
 export function computeSummerRanking(days: PlayDayResults[]): SummerRow[] {
@@ -205,19 +300,24 @@ export function computeSummerRanking(days: PlayDayResults[]): SummerRow[] {
     }
   }
 
-  const rows = [...tallies.values()].map((tally) => {
+  const frameTotals = seasonFrameTotals(ordered);
+
+  const rows: SummerRowBase[] = [...tallies.values()].map((tally) => {
     const bestResults = [...tally.bestPerTournament.values()]
       .sort((a, b) => b - a)
       .slice(0, BEST_RESULTS_COUNTED)
       .reduce((sum, points) => sum + points, 0);
+    const frames = frameTotals.get(tally.player.id) ?? { won: 0, played: 0 };
     return {
       player: tally.player,
       playDaysPlayed: tally.playDaysPlayed,
       totalPoints: tally.participationPoints + bestResults,
+      framesWon: frames.won,
+      framesPlayed: frames.played,
+      frameWinPct: frames.played > 0 ? frames.won / frames.played : 0,
     };
   });
 
-  return rows
-    .sort((x, y) => y.totalPoints - x.totalPoints)
-    .map((row, i) => ({ ...row, position: i + 1 }));
+  // Equal points are separated by head-to-head, then by frame win percentage.
+  return orderSummerRows(ordered, rows).map((row, i) => ({ ...row, position: i + 1 }));
 }

@@ -445,3 +445,169 @@ describe("computeSummerRanking (best 3 results, participation every day)", () =>
     expect(ranking).toHaveLength(16);
   });
 });
+
+// Tie-break fixtures for players level on ranking points. Each fixture puts the
+// expected winner LAST in input order and SECOND alphabetically, so passing the
+// assertion requires the tie-break to actually reorder the pair. Filler players
+// never reach the tied total, so the pair always takes positions 1 and 2.
+const piet = "piet-peeters";
+const quinten = "quinten-quintens";
+const PIET = { id: piet, name: "Piet Peeters" };
+const QUINTEN = { id: quinten, name: "Quinten Quintens" };
+
+describe("computeSummerRanking tie-breaks (equal points)", () => {
+  it("puts the head-to-head winner first, even with a lower win percentage", () => {
+    // Quinten beats Piet 2-0 on the shared day but ends on a worse win percentage
+    // (50% vs 58%), so only the head-to-head can lift him above Piet.
+    const days: PlayDayResults[] = [
+      {
+        playDayId: "2026-06-17",
+        players: [PIET, QUINTEN, { id: "r1", name: "Rik Reynders" }, { id: "s1", name: "Sam Smets" }],
+        matches: [
+          { a: piet, b: quinten, framesA: 0, framesB: 2 },
+          { a: piet, b: "r1", framesA: 2, framesB: 0 },
+          { a: piet, b: "s1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "r1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "s1", framesA: 2, framesB: 0 },
+          { a: "r1", b: "s1", framesA: 2, framesB: 0 },
+        ],
+      },
+      {
+        // Piet 3rd of 4 (3 frames) -> 2 competitive points.
+        playDayId: "2026-07-03",
+        players: [{ id: "a2", name: "Arne Aerts" }, { id: "b2", name: "Bram Bex" }, PIET, { id: "c2", name: "Cis Claes" }],
+        matches: [
+          { a: "a2", b: "b2", framesA: 1, framesB: 1 },
+          { a: "a2", b: piet, framesA: 2, framesB: 0 },
+          { a: "a2", b: "c2", framesA: 2, framesB: 0 },
+          { a: "b2", b: piet, framesA: 1, framesB: 1 },
+          { a: "b2", b: "c2", framesA: 2, framesB: 0 },
+          { a: piet, b: "c2", framesA: 2, framesB: 0 },
+        ],
+      },
+      {
+        // Quinten last of 4 (0 frames) -> 1 competitive point.
+        playDayId: "2026-07-15",
+        players: [{ id: "d3", name: "Dirk Dams" }, { id: "e3", name: "Eddy Engels" }, { id: "f3", name: "Frank Frans" }, QUINTEN],
+        matches: [
+          { a: "d3", b: "e3", framesA: 2, framesB: 0 },
+          { a: "d3", b: "f3", framesA: 2, framesB: 0 },
+          { a: "d3", b: quinten, framesA: 2, framesB: 0 },
+          { a: "e3", b: "f3", framesA: 2, framesB: 0 },
+          { a: "e3", b: quinten, framesA: 2, framesB: 0 },
+          { a: "f3", b: quinten, framesA: 2, framesB: 0 },
+        ],
+      },
+    ];
+
+    const ranking = computeSummerRanking(days);
+    const piets = ranking.find((r) => r.player.id === piet)!;
+    const quintens = ranking.find((r) => r.player.id === quinten)!;
+
+    expect([piets.totalPoints, quintens.totalPoints]).toEqual([10, 10]);
+    expect(quintens.frameWinPct).toBeLessThan(piets.frameWinPct);
+    expect(ranking.slice(0, 2).map((r) => r.player.id)).toEqual([quinten, piet]);
+  });
+
+  it("falls back to the win percentage when the pair never met", () => {
+    // Separate tournaments, no shared day: Quinten's 100% beats Piet's 83%.
+    const days: PlayDayResults[] = [
+      {
+        playDayId: "2026-06-17",
+        players: [PIET, { id: "u1", name: "Urbain Ulens" }, { id: "v1", name: "Vic Vos" }, { id: "w1", name: "Wim Wouters" }],
+        matches: [
+          { a: piet, b: "u1", framesA: 1, framesB: 1 },
+          { a: piet, b: "v1", framesA: 2, framesB: 0 },
+          { a: piet, b: "w1", framesA: 2, framesB: 0 },
+          { a: "u1", b: "v1", framesA: 2, framesB: 0 },
+          { a: "u1", b: "w1", framesA: 0, framesB: 2 },
+          { a: "v1", b: "w1", framesA: 2, framesB: 0 },
+        ],
+      },
+      {
+        playDayId: "2026-07-03",
+        players: [QUINTEN, { id: "x1", name: "Xavier Xhonneux" }, { id: "y1", name: "Yves Yssels" }, { id: "z1", name: "Zeger Zels" }],
+        matches: [
+          { a: quinten, b: "x1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "y1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "z1", framesA: 2, framesB: 0 },
+          { a: "x1", b: "y1", framesA: 2, framesB: 0 },
+          { a: "x1", b: "z1", framesA: 2, framesB: 0 },
+          { a: "y1", b: "z1", framesA: 2, framesB: 0 },
+        ],
+      },
+    ];
+
+    const ranking = computeSummerRanking(days);
+    const piets = ranking.find((r) => r.player.id === piet)!;
+    const quintens = ranking.find((r) => r.player.id === quinten)!;
+
+    expect([piets.totalPoints, quintens.totalPoints]).toEqual([7, 7]);
+    expect(piets.frameWinPct).toBeCloseTo(5 / 6);
+    expect(quintens.frameWinPct).toBe(1);
+    expect(ranking.slice(0, 2).map((r) => r.player.id)).toEqual([quinten, piet]);
+  });
+
+  it("falls back to the win percentage when the head-to-head is drawn", () => {
+    // The only meeting is a 1-1, so the 67% vs 42% win percentage decides.
+    const days: PlayDayResults[] = [
+      {
+        playDayId: "2026-06-17",
+        players: [PIET, QUINTEN, { id: "r1", name: "Rik Reynders" }, { id: "s1", name: "Sam Smets" }],
+        matches: [
+          { a: piet, b: quinten, framesA: 1, framesB: 1 },
+          { a: piet, b: "r1", framesA: 2, framesB: 0 },
+          { a: piet, b: "s1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "r1", framesA: 2, framesB: 0 },
+          { a: quinten, b: "s1", framesA: 2, framesB: 0 },
+          { a: "r1", b: "s1", framesA: 2, framesB: 0 },
+        ],
+      },
+      {
+        // Piet last of 4 (0 frames) -> 1 competitive point.
+        playDayId: "2026-07-03",
+        players: [{ id: "d3", name: "Dirk Dams" }, { id: "e3", name: "Eddy Engels" }, { id: "f3", name: "Frank Frans" }, PIET],
+        matches: [
+          { a: "d3", b: "e3", framesA: 2, framesB: 0 },
+          { a: "d3", b: "f3", framesA: 2, framesB: 0 },
+          { a: "d3", b: piet, framesA: 2, framesB: 0 },
+          { a: "e3", b: "f3", framesA: 2, framesB: 0 },
+          { a: "e3", b: piet, framesA: 2, framesB: 0 },
+          { a: "f3", b: piet, framesA: 2, framesB: 0 },
+        ],
+      },
+      {
+        // Quinten 3rd of 4 (3 frames) -> 2 competitive points.
+        playDayId: "2026-07-15",
+        players: [{ id: "a2", name: "Arne Aerts" }, { id: "b2", name: "Bram Bex" }, QUINTEN, { id: "c2", name: "Cis Claes" }],
+        matches: [
+          { a: "a2", b: "b2", framesA: 1, framesB: 1 },
+          { a: "a2", b: quinten, framesA: 2, framesB: 0 },
+          { a: "a2", b: "c2", framesA: 2, framesB: 0 },
+          { a: "b2", b: quinten, framesA: 1, framesB: 1 },
+          { a: "b2", b: "c2", framesA: 2, framesB: 0 },
+          { a: quinten, b: "c2", framesA: 2, framesB: 0 },
+        ],
+      },
+    ];
+
+    const ranking = computeSummerRanking(days);
+    const piets = ranking.find((r) => r.player.id === piet)!;
+    const quintens = ranking.find((r) => r.player.id === quinten)!;
+
+    expect([piets.totalPoints, quintens.totalPoints]).toEqual([10, 10]);
+    expect(piets.frameWinPct).toBeCloseTo(5 / 12);
+    expect(quintens.frameWinPct).toBeCloseTo(8 / 12);
+    expect(ranking.slice(0, 2).map((r) => r.player.id)).toEqual([quinten, piet]);
+  });
+
+  it("reports the season frame totals used by the win percentage", () => {
+    const ranking = computeSummerRanking(playDayResults);
+    const tom = ranking.find((r) => r.player.name === "Tom Janssens")!;
+    // Tom played 4 days, 24 frames: 8-player (7), 6-player (5), 4-player (6),
+    // 7-player (6). He dropped only the frame to Danny and their 1-1 on 2026-07-03.
+    expect(tom.framesPlayed).toBe(24);
+    expect(tom.framesWon).toBe(22);
+    expect(tom.frameWinPct).toBeCloseTo(22 / 24);
+  });
+});
