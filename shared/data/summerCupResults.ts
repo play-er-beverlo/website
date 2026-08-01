@@ -41,6 +41,7 @@ const roman = "roman-szpyt"; // Roman Szpyt
 const ronnie = "ronnie-de-reydt"; // Ronnie De Reydt
 const steff = "steff-beckers"; // Steff Beckers
 const thomas = "thomas-belmans"; // Thomas Belmans
+const yoshi = "yoshi-lecocq"; // Yoshi Lecocq
 
 export const playDayResults: PlayDayResults[] = [
   // ── Toernooi 1 — woensdag 17 juni 2026 ───────────────────────────────────────
@@ -309,6 +310,55 @@ export const playDayResults: PlayDayResults[] = [
       { a: jp, b: andy, framesA: 1, framesB: 0 },
       { a: jp, b: steff, framesA: 0, framesB: 1 },
       { a: andy, b: steff, framesA: 0, framesB: 1 },
+    ],
+  },
+  // ── Toernooi 4 — vrijdag 31 juli 2026 ────────────────────────────────────────
+  {
+    playDayId: "2026-07-31",
+    players: [
+      { id: andy, name: "Andy Vleugels" },
+      { id: eddy, name: "Eddy Ritzen" },
+      { id: nico, name: "Nico Hoffmann" },
+      { id: ibe, name: "Ibe Sijben" },
+      { id: klaas, name: "Klaas Piekarczyk" },
+      { id: kurt, name: "Kurt Beliën" },
+      { id: jp, name: "Jean-Pierre Van Camp" },
+      { id: yoshi, name: "Yoshi Lecocq" },
+    ],
+    // 8 players -> 1 frame per match, recorded as frames won (1-0 / 0-1). Andy and
+    // Yoshi top on 6 wins; Andy won their head-to-head, so he takes 1st. JP and Eddy
+    // tie on 4 (JP won head-to-head -> 3rd), Ibe and Nico on 3 (Ibe won -> 5th), and
+    // Kurt and Klaas on 1 (Kurt won -> 7th). Every tie separates cleanly by
+    // head-to-head, matching the card's order, so no manual tiebreak is needed.
+    matches: [
+      { a: andy, b: eddy, framesA: 1, framesB: 0 },
+      { a: andy, b: nico, framesA: 0, framesB: 1 },
+      { a: andy, b: ibe, framesA: 1, framesB: 0 },
+      { a: andy, b: klaas, framesA: 1, framesB: 0 },
+      { a: andy, b: kurt, framesA: 1, framesB: 0 },
+      { a: andy, b: jp, framesA: 1, framesB: 0 },
+      { a: andy, b: yoshi, framesA: 1, framesB: 0 },
+      { a: eddy, b: nico, framesA: 1, framesB: 0 },
+      { a: eddy, b: ibe, framesA: 1, framesB: 0 },
+      { a: eddy, b: klaas, framesA: 1, framesB: 0 },
+      { a: eddy, b: kurt, framesA: 1, framesB: 0 },
+      { a: eddy, b: jp, framesA: 0, framesB: 1 },
+      { a: eddy, b: yoshi, framesA: 0, framesB: 1 },
+      { a: nico, b: ibe, framesA: 0, framesB: 1 },
+      { a: nico, b: klaas, framesA: 0, framesB: 1 },
+      { a: nico, b: kurt, framesA: 1, framesB: 0 },
+      { a: nico, b: jp, framesA: 1, framesB: 0 },
+      { a: nico, b: yoshi, framesA: 0, framesB: 1 },
+      { a: ibe, b: klaas, framesA: 1, framesB: 0 },
+      { a: ibe, b: kurt, framesA: 1, framesB: 0 },
+      { a: ibe, b: jp, framesA: 0, framesB: 1 },
+      { a: ibe, b: yoshi, framesA: 0, framesB: 1 },
+      { a: klaas, b: kurt, framesA: 0, framesB: 1 },
+      { a: klaas, b: jp, framesA: 0, framesB: 1 },
+      { a: klaas, b: yoshi, framesA: 0, framesB: 1 },
+      { a: kurt, b: jp, framesA: 0, framesB: 1 },
+      { a: kurt, b: yoshi, framesA: 0, framesB: 1 },
+      { a: jp, b: yoshi, framesA: 0, framesB: 1 },
     ],
   },
 ];
