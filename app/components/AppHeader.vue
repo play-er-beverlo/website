@@ -23,6 +23,7 @@ const homeHref = computed(() => (props.base ? props.base : "#"));
         <a :href="`${base}#reserveren`" class="p-4">RESERVEREN</a>
         <a :href="`${base}#events`" class="p-4">EVENTS</a>
         <a :href="`${base}#contact`" class="p-4">CONTACT</a>
+        <a :href="`${base}#virtuele-tour`" class="p-4">360°</a>
         <a :href="`${base}#games`" class="p-4">GAMES</a>
       </nav>
       <div class="social-media flex items-center gap-6">
