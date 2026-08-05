@@ -1,6 +1,11 @@
 <script setup lang="ts">
 // const route = useRoute();
 
+// The Google Maps embed captures scroll-wheel input for zoom, which hijacks
+// page scrolling. Gate it behind a click so the page scrolls normally until
+// the visitor explicitly wants to interact with the tour.
+const tourActive = ref(false);
+
 useHead({
   meta: [
     {
@@ -123,6 +128,34 @@ useHead({
       </div>
     </div>
   </section>
+  <section id="virtuele-tour" class="relative w-full aspect-video shadow-lg">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!4v1785139379558!6m8!1m7!1sCAoSHENJQUJJaERxczVPcDJKTlB3aVlKa21qSXZacEI.!2m2!1d51.0876369021636!2d5.221876303705498!3f24.8596647566065!4f0.2628490028937023!5f0.7820865974627469"
+      class="absolute inset-0 h-full w-full border-0"
+      :class="{ 'pointer-events-none': !tourActive }"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+    <button
+      v-if="!tourActive"
+      type="button"
+      class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/40 transition hover:bg-black/50"
+      @click="tourActive = true"
+    >
+      <h1 class="text-shadow-lg text-white">VERKEN PLAY-ER IN 360°</h1>
+      <span class="text-white text-shadow-lg">Klik om te verkennen</span>
+    </button>
+    <button
+      v-else
+      type="button"
+      class="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-md bg-black/60 px-3 py-2 text-sm text-white transition hover:bg-black/80"
+      @click="tourActive = false"
+    >
+      <u-icon name="i-lucide-x" />
+      Sluit tour
+    </button>
+  </section>
   <section id="games" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
       <h1>GAMES</h1>
@@ -210,6 +243,11 @@ section#contact {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Continues the contact section's light background so it reads as one block. */
+section#virtuele-tour {
+  background-color: #f7f6f6;
 }
 
 section#image-slider {
