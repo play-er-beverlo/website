@@ -19,12 +19,12 @@ const homeHref = computed(() => (props.base ? props.base : "#"));
       <a :href="homeHref" class="flex pe-8">
         <img src="~/assets/images/P_Dark.svg" alt="Play-ER icon" width="56" />
       </a>
-      <nav class="hidden md:flex text-white items-center gap-6">
-        <a :href="`${base}#reserveren`" class="p-4">RESERVEREN</a>
-        <a :href="`${base}#events`" class="p-4">EVENTS</a>
-        <a :href="`${base}#contact`" class="p-4">CONTACT</a>
-        <a :href="`${base}#virtuele-tour`" class="p-4">360°</a>
-        <a :href="`${base}#games`" class="p-4">GAMES</a>
+      <nav class="hidden md:flex text-white items-center gap-1 lg:gap-6">
+        <a :href="`${base}#reserveren`" class="px-2 py-4 lg:px-4">RESERVEREN</a>
+        <a :href="`${base}#events`" class="px-2 py-4 lg:px-4">EVENTS</a>
+        <a :href="`${base}#contact`" class="px-2 py-4 lg:px-4">CONTACT</a>
+        <a :href="`${base}#virtuele-tour`" class="px-2 py-4 lg:px-4">360°</a>
+        <a :href="`${base}#games`" class="px-2 py-4 lg:px-4">GAMES</a>
       </nav>
       <div class="social-media flex items-center gap-6">
         <!-- TODO: Better FB url? -->
@@ -112,7 +112,7 @@ header {
 
 nav {
   a {
-    @apply text-xl font-medium;
+    @apply text-base lg:text-xl font-medium;
 
     &.active,
     &:hover {
