@@ -149,7 +149,7 @@ useHead({
     <button
       v-else
       type="button"
-      class="absolute bottom-12 left-4 z-10 inline-flex items-center gap-2 rounded-md bg-black/60 px-3 py-2 text-sm text-white transition hover:bg-black/80"
+      class="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-md bg-black/60 px-3 py-2 text-sm text-white transition hover:bg-black/80"
       @click="tourActive = false"
     >
       <u-icon name="i-lucide-x" />
