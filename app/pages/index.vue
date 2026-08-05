@@ -128,7 +128,7 @@ useHead({
       </div>
     </div>
   </section>
-  <section id="virtuele-tour" class="relative w-full aspect-video shadow-lg">
+  <section id="virtuele-tour" class="relative w-full aspect-[4/5] md:aspect-video max-h-[90vh] shadow-lg">
     <iframe
       src="https://www.google.com/maps/embed?pb=!4v1785139379558!6m8!1m7!1sCAoSHENJQUJJaERxczVPcDJKTlB3aVlKa21qSXZacEI.!2m2!1d51.0876369021636!2d5.221876303705498!3f24.8596647566065!4f0.2628490028937023!5f0.7820865974627469"
       class="absolute inset-0 h-full w-full border-0"
@@ -149,7 +149,7 @@ useHead({
     <button
       v-else
       type="button"
-      class="absolute top-4 right-4 z-10 inline-flex items-center gap-2 rounded-md bg-black/60 px-3 py-2 text-sm text-white transition hover:bg-black/80"
+      class="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-md bg-black/60 px-3 py-2 text-sm text-white transition hover:bg-black/80"
       @click="tourActive = false"
     >
       <u-icon name="i-lucide-x" />
