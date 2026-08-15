@@ -5,6 +5,7 @@ import { finaleBreakSource, finaleDayResults } from "#shared/data/summerCupFinal
 import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
 import { computePlayerStats, computeSeasonFacts, computeHeadToHead, computeRankingEvolution } from "#shared/summerCup/stats";
+import { areRegistrationsOpen } from "#shared/summerCup/capacity";
 
 useSeoMeta({
   title: "6 Reds SummER Cup 2026",
@@ -13,6 +14,13 @@ useSeoMeta({
 });
 
 const showMoreInfo = ref(false);
+
+// Hides the inschrijven section and the button that scrolls to it once the last
+// speeldag has passed. useState keeps the server's answer in the payload, so a page
+// that renders just before midnight does not hydrate into a different verdict.
+const registrationsOpen = useState("summerCup:registrationsOpen", () =>
+  areRegistrationsOpen(new Date())
+);
 
 const playDayCount = playDays.length;
 
@@ -98,6 +106,7 @@ const resultBlocks = [...playDayResults]
 
       <div class="flex gap-4 w-full">
         <u-button
+          v-if="registrationsOpen"
           class="flex-1"
           label="Inschrijven"
           size="xl"
@@ -295,7 +304,7 @@ const resultBlocks = [...playDayResults]
     </div>
   </section>
 
-  <section id="inschrijven" class="w-full shadow-lg">
+  <section v-if="registrationsOpen" id="inschrijven" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-16 flex flex-col gap-8">
       <h1>INSCHRIJVEN</h1>
       <summer-cup-registration />
