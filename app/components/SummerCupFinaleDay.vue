@@ -86,12 +86,17 @@ const poules = computed(() =>
             <span :class="i === 0 ? 'font-bold' : ''">{{ finalist.name }}</span>
           </li>
         </ol>
-        <nuxt-img
-          src="/images/6-reds-summer-cup-finaledag-top-3.jpg"
-          alt="De top 3 van de finaledag: Steff Beckers, Danny Moors en Marco Vitali"
-          sizes="100vw sm:320px"
-          class="w-full rounded-lg sm:w-80 sm:shrink-0"
-        />
+        <figure class="flex flex-col gap-2 sm:w-80 sm:shrink-0">
+          <nuxt-img
+            src="/images/6-reds-summer-cup-finaledag-top-3.jpg"
+            alt="De top 3 van de finaledag met hun prijzen aan de snookertafel"
+            sizes="100vw sm:320px"
+            class="w-full rounded-lg"
+          />
+          <figcaption class="text-sm opacity-80">
+            Steff, Danny en Marco @ The egg room by <a class="font-semibold opacity-100" href="https://lec.be" target="_blank" rel="noopener noreferrer">LEC</a>.
+          </figcaption>
+        </figure>
       </div>
     </div>
 
