@@ -17,8 +17,11 @@ export function resolveMatch(match: Match): MatchOutcome {
   return { framesA, framesB, winnerId };
 }
 
+/** The parts of a play day the grid is built from; a finale poule fits this too. */
+export type GridSource = Pick<PlayDayResults, "players" | "matches">;
+
 /** Matrix where cell [i][j] = frames player i won vs player j; diagonal is null. */
-export function buildResultsGrid(day: PlayDayResults): (number | null)[][] {
+export function buildResultsGrid(day: GridSource): (number | null)[][] {
   const index = new Map<string, number>();
   day.players.forEach((player, i) => index.set(player.id, i));
 

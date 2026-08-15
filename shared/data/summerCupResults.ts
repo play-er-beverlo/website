@@ -26,22 +26,23 @@ export interface PlayDayResults {
 }
 
 // Results data for the 2026 edition (up to MAX_PER_PLAY_DAY = 8 players per play day).
-const andy = "andy-vleugels"; // Andy Vleugels
-const danny = "danny-moors"; // Danny Moors
-const eddy = "eddy-ritzen"; // Eddy Ritzen
-const ibe = "ibe-sijben"; // Ibe Sijben
-const jp = "jean-pierre-van-camp" // Jean-Pierre Van Camp
-const klaas = "klaas-piekarczyk"; // Klaas Piekarczyk
-const koen = "koen-caerts"; // Koen Caerts
-const kurt = "kurt-belien"; // Kurt Beliën
-const marc = "marc-de-l-arbre"; // Marc De l'Arbre
-const marco = "marco-vitali"; // Marco Vitali
-const nico = "nico-hoffmann" // Nico Hoffmann
-const roman = "roman-szpyt"; // Roman Szpyt
-const ronnie = "ronnie-de-reydt"; // Ronnie De Reydt
-const steff = "steff-beckers"; // Steff Beckers
-const thomas = "thomas-belmans"; // Thomas Belmans
-const yoshi = "yoshi-lecocq"; // Yoshi Lecocq
+// The ids are exported so ./summerCupFinale.ts references exactly the same players.
+export const andy = "andy-vleugels"; // Andy Vleugels
+export const danny = "danny-moors"; // Danny Moors
+export const eddy = "eddy-ritzen"; // Eddy Ritzen
+export const ibe = "ibe-sijben"; // Ibe Sijben
+export const jp = "jean-pierre-van-camp" // Jean-Pierre Van Camp
+export const klaas = "klaas-piekarczyk"; // Klaas Piekarczyk
+export const koen = "koen-caerts"; // Koen Caerts
+export const kurt = "kurt-belien"; // Kurt Beliën
+export const marc = "marc-de-l-arbre"; // Marc De l'Arbre
+export const marco = "marco-vitali"; // Marco Vitali
+export const nico = "nico-hoffmann" // Nico Hoffmann
+export const roman = "roman-szpyt"; // Roman Szpyt
+export const ronnie = "ronnie-de-reydt"; // Ronnie De Reydt
+export const steff = "steff-beckers"; // Steff Beckers
+export const thomas = "thomas-belmans"; // Thomas Belmans
+export const yoshi = "yoshi-lecocq"; // Yoshi Lecocq
 
 export const playDayResults: PlayDayResults[] = [
   // ── Toernooi 1 — woensdag 17 juni 2026 ───────────────────────────────────────

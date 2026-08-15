@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { finaleDay, getPlayDay, playDays, MIN_PER_PLAY_DAY, MAX_PER_PLAY_DAY, REGISTRATION_FEE, PLAY_TIME, BEST_RESULTS_COUNTED } from "#shared/data/summerCup";
 import { playDayResults } from "#shared/data/summerCupResults";
+import { finaleBreakSource, finaleDayResults } from "#shared/data/summerCupFinale";
 import { buildResultsGrid, computeDayStandings, computeSummerRanking } from "#shared/summerCup/standings";
 import { computeDayBreaks, computeBreaksRanking } from "#shared/summerCup/breaks";
 import { computePlayerStats, computeSeasonFacts, computeHeadToHead, computeRankingEvolution } from "#shared/summerCup/stats";
@@ -15,12 +16,17 @@ const showMoreInfo = ref(false);
 
 const playDayCount = playDays.length;
 
+// The finale day is excluded from every points/frames aggregation: it only feeds the
+// break totals, which count independently of the ranking rules.
+const breakSources = [...playDayResults, finaleBreakSource];
+
 const summerRanking = computeSummerRanking(playDayResults);
-const breaksRanking = computeBreaksRanking(playDayResults);
+const breaksRanking = computeBreaksRanking(breakSources);
 const playerStats = computePlayerStats(playDayResults);
-const seasonFacts = computeSeasonFacts(playDayResults);
+const seasonFacts = computeSeasonFacts(breakSources);
 const headToHead = computeHeadToHead(playDayResults);
 const rankingEvolution = computeRankingEvolution(playDayResults);
+const finaleBreaks = computeDayBreaks(finaleBreakSource);
 
 // Play days that have results, newest first.
 const resultBlocks = [...playDayResults]
@@ -213,6 +219,11 @@ const resultBlocks = [...playDayResults]
       <p v-if="resultBlocks.length === 0" class="opacity-80">De resultaten verschijnen hier na de eerste speeldag.</p>
 
       <template v-else>
+        <div class="flex flex-col gap-6 mb-8">
+          <h2>{{ finaleDay.label }}</h2>
+          <summer-cup-finale-day :finale="finaleDayResults" :breaks="finaleBreaks" />
+        </div>
+
         <div class="flex flex-col gap-4 mb-8">
           <h2>SummER Ranking</h2>
           <div class="grid gap-8 md:grid-cols-2">
