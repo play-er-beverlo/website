@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  areRegistrationsOpen,
   checkRegistrationAllowed,
   isPlayDayPast,
   isSelectable,
@@ -139,6 +140,24 @@ describe("playerNamesByPlayDay", () => {
 
   it("returns an empty map for empty input", () => {
     expect(playerNamesByPlayDay([]).size).toBe(0);
+  });
+});
+
+describe("areRegistrationsOpen", () => {
+  it("is true before the first play day", () => {
+    expect(areRegistrationsOpen(NOW)).toBe(true);
+  });
+
+  it("is true on the last play day itself (vrij 31 juli 2026)", () => {
+    expect(areRegistrationsOpen(new Date("2026-07-31T20:00:00Z"))).toBe(true);
+  });
+
+  it("is false the day after the last play day", () => {
+    expect(areRegistrationsOpen(new Date("2026-08-01T09:00:00Z"))).toBe(false);
+  });
+
+  it("is false on the finale day, which is not a registrable play day", () => {
+    expect(areRegistrationsOpen(new Date("2026-08-14T12:00:00Z"))).toBe(false);
   });
 });
 

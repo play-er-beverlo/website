@@ -1,4 +1,4 @@
-import { getPlayDay, MAX_PER_PLAY_DAY } from "../data/summerCup";
+import { getPlayDay, MAX_PER_PLAY_DAY, playDays } from "../data/summerCup";
 
 export type RegistrationDenyReason =
   | "unknown_play_day"
@@ -83,4 +83,13 @@ export function playerNamesByPlayDay(
  */
 export function isSelectable(day: { full: boolean; past: boolean }): boolean {
   return !day.full && !day.past;
+}
+
+/**
+ * Whether there is still a play day left to register for. Once the last speeldag is
+ * past, the page hides the inschrijven section (and the button that scrolls to it)
+ * instead of showing a form that can only be rejected with reason "past".
+ */
+export function areRegistrationsOpen(now: Date): boolean {
+  return playDays.some((day) => !isPlayDayPast(day.id, now));
 }
