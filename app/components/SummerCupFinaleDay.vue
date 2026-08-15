@@ -69,22 +69,30 @@ const poules = computed(() =>
 
     <div class="flex flex-col gap-3">
       <h3 class="text-lg font-semibold">Eindstand finaledag</h3>
-      <ol class="flex flex-col gap-3">
-        <li
-          v-for="(finalist, i) in finale.finalRanking"
-          :key="finalist.id"
-          class="flex items-center gap-3"
-        >
-          <span
-            class="flex h-7 w-7 items-center justify-center rounded bg-white/10 text-sm font-semibold"
-            aria-hidden="true"
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-10">
+        <ol class="flex flex-col gap-3">
+          <li
+            v-for="(finalist, i) in finale.finalRanking"
+            :key="finalist.id"
+            class="flex items-center gap-3"
           >
-            {{ MEDALS[i] ?? i + 1 }}
-          </span>
-          <span class="sr-only">Plaats {{ i + 1 }}:</span>
-          <span :class="i === 0 ? 'font-bold' : ''">{{ finalist.name }}</span>
-        </li>
-      </ol>
+            <span
+              class="flex h-7 w-7 items-center justify-center rounded bg-white/10 text-sm font-semibold"
+              aria-hidden="true"
+            >
+              {{ MEDALS[i] ?? i + 1 }}
+            </span>
+            <span class="sr-only">Plaats {{ i + 1 }}:</span>
+            <span :class="i === 0 ? 'font-bold' : ''">{{ finalist.name }}</span>
+          </li>
+        </ol>
+        <nuxt-img
+          src="/images/6-reds-summer-cup-finaledag-top-3.jpg"
+          alt="De top 3 van de finaledag: Steff Beckers, Danny Moors en Marco Vitali"
+          sizes="100vw sm:320px"
+          class="w-full rounded-lg sm:w-80 sm:shrink-0"
+        />
+      </div>
     </div>
 
     <summer-cup-breaks v-if="breaks.length" :breaks="breaks" />
