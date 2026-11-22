@@ -393,7 +393,7 @@ const gridStyle = computed(() => ({
           <span class="day-grid-cell is-free size-4"></span>Vrij
         </span>
         <span class="flex items-center gap-2">
-          <span class="day-grid-cell size-4"></span>Bezet
+          <span class="day-grid-cell is-swatch size-4"></span>Bezet
         </span>
         <span class="flex items-center gap-2">
           <span class="day-grid-cell is-free is-selected size-4"></span>Jouw keuze
@@ -419,6 +419,18 @@ const gridStyle = computed(() => ({
   background-origin: border-box;
   border-top: 1px solid transparent;
   white-space: nowrap;
+}
+
+/* The legend swatch is only 16px: a finer hatch there, so it shows several stripes. */
+.day-grid-cell.is-swatch {
+  background-image: linear-gradient(
+    135deg,
+    var(--ui-border-accented) 0 14%,
+    transparent 14% 50%,
+    var(--ui-border-accented) 50% 64%,
+    transparent 64% 100%
+  );
+  background-size: 6px 6px;
 }
 
 .day-grid-cell.is-free {

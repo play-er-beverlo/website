@@ -482,7 +482,7 @@ onMounted(async () => {
         />
       </div>
       <div v-if="selectedGame && date" class="flex flex-col gap-4">
-        <h2>Wanneer en waar wil je spelen?</h2>
+        <h2>Hoe laat wil je spelen?</h2>
         <div class="flex items-center justify-between gap-4">
           <u-button
             icon="i-lucide-chevron-left"
