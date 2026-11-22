@@ -2,6 +2,7 @@
 import {
   allowedDurations,
   BLOCK_MINUTES,
+  formatDuration,
   formatTime,
   freeBlocks,
   MIN_DURATION,
@@ -378,6 +379,7 @@ const gridStyle = computed(() => ({
           ></div>
           <span class="day-grid-bar-label">
             {{ formatTime(selection.start) }} &ndash; {{ formatTime(selectionEnd) }}
+            <span class="day-grid-bar-duration">{{ formatDuration(selection.duration) }}</span>
           </span>
           <div
             class="day-grid-handle is-bottom"
@@ -467,6 +469,12 @@ button.day-grid-cell.is-free:not(:disabled):not(.is-selected):hover {
   line-height: 1.25;
   font-variant-numeric: tabular-nums;
   pointer-events: none;
+}
+
+.day-grid-bar-duration {
+  display: block;
+  font-weight: 400;
+  opacity: 0.85;
 }
 
 /* Wider than it looks: the grip is a thin line, the area that takes the pointer is 20px. */
