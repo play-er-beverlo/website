@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  adjustSelection,
   allowedDurations,
   formatDate,
   formatDuration,
@@ -107,8 +108,21 @@ describe("nextSelection", () => {
     expect(tap({ ...current, duration: 180 }, 1, "11:15")).toEqual({ ...current, duration: 90 });
   });
 
-  it("does nothing for an end that would give less than an hour", () => {
-    expect(tap(current, 1, "10:30")).toBeNull();
+  it("moves the start later when a block in the first hour is tapped, keeping the end", () => {
+    expect(tap({ ...current, duration: 180 }, 1, "10:30")).toEqual({
+      location: 1,
+      start: t("10:30"),
+      duration: 150,
+    });
+  });
+
+  it("keeps at least an hour when the start moves later", () => {
+    expect(tap(current, 1, "10:30")).toEqual({ location: 1, start: t("10:30"), duration: 60 });
+  });
+
+  it("does not move the start when the hour would run into an occupied block", () => {
+    // free until 15:00: from 14:15 only 45 minutes are left
+    expect(tap({ location: 1, start: t("14:00"), duration: 60 }, 1, "14:15")).toBeNull();
   });
 
   it("extends to the 4 hour maximum", () => {
@@ -138,6 +152,54 @@ describe("nextSelection", () => {
   it("treats a selection that is no longer free as no selection", () => {
     const stale = { location: 1, start: t("15:00"), duration: 60 };
     expect(tap(stale, 1, "16:30")).toEqual({ location: 1, start: t("16:30"), duration: 60 });
+  });
+});
+
+describe("adjustSelection", () => {
+  // free 10:00-15:00
+  const free = freeBlocks(starts("10:00", "15:00"));
+  const current = { location: 1, start: t("11:00"), duration: 90 };
+  const adjust = (selection: typeof current, edge: "start" | "end", minutes: number) =>
+    adjustSelection(free, selection, edge, minutes, durations);
+
+  it("moves the start a quarter later and keeps the end", () => {
+    expect(adjust(current, "start", 15)).toEqual({ ...current, start: t("11:15"), duration: 75 });
+  });
+
+  it("moves the start a quarter earlier and keeps the end", () => {
+    expect(adjust(current, "start", -15)).toEqual({ ...current, start: t("10:45"), duration: 105 });
+  });
+
+  it("pushes the end along when the start moves later on a one hour selection", () => {
+    expect(adjust({ ...current, duration: 60 }, "start", 15)).toEqual({
+      ...current,
+      start: t("11:15"),
+      duration: 60,
+    });
+  });
+
+  it("pulls the end along when the start moves earlier on a 4 hour selection", () => {
+    const full = { location: 1, start: t("10:15"), duration: 240 };
+    expect(adjust(full, "start", -15)).toEqual({ ...full, start: t("10:00") });
+  });
+
+  it("cannot move the start into an occupied block", () => {
+    expect(adjust({ ...current, start: t("10:00") }, "start", -15)).toBeNull();
+  });
+
+  it("cannot push a one hour selection into an occupied block", () => {
+    expect(adjust({ location: 1, start: t("14:00"), duration: 60 }, "start", 15)).toBeNull();
+  });
+
+  it("moves the end a quarter later or earlier", () => {
+    expect(adjust(current, "end", 15)).toEqual({ ...current, duration: 105 });
+    expect(adjust(current, "end", -15)).toEqual({ ...current, duration: 75 });
+  });
+
+  it("cannot shorten below an hour or extend beyond 4 hours or free time", () => {
+    expect(adjust({ ...current, duration: 60 }, "end", -15)).toBeNull();
+    expect(adjust({ location: 1, start: t("10:00"), duration: 240 }, "end", 15)).toBeNull();
+    expect(adjust({ location: 1, start: t("14:00"), duration: 60 }, "end", 15)).toBeNull();
   });
 });
 

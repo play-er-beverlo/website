@@ -56,7 +56,8 @@ export type BookingSelection = { location: number; start: Date; duration: number
  * nothing. `free` holds the free blocks of that table.
  *
  * A later block in the selected table sets the end of the selection when that gives a
- * bookable duration. Any other block that leaves room for MIN_DURATION starts a new selection.
+ * bookable duration, and moves the start when it is too close to the start for that. Any other
+ * block that leaves room for MIN_DURATION starts a new selection.
  */
 export function nextSelection(
   free: Set<number>,
@@ -74,12 +75,48 @@ export function nextSelection(
     const length = (time + BLOCK_MS - current.start.valueOf()) / 60 / 1000;
 
     if (allowed.length > 0 && length <= Math.max(...allowed)) {
-      return allowed.includes(length) ? { ...current, duration: length } : null;
+      if (allowed.includes(length)) {
+        return { ...current, duration: length };
+      }
+
+      // Too close to the start to be an end: the tap moves the start there instead, keeping
+      // the end where that leaves a bookable duration.
+      const end = current.start.valueOf() + current.duration * 60 * 1000;
+      const duration = Math.max((end - time) / 60 / 1000, MIN_DURATION);
+
+      return allowedDurations(free, time, durations).includes(duration)
+        ? { location, start: new Date(time), duration }
+        : null;
     }
   }
 
   return allowedDurations(free, time, durations).includes(MIN_DURATION)
     ? { location, start: new Date(time), duration: MIN_DURATION }
+    : null;
+}
+
+/**
+ * Moves the start or the end of the selection by `minutes`, or returns null when that is not
+ * bookable. Moving the start keeps the end, unless the selection would become shorter than the
+ * shortest or longer than the longest duration: then the end moves along.
+ */
+export function adjustSelection(
+  free: Set<number>,
+  current: BookingSelection,
+  edge: "start" | "end",
+  minutes: number,
+  durations: number[]
+): BookingSelection | null {
+  const shortest = Math.min(...durations);
+  const longest = Math.max(...durations);
+  const start = current.start.valueOf() + (edge === "start" ? minutes * 60 * 1000 : 0);
+  const duration =
+    edge === "start"
+      ? Math.min(Math.max(current.duration - minutes, shortest), longest)
+      : current.duration + minutes;
+
+  return allowedDurations(free, start, durations).includes(duration)
+    ? { ...current, start: new Date(start), duration }
     : null;
 }
 

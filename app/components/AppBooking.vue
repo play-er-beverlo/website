@@ -17,7 +17,9 @@ import {
 } from "@stripe/stripe-js";
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
 import {
+  adjustSelection,
   allowedDurations,
+  BLOCK_MINUTES,
   formatDate,
   formatDuration,
   formatTime,
@@ -218,6 +220,27 @@ const columns = computed<BookingColumn[]>(() =>
       }))
     : []
 );
+
+// The start and end steppers under the grid: what each one would select, or null when it cannot.
+const adjustments = computed(() => {
+  const current = selection.value;
+  const free = freeBlocks(slotStartsByLocation.value[selectedLocation.value] ?? []);
+  const adjust = (edge: "start" | "end", minutes: number) =>
+    current && !slotsPending.value ? adjustSelection(free, current, edge, minutes, durations) : null;
+
+  return {
+    startEarlier: adjust("start", -BLOCK_MINUTES),
+    startLater: adjust("start", BLOCK_MINUTES),
+    endEarlier: adjust("end", -BLOCK_MINUTES),
+    endLater: adjust("end", BLOCK_MINUTES),
+  };
+});
+
+const applyAdjustment = (value: BookingSelection | null) => {
+  if (value) {
+    selection.value = value;
+  }
+};
 
 const hasFreeSlots = computed(() => columns.value.some((column) => column.slotStarts.length > 0));
 
@@ -518,10 +541,55 @@ onMounted(async () => {
             {{ formatDuration(selectedDuration) }}
           </template>
           <template v-else-if="!slotsPending && hasFreeSlots">
-            Tik op een vrij blok om je startuur te kiezen; je reserveert minstens 1 uur. Tik daarna
-            op een later blok om per kwartier te verlengen.
+            Tik op een vrij blok om je startuur te kiezen; je reserveert minstens 1 uur. Daarna
+            pas je start en einde per kwartier aan.
           </template>
         </p>
+        <div v-if="selectedSlot && selectedSlotEnd" class="flex flex-wrap gap-x-8 gap-y-4">
+          <div
+            v-for="edge in [
+              {
+                label: 'Van',
+                time: selectedSlot,
+                earlier: adjustments.startEarlier,
+                later: adjustments.startLater,
+                name: 'Start',
+              },
+              {
+                label: 'Tot',
+                time: selectedSlotEnd,
+                earlier: adjustments.endEarlier,
+                later: adjustments.endLater,
+                name: 'Einde',
+              },
+            ]"
+            :key="edge.label"
+            class="flex items-center gap-2"
+          >
+            <span class="w-8 text-muted">{{ edge.label }}</span>
+            <u-button
+              icon="i-lucide-minus"
+              size="xl"
+              color="neutral"
+              variant="subtle"
+              :aria-label="`${edge.name} een kwartier vroeger`"
+              :disabled="!edge.earlier"
+              @click="applyAdjustment(edge.earlier)"
+            />
+            <span class="w-14 text-center text-lg font-semibold tabular-nums">
+              {{ formatTime(edge.time) }}
+            </span>
+            <u-button
+              icon="i-lucide-plus"
+              size="xl"
+              color="neutral"
+              variant="subtle"
+              :aria-label="`${edge.name} een kwartier later`"
+              :disabled="!edge.later"
+              @click="applyAdjustment(edge.later)"
+            />
+          </div>
+        </div>
       </div>
       <div
         v-if="selectedGame && date && selectedLocation && selectedSlot && selectedDuration"
