@@ -11,6 +11,7 @@ const base = computed(() => props.base ?? "");
 // Logo returns to the top of the homepage. On the homepage itself a plain hash
 // keeps it a same-page scroll; elsewhere it navigates back home.
 const homeHref = computed(() => (props.base ? props.base : "#"));
+const { showEvents } = useAppConfig();
 </script>
 
 <template>
@@ -21,7 +22,7 @@ const homeHref = computed(() => (props.base ? props.base : "#"));
       </a>
       <nav class="hidden md:flex text-white items-center gap-1 lg:gap-6">
         <a :href="`${base}#reserveren`" class="px-2 py-4 lg:px-4">RESERVEREN</a>
-        <a :href="`${base}#events`" class="px-2 py-4 lg:px-4">EVENTS</a>
+        <a v-if="showEvents" :href="`${base}#events`" class="px-2 py-4 lg:px-4">EVENTS</a>
         <a :href="`${base}#contact`" class="px-2 py-4 lg:px-4">CONTACT</a>
         <a :href="`${base}#virtuele-tour`" class="px-2 py-4 lg:px-4">360°</a>
         <a :href="`${base}#games`" class="px-2 py-4 lg:px-4">GAMES</a>

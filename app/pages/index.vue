@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // const route = useRoute();
+const { showEvents } = useAppConfig();
 
 // The Google Maps embed captures scroll-wheel input for zoom, which hijacks
 // page scrolling. Gate it behind a click so the page scrolls normally until
@@ -46,7 +47,7 @@ useHead({
       <app-booking />
     </div>
   </section>
-  <section id="events" class="w-full shadow-lg">
+  <section v-if="showEvents" id="events" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
       <h1>EVENTS</h1>
       <div class="grid grid-cols-1 gap-8">
