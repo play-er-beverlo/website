@@ -12,7 +12,7 @@ export const bookings = sqliteTable("bookings", {
   paid: integer({ mode: "boolean" }),
 });
 
-export const summerCupRegistrations = sqliteTable(
+export const sixRedsSummerCupRegistrations = sqliteTable(
   "summer_cup_registrations",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
