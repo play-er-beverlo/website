@@ -1,0 +1,308 @@
+<script lang="ts" setup>
+import {
+  BLOCK_MINUTES,
+  formatTime,
+  freeBlocks,
+  nextSelection,
+  rowTimes,
+  type BookingSelection,
+} from "#shared/booking/dayGrid";
+import { durations } from "#shared/data/booking";
+
+export type BookingColumn = {
+  location: number;
+  label: string;
+  shortLabel: string;
+  slotStarts: Date[];
+};
+
+const props = defineProps<{
+  columns: BookingColumn[];
+  loading: boolean;
+  failed: boolean;
+}>();
+
+defineEmits<{ retry: [] }>();
+
+const selection = defineModel<BookingSelection | null>("selection", { default: null });
+
+const BLOCK_MS = BLOCK_MINUTES * 60 * 1000;
+
+const freeByLocation = computed(
+  () => new Map(props.columns.map((column) => [column.location, freeBlocks(column.slotStarts)]))
+);
+
+const rows = computed(() => rowTimes([...freeByLocation.value.values()]));
+
+// The loading skeleton keeps the height of the grid it replaces, so the page does not jump.
+const ROW_REM = 2;
+const skeletonRows = ref(8);
+
+watch(rows, (value) => {
+  if (value.length > 0) {
+    skeletonRows.value = value.length;
+  }
+});
+
+const isFree = (location: number, time: number) =>
+  freeByLocation.value.get(location)?.has(time) ?? false;
+
+const selectionEnd = computed(() =>
+  selection.value ? selection.value.start.valueOf() + selection.value.duration * 60 * 1000 : 0
+);
+
+const isSelected = (location: number, time: number) =>
+  !!selection.value &&
+  selection.value.location === location &&
+  time >= selection.value.start.valueOf() &&
+  time < selectionEnd.value;
+
+const selectionFor = (location: number, time: number) =>
+  nextSelection(
+    freeByLocation.value.get(location) ?? new Set(),
+    selection.value,
+    location,
+    time,
+    durations
+  );
+
+const select = (location: number, time: number) => {
+  const next = selectionFor(location, time);
+
+  if (next) {
+    selection.value = next;
+  }
+};
+
+const cellLabel = (column: BookingColumn, time: number) => {
+  const state = isSelected(column.location, time)
+    ? "geselecteerd"
+    : !isFree(column.location, time)
+      ? "bezet"
+      : selectionFor(column.location, time)
+        ? "vrij"
+        : "vrij, niet selecteerbaar";
+
+  return `${column.label}, ${formatTime(time)} tot ${formatTime(time + BLOCK_MS)}, ${state}`;
+};
+
+// Keyboard: the grid is one tab stop and the arrow keys move between selectable blocks.
+const grid = ref<HTMLElement>();
+const focused = ref<string | null>(null);
+const cellKey = (location: number, time: number) => `${location}:${time}`;
+
+const tabStop = computed(() => {
+  if (focused.value) {
+    const [location, time] = focused.value.split(":").map(Number) as [number, number];
+
+    if (selectionFor(location, time)) {
+      return focused.value;
+    }
+  }
+
+  const start = selection.value?.start.valueOf();
+
+  if (selection.value && start && selectionFor(selection.value.location, start)) {
+    return cellKey(selection.value.location, start);
+  }
+
+  for (const time of rows.value) {
+    for (const column of props.columns) {
+      if (selectionFor(column.location, time)) {
+        return cellKey(column.location, time);
+      }
+    }
+  }
+
+  return null;
+});
+
+const arrowSteps: Record<string, [number, number]> = {
+  ArrowUp: [-1, 0],
+  ArrowDown: [1, 0],
+  ArrowLeft: [0, -1],
+  ArrowRight: [0, 1],
+};
+
+const onKeydown = (event: KeyboardEvent, rowIndex: number, columnIndex: number) => {
+  const step = arrowSteps[event.key];
+
+  if (!step) {
+    return;
+  }
+
+  event.preventDefault();
+
+  let row = rowIndex + step[0];
+  let column = columnIndex + step[1];
+
+  // Skip over blocks that cannot be selected.
+  while (row >= 0 && row < rows.value.length && column >= 0 && column < props.columns.length) {
+    const location = props.columns[column]!.location;
+    const time = rows.value[row]!;
+
+    if (selectionFor(location, time)) {
+      grid.value
+        ?.querySelector<HTMLElement>(`[data-cell="${cellKey(location, time)}"]`)
+        ?.focus();
+      return;
+    }
+
+    row += step[0];
+    column += step[1];
+  }
+};
+
+const gridStyle = computed(() => ({
+  gridTemplateColumns: `auto repeat(${props.columns.length}, minmax(0, 1fr))`,
+}));
+</script>
+
+<template>
+  <div class="flex flex-col gap-4">
+    <div v-if="loading" class="grid gap-x-2 sm:gap-x-4" :style="gridStyle">
+      <div class="w-10"></div>
+      <u-skeleton
+        v-for="column in columns"
+        :key="column.location"
+        :style="{ height: `${skeletonRows * ROW_REM + 2.5}rem` }"
+      />
+    </div>
+    <div v-else-if="failed" class="flex flex-col items-start gap-4">
+      <p>De beschikbaarheid kon niet geladen worden.</p>
+      <u-button label="Opnieuw proberen" color="neutral" variant="subtle" @click="$emit('retry')" />
+    </div>
+    <p v-else-if="rows.length === 0">Er zijn op deze dag geen vrije tijdsloten meer.</p>
+    <template v-else>
+      <div
+        ref="grid"
+        class="grid gap-x-2 sm:gap-x-4"
+        :style="gridStyle"
+        role="group"
+        aria-label="Beschikbaarheid per tafel. Gebruik de pijltjestoetsen om een blok te kiezen."
+      >
+        <div class="sticky top-0 z-10 bg-default"></div>
+        <div
+          v-for="column in columns"
+          :key="column.location"
+          class="sticky top-0 z-10 bg-default py-2 text-center font-semibold"
+        >
+          <span class="hidden sm:inline">{{ column.label }}</span>
+          <span class="sm:hidden">{{ column.shortLabel }}</span>
+        </div>
+        <template v-for="(time, rowIndex) in rows" :key="time">
+          <div
+            class="h-8 pr-1 text-sm tabular-nums leading-none"
+            :class="formatTime(time).endsWith(':00') ? 'text-default' : 'text-dimmed'"
+          >
+            <!-- Quarter rows stay unlabelled to keep the time column readable. -->
+            {{ /:(00|30)$/.test(formatTime(time)) ? formatTime(time) : "" }}
+          </div>
+          <button
+            v-for="(column, columnIndex) in columns"
+            :key="column.location"
+            type="button"
+            :data-cell="cellKey(column.location, time)"
+            :tabindex="tabStop === cellKey(column.location, time) ? 0 : -1"
+            class="day-grid-cell h-8 px-2 pt-1 text-left align-top text-sm leading-none font-semibold"
+            :class="{
+              'is-selected': isSelected(column.location, time),
+              'is-start':
+                isSelected(column.location, time) && time === selection?.start.valueOf(),
+              'is-end': isSelected(column.location, time) && time + BLOCK_MS === selectionEnd,
+              'is-free': isFree(column.location, time),
+            }"
+            :disabled="!selectionFor(column.location, time)"
+            :aria-label="cellLabel(column, time)"
+            :aria-pressed="isSelected(column.location, time)"
+            @click="select(column.location, time)"
+            @focus="focused = cellKey(column.location, time)"
+            @keydown="onKeydown($event, rowIndex, columnIndex)"
+          >
+            <span
+              v-if="isSelected(column.location, time) && time === selection?.start.valueOf()"
+              class="block tabular-nums"
+            >
+              {{ formatTime(time) }}
+            </span>
+            <span
+              v-else-if="isSelected(column.location, time) && time + BLOCK_MS === selectionEnd"
+              class="flex h-full items-end pb-1.5 tabular-nums"
+            >
+              {{ formatTime(selectionEnd) }}
+            </span>
+          </button>
+        </template>
+      </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+        <span class="flex items-center gap-2">
+          <span class="day-grid-cell is-free size-4"></span>Vrij
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="day-grid-cell size-4"></span>Bezet
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="day-grid-cell is-free is-selected size-4"></span>Jouw keuze
+        </span>
+      </div>
+    </template>
+  </div>
+</template>
+
+<style scoped>
+/* Occupied by default: hatched, so it reads as unavailable without relying on colour alone. */
+.day-grid-cell {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--ui-border) 0 2px,
+    transparent 2px 8px
+  );
+  border-top: 1px solid var(--ui-bg);
+  white-space: nowrap;
+}
+
+.day-grid-cell.is-free {
+  background-image: none;
+  background-color: color-mix(in oklab, var(--ui-primary) 14%, var(--ui-bg));
+}
+
+/* Free, but neither a possible start nor a possible end for the current selection. */
+button.day-grid-cell.is-free:disabled {
+  opacity: 0.5;
+}
+
+button.day-grid-cell:not(:disabled) {
+  cursor: pointer;
+}
+
+button.day-grid-cell.is-free:not(:disabled):not(.is-selected):hover {
+  background-color: color-mix(in oklab, var(--ui-primary) 32%, var(--ui-bg));
+}
+
+.day-grid-cell.is-selected {
+  background-color: var(--ui-primary);
+  border-top-color: transparent;
+  color: var(--ui-text-inverted);
+}
+
+button.day-grid-cell.is-selected:disabled {
+  opacity: 1;
+}
+
+.day-grid-cell.is-start {
+  border-top-left-radius: var(--ui-radius);
+  border-top-right-radius: var(--ui-radius);
+}
+
+.day-grid-cell.is-end {
+  border-bottom-left-radius: var(--ui-radius);
+  border-bottom-right-radius: var(--ui-radius);
+}
+
+button.day-grid-cell:focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+</style>
