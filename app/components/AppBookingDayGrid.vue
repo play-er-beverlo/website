@@ -408,11 +408,8 @@ const gridStyle = computed(() => ({
   background-color: color-mix(in oklab, var(--ui-primary) 14%, var(--ui-bg));
 }
 
-/* Free, but neither a possible start nor a possible end for the current selection. */
-button.day-grid-cell.is-free:disabled {
-  opacity: 0.5;
-}
-
+/* Colour only says free or occupied. A free block that cannot be tapped right now (no hour
+   fits, or out of reach of the selection) looks the same and just has no pointer or hover. */
 button.day-grid-cell:not(:disabled) {
   cursor: pointer;
 }
@@ -425,10 +422,6 @@ button.day-grid-cell.is-free:not(:disabled):not(.is-selected):hover {
   background-color: var(--ui-primary);
   border-top-color: transparent;
   color: var(--ui-text-inverted);
-}
-
-button.day-grid-cell.is-selected:disabled {
-  opacity: 1;
 }
 
 .day-grid-cell.is-start {
