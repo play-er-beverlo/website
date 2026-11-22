@@ -494,7 +494,7 @@ onMounted(async () => {
             :disabled="isToday"
             @click="shiftDate(-1)"
           />
-          <p class="text-center text-lg font-semibold first-letter:uppercase">{{ dateLabel }}</p>
+          <p class="text-center text-lg font-semibold">{{ dateLabel }}</p>
           <u-button
             icon="i-lucide-chevron-right"
             size="xl"
