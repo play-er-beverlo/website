@@ -404,19 +404,26 @@ const gridStyle = computed(() => ({
 </template>
 
 <style scoped>
-/* Occupied by default: hatched, so it reads as unavailable without relying on colour alone. */
+/* Occupied by default: hatched, so it reads as unavailable without relying on colour alone.
+   The hatch is a 16px tile and a row is 32px high, so the lines run on from one block into the
+   next and a run of occupied blocks reads as one area. */
 .day-grid-cell {
-  background-image: repeating-linear-gradient(
+  background-image: linear-gradient(
     135deg,
-    var(--ui-border) 0 2px,
-    transparent 2px 8px
+    var(--ui-border) 0 9%,
+    transparent 9% 50%,
+    var(--ui-border) 50% 59%,
+    transparent 59% 100%
   );
-  border-top: 1px solid var(--ui-bg);
+  background-size: 16px 16px;
+  background-origin: border-box;
+  border-top: 1px solid transparent;
   white-space: nowrap;
 }
 
 .day-grid-cell.is-free {
   background-image: none;
+  border-top-color: var(--ui-bg);
   background-color: color-mix(in oklab, var(--ui-primary) 14%, var(--ui-bg));
 }
 
