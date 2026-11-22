@@ -16,6 +16,16 @@ import {
   type StripePaymentElement,
 } from "@stripe/stripe-js";
 import type { Toast } from "@nuxt/ui/runtime/composables/useToast.js";
+import {
+  allowedDurations,
+  formatDate,
+  formatDuration,
+  formatTime,
+  freeBlocks,
+  MIN_DURATION,
+  type BookingSelection,
+} from "#shared/booking/dayGrid";
+import type { BookingColumn } from "./AppBookingDayGrid.vue";
 
 const runtimeConfig = useRuntimeConfig();
 const toast = useToast();
@@ -25,16 +35,9 @@ const selectedGame = useLocalStorage("booking:game", null as string | null, {
 });
 
 watch(selectedGame, async (value, oldValue) => {
-  // console.log("selectedGame", value);
-
-  if (value !== oldValue) {
-    if (selectedLocation.value) {
-      if (value) {
-        selectedLocation.value = gameLocations[value]?.[0] ?? 1;
-      } else {
-        selectedLocation.value = 1;
-      }
-    }
+  // Not on the initial restore from localStorage (null -> game), so a reload keeps the selection.
+  if (oldValue && value !== oldValue) {
+    selectedSlot.value = null;
   }
 
   await fetchSlots();
@@ -51,20 +54,32 @@ const date = useLocalStorage("booking:date", calendarDateToday, {
 });
 
 watch(date, async (value, oldValue) => {
-  // console.log("date", value);
-
   if (value && value.toDate(getLocalTimeZone()) < calendarDateToday.toDate(getLocalTimeZone())) {
     date.value = calendarDateToday;
   }
 
+  // fetchSlots drops a selection that is not free on the new date.
   if (value.toString() != oldValue.toString()) {
-    selectedSlot.value = null;
     await fetchSlots();
   }
 });
 
 const isDateUnavailable = (date: DateValue) =>
   date.toDate(getLocalTimeZone()) < calendarDateToday.toDate(getLocalTimeZone());
+
+const isToday = computed(() => date.value.compare(calendarDateToday) <= 0);
+
+const shiftDate = (days: number) => {
+  date.value = date.value.add({ days });
+};
+
+const dateLabel = computed(() =>
+  date.value.toDate(getLocalTimeZone()).toLocaleDateString("nl-BE", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  })
+);
 
 const selectedLocation = useLocalStorage("booking:location", 1, {
   initOnMounted: true,
@@ -74,19 +89,16 @@ const selectedLocation = useLocalStorage("booking:location", 1, {
   },
 });
 
-watch(selectedLocation, async (value) => {
-  // console.log("selectedLocation", value);
-
-  await fetchSlots();
-});
-
-const slots = ref<Date[]>([]);
 const selectedSlot = useLocalStorage("booking:slot", null, {
   initOnMounted: true,
   serializer: {
     read: (x) => (x ? new Date(x) : null),
     write: (x) => (x ? x.toISOString() : ""),
   },
+});
+
+const selectedDuration = useLocalStorage("booking:duration", 60, {
+  initOnMounted: true,
 });
 
 const selectedSlotEnd = computed(() => {
@@ -97,64 +109,118 @@ const selectedSlotEnd = computed(() => {
   return new Date(selectedSlot.value.valueOf() + selectedDuration.value * 60 * 1000);
 });
 
+const selection = computed<BookingSelection | null>({
+  get: () =>
+    selectedSlot.value
+      ? {
+          location: selectedLocation.value,
+          start: selectedSlot.value,
+          duration: selectedDuration.value,
+        }
+      : null,
+  set: (value) => {
+    if (!value) {
+      selectedSlot.value = null;
+      return;
+    }
+
+    selectedLocation.value = value.location;
+    selectedDuration.value = value.duration;
+    selectedSlot.value = value.start;
+  },
+});
+
+// Free 60-minute slot starts per table; the day grid derives free and occupied blocks from them.
+const slotStartsByLocation = ref<Record<number, Date[]>>({});
+const slotsPending = ref(false);
+// True when no table could be loaded at all, as opposed to a day that is fully booked.
+const slotsFailed = ref(false);
+let latestSlotsRequest = 0;
+
 const fetchSlots = async () => {
-  if (!selectedGame.value || !selectedLocation.value || !date.value || !selectedDuration.value) {
+  if (!selectedGame.value || !date.value) {
     return;
   }
 
-  try {
-    // TODO: Use useFetch here? So we can use the status
-    const slotsData = await $fetch("/api/bookings/slots", {
-      query: {
-        date: date.value.toDate("UTC").toISOString().substring(0, 10),
-        duration: selectedDuration.value,
-        game: selectedGame.value,
-        location: selectedLocation.value,
-      },
-    });
+  const request = ++latestSlotsRequest;
+  const locations = gameLocations[selectedGame.value] ?? [];
+  const query = {
+    date: date.value.toDate("UTC").toISOString().substring(0, 10),
+    duration: MIN_DURATION,
+    game: selectedGame.value,
+  };
 
-    slots.value = slotsData.map((x: any) => new Date(x));
-  } catch (error) {
-    slots.value = [];
+  slotsPending.value = true;
+
+  const results = await Promise.allSettled(
+    locations.map((location) =>
+      $fetch<string[]>("/api/bookings/slots", { query: { ...query, location } })
+    )
+  );
+
+  if (request !== latestSlotsRequest) {
+    return;
   }
-};
 
-watch(slots, (value) => {
-  // console.log("slots", value);
+  const loaded = results.map(
+    (result) => result.status === "fulfilled" && Array.isArray(result.value)
+  );
+
+  // A table whose slots could not be loaded shows as fully occupied.
+  slotStartsByLocation.value = Object.fromEntries(
+    locations.map((location, index) => {
+      const result = results[index];
+
+      return [
+        location,
+        loaded[index] && result?.status === "fulfilled"
+          ? result.value.map((x) => new Date(x))
+          : [],
+      ];
+    })
+  );
+  slotsFailed.value = locations.length > 0 && !loaded.some(Boolean);
+  slotsPending.value = false;
+
+  // Drop a selection that is no longer free. Keep it when its table failed to load: that says
+  // nothing about availability, and the server checks again when booking.
+  const selectedIndex = locations.indexOf(selectedLocation.value);
 
   if (
     selectedSlot.value &&
-    !slots.value.map((x) => x.toISOString()).includes(selectedSlot.value.toISOString())
+    (selectedIndex === -1 || loaded[selectedIndex]) &&
+    !allowedDurations(
+      freeBlocks(slotStartsByLocation.value[selectedLocation.value] ?? []),
+      selectedSlot.value.valueOf(),
+      durations
+    ).includes(selectedDuration.value)
   ) {
-    if (slots.value && slots.value.length > 0) {
-      const lastSlot = slots.value[slots.value.length - 1];
-      if (lastSlot && lastSlot < selectedSlot.value) {
-        selectedSlot.value = lastSlot;
-      } else {
-        const firstSlot = slots.value[0];
-        if (firstSlot && firstSlot > selectedSlot.value) {
-          selectedSlot.value = firstSlot;
-        }
-      }
-    } else {
-      selectedSlot.value = null;
-    }
+    selectedSlot.value = null;
   }
-});
+};
 
-watch(selectedSlot, async (value) => {
-  // console.log("selectedSlot", value?.toISOString());
-});
+const locationLabel = (game: string, location: number, short = false) => {
+  const name = gameLocationDisplayNames[game] ?? "";
+  const postfix = gameLocationPostfix[game]?.[location] ?? "";
 
-const selectedDuration = useLocalStorage("booking:duration", 60, {
-  initOnMounted: true,
-});
+  return short
+    ? `${location}${postfix}`
+    : `${name.charAt(0).toUpperCase()}${name.slice(1)} ${location}${postfix}`;
+};
 
-watch(selectedDuration, async (value) => {
-  // console.log("selectedDuration", value);
+const columns = computed<BookingColumn[]>(() =>
+  selectedGame.value
+    ? (gameLocations[selectedGame.value] ?? []).map((location) => ({
+        location,
+        label: locationLabel(selectedGame.value!, location),
+        shortLabel: locationLabel(selectedGame.value!, location, true),
+        slotStarts: slotStartsByLocation.value[location] ?? [],
+      }))
+    : []
+);
 
-  await fetchSlots();
-});
+const hasFreeSlots = computed(() => columns.value.some((column) => column.slotStarts.length > 0));
+
 
 const details = useLocalStorage(
   "booking:details",
@@ -204,6 +270,7 @@ const bookingPending = ref(false);
 const book = async () => {
   if (
     bookingPending.value ||
+    slotsPending.value ||
     !selectedGame.value ||
     !date.value ||
     !selectedLocation.value ||
@@ -408,61 +475,58 @@ onMounted(async () => {
         <h2>Wanneer wil je spelen?</h2>
         <u-calendar
           v-model="date"
+          class="sm:max-w-md"
           size="xl"
           :is-date-unavailable="isDateUnavailable"
           :prevent-deselect="true"
           :year-controls="false"
         />
       </div>
-      <div v-if="selectedGame && date && gameLocations[selectedGame]" class="flex flex-col gap-4">
-        <h2>Welke {{ gameLocationDisplayNames[selectedGame] }} wil je reserveren?</h2>
-        <div class="flex flex-wrap gap-4">
+      <div v-if="selectedGame && date" class="flex flex-col gap-4">
+        <h2>Hoe laat wil je spelen?</h2>
+        <div class="flex items-center justify-between gap-4">
           <u-button
-            v-for="location in gameLocations[selectedGame]"
-            :key="location"
-            class="flex-1"
-            :label="location + (gameLocationPostfix[selectedGame]?.[location] ?? '')"
+            icon="i-lucide-chevron-left"
             size="xl"
-            :color="location === selectedLocation ? 'primary' : 'neutral'"
-            :variant="location === selectedLocation ? 'solid' : 'ghost'"
-            @click="selectedLocation = location"
+            color="neutral"
+            variant="ghost"
+            aria-label="Vorige dag"
+            :disabled="isToday"
+            @click="shiftDate(-1)"
+          />
+          <p class="text-center text-lg font-semibold">{{ dateLabel }}</p>
+          <u-button
+            icon="i-lucide-chevron-right"
+            size="xl"
+            color="neutral"
+            variant="ghost"
+            aria-label="Volgende dag"
+            @click="shiftDate(1)"
           />
         </div>
-      </div>
-      <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
-        <h2>Hoelang wil je reserveren?</h2>
-        <div class="flex flex-wrap gap-4">
-          <u-button
-            v-for="duration in durations"
-            :key="duration"
-            class="flex-1"
-            :label="(duration / 60 + 'u').replace('.', ',')"
-            size="xl"
-            :color="duration === selectedDuration ? 'primary' : 'neutral'"
-            :variant="duration === selectedDuration ? 'solid' : 'ghost'"
-            @click="selectedDuration = duration"
-          />
-        </div>
-      </div>
-      <div v-if="selectedGame && date && selectedLocation" class="flex flex-col gap-4">
-        <h2>Om hoe laat wil je spelen?</h2>
-        <div class="flex flex-wrap gap-4">
-          <u-button
-            v-for="slot in slots"
-            :key="slot.toISOString()"
-            class="flex-1"
-            :label="slot.toLocaleTimeString('nl-BE').substring(0, 5)"
-            size="xl"
-            :color="slot.toISOString() === selectedSlot?.toISOString() ? 'primary' : 'neutral'"
-            :variant="slot.toISOString() === selectedSlot?.toISOString() ? 'solid' : 'ghost'"
-            @click="selectedSlot = slot"
-          />
-          <p v-if="slots.length === 0">
-            Er is geen tijdslot van {{ (selectedDuration / 60 + "u").replace(".", ",") }} meer
-            beschikbaar voor {{ gameLocationDisplayNames[selectedGame] }} {{ selectedLocation
-            }}{{ gameLocationPostfix[selectedGame]?.[selectedLocation] ?? "" }}.
-          </p>
-        </div>
+        <app-booking-day-grid
+          v-model:selection="selection"
+          :columns="columns"
+          :loading="slotsPending"
+          :failed="slotsFailed"
+          @retry="fetchSlots()"
+        />
+        <!-- Always mounted, so screen readers announce the first selection too. -->
+        <p aria-live="polite" :class="selectedSlot ? 'font-semibold' : 'text-muted'">
+          <template v-if="selectedSlot && selectedSlotEnd">
+            {{ locationLabel(selectedGame, selectedLocation) }} &middot;
+            {{ formatTime(selectedSlot) }} &ndash; {{ formatTime(selectedSlotEnd) }} &middot;
+            {{ formatDuration(selectedDuration) }}
+          </template>
+          <template v-else-if="!slotsPending && hasFreeSlots">
+            Tik op een vrij blok om je startuur te kiezen; je reserveert minstens 1 uur. Sleep
+            daarna de boven- of onderkant van je keuze om ze langer of korter te maken.
+          </template>
+        </p>
+        <p v-if="selectedSlot" class="text-sm text-muted">
+          Sleep de boven- of onderkant van je keuze om het start- of einduur te verzetten, of tik
+          op een ander blok om opnieuw te kiezen.
+        </p>
       </div>
       <div
         v-if="selectedGame && date && selectedLocation && selectedSlot && selectedDuration"
@@ -512,10 +576,10 @@ onMounted(async () => {
         </p>
         <p>
           <span class="font-semibold">Datum</span>:
-          {{ selectedSlot.toLocaleDateString("nl-BE") }}
-          {{ selectedSlot.toLocaleTimeString("nl-BE").substring(0, 5)
+          {{ formatDate(selectedSlot) }}
+          {{ formatTime(selectedSlot)
           }}<span v-if="selectedSlotEnd">
-            - {{ selectedSlotEnd.toLocaleTimeString("nl-BE").substring(0, 5) }}</span
+            - {{ formatTime(selectedSlotEnd) }}</span
           >
         </p>
         <div class="flex flex-col">
@@ -527,7 +591,7 @@ onMounted(async () => {
           <p><span class="font-semibold">Waarborg/voorschot reservatie</span>: &euro; 10</p>
         </div>
         <u-button
-          :disabled="bookingPending"
+          :disabled="bookingPending || slotsPending"
           :loading="bookingPending"
           class="flex-1"
           label="Reserveer en betaal"
@@ -545,12 +609,12 @@ onMounted(async () => {
         </p>
         <p>
           <span class="font-semibold">Datum</span>:
-          {{ new Date(bookingData.calData.startTime).toLocaleDateString("nl-BE") }}
-          {{ new Date(bookingData.calData.startTime).toLocaleTimeString("nl-BE").substring(0, 5)
+          {{ formatDate(new Date(bookingData.calData.startTime)) }}
+          {{ formatTime(new Date(bookingData.calData.startTime))
           }}<span v-if="bookingData.calData.endTime">
             -
             {{
-              new Date(bookingData.calData.endTime).toLocaleTimeString("nl-BE").substring(0, 5)
+              formatTime(new Date(bookingData.calData.endTime))
             }}</span
           >
         </p>

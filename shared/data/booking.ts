@@ -44,4 +44,6 @@ export const gameLocationPostfix: { [game: string]: { [location: number]: string
   },
 };
 
-export const durations = [60, 90, 120, 150, 180, 240];
+// Every quarter from 1 hour up to 4 hours. Each value must also be an allowed duration of the
+// Cal.com event types above, otherwise Cal.com rejects the booking.
+export const durations = Array.from({ length: 13 }, (_, index) => 60 + index * 15);
