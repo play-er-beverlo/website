@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // const route = useRoute();
+const { showEvents } = useAppConfig();
 
 // The Google Maps embed captures scroll-wheel input for zoom, which hijacks
 // page scrolling. Gate it behind a click so the page scrolls normally until
@@ -46,17 +47,17 @@ useHead({
       <app-booking />
     </div>
   </section>
-  <section id="events" class="w-full shadow-lg">
+  <section v-if="showEvents" id="events" class="w-full shadow-lg">
     <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
       <h1>EVENTS</h1>
       <div class="grid grid-cols-1 gap-8">
         <nuxt-link
-          to="/6-reds-summer-cup"
+          to="/2026/6-reds-summer-cup"
           class="event-card group flex flex-col md:flex-row gap-8 border-4 border-gray-700 p-8 text-white"
         >
           <div class="flex items-center justify-center md:basis-2/5">
             <img
-              src="/images/6-reds-summer-cup-logo-dark.svg"
+              src="/images/2026/6-reds-summer-cup/logo-dark.svg"
               alt="6 Reds SummER Cup 2026 logo"
               class="w-full max-w-xs h-auto drop-shadow-lg"
             />
@@ -255,12 +256,12 @@ section#image-slider {
   height: 450px;
 }
 
-/* Dark section, matching the summer cup "resultaten" section. */
+/* Dark section, matching the 6 Reds Summer Cup "resultaten" section. */
 section#events {
   @apply bg-neutral-500 text-white;
 }
 
-/* Mini summer-cup hero: the dark-background logo needs a dark card. */
+/* Mini 6-reds-summer-cup hero: the dark-background logo needs a dark card. */
 .event-card {
   @apply bg-neutral-500 no-underline transition;
   background: radial-gradient(circle, rgba(102, 102, 102, 1) 0%, rgba(50, 48, 49, 1) 75%);

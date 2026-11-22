@@ -42,6 +42,14 @@ export default defineNuxtConfig({
   ogImage: {
     zeroRuntime: true,
   },
+  routeRules: {
+    // The 2026 edition used to live at the unversioned path. Confirmation emails still link
+    // there (uitschrijven, betaal-QR), so keep those URLs working. Temporary redirects on purpose:
+    // a next edition may reclaim /6-reds-summer-cup.
+    "/6-reds-summer-cup": { redirect: "/2026/6-reds-summer-cup" },
+    "/6-reds-summer-cup/**": { redirect: "/2026/6-reds-summer-cup/**" },
+    "/api/6-reds-summer-cup/**": { redirect: "/api/2026/6-reds-summer-cup/**" },
+  },
   runtimeConfig: {
     public: {
       stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY
