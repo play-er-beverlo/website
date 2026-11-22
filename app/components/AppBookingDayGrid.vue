@@ -347,7 +347,8 @@ const gridStyle = computed(() => ({
                 isSelected(column.location, time) && time === selection?.start.valueOf(),
               'is-end': isSelected(column.location, time) && time + BLOCK_MS === selectionEnd,
               'is-free': isFree(column.location, time),
-              'is-short': isFree(column.location, time) && !canStart(column.location, time),
+              'is-short':
+                !selection && isFree(column.location, time) && !canStart(column.location, time),
             }"
             :disabled="!selectionFor(column.location, time)"
             :aria-label="cellLabel(column, time)"
@@ -417,8 +418,8 @@ const gridStyle = computed(() => ({
   background-color: color-mix(in oklab, var(--ui-primary) 14%, var(--ui-bg));
 }
 
-/* Free, but too close to an occupied block or closing time to start an hour there. This does
-   not depend on the selection, so the lighter blocks stay put while the selection moves. */
+/* Free, but too close to an occupied block or closing time to start an hour there. Only shown
+   while nothing is selected: once there is a selection these blocks can be its end. */
 .day-grid-cell.is-short:not(.is-selected) {
   opacity: 0.5;
 }
