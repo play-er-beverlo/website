@@ -1,12 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
-  adjustSelection,
   allowedDurations,
   formatDate,
   formatDuration,
   formatTime,
   freeBlocks,
+  moveSelection,
   nextSelection,
+  resizeSelection,
   rowTimes,
 } from "../../shared/booking/dayGrid";
 import { durations } from "../../shared/data/booking";
@@ -155,51 +156,74 @@ describe("nextSelection", () => {
   });
 });
 
-describe("adjustSelection", () => {
-  // free 10:00-15:00
+describe("resizeSelection", () => {
+  // free 10:00-15:00, then occupied
   const free = freeBlocks(starts("10:00", "15:00"));
   const current = { location: 1, start: t("11:00"), duration: 90 };
-  const adjust = (selection: typeof current, edge: "start" | "end", minutes: number) =>
-    adjustSelection(free, selection, edge, minutes, durations);
+  const drag = (selection: typeof current, edge: "start" | "end", hhmm: string) =>
+    resizeSelection(free, selection, edge, ms(hhmm), durations);
 
-  it("moves the start a quarter later and keeps the end", () => {
-    expect(adjust(current, "start", 15)).toEqual({ ...current, start: t("11:15"), duration: 75 });
+  it("drags the end to the block under the pointer", () => {
+    expect(drag(current, "end", "13:00")).toEqual({ ...current, duration: 135 });
+    expect(drag(current, "end", "12:00")).toEqual({ ...current, duration: 75 });
   });
 
-  it("moves the start a quarter earlier and keeps the end", () => {
-    expect(adjust(current, "start", -15)).toEqual({ ...current, start: t("10:45"), duration: 105 });
+  it("keeps at least an hour when the end is dragged up, even above the start", () => {
+    expect(drag(current, "end", "11:15")).toEqual({ ...current, duration: 60 });
+    expect(drag(current, "end", "10:00")).toEqual({ ...current, duration: 60 });
   });
 
-  it("pushes the end along when the start moves later on a one hour selection", () => {
-    expect(adjust({ ...current, duration: 60 }, "start", 15)).toEqual({
+  it("stops the end at 4 hours", () => {
+    expect(drag({ ...current, start: t("10:00") }, "end", "14:45")).toEqual({
       ...current,
-      start: t("11:15"),
-      duration: 60,
+      start: t("10:00"),
+      duration: 240,
     });
   });
 
-  it("pulls the end along when the start moves earlier on a 4 hour selection", () => {
-    const full = { location: 1, start: t("10:15"), duration: 240 };
-    expect(adjust(full, "start", -15)).toEqual({ ...full, start: t("10:00") });
+  it("stops the end at the next occupied block", () => {
+    expect(drag({ ...current, start: t("13:00") }, "end", "16:00")).toEqual({
+      ...current,
+      start: t("13:00"),
+      duration: 120,
+    });
   });
 
-  it("cannot move the start into an occupied block", () => {
-    expect(adjust({ ...current, start: t("10:00") }, "start", -15)).toBeNull();
+  it("drags the start and keeps the end", () => {
+    expect(drag(current, "start", "11:15")).toEqual({ ...current, start: t("11:15"), duration: 75 });
+    expect(drag(current, "start", "10:15")).toEqual({ ...current, start: t("10:15"), duration: 135 });
   });
 
-  it("cannot push a one hour selection into an occupied block", () => {
-    expect(adjust({ location: 1, start: t("14:00"), duration: 60 }, "start", 15)).toBeNull();
+  it("keeps at least an hour when the start is dragged down", () => {
+    expect(drag(current, "start", "12:15")).toEqual({ ...current, start: t("11:30"), duration: 60 });
   });
 
-  it("moves the end a quarter later or earlier", () => {
-    expect(adjust(current, "end", 15)).toEqual({ ...current, duration: 105 });
-    expect(adjust(current, "end", -15)).toEqual({ ...current, duration: 75 });
+  it("stops the start at the previous occupied block", () => {
+    expect(drag(current, "start", "09:00")).toEqual({ ...current, start: t("10:00"), duration: 150 });
   });
 
-  it("cannot shorten below an hour or extend beyond 4 hours or free time", () => {
-    expect(adjust({ ...current, duration: 60 }, "end", -15)).toBeNull();
-    expect(adjust({ location: 1, start: t("10:00"), duration: 240 }, "end", 15)).toBeNull();
-    expect(adjust({ location: 1, start: t("14:00"), duration: 60 }, "end", 15)).toBeNull();
+  it("stops the start at 4 hours before the end", () => {
+    const late = { location: 1, start: t("14:00"), duration: 60 };
+    expect(drag(late, "start", "10:00")).toEqual({ ...late, start: t("11:00"), duration: 240 });
+  });
+});
+
+describe("moveSelection", () => {
+  // free 10:00-15:00, then occupied
+  const free = freeBlocks(starts("10:00", "15:00"));
+  const current = { location: 1, start: t("11:00"), duration: 90 };
+
+  it("moves the whole selection to a new start, also on another table", () => {
+    expect(moveSelection(free, current, 2, ms("12:15"), durations)).toEqual({
+      location: 2,
+      start: t("12:15"),
+      duration: 90,
+    });
+  });
+
+  it("refuses a position that overlaps an occupied block", () => {
+    expect(moveSelection(free, current, 1, ms("13:45"), durations)).toBeNull();
+    expect(moveSelection(free, current, 1, ms("09:45"), durations)).toBeNull();
   });
 });
 

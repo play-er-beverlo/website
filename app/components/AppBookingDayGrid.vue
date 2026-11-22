@@ -3,7 +3,9 @@ import {
   BLOCK_MINUTES,
   formatTime,
   freeBlocks,
+  moveSelection,
   nextSelection,
+  resizeSelection,
   rowTimes,
   type BookingSelection,
 } from "#shared/booking/dayGrid";
@@ -71,6 +73,129 @@ const select = (location: number, time: number) => {
 
   if (next) {
     selection.value = next;
+  }
+};
+
+// The selection is drawn as one bar on top of its blocks. Like in a calendar app, its top and
+// bottom edge can be dragged to change the start or end, and the bar itself can be dragged to
+// another time or table.
+const bar = computed(() => {
+  const current = selection.value;
+
+  if (!current) {
+    return null;
+  }
+
+  const column = props.columns.findIndex((item) => item.location === current.location);
+  const row = rows.value.indexOf(current.start.valueOf());
+
+  return column === -1 || row === -1
+    ? null
+    : {
+        gridColumn: column + 2,
+        gridRow: `${row + 2} / span ${current.duration / BLOCK_MINUTES}`,
+      };
+});
+
+type Drag = {
+  mode: "start" | "end" | "move";
+  // Latest selection of this drag; the model only catches up after the parent re-renders.
+  current: BookingSelection;
+  // For a move: how far below the start of the bar it was grabbed.
+  grabOffset: number;
+  moved: boolean;
+};
+
+let drag: Drag | null = null;
+let suppressClick = false;
+const dragging = ref(false);
+
+const cellAt = (event: MouseEvent) => {
+  const element = document
+    .elementsFromPoint(event.clientX, event.clientY)
+    .find((item): item is HTMLElement => item instanceof HTMLElement && !!item.dataset.cell);
+
+  if (!element) {
+    return null;
+  }
+
+  const [location, time] = element.dataset.cell!.split(":").map(Number) as [number, number];
+
+  return { location, time };
+};
+
+const onDragStart = (event: PointerEvent, mode: Drag["mode"]) => {
+  // A finger on the bar scrolls the page; on touch only the two edges drag.
+  if (!selection.value || (mode === "move" && event.pointerType === "touch")) {
+    return;
+  }
+
+  const cell = cellAt(event);
+
+  drag = {
+    mode,
+    current: selection.value,
+    grabOffset: cell ? cell.time - selection.value.start.valueOf() : 0,
+    moved: false,
+  };
+  (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+};
+
+const onDragMove = (event: PointerEvent) => {
+  const cell = drag && cellAt(event);
+
+  if (!drag || !cell) {
+    return;
+  }
+
+  const { current } = drag;
+  const next =
+    drag.mode === "move"
+      ? moveSelection(
+          freeByLocation.value.get(cell.location) ?? new Set(),
+          current,
+          cell.location,
+          cell.time - drag.grabOffset,
+          durations
+        )
+      : resizeSelection(
+          freeByLocation.value.get(current.location) ?? new Set(),
+          current,
+          drag.mode,
+          cell.time,
+          durations
+        );
+
+  if (
+    next &&
+    (next.location !== current.location ||
+      next.start.valueOf() !== current.start.valueOf() ||
+      next.duration !== current.duration)
+  ) {
+    drag.current = next;
+    drag.moved = true;
+    dragging.value = true;
+    selection.value = next;
+  }
+};
+
+const onDragEnd = () => {
+  // The click that follows a drag must not count as a tap on the block under the pointer.
+  suppressClick = !!drag?.moved;
+  drag = null;
+  dragging.value = false;
+};
+
+const onBarClick = (event: MouseEvent) => {
+  if (suppressClick) {
+    suppressClick = false;
+    return;
+  }
+
+  const cell = cellAt(event);
+
+  if (cell) {
+    select(cell.location, cell.time);
   }
 };
 
@@ -176,16 +301,17 @@ const gridStyle = computed(() => ({
     <template v-else>
       <div
         ref="grid"
-        class="grid gap-x-2 sm:gap-x-4"
+        class="grid gap-x-2 select-none sm:gap-x-4"
         :style="gridStyle"
         role="group"
         aria-label="Beschikbaarheid per tafel. Gebruik de pijltjestoetsen om een blok te kiezen."
       >
-        <div class="sticky top-0 z-10 bg-default"></div>
+        <div class="sticky top-0 z-10 bg-default" :style="{ gridColumn: 1, gridRow: 1 }"></div>
         <div
-          v-for="column in columns"
+          v-for="(column, columnIndex) in columns"
           :key="column.location"
           class="sticky top-0 z-10 bg-default py-2 text-center font-semibold"
+          :style="{ gridColumn: columnIndex + 2, gridRow: 1 }"
         >
           <span class="hidden sm:inline">{{ column.label }}</span>
           <span class="sm:hidden">{{ column.shortLabel }}</span>
@@ -194,6 +320,7 @@ const gridStyle = computed(() => ({
           <div
             class="h-8 pr-1 text-sm tabular-nums leading-none"
             :class="formatTime(time).endsWith(':00') ? 'text-default' : 'text-dimmed'"
+            :style="{ gridColumn: 1, gridRow: rowIndex + 2 }"
           >
             <!-- Quarter rows stay unlabelled to keep the time column readable. -->
             {{ /:(00|30)$/.test(formatTime(time)) ? formatTime(time) : "" }}
@@ -203,6 +330,7 @@ const gridStyle = computed(() => ({
             :key="column.location"
             type="button"
             :data-cell="cellKey(column.location, time)"
+            :style="{ gridColumn: columnIndex + 2, gridRow: rowIndex + 2 }"
             :tabindex="tabStop === cellKey(column.location, time) ? 0 : -1"
             class="day-grid-cell h-8 px-2 pt-1 text-left align-top text-sm leading-none font-semibold"
             :class="{
@@ -219,20 +347,34 @@ const gridStyle = computed(() => ({
             @focus="focused = cellKey(column.location, time)"
             @keydown="onKeydown($event, rowIndex, columnIndex)"
           >
-            <span
-              v-if="isSelected(column.location, time) && time === selection?.start.valueOf()"
-              class="block tabular-nums"
-            >
-              {{ formatTime(time) }}
-            </span>
-            <span
-              v-else-if="isSelected(column.location, time) && time + BLOCK_MS === selectionEnd"
-              class="flex h-full items-end pb-1.5 tabular-nums"
-            >
-              {{ formatTime(selectionEnd) }}
-            </span>
           </button>
         </template>
+        <div
+          v-if="bar && selection"
+          aria-hidden="true"
+          class="day-grid-bar"
+          :class="{ 'is-dragging': dragging }"
+          :style="bar"
+          @pointerdown="onDragStart($event, 'move')"
+          @pointermove="onDragMove"
+          @pointerup="onDragEnd"
+          @pointercancel="onDragEnd"
+          @click="onBarClick"
+        >
+          <div
+            class="day-grid-handle is-top"
+            @pointerdown.stop="onDragStart($event, 'start')"
+            @click.stop
+          ></div>
+          <span class="day-grid-bar-label">
+            {{ formatTime(selection.start) }} &ndash; {{ formatTime(selectionEnd) }}
+          </span>
+          <div
+            class="day-grid-handle is-bottom"
+            @pointerdown.stop="onDragStart($event, 'end')"
+            @click.stop
+          ></div>
+        </div>
       </div>
       <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
         <span class="flex items-center gap-2">
@@ -297,6 +439,64 @@ button.day-grid-cell.is-selected:disabled {
 .day-grid-cell.is-end {
   border-bottom-left-radius: var(--ui-radius);
   border-bottom-right-radius: var(--ui-radius);
+}
+
+.day-grid-bar {
+  position: relative;
+  z-index: 2;
+  cursor: grab;
+  color: var(--ui-text-inverted);
+}
+
+.day-grid-bar.is-dragging {
+  cursor: grabbing;
+}
+
+.day-grid-bar-label {
+  display: block;
+  padding: 0.75rem 0.5rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* Wider than it looks: the grip is a thin line, the area that takes the pointer is 20px. */
+.day-grid-handle {
+  position: absolute;
+  inset-inline: 0;
+  height: 20px;
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.day-grid-handle.is-top {
+  top: -6px;
+}
+
+.day-grid-handle.is-bottom {
+  bottom: -6px;
+}
+
+.day-grid-handle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1.75rem;
+  height: 4px;
+  border-radius: 2px;
+  background-color: currentColor;
+  opacity: 0.75;
+  transform: translateX(-50%);
+}
+
+.day-grid-handle.is-top::after {
+  top: 10px;
+}
+
+.day-grid-handle.is-bottom::after {
+  bottom: 10px;
 }
 
 button.day-grid-cell:focus-visible {
