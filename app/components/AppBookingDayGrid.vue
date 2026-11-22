@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import {
+  allowedDurations,
   BLOCK_MINUTES,
   formatTime,
   freeBlocks,
+  MIN_DURATION,
   moveSelection,
   nextSelection,
   resizeSelection,
@@ -48,6 +50,12 @@ watch(rows, (value) => {
 
 const isFree = (location: number, time: number) =>
   freeByLocation.value.get(location)?.has(time) ?? false;
+
+// Whether the shortest booking fits when it starts at this block.
+const canStart = (location: number, time: number) =>
+  allowedDurations(freeByLocation.value.get(location) ?? new Set(), time, durations).includes(
+    MIN_DURATION
+  );
 
 const selectionEnd = computed(() =>
   selection.value ? selection.value.start.valueOf() + selection.value.duration * 60 * 1000 : 0
@@ -339,6 +347,7 @@ const gridStyle = computed(() => ({
                 isSelected(column.location, time) && time === selection?.start.valueOf(),
               'is-end': isSelected(column.location, time) && time + BLOCK_MS === selectionEnd,
               'is-free': isFree(column.location, time),
+              'is-short': isFree(column.location, time) && !canStart(column.location, time),
             }"
             :disabled="!selectionFor(column.location, time)"
             :aria-label="cellLabel(column, time)"
@@ -408,8 +417,12 @@ const gridStyle = computed(() => ({
   background-color: color-mix(in oklab, var(--ui-primary) 14%, var(--ui-bg));
 }
 
-/* Colour only says free or occupied. A free block that cannot be tapped right now (no hour
-   fits, or out of reach of the selection) looks the same and just has no pointer or hover. */
+/* Free, but too close to an occupied block or closing time to start an hour there. This does
+   not depend on the selection, so the lighter blocks stay put while the selection moves. */
+.day-grid-cell.is-short:not(.is-selected) {
+  opacity: 0.5;
+}
+
 button.day-grid-cell:not(:disabled) {
   cursor: pointer;
 }
