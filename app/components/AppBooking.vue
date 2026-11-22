@@ -475,6 +475,7 @@ onMounted(async () => {
         <h2>Wanneer wil je spelen?</h2>
         <u-calendar
           v-model="date"
+          class="sm:max-w-md"
           size="xl"
           :is-date-unavailable="isDateUnavailable"
           :prevent-deselect="true"
