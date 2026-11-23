@@ -92,6 +92,12 @@ const register = async () => {
       },
     });
 
+    // Failures come back with an error status, so $fetch throws before this point; the check
+    // tells TypeScript that only the successful response is left.
+    if (!("id" in res)) {
+      throw new Error("Registration failed.");
+    }
+
     confirmation.value = {
       id: res.id,
       name: res.name,
