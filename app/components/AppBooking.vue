@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { getLocalTimeZone, parseDate, today, type DateValue } from "@internationalized/date";
 import {
+  closingHour,
+  openingHour,
   games,
   gameLocations,
   durations,
@@ -220,6 +222,20 @@ const columns = computed<BookingColumn[]>(() =>
 );
 
 const hasFreeSlots = computed(() => columns.value.some((column) => column.slotStarts.length > 0));
+
+// A fully booked day still says when the venue is open, for whoever wants to drop by anyway.
+const noSlotsMessage = computed(() => {
+  if (!isToday.value) {
+    const opening = openingHour(date.value.toDate(getLocalTimeZone()).getDay());
+
+    return `Er zijn op deze dag geen vrije tijdsloten meer, maar we zijn wel open van ${opening}:00 tot ${closingHour}:00.`;
+  }
+
+  // The hour in the venue's time zone.
+  return Number(formatTime(Date.now()).split(":")[0]) >= closingHour
+    ? "Vandaag zijn er geen vrije tijdsloten meer en we zijn ondertussen gesloten."
+    : `Vandaag zijn er geen vrije tijdsloten meer, maar we zijn open tot ${closingHour}:00.`;
+});
 
 
 const details = useLocalStorage(
@@ -475,7 +491,7 @@ onMounted(async () => {
         <h2>Wanneer wil je spelen?</h2>
         <u-calendar
           v-model="date"
-          class="sm:max-w-md"
+          class="mx-auto w-full max-w-77"
           size="xl"
           :is-date-unavailable="isDateUnavailable"
           :prevent-deselect="true"
@@ -483,7 +499,7 @@ onMounted(async () => {
         />
       </div>
       <div v-if="selectedGame && date" class="flex flex-col gap-4">
-        <h2>Hoe laat wil je spelen?</h2>
+        <h2>{{ columns.length > 1 ? "Hoe laat en waar" : "Hoe laat" }} wil je spelen?</h2>
         <div class="flex items-center justify-between gap-4">
           <u-button
             icon="i-lucide-chevron-left"
@@ -509,6 +525,7 @@ onMounted(async () => {
           :columns="columns"
           :loading="slotsPending"
           :failed="slotsFailed"
+          :empty-message="noSlotsMessage"
           @retry="fetchSlots()"
         />
         <!-- Always mounted, so screen readers announce the first selection too. -->

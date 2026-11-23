@@ -12,7 +12,7 @@ import {
   rowTimes,
   type BookingSelection,
 } from "#shared/booking/dayGrid";
-import { durations } from "#shared/data/booking";
+import { closingHour, durations } from "#shared/data/booking";
 
 export type BookingColumn = {
   location: number;
@@ -25,6 +25,8 @@ const props = defineProps<{
   columns: BookingColumn[];
   loading: boolean;
   failed: boolean;
+  // Shown instead of the grid when no table has a free block left.
+  emptyMessage: string;
 }>();
 
 defineEmits<{ retry: [] }>();
@@ -37,7 +39,9 @@ const freeByLocation = computed(
   () => new Map(props.columns.map((column) => [column.location, freeBlocks(column.slotStarts)]))
 );
 
-const rows = computed(() => rowTimes([...freeByLocation.value.values()]));
+const rows = computed(() => rowTimes([...freeByLocation.value.values()], closingHour));
+
+const endTime = computed(() => (rows.value.at(-1) ?? 0) + BLOCK_MS);
 
 // The loading skeleton keeps the height of the grid it replaces, so the page does not jump.
 const ROW_REM = 2;
@@ -306,7 +310,7 @@ const gridStyle = computed(() => ({
       <p>De beschikbaarheid kon niet geladen worden.</p>
       <u-button label="Opnieuw proberen" color="neutral" variant="subtle" @click="$emit('retry')" />
     </div>
-    <p v-else-if="rows.length === 0">Er zijn op deze dag geen vrije tijdsloten meer.</p>
+    <p v-else-if="rows.length === 0" class="text-center">{{ emptyMessage }}</p>
     <template v-else>
       <div
         ref="grid"
@@ -315,7 +319,8 @@ const gridStyle = computed(() => ({
         role="group"
         aria-label="Beschikbaarheid per tafel. Gebruik de pijltjestoetsen om een blok te kiezen."
       >
-        <div class="sticky top-0 z-10 bg-default" :style="{ gridColumn: 1, gridRow: 1 }"></div>
+        <!-- Stops short of the first row, where the upper half of the first time label sits. -->
+        <div class="sticky top-0 z-10 mb-2 bg-default" :style="{ gridColumn: 1, gridRow: 1 }"></div>
         <div
           v-for="(column, columnIndex) in columns"
           :key="column.location"
@@ -331,8 +336,11 @@ const gridStyle = computed(() => ({
             :class="formatTime(time).endsWith(':00') ? 'text-default' : 'text-dimmed'"
             :style="{ gridColumn: 1, gridRow: rowIndex + 2 }"
           >
-            <!-- Quarter rows stay unlabelled to keep the time column readable. -->
-            {{ /:(00|30)$/.test(formatTime(time)) ? formatTime(time) : "" }}
+            <!-- Centred on the line above the block. Quarter rows stay unlabelled to keep the
+                 time column readable. -->
+            <span class="block -translate-y-1/2">
+              {{ /:(00|30)$/.test(formatTime(time)) ? formatTime(time) : "" }}
+            </span>
           </div>
           <button
             v-for="(column, columnIndex) in columns"
@@ -360,6 +368,14 @@ const gridStyle = computed(() => ({
           >
           </button>
         </template>
+        <!-- The end of the last block, on the bottom line of the grid. -->
+        <div
+          class="h-0 pr-1 text-sm tabular-nums leading-none"
+          :class="formatTime(endTime).endsWith(':00') ? 'text-default' : 'text-dimmed'"
+          :style="{ gridColumn: 1, gridRow: rows.length + 2 }"
+        >
+          <span class="block -translate-y-1/2">{{ formatTime(endTime) }}</span>
+        </div>
         <div
           v-if="bar && selection"
           aria-hidden="true"

@@ -44,6 +44,14 @@ export const gameLocationPostfix: { [game: string]: { [location: number]: string
   },
 };
 
+// Closing time, every day, as the hour in the venue's time zone. Keep in sync with the working
+// hours of the Cal.com event types above.
+export const closingHour = 23;
+
+// Opening time as the hour in the venue's time zone, for a weekday as Date.getDay() numbers it
+// (0 is Sunday): Friday to Sunday from 13:00, Monday to Thursday from 17:00.
+export const openingHour = (weekday: number) => ([0, 5, 6].includes(weekday) ? 13 : 17);
+
 // Every quarter from 1 hour up to 4 hours. Each value must also be an allowed duration of the
 // Cal.com event types above, otherwise Cal.com rejects the booking.
 export const durations = Array.from({ length: 13 }, (_, index) => 60 + index * 15);
