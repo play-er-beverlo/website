@@ -7,6 +7,19 @@ const { showEvents } = useAppConfig();
 // the visitor explicitly wants to interact with the tour.
 const tourActive = ref(false);
 
+const photos = [
+  { src: "/images/photos/zithoek-bar.jpg", alt: "Zithoek met muurschildering en bar" },
+  { src: "/images/photos/snooker-darts.jpg", alt: "Snookertafels en dartsbanen" },
+  { src: "/images/photos/darts.jpg", alt: "Dartsbanen" },
+  { src: "/images/photos/snooker.jpg", alt: "Snookertafels" },
+  { src: "/images/photos/pool-darts.jpg", alt: "Pooltafels, dartsbanen en zithoek" },
+  { src: "/images/photos/golfbiljart-pool.jpg", alt: "Golfbiljart en pooltafel" },
+  { src: "/images/photos/snooker-muurschildering.jpg", alt: "Snookertafels voor de muurschildering" },
+  { src: "/images/photos/bar.jpg", alt: "Bar" },
+  { src: "/images/photos/tafelvoetbal.jpg", alt: "Tafelvoetbal" },
+  { src: "/images/photos/snooker-vooraanzicht.jpg", alt: "Snookertafels, vooraanzicht" },
+];
+
 useHead({
   meta: [
     {
@@ -214,10 +227,25 @@ useHead({
       </div>
     </div>
   </section>
-  <!-- TODO: Add image slider -->
-  <!-- <section id="image-slider" class="w-full shadow-lg">
-      <p class="text-white">TODO: Image slider</p>
-    </section> -->
+  <section id="fotos" class="w-full overflow-hidden shadow-lg">
+    <u-carousel
+      v-slot="{ item }"
+      :items="photos"
+      loop
+      arrows
+      :autoplay="{ delay: 5000 }"
+      :prev="{ color: 'neutral', variant: 'solid' }"
+      :next="{ color: 'neutral', variant: 'solid' }"
+      :ui="{
+        container: 'ms-0',
+        item: 'ps-0 sm:basis-1/2 lg:basis-1/3',
+        prev: 'start-4 sm:start-4',
+        next: 'end-4 sm:end-4',
+      }"
+    >
+      <img :src="item.src" :alt="item.alt" loading="lazy" class="w-full aspect-[3/2] object-cover" />
+    </u-carousel>
+  </section>
   <!-- TODO: Add clubs -->
   <!-- <section id="clubs" class="w-full shadow-lg">
       <div class="mx-auto max-w-6xl px-6 py-20 flex flex-col gap-10">
@@ -251,11 +279,6 @@ section#contact {
 /* Continues the contact section's light background so it reads as one block. */
 section#virtuele-tour {
   background-color: #f7f6f6;
-}
-
-section#image-slider {
-  @apply bg-neutral-500;
-  height: 450px;
 }
 
 /* Dark section, matching the 6 Reds Summer Cup "resultaten" section. */
