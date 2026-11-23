@@ -19,8 +19,13 @@ export function freeBlocks(slotStarts: Date[]): Set<number> {
   return free;
 }
 
-/** Block starts from the earliest to the latest free block across all tables. */
-export function rowTimes(columns: Set<number>[]): number[] {
+/**
+ * Block starts from the earliest free block across all tables until closing time, so the blocks
+ * after the last free one show as occupied instead of the day seeming to end early.
+ * `closingHour` is the hour in the venue's time zone; without it the rows end at the last free
+ * block.
+ */
+export function rowTimes(columns: Set<number>[], closingHour?: number): number[] {
   const all = columns.flatMap((column) => [...column]);
 
   if (all.length === 0) {
@@ -28,7 +33,17 @@ export function rowTimes(columns: Set<number>[]): number[] {
   }
 
   const first = Math.min(...all);
-  const last = Math.max(...all);
+  let last = Math.max(...all);
+
+  if (closingHour !== undefined) {
+    const [hours, minutes] = formatTime(last).split(":").map(Number) as [number, number];
+    const untilLastBlock = closingHour * 60 - BLOCK_MINUTES - (hours * 60 + minutes);
+
+    if (untilLastBlock > 0) {
+      last += untilLastBlock * 60 * 1000;
+    }
+  }
+
   const rows: number[] = [];
 
   for (let time = first; time <= last; time += BLOCK_MS) {

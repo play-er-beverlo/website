@@ -66,6 +66,25 @@ describe("rowTimes", () => {
 
   it("is empty when nothing is free", () => {
     expect(rowTimes([new Set(), new Set()])).toEqual([]);
+    expect(rowTimes([new Set(), new Set()], 23)).toEqual([]);
+  });
+
+  it("runs on until closing time in the venue's time zone", () => {
+    // last free block 15:45Z = 16:45 in Beverlo; closing at 23:00 there = 22:00Z
+    const rows = rowTimes([freeBlocks([t("15:00")]), freeBlocks([t("14:00")])], 23);
+    expect(rows[0]).toBe(ms("14:00"));
+    expect(rows.at(-1)).toBe(ms("21:45"));
+    expect(rows).toHaveLength(32);
+  });
+
+  it("ends at the last free block when that already reaches closing time", () => {
+    const rows = rowTimes([freeBlocks([t("21:00")])], 23);
+    expect(rows.at(-1)).toBe(ms("21:45"));
+  });
+
+  it("does not cut off free blocks after closing time", () => {
+    const rows = rowTimes([freeBlocks([t("21:30")])], 23);
+    expect(rows.at(-1)).toBe(ms("22:15"));
   });
 });
 

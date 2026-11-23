@@ -42,9 +42,11 @@ useHead({
     </div>
   </section>
   <section id="reserveren" class="w-full shadow-lg">
-    <div class="mx-auto max-w-6xl px-8 py-20 flex flex-col gap-8">
-      <h1>RESERVEREN</h1>
-      <app-booking />
+    <div class="mx-auto max-w-6xl px-8 py-20">
+      <div class="mx-auto flex max-w-xl flex-col gap-8">
+        <h1>RESERVEREN</h1>
+        <app-booking />
+      </div>
     </div>
   </section>
   <section v-if="showEvents" id="events" class="w-full shadow-lg">
