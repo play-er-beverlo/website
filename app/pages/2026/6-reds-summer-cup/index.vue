@@ -117,7 +117,11 @@ const resultBlocks = [...playDayResults]
           :label="showMoreInfo ? 'Minder informatie' : 'Meer informatie'"
           :trailing-icon="showMoreInfo ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
           size="xl"
-          @click="showMoreInfo = !showMoreInfo"
+          @click="
+            () => {
+              showMoreInfo = !showMoreInfo;
+            }
+          "
         />
       </div>
 

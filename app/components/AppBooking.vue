@@ -483,7 +483,11 @@ onMounted(async () => {
             size="xl"
             :color="game === selectedGame ? 'primary' : 'neutral'"
             :variant="game === selectedGame ? 'solid' : 'ghost'"
-            @click="selectedGame = game"
+            @click="
+              () => {
+                selectedGame = game;
+              }
+            "
           />
         </div>
       </div>
