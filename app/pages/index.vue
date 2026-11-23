@@ -7,6 +7,38 @@ const { showEvents } = useAppConfig();
 // the visitor explicitly wants to interact with the tour.
 const tourActive = ref(false);
 
+// The home section fades through a few photos of the venue. The other photos
+// are only rendered after mount so they don't delay the first one.
+// The order is shuffled once per page load. useState carries the server's order
+// to the client, so both render the same first photo.
+const homePhotos = useState("home-photos", () => {
+  const remaining = [
+    "/images/photos/snooker-muurschildering.jpg",
+    "/images/photos/pool-darts.jpg",
+    "/images/photos/snooker-darts.jpg",
+    "/images/photos/zithoek-bar.jpg",
+    "/images/photos/snooker.jpg",
+  ];
+  const shuffled = [];
+  while (remaining.length > 0) {
+    shuffled.push(...remaining.splice(Math.floor(Math.random() * remaining.length), 1));
+  }
+  return shuffled;
+});
+const homePhotoIndex = ref(0);
+const mounted = ref(false);
+let homePhotoTimer = 0;
+
+onMounted(() => {
+  mounted.value = true;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  homePhotoTimer = window.setInterval(() => {
+    homePhotoIndex.value = (homePhotoIndex.value + 1) % homePhotos.value.length;
+  }, 6000);
+});
+
+onBeforeUnmount(() => clearInterval(homePhotoTimer));
+
 const photos = [
   { src: "/images/photos/zithoek-bar.jpg", alt: "Zithoek met muurschildering en bar" },
   { src: "/images/photos/snooker-darts.jpg", alt: "Snookertafels en dartsbanen" },
@@ -38,7 +70,16 @@ useHead({
 
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
-  <section id="home" class="w-full shadow-lg">
+  <section id="home" class="relative isolate w-full overflow-hidden shadow-lg">
+    <template v-for="(photo, index) in homePhotos" :key="photo">
+      <div
+        v-if="index === 0 || mounted"
+        class="absolute inset-0 -z-10 bg-cover bg-center transition-opacity duration-1000"
+        :class="index === homePhotoIndex ? 'opacity-100' : 'opacity-0'"
+        :style="{ backgroundImage: `url(${photo})` }"
+      ></div>
+    </template>
+    <div class="home-overlay absolute inset-0 -z-10"></div>
     <app-header />
     <!-- TODO: Static header -->
     <!-- <div class="mx-auto max-w-6xl px-6 py-20 flex justify-center h-[656px]"> -->
@@ -261,11 +302,11 @@ useHead({
 section#home {
   @apply bg-neutral-500;
   background: radial-gradient(circle, rgba(102, 102, 102, 1) 0%, rgba(50, 48, 49, 1) 75%);
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.9) 100%),
-    url("~/assets/images/home_banner.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+}
+
+/* Darkens the rotating photos so the logo and opening hours stay readable. */
+.home-overlay {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.9) 100%);
 }
 
 section#contact {
