@@ -17,6 +17,7 @@
 		}
 	],
 	"vars": {
+		"NUXT_PUBLIC_GA_MEASUREMENT_ID": "G-HE735Y5LVT",
 		"NUXT_CAL_BOOKING_GUESTS": "[\"horeca.player.be@gmail.com\"]",
 		"NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY": "pk_live_51SDW8TPdNa5NInxcuGK05eRplXxt4fi5m5dLki97h3N29dUDjrNDOe4U2s1I0nywCsXs9owNl3sWEQ3l7LSzhqfJ00QsofFrWZ"
 	},

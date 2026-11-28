@@ -43,6 +43,8 @@ export default defineNuxtConfig({
     zeroRuntime: true,
   },
   routeRules: {
+    "/2026/6-reds-summer-cup/uitschrijven/**": { headers: { "Referrer-Policy": "strict-origin" } },
+    "/api/bookings/stripe/callback": { headers: { "Referrer-Policy": "strict-origin" } },
     // The 2026 edition used to live at the unversioned path. Confirmation emails still link
     // there (uitschrijven, betaal-QR), so keep those URLs working. Temporary redirects on purpose:
     // a next edition may reclaim /6-reds-summer-cup.
@@ -52,6 +54,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      gaMeasurementId: "", // NUXT_PUBLIC_GA_MEASUREMENT_ID
       stripePublishableApiKey: "", // NUXT_PUBLIC_STRIPE_PUBLISHABLE_API_KEY
     },
     calApiKeys: JSON.parse(process.env.NUXT_CAL_API_KEYS ?? "{}"),
