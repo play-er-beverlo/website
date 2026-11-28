@@ -8,6 +8,7 @@
       <div class="copyright">
         &copy; {{ new Date().getFullYear() }} Play-ER. Alle rechten voorbehouden.
       </div>
+      <analytics-consent />
       <div class="website-by">
         Website door
         <a href="https://steffbeckers.com/nl" target="_blank" rel="noopener noreferrer"
